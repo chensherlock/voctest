@@ -315,7 +315,9 @@ function playCurrentAudio() {
     cloudAudioService.getWordAudio(word.english)
         .then(cloudUrl => {
             updateAudioStatus('正在播放音訊...');
-            const cloudAudio = new Audio(cloudUrl);
+            const cloudAudio = new Audio();
+            cloudAudio.crossOrigin = 'anonymous'; // Allow cross-origin requests
+            cloudAudio.src = cloudUrl;
             
             cloudAudio.onloadeddata = () => {
                 cloudAudio.play()
