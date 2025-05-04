@@ -320,7 +320,7 @@ function useCloudAudio(word, callback) {
             };
             
             cloudAudio.onerror = () => {
-                console.error('雲端音訊載入錯誤');
+                console.error('雲端音訊載入錯誤', cloudAudio.error);
                 showAudioStatus('無法載入音訊');
                 if (callback) callback();
             };
