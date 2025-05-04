@@ -87,9 +87,9 @@ function loadUnitWords() {
 function createVocabRangeSelector() {
     const vocabRangeContainer = document.getElementById('vocabRangeContainer');
     vocabRangeContainer.innerHTML = `
-        <label for="vocabRangeStart">Start:</label>
+        <label for="vocabRangeStart">起始：</label>
         <input type="number" id="vocabRangeStart" min="1" max="${allUnitWords.length}" value="1">
-        <label for="vocabRangeEnd">End:</label>
+        <label for="vocabRangeEnd">結束：</label>
         <input type="number" id="vocabRangeEnd" min="1" max="${allUnitWords.length}" value="${allUnitWords.length}">
     `;
 }
@@ -182,9 +182,15 @@ function displayCurrentQuestion() {
                 break;
         }
         
-        // Reset buttons
-        submitAnswer.style.display = 'block';
-        nextQuestion.style.display = 'none';
+        // Hide submit button for multiple choice and matching questions
+        // Only show for spelling questions until user presses Enter
+        if (quizTypeValue === 'spelling') {
+            submitAnswer.style.display = 'block';
+        } else {
+            submitAnswer.style.display = 'none';
+        }
+        
+        submitAnswer.disabled = false;
     } else {
         // End of quiz
         showQuizResults();
@@ -196,14 +202,17 @@ function createMultipleChoiceQuestion(word) {
     // Get options (1 correct + 3 random)
     const options = getRandomOptions(word);
     
+    // Store options in a data attribute for later validation
+    quizContainer.dataset.currentOptions = JSON.stringify(options);
+    
     const questionElement = document.createElement('div');
     questionElement.className = 'quiz-question';
     questionElement.innerHTML = `
-        <h3>What is the meaning of "${word.english}"?</h3>
+        <h3>"${word.english}" 的中文意思是什麼？</h3>
         <div class="quiz-options">
             ${options.map((option, index) => `
                 <label>
-                    <input type="radio" name="answer" value="${index}">
+                    <input type="radio" name="answer" value="${index}" class="auto-submit-option">
                     ${option.chinese}
                 </label>
             `).join('')}
@@ -211,6 +220,12 @@ function createMultipleChoiceQuestion(word) {
     `;
     
     quizContainer.appendChild(questionElement);
+    
+    // Add event listeners to auto-submit when an option is selected
+    const radioButtons = document.querySelectorAll('.auto-submit-option');
+    radioButtons.forEach(radio => {
+        radio.addEventListener('change', handleSubmitAnswer);
+    });
 }
 
 // Create a matching question
@@ -218,14 +233,17 @@ function createMatchingQuestion(word) {
     // Get options (1 correct + 3 random)
     const options = getRandomOptions(word);
     
+    // Store options in a data attribute for later validation
+    quizContainer.dataset.currentOptions = JSON.stringify(options);
+    
     const questionElement = document.createElement('div');
     questionElement.className = 'quiz-question';
     questionElement.innerHTML = `
-        <h3>Match the correct translation for "${word.english}"</h3>
+        <h3>請選擇 "${word.english}" 的正確翻譯</h3>
         <div class="matching-options">
             ${options.map((option, index) => `
                 <div class="matching-option">
-                    <input type="radio" id="option-${index}" name="answer" value="${index}">
+                    <input type="radio" id="option-${index}" name="answer" value="${index}" class="auto-submit-option">
                     <label for="option-${index}">${option.chinese}</label>
                 </div>
             `).join('')}
@@ -233,6 +251,12 @@ function createMatchingQuestion(word) {
     `;
     
     quizContainer.appendChild(questionElement);
+    
+    // Add event listeners to auto-submit when an option is selected
+    const radioButtons = document.querySelectorAll('.auto-submit-option');
+    radioButtons.forEach(radio => {
+        radio.addEventListener('change', handleSubmitAnswer);
+    });
 }
 
 // Create a spelling question
@@ -240,9 +264,9 @@ function createSpellingQuestion(word) {
     const questionElement = document.createElement('div');
     questionElement.className = 'quiz-question';
     questionElement.innerHTML = `
-        <h3>What is the English word for "${word.chinese}"?</h3>
+        <h3>"${word.chinese}" 的英文單詞是什麼？</h3>
         <div class="spelling-input">
-            <input type="text" id="spelling-answer" placeholder="Type the answer here" autocomplete="off">
+            <input type="text" id="spelling-answer" placeholder="請在此輸入答案" autocomplete="off">
         </div>
     `;
     
@@ -250,7 +274,16 @@ function createSpellingQuestion(word) {
     
     // Focus on the input field
     setTimeout(() => {
-        document.getElementById('spelling-answer').focus();
+        const spellingInput = document.getElementById('spelling-answer');
+        spellingInput.focus();
+        
+        // Add event listener for Enter key
+        spellingInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                handleSubmitAnswer();
+            }
+        });
     }, 100);
 }
 
@@ -285,18 +318,30 @@ function handleSubmitAnswer() {
             if (selectedOption) {
                 const optionIndex = parseInt(selectedOption.value);
                 const options = document.querySelectorAll('input[name="answer"]');
-                const labels = document.querySelectorAll('label');
                 
-                // Get the selected answer text
-                userAnswer = labels[optionIndex].textContent.trim();
+                // Get the correct labels based on quiz type
+                let answerLabels;
+                if (quizTypeValue === 'multiple-choice') {
+                    // For multiple choice, the label is a direct parent of the input
+                    answerLabels = document.querySelectorAll('.quiz-options label');
+                } else {
+                    // For matching, we need to get the label with matching 'for' attribute
+                    answerLabels = document.querySelectorAll('.matching-options label');
+                }
                 
-                // Check if correct (option 0 is always correct in our implementation)
-                isCorrect = getRandomOptions(word)[optionIndex].english === word.english;
+                // Get the selected answer text from the correct label
+                userAnswer = answerLabels[optionIndex].textContent.trim();
+                
+                // Get stored options from data attribute
+                const currentOptions = JSON.parse(quizContainer.dataset.currentOptions);
+                
+                // Check if the selected option is correct
+                isCorrect = currentOptions[optionIndex].english === word.english;
                 
                 // Highlight correct and incorrect answers
                 options.forEach((option, index) => {
-                    const label = labels[index];
-                    const optionWord = getRandomOptions(word)[index];
+                    const label = answerLabels[index];
+                    const optionWord = currentOptions[index];
                     
                     if (optionWord.english === word.english) {
                         label.classList.add('correct');
@@ -307,7 +352,7 @@ function handleSubmitAnswer() {
                     option.disabled = true;
                 });
             } else {
-                alert('Please select an answer');
+                alert('請選擇一個答案');
                 return;
             }
             break;
@@ -324,8 +369,8 @@ function handleSubmitAnswer() {
             const feedbackElement = document.createElement('div');
             feedbackElement.className = isCorrect ? 'correct-feedback' : 'incorrect-feedback';
             feedbackElement.innerHTML = isCorrect 
-                ? `<i class="fas fa-check"></i> Correct!` 
-                : `<i class="fas fa-times"></i> Incorrect. The correct answer is "${word.english}".`;
+                ? `<i class="fas fa-check"></i> 正確！` 
+                : `<i class="fas fa-times"></i> 不正確。正確答案是 "${word.english}"。`;
             
             spellingInput.parentNode.appendChild(feedbackElement);
             break;
@@ -351,9 +396,15 @@ function handleSubmitAnswer() {
         userProgress.updateWordProgress(`${quizUnitId}-${word.english}`, false);
     }
     
-    // Show next button
-    submitAnswer.style.display = 'none';
-    nextQuestion.style.display = 'block';
+    // Disable submit button to prevent multiple submissions
+    submitAnswer.disabled = true;
+    
+    // Automatically advance to the next question after a short delay (1.5 seconds)
+    setTimeout(() => {
+        currentQuizIndex++;
+        displayCurrentQuestion();
+        submitAnswer.disabled = false;
+    }, 1500);
 }
 
 // Move to the next question
@@ -373,17 +424,17 @@ function showQuizResults() {
     
     // Set result message
     if (percentage >= 90) {
-        resultMessage.innerHTML = `<strong>Excellent!</strong> You've mastered these words.`;
+        resultMessage.innerHTML = `<strong>太棒了！</strong> 您已經掌握了這些單詞。`;
     } else if (percentage >= 70) {
-        resultMessage.innerHTML = `<strong>Good job!</strong> You're making good progress.`;
+        resultMessage.innerHTML = `<strong>做得好！</strong> 您正在取得良好的進步。`;
     } else if (percentage >= 50) {
-        resultMessage.innerHTML = `<strong>Keep practicing!</strong> You're on the right track.`;
+        resultMessage.innerHTML = `<strong>繼續練習！</strong> 您正在正確的道路上。`;
     } else {
-        resultMessage.innerHTML = `<strong>Don't give up!</strong> More practice will help you improve.`;
+        resultMessage.innerHTML = `<strong>不要放棄！</strong> 更多的練習將幫助您提高。`;
     }
     
     // Generate quiz summary
-    quizSummary.innerHTML = '<h4>Question Summary:</h4>';
+    quizSummary.innerHTML = '<h4>測驗摘要：</h4>';
     
     selectedAnswers.forEach((answer, index) => {
         quizSummary.innerHTML += `
@@ -392,7 +443,7 @@ function showQuizResults() {
                 <span class="question-word">${answer.word.english}</span>
                 <span class="question-answer">${answer.isCorrect ? 
                     `<i class="fas fa-check"></i> ${answer.userAnswer}` : 
-                    `<i class="fas fa-times"></i> You answered: "${answer.userAnswer}" (Correct: "${answer.word.chinese}")`}
+                    `<i class="fas fa-times"></i> 您的答案：「${answer.userAnswer}」（正確答案：「${answer.word.chinese}」）`}
                 </span>
             </div>
         `;
