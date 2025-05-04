@@ -369,7 +369,9 @@ function playAudio(audioUrl, word) {
  * @param {string} [word] - Optional word for cloud fallback
  */
 function playAudioFromUrl(url, word) {
-    const audio = new Audio(url);
+    const audio = new Audio();
+    audio.crossOrigin = "anonymous"; // Enable CORS handling
+    audio.src = url;
 
     console.log('playAudioFromUrl:', url, 'for word:', word);
     
