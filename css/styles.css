@@ -492,6 +492,7 @@ label.incorrect::after {
 .word-item .english {
     font-weight: 500;
     font-size: 18px;
+    margin-right: 20px; /* Add more space between English and Chinese */
 }
 
 .word-item .chinese {
@@ -706,6 +707,7 @@ footer {
     display: flex;
     align-items: center;
     flex: 1;
+    gap: 8px; /* Add basic spacing between all child elements */
 }
 
 .word-number {
@@ -714,6 +716,16 @@ footer {
     margin-right: 10px;
     min-width: 24px;
     text-align: right;
+}
+
+.word-item .english {
+    font-weight: 500;
+    font-size: 18px;
+    margin-right: 20px; /* Add more space between English and Chinese */
+}
+
+.word-item .chinese {
+    color: var(--gray-color);
 }
 
 /* Quiz Audio Button */

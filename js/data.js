@@ -17,405 +17,599 @@ const vocabularyData = {
         },
         {
             id: 3,
-            title: "Unit 3",
+            title: "課本 Unit 3",
             words: [
-                // Unit 3 words would go here
+                {
+                    english: "reality",
+                    chinese: "n.[U][C]現實",
+                    example: ""
+                },
+                {
+                    english: "add",
+                    chinese: "vt.加",
+                    example: ""
+                },
+                {
+                    english: "effect",
+                    chinese: "n.[C] 特效; 效果, n[C][U] 影響",
+                    example: ""
+                },                
+                {
+                    english: "effective",
+                    chinese: "adj. 有效的",
+                    example: ""
+                },                    
+                {
+                    english: "appearance",
+                    chinese: "外表",
+                    example: ""
+                },
+                {
+                    english: "involved",
+                    chinese: "參與的; 有關的",
+                    example: ""
+                },                
+                {
+                    english: "involve",
+                    chinese: "包含; 與...有關",
+                    example: ""
+                },                             
+                {
+                    english: "scary",
+                    chinese: "可怕的",
+                    example: ""
+                },                    
+                {
+                    english: "wild",
+                    chinese: "荒野的; 野生環境; 野生的",
+                    example: ""
+                },                            
+                {
+                    english: "information",
+                    chinese: "資訊; 消息",
+                    example: ""
+                },                        
+                {
+                    english: "inform",
+                    chinese: "告知",
+                    example: ""
+                },                                                                                                
+                {
+                    english: "scene",
+                    chinese: "場景",
+                    example: ""
+                },                            
+                {
+                    english: "image",
+                    chinese: "影像; 圖像",
+                    example: ""
+                },                            
+                {
+                    english: "extra",
+                    chinese: "額外的; 另外的",
+                    example: ""
+                },                            
+                {
+                    english: "curious",
+                    chinese: "好奇的",
+                    example: ""
+                },                            
+                {
+                    english: "curiosity",
+                    chinese: "好奇心",
+                    example: ""
+                },                    
+                {
+                    english: "explore",
+                    chinese: "探索",
+                    example: ""
+                },                  
+                {
+                    english: "develop",
+                    chinese: "vi vt 發展; 成長",
+                    example: ""
+                },                                                  
+                {
+                    english: "development",
+                    chinese: "n [U] 發展; 成長",
+                    example: ""
+                },                                      
+                {
+                    english: "argumented",
+                    chinese: "adj. 擴增的",
+                    example: ""
+                },                                                      
+                {
+                    english: "virtual",
+                    chinese: "adj. 虛擬的",
+                    example: ""
+                },                         
+                {
+                    english: "digital",
+                    chinese: "adj. 數位的",
+                    example: ""
+                },                         
+                {
+                    english: "mirror",
+                    chinese: "n.[C] 鏡子",
+                    example: ""
+                },                      
+                {
+                    english: "outer space",
+                    chinese: "n.[U] 外太空",
+                    example: ""
+                },                          
+                {
+                    english: "headset",
+                    chinese: "n.[C] 頭戴裝置",
+                    example: ""
+                },                                                                                                         
             ]
         },
         {
             id: 4,
-            title: "Unit 4",
+            title: "課本 Unit 4",
             words: [
-                // Unit 4 words would go here
+                {
+                    english: "consider",
+                    chinese: "vt vi 考慮",
+                    example: ""
+                },  
+                {
+                    english: "consideration",
+                    chinese: "n. [U] 考慮",
+                    example: ""
+                },                  
+                {
+                    english: "situation",
+                    chinese: "情況",
+                    example: ""
+                },                
+                {
+                    english: "tend",
+                    chinese: "傾向; 往往",
+                    example: ""
+                },                      
+                {
+                    english: "crowd",
+                    chinese: "群眾",
+                    example: ""
+                },                                                                  
+                {
+                    english: "daily",
+                    chinese: "日常的; 每天的",
+                    example: ""
+                },                                                                  
+                {
+                    english: "suddenly",
+                    chinese: "突然",
+                    example: ""
+                },                                                                  
+                {
+                    english: "include",
+                    chinese: "vt 包括",
+                    example: ""
+                },                
+                {
+                    english: "including",
+                    chinese: "prep 包含",
+                    example: ""
+                },                
+                {
+                    english: "gesture",
+                    chinese: "手勢",
+                    example: ""
+                },                
+                {
+                    english: "rapidly",
+                    chinese: "adv 迅速地",
+                    example: ""
+                },                
+                {
+                    english: "rapid",
+                    chinese: "adj 迅速的",
+                    example: ""
+                },                
+                {
+                    english: "besides",
+                    chinese: "adv 此外",
+                    example: ""
+                },                
+                {
+                    english: "drama",
+                    chinese: "戲劇",
+                    example: ""
+                },                
+                {
+                    english: "unfortunately",
+                    chinese: "不幸地",
+                    example: ""
+                },                
+                {
+                    english: "fortunate",
+                    chinese: "adj. 幸運的",
+                    example: ""
+                },                
+                {
+                    english: "harmful",
+                    chinese: "adj. 有害的",
+                    example: ""
+                },                
+                {
+                    english: "harm",
+                    chinese: "n.[U] 傷害",
+                    example: ""
+                },                
+                {
+                    english: "pressure",
+                    chinese: "n.[U][C] 壓力",
+                    example: ""
+                },                
+                {
+                    english: "isolate",
+                    chinese: "vt. 孤立",
+                    example: ""
+                },                
+                {
+                    english: "cutlet",
+                    chinese: "n.[C] 肉排",
+                    example: ""
+                },              
+                {
+                    english: "stall",
+                    chinese: "n.[C] 攤子; 攤位",
+                    example: ""
+                },              
+                {
+                    english: "vendor",
+                    chinese: "n.[C] 攤販; 小販",
+                    example: ""
+                },              
+                {
+                    english: "pocker face",
+                    chinese: "n.[C] 撲克臉; 面無表情",
+                    example: ""
+                },              
+                {
+                    english: "herd",
+                    chinese: "n.[C] 群眾; 牧群",
+                    example: ""
+                },                            
+                {
+                    english: "peer",
+                    chinese: "n.[C] 同儕; 同輩",
+                    example: ""
+                },                            
+                {
+                    english: "bully",
+                    chinese: "vt. 霸凌",
+                    example: ""
+                },                                                              
             ]
         },
         {
             id: 5,
-            title: "Unit 5",
+            title: "高頻 Unit 5",
             words: [
                 {
                     english: "add",
                     chinese: "使增加; 加總",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },
                 {
                     english: "addition",
                     chinese: "增加物; 附加物; 增加; 附加; 加法",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },                
                 {
                     english: "anxious",
                     chinese: "焦慮的; 急切的",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },                
                 {
                     english: "balance",
                     chinese: "平衡",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },                
                 {
                     english: "cheat",
                     chinese: "欺騙; 作弊",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },                
                 {
                     english: "confirm",
                     chinese: "確認; 證實",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },                
                 {
                     english: "consider",
                     chinese: "考慮;視為",
-                    example: "I will consider your offer carefully.",
-                    audioUrl: "audio/consider.mp3"
+                    example: "I will consider your offer carefully."
                 },
                 {
                     english: "considerate",
                     chinese: "體貼的",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },                
                 {
                     english: "court",
                     chinese: "法院；法庭；宮廷；運動場",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },  
                 {
                     english: "cunning",
                     chinese: "狡猾的，狡猾，奸巧",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },
                 {
                     english: "dialogue",
                     chinese: "對話，台詞",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },
                 {
                     english: "dominate",
                     chinese: "統治；支配；占優勢",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },
                 {
                     english: "dominant",
                     chinese: "領導的；佔優勢的",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },                
                 {
                     english: "excellent",
                     chinese: "優秀的",
-                    example: "She did an excellent job on the project.",
-                    audioUrl: "audio/excellent.mp3"
+                    example: "She did an excellent job on the project."
                 },
                 {
                     english: "excellence",
                     chinese: "優秀",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },
                 {
                     english: "fairly",
                     chinese: "相當地; 公正地",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },  
                 {
                     english: "fair",
                     chinese: "合理的; 公平的",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },  
                 {
                     english: "frequently",
                     chinese: "時常; 頻繁地; 頻繁的",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },              
                 {
                     english: "frequent",
                     chinese: "頻繁的",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },              
                 {
                     english: "fun",
                     chinese: "樂趣",
-                    example: "We had a lot of fun at the party.",
-                    audioUrl: "audio/fun.mp3"
+                    example: "We had a lot of fun at the party."
                 },
                 {
                     english: "funny",
                     chinese: "有趣的; 好笑的",
-                    example: "",
-                    audioUrl: "audio/funny.mp3"
+                    example: ""
                 },
                 {
                     english: "guilty",
                     chinese: "有罪惡感的; 有罪的; 罪惡感; 罪行",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },  
                 {
                     english: "guilt",
                     chinese: "罪惡感; 罪行",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },  
                 {
                     english: "have/has",
                     chinese: "擁有; 使用; 吃; 喝",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },
                 {
                     english: "interest",
                     chinese: "興趣",
-                    example: "He has a keen interest in science.",
-                    audioUrl: "audio/interest.mp3"
+                    example: "He has a keen interest in science."
                 },
                 {
                     english: "interesting",
                     chinese: "令人覺得有趣的",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },
                 {
                     english: "interested",
                     chinese: "感興趣的",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },
                 {
                     english: "uninteresting",
                     chinese: "令人感到無趣的",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },
                 {
                     english: "loneliness",
                     chinese: "孤單",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },
                 {
                     english: "lonely",
                     chinese: "孤單的",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },
                 {
                     english: "mail",
                     chinese: "信件，郵件; 寄出",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },                     
                 {
                     english: "minor",
                     chinese: "次要的; 弱勢; 少數族群; 輔修科目; 未成年人; 輔修",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },                     
                 {
                     english: "minornity",
                     chinese: "弱勢; 少數族群",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },                  
                 {
                     english: "mask",
                     chinese: "面具；口罩; 掩飾",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },                
                 {
                     english: "nationality",
                     chinese: "國籍",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },
                 {
                     english: "nation",
                     chinese: "國家",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },
                 {
                     english: "national",
                     chinese: "adj 國家的; 全國的; NC 國民",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },
                 {
                     english: "neglect",
                     chinese: "vt 忽視; 疏忽",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },
                 {
                     english: "numerous",
                     chinese: "許多的",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },
                 {
                     english: "origin",
                     chinese: "起源; 出生",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },               
                 {
                     english: "original",
                     chinese: "起源的; 原本的; 有原創性的; 原版; 原稿; 原作",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },                               
                 {
                     english: "point",
                     chinese: "點; 看法; 地點; 時間點; 尖端; 重點; 原因; 目的; 指",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },
                 {
                     english: "relate",
                     chinese: "使用關聯; 有關聯",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },
                 {
                     english: "related",
                     chinese: "相關的",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },
                 {
                     english: "relation",
                     chinese: "(人際)關係; 親屬; 關聯",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },
                 {
                     english: "relationship",
                     chinese: "關係",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },
                 {
                     english: "relative",
                     chinese: "相對的; 親戚",
-                    example: "Success is relative to one's goals.",
-                    audioUrl: ""
+                    example: "Success is relative to one's goals."
                 },
                 {
                     english: "relatively",
                     chinese: "相對地",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },
                 {
                     english: "religion",
                     chinese: "宗教; 信仰",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },
                 {
                     english: "religious",
                     chinese: "宗教的; 有信仰的; 虔誠的",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },
                 {
                     english: "responsible",
                     chinese: "負責的",
-                    example: "He is responsible for the project.",
-                    audioUrl: "audio/responsible.mp3"
+                    example: "He is responsible for the project."
                 },                
                 {
                     english: "responsibility",
                     chinese: "責任; 職責",
-                    example: "It is my responsibility to ensure safety.",
-                    audioUrl: ""
+                    example: "It is my responsibility to ensure safety."
                 },                
                 {
                     english: "silent",
                     chinese: "沉默的",
-                    example: "Please remain silent during the test.",
-                    audioUrl: "audio/silent.mp3"
+                    example: "Please remain silent during the test."
                 },
                 {
                     english: "silence",
                     chinese: "寂靜; 沉默; 使安靜",
-                    example: "The silence in the library was deafening.",
-                    audioUrl: ""
+                    example: "The silence in the library was deafening."
                 },
                 {
                     english: "suffer",
                     chinese: "受...之苦; 承受; 受苦",
-                    example: "He suffered from a severe headache.",
-                    audioUrl: ""
+                    example: "He suffered from a severe headache."
                 },
                 {
                     english: "underground",
                     chinese: "地下的; 秘密的; 非法的; 在地底下; 袐密地",
-                    example: "The underground train system is efficient.",
-                    audioUrl: ""
+                    example: "The underground train system is efficient."
                 },
                 {
                     english: "understandable",
                     chinese: "能理解的",
-                    example: "It's understandable to feel nervous before a test.",
-                    audioUrl: ""
+                    example: "It's understandable to feel nervous before a test."
                 },                
                 {
                     english: "understand",
                     chinese: "理解",
-                    example: "I understand the lesson.",
-                    audioUrl: "audio/understand.mp3"
+                    example: "I understand the lesson."
                 },                
                 {
                     english: "misunderstand",
                     chinese: "誤解; 誤會",
-                    example: "I misunderstood the instructions.",
-                    audioUrl: ""
+                    example: "I misunderstood the instructions."
                 },             
                 {
                     english: "misunderstanding",
                     chinese: "誤會",
-                    example: "I had a misunderstanding with my friend.",
-                    audioUrl: ""
+                    example: "I had a misunderstanding with my friend."
                 },                                                
                 {
                     english: "virus",
                     chinese: "病毒",
-                    example: "",
-                    audioUrl: ""
+                    example: ""
                 },            
                 {
                     english: "lonely",
                     chinese: "寂寞的",
-                    example: "I feel lonely when everyone is gone.",
-                    audioUrl: "audio/lonely.mp3"
+                    example: "I feel lonely when everyone is gone."
                 },
                 {
                     english: "minor",
                     chinese: "次要的",
-                    example: "It's only a minor issue.",
-                    audioUrl: "audio/minor.mp3"
+                    example: "It's only a minor issue."
                 },
                 {
                     english: "national",
                     chinese: "國家的",
-                    example: "It's a matter of national importance.",
-                    audioUrl: "audio/national.mp3"
+                    example: "It's a matter of national importance."
                 },
 ]
         },

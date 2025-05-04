@@ -205,8 +205,8 @@ function displayUnitWords(unit) {
         // Add event listener for audio button
         const audioBtn = wordItem.querySelector('.audio-btn');
         audioBtn.addEventListener('click', () => {
-            // Use enhanced playAudio function with word text as fallback
-            playAudio(word.audioUrl, word.english);
+            // Since we no longer use audioUrl, directly pass the word to the playAudio function
+            playAudio(null, word.english);
         });
         
         wordList.appendChild(wordItem);
@@ -222,44 +222,34 @@ function showUnitsList() {
 
 // Play audio for a word with cloud fallback
 function playAudio(audioUrl, word) {
-    if (!audioUrl && !word) return;
+    if (!word) return;
     
     // Show loading state on the button that triggered this
     const audioButtons = document.querySelectorAll('.audio-btn');
     const clickedButton = Array.from(audioButtons).find(btn => btn === document.activeElement);
     
+    // Set loading state
     if (clickedButton) {
         const originalIcon = clickedButton.innerHTML;
         clickedButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
         clickedButton.disabled = true;
+        clickedButton.classList.add('loading');
         
-        // Restore original state after playing
+        // Function to restore button state
         const restoreButton = () => {
             clickedButton.innerHTML = originalIcon;
             clickedButton.disabled = false;
+            clickedButton.classList.remove('loading');
         };
         
-        // Use the global playAudio function from data.js, which handles cloud services
-        // The global function has the same name but different implementation
-        window.setTimeout(() => {
-            if (typeof window.playAudio === 'function') {
-                window.playAudio(audioUrl, word);
-                restoreButton();
-            } else {
-                // Fallback to local implementation if global not available
-                localPlayAudio(audioUrl, word, restoreButton);
-            }
-        }, 300);
-    }
-    // No active button found (direct function call)
-    else {
-        // Use global function if available
-        if (typeof window.playAudio === 'function') {
-            window.playAudio(audioUrl, word);
-        } else {
-            // Fallback to local implementation
-            localPlayAudio(audioUrl, word);
-        }
+        // Show status message
+        showAudioStatus('播放音訊中...');
+        
+        // Use cloud service directly
+        useCloudAudio(word, restoreButton);
+    } else {
+        // No active button, just play the audio without visual feedback
+        useCloudAudio(word);
     }
 }
 

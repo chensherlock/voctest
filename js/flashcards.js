@@ -224,34 +224,14 @@ function updateCardDisplay() {
 function preloadWordAudio(word) {
     // Only preload if in English-to-Chinese mode
     if (currentDirection === 'english-chinese') {
-        const audioUrl = word.audioUrl;
-        
-        if (audioUrl) {
-            // Try to load local audio first
-            const audio = new Audio(audioUrl);
-            
-            audio.onerror = () => {
-                // If local audio fails, silently preload from cloud
-                cloudAudioService.getWordAudio(word.english)
-                    .then(() => {
-                        // Audio is now cached in the service
-                    })
-                    .catch(() => {
-                        // Ignore errors during preloading
-                    });
-            };
-            
-            audio.load();
-        } else {
-            // No local audio, preload from cloud
-            cloudAudioService.getWordAudio(word.english)
-                .then(() => {
-                    // Audio is now cached in the service
-                })
-                .catch(() => {
-                    // Ignore errors during preloading
-                });
-        }
+        // Silently preload from cloud
+        cloudAudioService.getWordAudio(word.english)
+            .then(() => {
+                // Audio is now cached in the service
+            })
+            .catch(() => {
+                // Ignore errors during preloading
+            });
     }
 }
 
@@ -331,39 +311,10 @@ function playCurrentAudio() {
     // Show loading state
     toggleAudioLoading(true);
     
-    if (word.audioUrl) {
-        // Try local audio first
-        const audio = new Audio(word.audioUrl);
-        
-        audio.onloadeddata = () => {
-            audio.play()
-                .then(() => {
-                    toggleAudioLoading(false);
-                    audioLoading = false;
-                })
-                .catch(err => {
-                    console.error('音訊播放錯誤:', err);
-                    fallbackToCloudAudio(word.english);
-                });
-        };
-        
-        audio.onerror = () => {
-            // If local audio fails, use cloud audio
-            fallbackToCloudAudio(word.english);
-        };
-        
-        audio.load();
-    } else {
-        // No local audio, use cloud directly
-        fallbackToCloudAudio(word.english);
-    }
-}
-
-// Fallback to cloud audio
-function fallbackToCloudAudio(word) {
-    cloudAudioService.getWordAudio(word)
+    // Use cloud audio service directly
+    cloudAudioService.getWordAudio(word.english)
         .then(cloudUrl => {
-            updateAudioStatus('正在使用雲端音訊...');
+            updateAudioStatus('正在播放音訊...');
             const cloudAudio = new Audio(cloudUrl);
             
             cloudAudio.onloadeddata = () => {
@@ -373,7 +324,7 @@ function fallbackToCloudAudio(word) {
                         audioLoading = false;
                     })
                     .catch(err => {
-                        console.error('雲端音訊播放錯誤:', err);
+                        console.error('音訊播放錯誤:', err);
                         toggleAudioLoading(false);
                         audioLoading = false;
                         updateAudioStatus('無法播放音訊');
@@ -381,7 +332,7 @@ function fallbackToCloudAudio(word) {
             };
             
             cloudAudio.onerror = () => {
-                console.error('雲端音訊載入錯誤');
+                console.error('音訊載入錯誤');
                 toggleAudioLoading(false);
                 audioLoading = false;
                 updateAudioStatus('無法載入音訊');
@@ -390,7 +341,7 @@ function fallbackToCloudAudio(word) {
             cloudAudio.load();
         })
         .catch(err => {
-            console.error('雲端音訊獲取錯誤:', err);
+            console.error('音訊獲取錯誤:', err);
             toggleAudioLoading(false);
             audioLoading = false;
             updateAudioStatus('無法獲取音訊');

@@ -489,3 +489,43 @@ function handleReviewMissed() {
     const missedWordIds = missedWords.map(word => word.english).join(',');
     window.location.href = `flashcards.html?missed=${missedWordIds}`;
 }
+
+// Play audio for a word
+function playWordAudio(word) {
+    if (!word) return;
+    
+    // Add loading indicator
+    const audioButtons = document.querySelectorAll('.quiz-question .audio-btn');
+    audioButtons.forEach(btn => {
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+        btn.disabled = true;
+    });
+    
+    // Use cloud service directly for audio
+    cloudAudioService.getWordAudio(word)
+        .then(audioUrl => {
+            const audio = new Audio(audioUrl);
+            audio.play()
+                .then(() => {
+                    // Reset button state
+                    audioButtons.forEach(btn => {
+                        btn.innerHTML = '<i class="fas fa-volume-up"></i>';
+                        btn.disabled = false;
+                    });
+                })
+                .catch(error => {
+                    console.error('Error playing audio:', error);
+                    audioButtons.forEach(btn => {
+                        btn.innerHTML = '<i class="fas fa-volume-up"></i>';
+                        btn.disabled = false;
+                    });
+                });
+        })
+        .catch(error => {
+            console.error('Error getting audio URL:', error);
+            audioButtons.forEach(btn => {
+                btn.innerHTML = '<i class="fas fa-volume-up"></i>';
+                btn.disabled = false;
+            });
+        });
+}
