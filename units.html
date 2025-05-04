@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>單元 | 詞彙記憶</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>詞彙記憶</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">首頁</a></li>
+                    <li><a href="units.html" class="active">單元</a></li>
+                    <li><a href="flashcards.html">閃卡</a></li>
+                    <li><a href="quiz.html">測驗</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section id="unitsList">
+                <h2>詞彙單元</h2>
+                <p>選擇一個單元開始學習詞彙：</p>
+                
+                <div class="units-container" id="unitsContainer">
+                    <!-- Units will be dynamically loaded here -->
+                </div>
+            </section>
+            
+            <section id="unitDetail" style="display: none;">
+                <div id="unitHeader">
+                    <h2>單元 <span id="unitNumber"></span></h2>
+                    <button class="btn" id="backToUnits"><i class="fas fa-arrow-left"></i> 返回單元列表</button>
+                </div>
+                
+                <div class="word-list" id="wordList">
+                    <!-- Words will be dynamically loaded here -->
+                </div>
+                
+                <div class="unit-actions">
+                    <button class="btn" id="practiceFlashcards">使用閃卡練習</button>
+                    <button class="btn" id="takeQuiz">參加測驗</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 詞彙記憶。保留所有權利。</p>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/units.js"></script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>測驗 | 詞彙記憶</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>詞彙記憶</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">首頁</a></li>
+                    <li><a href="units.html">單元</a></li>
+                    <li><a href="flashcards.html">閃卡</a></li>
+                    <li><a href="quiz.html" class="active">測驗</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section>
+                <h2>詞彙測驗</h2>
+                
+                <!-- Quiz Setup -->
+                <div id="quizSetup">
+                    <p>透過測驗來測試您的詞彙知識。請在下面選擇您的設置：</p>
+                    
+                    <div class="form-group">
+                        <label for="quizUnitSelect">選擇單元：</label>
+                        <select id="quizUnitSelect">
+                            <option value="all">所有單元</option>
+                            <!-- Units will be dynamically loaded here -->
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="quizType">測驗類型：</label>
+                        <select id="quizType">
+                            <option value="multiple-choice">選擇題</option>
+                            <option value="matching">配對詞彙</option>
+                            <option value="spelling">拼寫</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="questionCount">題目數量：</label>
+                        <select id="questionCount">
+                            <option value="5">5</option>
+                            <option value="10" selected>10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                        </select>
+                    </div>
+                    
+                    <button class="btn" id="startQuiz">開始測驗</button>
+                </div>
+                
+                <!-- Quiz Questions -->
+                <div id="quizQuestions" style="display: none;">
+                    <div class="quiz-progress">
+                        <span>第 <span id="currentQuestion">1</span> 題，共 <span id="totalQuestions">10</span> 題</span>
+                        <div class="progress-bar">
+                            <div class="progress" id="quizProgress"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-container">
+                        <!-- Questions will be dynamically loaded here -->
+                    </div>
+                    
+                    <div class="quiz-controls">
+                        <button class="btn" id="submitAnswer">提交答案</button>
+                        <button class="btn" id="nextQuestion" style="display: none;">下一題</button>
+                    </div>
+                </div>
+                
+                <!-- Quiz Results -->
+                <div id="quizResults" style="display: none;">
+                    <div class="quiz-result">
+                        <h3>測驗完成！</h3>
+                        <div class="score">
+                            <span>您的得分：</span>
+                            <span id="scoreValue">0</span> / <span id="totalScore">10</span>
+                        </div>
+                        <div class="result-message" id="resultMessage"></div>
+                        
+                        <div class="quiz-summary" id="quizSummary">
+                            <!-- Results will be dynamically loaded here -->
+                        </div>
+                        
+                        <div class="result-actions">
+                            <button class="btn" id="retakeQuiz">重新測驗</button>
+                            <button class="btn" id="newQuiz">新測驗</button>
+                            <button class="btn" id="reviewMissed">複習錯誤詞彙</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 詞彙記憶。保留所有權利。</p>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/quiz.js"></script>
+</body>
+</html>

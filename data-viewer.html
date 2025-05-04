@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>資料檢視器 | 詞彙記憶</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Data Viewer Specific Styles */
+        .data-viewer {
+            background-color: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 30px;
+        }
+        
+        .filter-controls {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        
+        .filter-controls .form-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input, 
+        .form-group select {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .stats-panel {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .stat-card {
+            background-color: var(--light-color);
+            padding: 15px;
+            border-radius: var(--border-radius);
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 5px 0;
+        }
+        
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .vocab-table th,
+        .vocab-table td {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            text-align: left;
+        }
+        
+        .vocab-table th {
+            background-color: var(--light-color);
+            font-weight: 500;
+        }
+        
+        .edit-mode .vocab-table input {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .actions-bar {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .pagination {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .page-btn {
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            background-color: var(--light-color);
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        
+        .page-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        .export-section {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: var(--border-radius);
+        }
+        
+        textarea.export-data {
+            width: 100%;
+            height: 200px;
+            font-family: monospace;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>詞彙記憶</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">首頁</a></li>
+                    <li><a href="units.html">單元</a></li>
+                    <li><a href="flashcards.html">閃卡</a></li>
+                    <li><a href="quiz.html">測驗</a></li>
+                    <li><a href="data-viewer.html" class="active">資料檢視器</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section>
+                <h2>詞彙資料檢視器</h2>
+                <p>檢視、篩選和管理詞彙資料。此工具主要供管理員使用。</p>
+                
+                <div class="data-viewer">
+                    <div class="filter-controls">
+                        <div class="form-group">
+                            <label for="unitFilter">按單元篩選：</label>
+                            <select id="unitFilter">
+                                <option value="all">所有單元</option>
+                                <!-- Units will be dynamically loaded here -->
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="searchFilter">搜尋：</label>
+                            <input type="text" id="searchFilter" placeholder="搜尋英文或中文...">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="sortBy">排序方式：</label>
+                            <select id="sortBy">
+                                <option value="unit">單元</option>
+                                <option value="english-asc">英文 (A-Z)</option>
+                                <option value="english-desc">英文 (Z-A)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-panel">
+                        <div class="stat-card">
+                            <div>總單元數</div>
+                            <div class="stat-value" id="totalUnits">0</div>
+                        </div>
+                        <div class="stat-card">
+                            <div>總詞彙數</div>
+                            <div class="stat-value" id="totalWords">0</div>
+                        </div>
+                        <div class="stat-card">
+                            <div>篩選詞彙數</div>
+                            <div class="stat-value" id="filteredWords">0</div>
+                        </div>
+                        <div class="stat-card">
+                            <div>已掌握詞彙數</div>
+                            <div class="stat-value" id="masteredWords">0</div>
+                        </div>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table class="vocab-table" id="vocabTable">
+                            <thead>
+                                <tr>
+                                    <th>單元</th>
+                                    <th>英文</th>
+                                    <th>中文</th>
+                                    <th>例句</th>
+                                    <th>音訊</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="vocabTableBody">
+                                <!-- Vocabulary items will be dynamically loaded here -->
+                                <tr>
+                                    <td colspan="6">正在載入詞彙資料...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="actions-bar">
+                        <div class="table-actions">
+                            <button class="btn" id="toggleEditMode">
+                                <i class="fas fa-edit"></i> 編輯模式
+                            </button>
+                            <button class="btn" id="addNewWord">
+                                <i class="fas fa-plus"></i> 新增詞彙
+                            </button>
+                            <button class="btn" id="saveChanges" style="display: none;">
+                                <i class="fas fa-save"></i> 儲存變更
+                            </button>
+                            <button class="btn" id="cancelChanges" style="display: none;">
+                                <i class="fas fa-times"></i> 取消
+                            </button>
+                        </div>
+                        
+                        <div class="pagination" id="pagination">
+                            <!-- Pagination buttons will be dynamically loaded here -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="export-section">
+                    <h3>匯出/匯入資料</h3>
+                    <p>匯出目前的詞彙資料或匯入新資料。</p>
+                    
+                    <div class="export-controls">
+                        <button class="btn" id="exportData">
+                            <i class="fas fa-download"></i> 匯出所有資料
+                        </button>
+                        <button class="btn" id="importData">
+                            <i class="fas fa-upload"></i> 匯入資料
+                        </button>
+                    </div>
+                    
+                    <textarea class="export-data" id="exportDataField" placeholder="匯出時，JSON 資料將顯示在此處"></textarea>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 詞彙記憶。保留所有權利。</p>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/data-viewer.js"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>閃卡 | 詞彙記憶</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>詞彙記憶</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">首頁</a></li>
+                    <li><a href="units.html">單元</a></li>
+                    <li><a href="flashcards.html" class="active">閃卡</a></li>
+                    <li><a href="quiz.html">測驗</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section>
+                <h2>閃卡</h2>
+                <p>點擊卡片翻轉並顯示翻譯。使用按鈕在卡片之間切換。</p>
+                
+                <div class="flashcard-settings">
+                    <div class="form-group">
+                        <label for="unitSelect">選擇單元：</label>
+                        <select id="unitSelect">
+                            <option value="all">所有單元</option>
+                            <!-- Units will be dynamically loaded here -->
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cardDirection">卡片方向：</label>
+                        <select id="cardDirection">
+                            <option value="english-chinese">英文到中文</option>
+                            <option value="chinese-english">中文到英文</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="flashcard-container">
+                    <div class="flashcard" id="flashcard">
+                        <div class="flashcard-inner">
+                            <div class="flashcard-front">
+                                <span class="flashcard-word" id="frontWord">點擊開始</span>
+                                <p>點擊卡片翻轉</p>
+                            </div>
+                            <div class="flashcard-back">
+                                <span class="flashcard-word" id="backWord"></span>
+                                <button class="audio-btn" id="playAudio"><i class="fas fa-volume-up"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flashcard-progress">
+                        <span id="currentCardNumber">0</span> / <span id="totalCards">0</span>
+                    </div>
+                    
+                    <div class="flashcard-controls">
+                        <button class="btn" id="prevCard" disabled><i class="fas fa-arrow-left"></i> 上一張</button>
+                        <button class="btn" id="nextCard">下一張 <i class="fas fa-arrow-right"></i></button>
+                        <button class="btn" id="shuffleCards"><i class="fas fa-random"></i> 隨機排序</button>
+                        <button class="btn" id="startOver"><i class="fas fa-redo"></i> 重新開始</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 詞彙記憶。保留所有權利。</p>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/flashcards.js"></script>
+</body>
+</html>
