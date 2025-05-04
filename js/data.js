@@ -200,7 +200,7 @@ const cloudAudioService = {
     },
     
     // Current provider - can be changed in settings
-    currentProvider: 'GoogleTTS',
+    currentProvider: 'FreeDictionaryAPI',
     
     // Cache for audio URLs to prevent redundant API calls
     cache: {},
