@@ -29,6 +29,7 @@ let missedWords = [];
 let quizUnitId = 'all';
 let quizTypeValue = 'multiple-choice';
 let quizQuestionCount = 10;
+let allUnitWords = []; // Store all words from the unit for range selection
 
 // Initialize the page
 document.addEventListener('DOMContentLoaded', () => {
@@ -45,6 +46,12 @@ document.addEventListener('DOMContentLoaded', () => {
         quizUnitId = unitId;
     }
     
+    // Load all words from current unit
+    loadUnitWords();
+    
+    // Create vocabulary range selector
+    createVocabRangeSelector();
+    
     // Set up event listeners
     startQuiz.addEventListener('click', handleStartQuiz);
     submitAnswer.addEventListener('click', handleSubmitAnswer);
@@ -52,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
     retakeQuiz.addEventListener('click', handleRetakeQuiz);
     newQuiz.addEventListener('click', handleNewQuiz);
     reviewMissed.addEventListener('click', handleReviewMissed);
+    quizUnitSelect.addEventListener('change', handleUnitChange);
 });
 
 // Populate the unit select dropdown
@@ -64,6 +72,33 @@ function populateUnitSelect() {
         option.textContent = unit.title;
         quizUnitSelect.appendChild(option);
     });
+}
+
+// Load all words from the selected unit
+function loadUnitWords() {
+    if (quizUnitId === 'all') {
+        allUnitWords = getAllWords();
+    } else {
+        allUnitWords = getWordsFromUnit(quizUnitId);
+    }
+}
+
+// Create vocabulary range selector
+function createVocabRangeSelector() {
+    const vocabRangeContainer = document.getElementById('vocabRangeContainer');
+    vocabRangeContainer.innerHTML = `
+        <label for="vocabRangeStart">Start:</label>
+        <input type="number" id="vocabRangeStart" min="1" max="${allUnitWords.length}" value="1">
+        <label for="vocabRangeEnd">End:</label>
+        <input type="number" id="vocabRangeEnd" min="1" max="${allUnitWords.length}" value="${allUnitWords.length}">
+    `;
+}
+
+// Handle unit change
+function handleUnitChange() {
+    quizUnitId = quizUnitSelect.value;
+    loadUnitWords();
+    createVocabRangeSelector();
 }
 
 // Start a new quiz
@@ -108,6 +143,13 @@ function prepareQuizWords() {
     } else {
         words = getWordsFromUnit(quizUnitId);
     }
+    
+    // Get vocabulary range
+    const vocabRangeStart = parseInt(document.getElementById('vocabRangeStart').value) - 1;
+    const vocabRangeEnd = parseInt(document.getElementById('vocabRangeEnd').value);
+    
+    // Filter words based on range
+    words = words.slice(vocabRangeStart, vocabRangeEnd);
     
     // Shuffle and limit to question count
     currentQuizWords = [...words]

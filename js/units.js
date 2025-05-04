@@ -136,14 +136,14 @@ function displayAllUnits() {
         unitCard.className = 'unit-card';
         unitCard.innerHTML = `
             <h3>${unit.title}</h3>
-            <p>${unit.words.length} Words</p>
+            <p>${unit.words.length} 個詞彙</p>
             <div class="progress-display">
                 <div class="progress-bar">
                     <div class="progress" style="width: ${unitProgress.percentage}%"></div>
                 </div>
-                <span class="progress-text">${unitProgress.percentage}% Complete</span>
+                <span class="progress-text">${unitProgress.percentage}% 完成</span>
             </div>
-            <a href="units.html?unit=${unit.id}" class="btn-small">Study</a>
+            <a href="units.html?unit=${unit.id}" class="btn-small">學習</a>
         `;
         
         unitCard.querySelector('a').addEventListener('click', (e) => {
@@ -181,14 +181,16 @@ function showUnitDetail(unitId) {
 function displayUnitWords(unit) {
     wordList.innerHTML = '';
     
-    unit.words.forEach(word => {
+    unit.words.forEach((word, index) => {
         const wordProgress = userProgress.getWordProgress(`${unit.id}-${word.english}`);
         const masteredClass = wordProgress.mastered ? 'mastered' : '';
+        const wordNumber = index + 1; // Create sequential numbering starting from 1
         
         const wordItem = document.createElement('div');
         wordItem.className = `word-item ${masteredClass}`;
         wordItem.innerHTML = `
             <div class="word-content">
+                <span class="word-number">${wordNumber}.</span>
                 <span class="english">${word.english}</span>
                 <span class="chinese">${word.chinese}</span>
             </div>

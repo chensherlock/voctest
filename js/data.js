@@ -399,7 +399,6 @@ const vocabularyData = {
                     example: "",
                     audioUrl: ""
                 },            
-
                 {
                     english: "lonely",
                     chinese: "寂寞的",
@@ -418,16 +417,7 @@ const vocabularyData = {
                     example: "It's a matter of national importance.",
                     audioUrl: "audio/national.mp3"
                 },
-
-
-                {
-                    english: "excellent",
-                    chinese: "很棒的; 傑出的; 優秀",
-                    example: "",
-                    audioUrl: ""
-                },                
-                   
-                            ]
+]
         },
         // Units 6-26 would follow the same pattern
     ]

@@ -246,6 +246,16 @@ h2::after {
     transform: rotateY(180deg);
 }
 
+.flashcard-front {
+    background-color: white;
+}
+
+.flashcard-back {
+    background-color: var(--primary-color);
+    color: white;
+    transform: rotateY(180deg);
+}
+
 .flashcard-front, .flashcard-back {
     position: absolute;
     width: 100%;
@@ -258,16 +268,6 @@ h2::after {
     padding: 20px;
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
-}
-
-.flashcard-front {
-    background-color: white;
-}
-
-.flashcard-back {
-    background-color: var(--primary-color);
-    color: white;
-    transform: rotateY(180deg);
 }
 
 .flashcard-word {
@@ -439,6 +439,90 @@ footer {
     font-size: 16px;
 }
 
+/* Vocabulary Range Selector Styles */
+#vocabRangeSelectContainer {
+    margin-top: 15px;
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: var(--border-radius);
+    background-color: #f9f9f9;
+}
+
+.custom-range-inputs {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: white;
+    border-radius: var(--border-radius);
+    border: 1px solid #eee;
+}
+
+.custom-range-input {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.custom-range-input label {
+    width: 80px;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.custom-range-input select {
+    flex-grow: 1;
+    padding: 8px;
+    border-radius: var(--border-radius);
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
+.btn-apply-range {
+    width: 100%;
+    padding: 8px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition);
+    margin-top: 5px;
+}
+
+.btn-apply-range:hover {
+    background-color: var(--secondary-color);
+}
+
+.range-select {
+    width: 100%;
+    padding: 8px;
+    border-radius: var(--border-radius);
+    border: 1px solid #ddd;
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+/* Quiz Vocab Range Selector */
+.vocab-range-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.vocab-range-container label {
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+.vocab-range-container input[type="number"] {
+    width: 60px;
+    padding: 8px;
+    border-radius: var(--border-radius);
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
 /* Flashcard Audio Controls */
 .flashcard-back .audio-btn {
     background: rgba(255, 255, 255, 0.2);
@@ -479,6 +563,21 @@ footer {
 .word-item .audio-btn:hover {
     color: var(--secondary-color);
     transform: scale(1.2);
+}
+
+/* Word Number Styling */
+.word-content {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.word-number {
+    font-weight: 500;
+    color: var(--primary-color);
+    margin-right: 10px;
+    min-width: 24px;
+    text-align: right;
 }
 
 /* Quiz Audio Button */
