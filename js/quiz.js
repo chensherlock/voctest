@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Set up event listeners
     startQuiz.addEventListener('click', handleStartQuiz);
     submitAnswer.addEventListener('click', handleSubmitAnswer);
-    nextQuestion.addEventListener('click', handleNextQuestion);
+    //nextQuestion.addEventListener('click', handleNextQuestion);
     retakeQuiz.addEventListener('click', handleRetakeQuiz);
     newQuiz.addEventListener('click', handleNewQuiz);
     reviewMissed.addEventListener('click', handleReviewMissed);

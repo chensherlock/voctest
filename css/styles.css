@@ -84,6 +84,22 @@ ul {
     color: white;
 }
 
+/* Button styles */
+.btn.disabled,
+.btn-small.disabled {
+    background-color: #cccccc;
+    color: #888888;
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.btn.disabled:hover,
+.btn-small.disabled:hover {
+    background-color: #cccccc;
+    color: #888888;
+}
+
 /* Header */
 header {
     background-color: white;
@@ -462,7 +478,7 @@ label.incorrect::after {
 }
 
 .summary-item.incorrect .question-answer {
-    color: var(--incorrect-color);
+    color: var (--incorrect-color);
 }
 
 .summary-item.incorrect .question-answer i {

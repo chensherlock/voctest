@@ -125,36 +125,51 @@ function showAudioStatus(message) {
 }
 
 // Display all available units
-function displayAllUnits() {
+async function displayAllUnits() {
     unitsContainer.innerHTML = '';
-    const units = getAllUnits();
-    
-    units.forEach(unit => {
-        const unitProgress = userProgress.getUnitProgress(unit.id);
-        
-        const unitCard = document.createElement('div');
-        unitCard.className = 'unit-card';
-        unitCard.innerHTML = `
-            <h3>${unit.title}</h3>
-            <p>${unit.words.length} 個詞彙</p>
-            <div class="progress-display">
-                <div class="progress-bar">
-                    <div class="progress" style="width: ${unitProgress.percentage}%"></div>
+    try {
+        const units = await getAllUnits();
+
+        units.forEach(unit => {
+            const unitProgress = userProgress.getUnitProgress(unit.id);
+            const hasWords = unit.words && unit.words.length > 0;
+
+            const unitCard = document.createElement('div');
+            unitCard.className = 'unit-card';
+            unitCard.innerHTML = `
+                <h3>${unit.title}</h3>
+                <p>${unit.words.length} 個詞彙</p>
+                <div class="progress-display">
+                    <div class="progress-bar">
+                        <div class="progress" style="width: ${unitProgress.percentage}%"></div>
+                    </div>
+                    <span class="progress-text">${unitProgress.percentage}% 完成</span>
                 </div>
-                <span class="progress-text">${unitProgress.percentage}% 完成</span>
-            </div>
-            <a href="units.html?unit=${unit.id}" class="btn-small">學習</a>
-        `;
-        
-        unitCard.querySelector('a').addEventListener('click', (e) => {
-            e.preventDefault();
-            showUnitDetail(unit.id);
-            // Update URL with unit parameter
-            window.history.pushState({}, '', `units.html?unit=${unit.id}`);
+                <a href="units.html?unit=${unit.id}" class="btn-small ${!hasWords ? 'disabled' : ''}">${hasWords ? '學習' : '無詞彙'}</a>
+            `;
+
+            const studyButton = unitCard.querySelector('a');
+
+            if (hasWords) {
+                studyButton.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showUnitDetail(unit.id);
+                    // Update URL with unit parameter
+                    window.history.pushState({}, '', `units.html?unit=${unit.id}`);
+                });
+            } else {
+                // Prevent navigation for empty units
+                studyButton.addEventListener('click', (e) => {
+                    e.preventDefault();
+                });
+            }
+
+            unitsContainer.appendChild(unitCard);
         });
-        
-        unitsContainer.appendChild(unitCard);
-    });
+    } catch (error) {
+        console.error('Error displaying units:', error);
+        unitsContainer.innerHTML = '<p>無法載入單元資料，請稍後再試。</p>';
+    }
 }
 
 // Show details for a specific unit
@@ -205,8 +220,7 @@ function displayUnitWords(unit) {
         // Add event listener for audio button
         const audioBtn = wordItem.querySelector('.audio-btn');
         audioBtn.addEventListener('click', () => {
-            // Since we no longer use audioUrl, directly pass the word to the playAudio function
-            playAudio(null, word.english);
+            playAudio(word.english);
         });
         
         wordList.appendChild(wordItem);
@@ -221,8 +235,10 @@ function showUnitsList() {
 }
 
 // Play audio for a word with cloud fallback
-function playAudio(audioUrl, word) {
+function playAudio(word) {
     if (!word) return;
+
+    console.log('Playing audio for word:', word);
     
     // Show loading state on the button that triggered this
     const audioButtons = document.querySelectorAll('.audio-btn');
@@ -284,10 +300,11 @@ function localPlayAudio(audioUrl, word, callback) {
 
 // Use cloud audio service for playback
 function useCloudAudio(word, callback) {
-    showAudioStatus('使用雲端音訊服務...');
+    //showAudioStatus('使用雲端音訊服務...');
     
     cloudAudioService.getWordAudio(word)
         .then(cloudUrl => {
+            console.log('Audio URL:', cloudUrl);
             const cloudAudio = new Audio(cloudUrl);
             
             cloudAudio.onloadeddata = () => {
