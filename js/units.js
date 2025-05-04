@@ -305,7 +305,10 @@ function useCloudAudio(word, callback) {
     cloudAudioService.getWordAudio(word)
         .then(cloudUrl => {
             console.log('Audio URL:', cloudUrl);
-            const cloudAudio = new Audio(cloudUrl);
+
+            const cloudAudio = new Audio();
+            cloudAudio.crossOrigin = "anonymous"; // Enable CORS handling
+            aucloudAudiodio.src = url;
             
             cloudAudio.onloadeddata = () => {
                 cloudAudio.play()
