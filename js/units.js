@@ -324,7 +324,18 @@ function useCloudAudio(word, callback) {
             
             cloudAudio.onerror = () => {
                 console.error('雲端音訊載入錯誤', cloudAudio.error);
-                showAudioStatus('無法載入音訊');
+                showAudioStatus('嘗試使用瀏覽器語音合成...');
+                                
+                // Fallback to browser's native speech synthesis
+                if ('speechSynthesis' in window) {
+                    const utterance = new SpeechSynthesisUtterance(word);
+                    utterance.lang = 'en-US';
+                    speechSynthesis.speak(utterance);
+                    showAudioStatus('使用瀏覽器語音合成');
+                } else {
+                    showAudioStatus('無法播放音訊');
+                }
+                                
                 if (callback) callback();
             };
             

@@ -335,9 +335,20 @@ function playCurrentAudio() {
             
             cloudAudio.onerror = () => {
                 console.error('音訊載入錯誤');
+                
+                // Fallback to browser's native speech synthesis
+                if ('speechSynthesis' in window && currentDirection === 'english-chinese') {
+                    const wordToSpeak = currentWords[currentIndex].english;
+                    const utterance = new SpeechSynthesisUtterance(wordToSpeak);
+                    utterance.lang = 'en-US';
+                    speechSynthesis.speak(utterance);
+                    updateAudioStatus('使用瀏覽器語音合成');
+                } else {
+                    updateAudioStatus('無法載入音訊');
+                }
+                
                 toggleAudioLoading(false);
                 audioLoading = false;
-                updateAudioStatus('無法載入音訊');
             };
             
             cloudAudio.load();
