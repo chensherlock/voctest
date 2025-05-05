@@ -11,6 +11,8 @@ const unitSelect = document.getElementById('unitSelect');
 const cardDirection = document.getElementById('cardDirection');
 const currentCardNumber = document.getElementById('currentCardNumber');
 const totalCards = document.getElementById('totalCards');
+const voiceSelect = document.getElementById('voiceSelect');
+const refreshVoicesBtn = document.getElementById('refreshVoices');
 
 // State variables
 let currentWords = [];
@@ -56,6 +58,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Create vocabulary range selector
     createVocabRangeSelector();
+    
+    // Initialize voice selector
+    initializeVoiceSelector();
 });
 
 // Create audio provider selector dropdown
@@ -341,6 +346,19 @@ function playCurrentAudio() {
                     const wordToSpeak = currentWords[currentIndex].english;
                     const utterance = new SpeechSynthesisUtterance(wordToSpeak);
                     utterance.lang = 'en-US';
+                    
+                    // Use the user's preferred voice if available
+                    const preferredVoice = getSpeechSynthesisVoice();
+                    if (preferredVoice) {
+                        utterance.voice = preferredVoice;
+                    }
+                    
+                    // Show voice selector when using speech synthesis
+                    const voiceSelectorContainer = document.getElementById('voiceSelectorContainer') || createVoiceSelector();
+                    if (voiceSelectorContainer) {
+                        voiceSelectorContainer.style.display = 'block';
+                    }
+                    
                     speechSynthesis.speak(utterance);
                     updateAudioStatus('使用瀏覽器語音合成');
                 } else {
@@ -355,9 +373,33 @@ function playCurrentAudio() {
         })
         .catch(err => {
             console.error('音訊獲取錯誤:', err);
+            
+            // Fallback to browser's native speech synthesis on network errors too
+            if ('speechSynthesis' in window && currentDirection === 'english-chinese') {
+                const wordToSpeak = currentWords[currentIndex].english;
+                const utterance = new SpeechSynthesisUtterance(wordToSpeak);
+                utterance.lang = 'en-US';
+                
+                // Use the user's preferred voice if available
+                const preferredVoice = getSpeechSynthesisVoice();
+                if (preferredVoice) {
+                    utterance.voice = preferredVoice;
+                }
+                
+                // Show voice selector when using speech synthesis
+                const voiceSelectorContainer = document.getElementById('voiceSelectorContainer') || createVoiceSelector();
+                if (voiceSelectorContainer) {
+                    voiceSelectorContainer.style.display = 'block';
+                }
+                
+                speechSynthesis.speak(utterance);
+                updateAudioStatus('使用瀏覽器語音合成');
+            } else {
+                updateAudioStatus('無法獲取音訊');
+            }
+            
             toggleAudioLoading(false);
             audioLoading = false;
-            updateAudioStatus('無法獲取音訊');
         });
 }
 
@@ -601,4 +643,102 @@ function applyCustomRange() {
     const startWord = allUnitWords[startIndex].english;
     const endWord = allUnitWords[endIndex].english;
     updateAudioStatus(`已套用詞彙範圍：${startWord} 到 ${endWord}`);
+}
+
+// Initialize voice selector for speech synthesis
+function initializeVoiceSelector() {
+    // Populate with available voices
+    populateVoiceSelector(voiceSelect);
+    
+    // Add event listener
+    voiceSelect.addEventListener('change', function() {
+        const voiceURI = this.value;
+        localStorage.setItem('preferredVoice', voiceURI);
+        updateAudioStatus(`已更改語音合成聲音`);
+    });
+    
+    // Add refresh button event listener
+    refreshVoicesBtn.addEventListener('click', () => {
+        populateVoiceSelector(voiceSelect);
+        updateAudioStatus('已更新可用語音列表');
+    });
+}
+
+// Populate voice selector with available voices
+function populateVoiceSelector(selectElement) {
+    if (!selectElement) return;
+    
+    // Clear existing options
+    selectElement.innerHTML = '';
+    
+    // Get all available voices
+    const voices = window.speechSynthesis.getVoices();
+    
+    // Add default option
+    const defaultOption = document.createElement('option');
+    defaultOption.value = '';
+    defaultOption.textContent = '預設語音';
+    selectElement.appendChild(defaultOption);
+    
+    // Filter for English voices first, then add others
+    const englishVoices = voices.filter(voice => voice.lang.includes('en'));
+    const otherVoices = voices.filter(voice => !voice.lang.includes('en'));
+    
+    // Add English voices with a group
+    if (englishVoices.length > 0) {
+        const englishGroup = document.createElement('optgroup');
+        englishGroup.label = '英文語音';
+        
+        englishVoices.forEach(voice => {
+            const option = document.createElement('option');
+            option.value = voice.voiceURI;
+            option.textContent = `${voice.name} (${voice.lang})`;
+            englishGroup.appendChild(option);
+        });
+        
+        selectElement.appendChild(englishGroup);
+    }
+    
+    // Add other voices with a group
+    if (otherVoices.length > 0) {
+        const otherGroup = document.createElement('optgroup');
+        otherGroup.label = '其他語音';
+        
+        otherVoices.forEach(voice => {
+            const option = document.createElement('option');
+            option.value = voice.voiceURI;
+            option.textContent = `${voice.name} (${voice.lang})`;
+            otherGroup.appendChild(option);
+        });
+        
+        selectElement.appendChild(otherGroup);
+    }
+    
+    // Set selected value from localStorage if available
+    const preferredVoice = localStorage.getItem('preferredVoice');
+    if (preferredVoice) {
+        selectElement.value = preferredVoice;
+    }
+}
+
+// Get the user's preferred speech synthesis voice
+function getSpeechSynthesisVoice() {
+    const preferredVoiceURI = localStorage.getItem('preferredVoice');
+    if (!preferredVoiceURI) return null;
+    
+    const voices = window.speechSynthesis.getVoices();
+    return voices.find(voice => voice.voiceURI === preferredVoiceURI);
+}
+
+// Speech synthesis voices can load asynchronously
+if ('speechSynthesis' in window) {
+    // Check if voices are already loaded
+    if (window.speechSynthesis.getVoices().length > 0) {
+        initializeVoiceSelector();
+    }
+    
+    // Add event listener for when voices change/load
+    window.speechSynthesis.onvoiceschanged = function() {
+        initializeVoiceSelector();
+    };
 }

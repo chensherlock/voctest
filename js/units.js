@@ -100,6 +100,142 @@ function createAudioProviderSelector() {
     headerEl.appendChild(providerContainer);
 }
 
+// Create voice selector for speech synthesis
+function createVoiceSelector() {
+    // Check if selector already exists
+    if (document.getElementById('voiceSelectorContainer')) return;
+    
+    // Create container for the voice selector
+    const voiceSelectorContainer = document.createElement('div');
+    voiceSelectorContainer.id = 'voiceSelectorContainer';
+    voiceSelectorContainer.className = 'voice-selector-container';
+    voiceSelectorContainer.style.display = 'none'; // Hidden by default
+    
+    const voiceLabel = document.createElement('label');
+    voiceLabel.setAttribute('for', 'voiceSelect');
+    voiceLabel.textContent = '語音合成聲音：';
+    
+    const voiceSelect = document.createElement('select');
+    voiceSelect.id = 'voiceSelect';
+    
+    // Populate with available voices
+    populateVoiceSelector(voiceSelect);
+    
+    // Add event listener
+    voiceSelect.addEventListener('change', function() {
+        const voiceURI = this.value;
+        localStorage.setItem('preferredVoice', voiceURI);
+        showAudioStatus(`已更改語音合成聲音`);
+    });
+    
+    // Add refresh button for voices
+    const refreshButton = document.createElement('button');
+    refreshButton.className = 'refresh-voices-btn';
+    refreshButton.innerHTML = '<i class="fas fa-sync-alt"></i>';
+    refreshButton.title = '重新載入可用語音';
+    refreshButton.addEventListener('click', () => {
+        populateVoiceSelector(voiceSelect);
+        showAudioStatus('已更新可用語音列表');
+    });
+    
+    // Append elements
+    voiceSelectorContainer.appendChild(voiceLabel);
+    voiceSelectorContainer.appendChild(voiceSelect);
+    voiceSelectorContainer.appendChild(refreshButton);
+    
+    // Add to page - after audio provider if it exists
+    const audioProviderContainer = document.querySelector('.audio-provider-container');
+    if (audioProviderContainer) {
+        audioProviderContainer.parentNode.insertBefore(voiceSelectorContainer, audioProviderContainer.nextSibling);
+    } else {
+        const unitHeader = document.querySelector('#unitHeader');
+        if (unitHeader) {
+            unitHeader.appendChild(voiceSelectorContainer);
+        }
+    }
+    
+    return voiceSelectorContainer;
+}
+
+// Populate voice selector with available voices
+function populateVoiceSelector(selectElement) {
+    if (!selectElement) return;
+    
+    // Clear existing options
+    selectElement.innerHTML = '';
+    
+    // Get all available voices
+    const voices = window.speechSynthesis.getVoices();
+    
+    // Add default option
+    const defaultOption = document.createElement('option');
+    defaultOption.value = '';
+    defaultOption.textContent = '預設語音';
+    selectElement.appendChild(defaultOption);
+    
+    // Filter for English voices first, then add others
+    const englishVoices = voices.filter(voice => voice.lang.includes('en'));
+    const otherVoices = voices.filter(voice => !voice.lang.includes('en'));
+    
+    // Add English voices with a group
+    if (englishVoices.length > 0) {
+        const englishGroup = document.createElement('optgroup');
+        englishGroup.label = '英文語音';
+        
+        englishVoices.forEach(voice => {
+            const option = document.createElement('option');
+            option.value = voice.voiceURI;
+            option.textContent = `${voice.name} (${voice.lang})`;
+            englishGroup.appendChild(option);
+        });
+        
+        selectElement.appendChild(englishGroup);
+    }
+    
+    // Add other voices with a group
+    if (otherVoices.length > 0) {
+        const otherGroup = document.createElement('optgroup');
+        otherGroup.label = '其他語音';
+        
+        otherVoices.forEach(voice => {
+            const option = document.createElement('option');
+            option.value = voice.voiceURI;
+            option.textContent = `${voice.name} (${voice.lang})`;
+            otherGroup.appendChild(option);
+        });
+        
+        selectElement.appendChild(otherGroup);
+    }
+    
+    // Set selected value from localStorage if available
+    const preferredVoice = localStorage.getItem('preferredVoice');
+    if (preferredVoice) {
+        selectElement.value = preferredVoice;
+    }
+}
+
+// Get the user's preferred speech synthesis voice
+function getSpeechSynthesisVoice() {
+    const preferredVoiceURI = localStorage.getItem('preferredVoice');
+    if (!preferredVoiceURI) return null;
+    
+    const voices = window.speechSynthesis.getVoices();
+    return voices.find(voice => voice.voiceURI === preferredVoiceURI);
+}
+
+// Speech synthesis voices can load asynchronously
+if ('speechSynthesis' in window) {
+    // Check if voices are already loaded
+    if (window.speechSynthesis.getVoices().length > 0) {
+        createVoiceSelector();
+    }
+    
+    // Add event listener for when voices change/load
+    window.speechSynthesis.onvoiceschanged = function() {
+        createVoiceSelector();
+    };
+}
+
 // Display status message
 function showAudioStatus(message) {
     // Create status element if it doesn't exist
@@ -328,8 +464,23 @@ function useCloudAudio(word, callback) {
                                 
                 // Fallback to browser's native speech synthesis
                 if ('speechSynthesis' in window) {
+                    // Create utterance with the word
                     const utterance = new SpeechSynthesisUtterance(word);
                     utterance.lang = 'en-US';
+                    
+                    // Use the user's preferred voice if available
+                    const preferredVoice = getSpeechSynthesisVoice();
+                    if (preferredVoice) {
+                        utterance.voice = preferredVoice;
+                    }
+                    
+                    // Show voice selector when using speech synthesis
+                    const voiceSelectorContainer = document.getElementById('voiceSelectorContainer') || createVoiceSelector();
+                    if (voiceSelectorContainer) {
+                        voiceSelectorContainer.style.display = 'block';
+                    }
+                    
+                    // Speak the word
                     speechSynthesis.speak(utterance);
                     showAudioStatus('使用瀏覽器語音合成');
                 } else {
@@ -343,7 +494,32 @@ function useCloudAudio(word, callback) {
         })
         .catch(err => {
             console.error('雲端音訊獲取錯誤:', err);
-            showAudioStatus('無法獲取音訊');
+            
+            // Fallback to browser's native speech synthesis on network errors too
+            if ('speechSynthesis' in window) {
+                // Create utterance with the word
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.lang = 'en-US';
+                
+                // Use the user's preferred voice if available
+                const preferredVoice = getSpeechSynthesisVoice();
+                if (preferredVoice) {
+                    utterance.voice = preferredVoice;
+                }
+                
+                // Show voice selector when using speech synthesis
+                const voiceSelectorContainer = document.getElementById('voiceSelectorContainer') || createVoiceSelector();
+                if (voiceSelectorContainer) {
+                    voiceSelectorContainer.style.display = 'block';
+                }
+                
+                // Speak the word
+                speechSynthesis.speak(utterance);
+                showAudioStatus('使用瀏覽器語音合成');
+            } else {
+                showAudioStatus('無法獲取音訊');
+            }
+            
             if (callback) callback();
         });
 }

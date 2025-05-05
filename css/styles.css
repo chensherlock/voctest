@@ -473,7 +473,7 @@ label.incorrect::after {
 }
 
 .summary-item.correct .question-answer {
-    color: var(--correct-color);
+    color: var (--correct-color);
     font-weight: 500;
 }
 
@@ -768,4 +768,64 @@ footer {
     .flashcard-settings .form-group {
         margin-bottom: 10px;
     }
+}
+
+/* Voice selector styles */
+.voice-selector-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.refresh-voices-btn {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.refresh-voices-btn:hover {
+    background-color: var(--accent-color-darker);
+    transform: rotate(90deg);
+}
+
+.refresh-voices-btn:active {
+    transform: rotate(180deg);
+}
+
+.voice-selector-container {
+    margin-bottom: 15px;
+}
+
+#voiceSelect {
+    flex-grow: 1;
+}
+
+/* Make sure select elements are consistent */
+select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: white;
+}
+
+/* Improve optgroup styling */
+optgroup {
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+optgroup option {
+    font-weight: normal;
+    color: #333;
+    padding-left: 15px;
 }
