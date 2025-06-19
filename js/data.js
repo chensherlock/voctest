@@ -3,16 +3,6 @@ const vocabularyData = {
     units: [
         {
             id: 1,
-            title: "Unit 1",
-            words: []
-        },
-        {
-            id: 2,
-            title: "Unit 2",
-            words: []
-        },
-        {
-            id: 3,
             title: "課本 Unit 3",
             words: [
                 { english: "reality", chinese: "n.[U][C]現實", example: "" },
@@ -43,7 +33,7 @@ const vocabularyData = {
             ]
         },
         {
-            id: 4,
+            id: 2,
             title: "課本 Unit 4",
             words: [
                 { english: "consider", chinese: "vt vi 考慮", example: "" },
@@ -76,7 +66,7 @@ const vocabularyData = {
             ]
         },
         {
-            id: 5,
+            id: 3,
             title: "高頻 Unit 5",
             words: [
                 { english: "add", chinese: "使增加; 加總", example: "" },
@@ -146,7 +136,7 @@ const vocabularyData = {
             ]
         },
         {
-            id: 6,
+            id: 4,
             title: "⭐ Unit 5",
             words: [
                 { english: "costume", chinese: "n. [C][U] (特殊場合的) 服裝", example: "" },
@@ -181,7 +171,7 @@ const vocabularyData = {
             ]
         },
         {
-            id: 6,
+            id: 5,
             title: "⭐ 高頻 Unit 6",
             words: [
                 { english: "abbreviate", chinese: "vt. 縮寫, 使變短", example: "" },
