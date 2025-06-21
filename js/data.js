@@ -137,7 +137,7 @@ const vocabularyData = {
         },
         {
             id: 4,
-            title: "⭐ Unit 5",
+            title: "📚 課本 Unit 5",
             words: [
                 { english: "costume", chinese: "n. [C][U] (特殊場合的) 服裝", example: "" },
                 { english: "ability", chinese: "n. [C][U] 才能", example: "" },
@@ -172,7 +172,7 @@ const vocabularyData = {
         },
         {
             id: 5,
-            title: "⭐ Unit 5",
+            title: "📚 課本 Unit 6",
             words: [
                 { english: "bargain", chinese: "n. [C] 特價商品 / vi 討價還價", example: "" },
                 { english: "quality", chinese: "n. [U][C] 品質", example: "" },
@@ -201,7 +201,7 @@ const vocabularyData = {
         },
         {
             id: 6,
-            title: "⭐ 高頻 Unit 6",
+            title: "📚 高頻 Unit 6",
             words: [
                 { english: "abbreviate", chinese: "vt. 縮寫, 使變短", example: "" },
                 { english: "abbreviation", chinese: "n. [C] 縮寫", example: "" },
