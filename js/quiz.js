@@ -303,8 +303,9 @@ function createPronunciationQuestion(word) {
         <h3>請聽發音並選擇正確的單字</h3>
         <div class="audio-container">
             <button class="audio-btn" onclick="playWordAudio('${word.english}')">
-                <i class="fas fa-volume-up"></i> 播放發音
+                <i class="fas fa-volume-up"></i>
             </button>
+            <div class="audio-source" id="audioSource-${word.english.replace(/\s+/g, '-')}"></div>
         </div>
         <div class="quiz-options">
             ${options.map((option, index) => `
@@ -543,18 +544,33 @@ function handleReviewMissed() {
 // Play audio for a word
 function playWordAudio(word) {
     if (!word) return;
-    
-    // Add loading indicator
+      // Add loading indicator
     const audioButtons = document.querySelectorAll('.quiz-question .audio-btn');
     audioButtons.forEach(btn => {
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+        btn.innerHTML = '<i class="fas fa-spinner"></i> 加載中...';
         btn.disabled = true;
     });
+      // Use cloud service directly for audio
+    const audioSourceElement = document.getElementById(`audioSource-${word.replace(/\s+/g, '-')}`);
     
-    // Use cloud service directly for audio
     cloudAudioService.getWordAudio(word)
         .then(audioUrl => {
             const audio = new Audio(audioUrl);
+            
+            // Display which service is being used
+            if (audioSourceElement) {
+                if (audioUrl.includes('dictionaryapi')) {
+                    audioSourceElement.textContent = '使用詞典發音';
+                    audioSourceElement.className = 'audio-source freedic';
+                } else if (audioUrl.includes('translate.google.com')) {
+                    audioSourceElement.textContent = '使用Google TTS發音';
+                    audioSourceElement.className = 'audio-source google';
+                } else {
+                    audioSourceElement.textContent = '使用其他發音源';
+                    audioSourceElement.className = 'audio-source fallback';
+                }
+            }
+            
             audio.play()
                 .then(() => {
                     // Reset button state
@@ -564,18 +580,56 @@ function playWordAudio(word) {
                     });
                 })
                 .catch(error => {
-                    console.error('Error playing audio:', error);
+                    console.error('Error playing audio, trying Google TTS fallback:', error);                    // If playing fails, try again with Google TTS directly
+                    const googleTtsUrl = cloudAudioService.getGoogleTTS(word);
+                    const fallbackAudio = new Audio(googleTtsUrl);
+                    
+                    // Update source info
+                    if (audioSourceElement) {
+                        audioSourceElement.textContent = '使用Google TTS發音 (回退)';
+                        audioSourceElement.className = 'audio-source google';
+                    }
+                    
+                    fallbackAudio.play()
+                        .then(() => {
+                            audioButtons.forEach(btn => {
+                                btn.innerHTML = '<i class="fas fa-volume-up"></i>';
+                                btn.disabled = false;
+                            });
+                        })
+                        .catch(fallbackError => {
+                            console.error('Fallback audio also failed:', fallbackError);
+                            audioButtons.forEach(btn => {
+                                btn.innerHTML = '<i class="fas fa-volume-up"></i>';
+                                btn.disabled = false;
+                            });
+                        });
+                });
+        })
+        .catch(error => {
+            console.error('Error getting audio URL, using Google TTS:', error);            // If getting the URL fails, go straight to Google TTS
+            const googleTtsUrl = cloudAudioService.getGoogleTTS(word);
+            const fallbackAudio = new Audio(googleTtsUrl);
+            
+            // Update source info
+            if (audioSourceElement) {
+                audioSourceElement.textContent = '使用Google TTS發音 (緊急回退)';
+                audioSourceElement.className = 'audio-source fallback';
+            }
+            
+            fallbackAudio.play()
+                .then(() => {
+                    audioButtons.forEach(btn => {
+                        btn.innerHTML = '<i class="fas fa-volume-up"></i>';
+                        btn.disabled = false;
+                    });
+                })
+                .catch(fallbackError => {
+                    console.error('Fallback audio also failed:', fallbackError);
                     audioButtons.forEach(btn => {
                         btn.innerHTML = '<i class="fas fa-volume-up"></i>';
                         btn.disabled = false;
                     });
                 });
-        })
-        .catch(error => {
-            console.error('Error getting audio URL:', error);
-            audioButtons.forEach(btn => {
-                btn.innerHTML = '<i class="fas fa-volume-up"></i>';
-                btn.disabled = false;
-            });
         });
 }

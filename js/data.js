@@ -360,8 +360,6 @@ const cloudAudioService = {
         const audioUrl = `https://translate.google.com/translate_tts?ie=UTF-8&q=${word.toLowerCase()}&tl=en&client=tw-ob`
         return Promise.resolve(audioUrl);
     },
-
-
     /**
      * Get audio from FreeDictionaryAPI
      * @param {string} word - The word to get audio for
@@ -384,12 +382,14 @@ const cloudAudioService = {
                         return audioUrl;
                     }
                 }
-                // If no audio found in dictionary, fallback to synthesized speech
-                throw new Error('No pronunciation audio found in dictionary');
+                // If no audio found in dictionary, fallback to Google TTS
+                console.log('No pronunciation audio found in FreeDictionaryAPI, using Google TTS for:', word);
+                return this.getGoogleTTS(word);
             })
-            .catch(() => {
-                // Try multiple fallback options for better coverage
-                return this.getFallbackAudio(word);
+            .catch((error) => {
+                console.log('FreeDictionaryAPI fetch error, using Google TTS fallback for:', word, error);
+                // Immediately use Google TTS as the first fallback option
+                return this.getGoogleTTS(word);
             });
     },
     

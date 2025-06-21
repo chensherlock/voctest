@@ -767,41 +767,97 @@ footer {
 /* Pronunciation Quiz Styles */
 .audio-container {
     display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+    flex-direction: column;
+    align-items: center;
+    margin: 25px 0;
 }
 
 .audio-container .audio-btn {
     background-color: var(--primary-color);
     color: white;
     border: none;
-    padding: 10px 15px;
-    border-radius: 4px;
+    padding: 12px 20px;
+    border-radius: 8px;
     font-size: 16px;
     cursor: pointer;
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     transition: var(--transition);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .audio-container .audio-btn:hover {
     background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .audio-container .audio-btn i {
-    font-size: 18px;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Ensure the pronunciation quiz options are styled properly */
-.quiz-question .quiz-options label {
+.quiz-question .quiz-options label {    
     position: relative;
     display: block;
     padding: 15px;
     margin-bottom: 10px;
-    background-color: var(--bg-light);
+    background-color: var(--light-color);
     border-radius: 4px;
     cursor: pointer;
     transition: var(--transition);
     border: 2px solid transparent;
+}
+
+/* Audio Source Display */
+.audio-source {
+    font-size: 13px;
+    color: var(--gray-color);
+    margin-top: 10px;
+    text-align: center;
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 15px;
+    display: inline-block;
+    background-color: #f5f5f5;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.audio-source.freedic {
+    color: var(--primary-color);
+    background-color: rgba(52, 152, 219, 0.05);
+}
+
+.audio-source.google {
+    color: #4285F4; /* Google blue color */
+    background-color: rgba(66, 133, 244, 0.05);
+}
+
+.audio-source.fallback {
+    color: #EA4335; /* Google red color */
+    background-color: rgba(234, 67, 53, 0.05);
+}
+
+/* Audio Loading Spinner */
+.fa-spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.audio-btn .fa-spinner {
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
