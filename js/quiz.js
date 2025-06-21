@@ -180,9 +180,11 @@ function displayCurrentQuestion() {
             case 'spelling':
                 createSpellingQuestion(word);
                 break;
+            case 'pronunciation':
+                createPronunciationQuestion(word);
+                break;
         }
-        
-        // Hide submit button for multiple choice and matching questions
+          // Hide submit button for multiple choice, matching, and pronunciation questions
         // Only show for spelling questions until user presses Enter
         if (quizTypeValue === 'spelling') {
             submitAnswer.style.display = 'block';
@@ -287,6 +289,47 @@ function createSpellingQuestion(word) {
     }, 100);
 }
 
+// Create a pronunciation question
+function createPronunciationQuestion(word) {
+    // Get options (1 correct + 3 random)
+    const options = getRandomOptions(word);
+    
+    // Store options in a data attribute for later validation
+    quizContainer.dataset.currentOptions = JSON.stringify(options);
+    
+    const questionElement = document.createElement('div');
+    questionElement.className = 'quiz-question';
+    questionElement.innerHTML = `
+        <h3>請聽發音並選擇正確的單字</h3>
+        <div class="audio-container">
+            <button class="audio-btn" onclick="playWordAudio('${word.english}')">
+                <i class="fas fa-volume-up"></i> 播放發音
+            </button>
+        </div>
+        <div class="quiz-options">
+            ${options.map((option, index) => `
+                <label>
+                    <input type="radio" name="answer" value="${index}" class="auto-submit-option">
+                    ${option.english}
+                </label>
+            `).join('')}
+        </div>
+    `;
+    
+    quizContainer.appendChild(questionElement);
+    
+    // Play audio automatically after a short delay
+    setTimeout(() => {
+        playWordAudio(word.english);
+    }, 500);
+    
+    // Add event listeners to auto-submit when an option is selected
+    const radioButtons = document.querySelectorAll('.auto-submit-option');
+    radioButtons.forEach(radio => {
+        radio.addEventListener('change', handleSubmitAnswer);
+    });
+}
+
 // Get random options for multiple choice questions
 function getRandomOptions(correctWord) {
     const options = [correctWord];
@@ -309,10 +352,10 @@ function handleSubmitAnswer() {
     const word = currentQuizWords[currentQuizIndex];
     let isCorrect = false;
     let userAnswer = '';
-    
-    switch (quizTypeValue) {
+      switch (quizTypeValue) {
         case 'multiple-choice':
         case 'matching':
+        case 'pronunciation':
             const selectedOption = document.querySelector('input[name="answer"]:checked');
             
             if (selectedOption) {
@@ -323,6 +366,9 @@ function handleSubmitAnswer() {
                 let answerLabels;
                 if (quizTypeValue === 'multiple-choice') {
                     // For multiple choice, the label is a direct parent of the input
+                    answerLabels = document.querySelectorAll('.quiz-options label');
+                } else if (quizTypeValue === 'pronunciation') {
+                    // For pronunciation, the label is also in .quiz-options
                     answerLabels = document.querySelectorAll('.quiz-options label');
                 } else {
                     // For matching, we need to get the label with matching 'for' attribute
@@ -336,7 +382,11 @@ function handleSubmitAnswer() {
                 const currentOptions = JSON.parse(quizContainer.dataset.currentOptions);
                 
                 // Check if the selected option is correct
-                isCorrect = currentOptions[optionIndex].english === word.english;
+                if (quizTypeValue === 'pronunciation') {
+                    isCorrect = currentOptions[optionIndex].english === word.english;
+                } else {
+                    isCorrect = currentOptions[optionIndex].english === word.english;
+                }
                 
                 // Highlight correct and incorrect answers
                 options.forEach((option, index) => {
