@@ -82,40 +82,37 @@ function createAudioProviderSelector() {
     const providerSelect = document.createElement('select');
     providerSelect.id = 'audioProviderSelect';
     
-    // Get available providers from the cloud service
-    const providers = cloudAudioService.getAvailableProviders();
+    // Create options for available providers
+    const providers = [
+        { value: 'FreeDictionaryAPI', text: '英文詞典 API' },
+        { value: 'speechSynthesis', text: '瀏覽器語音合成' }
+    ];
     
     // Add options for each provider
     providers.forEach(provider => {
         const option = document.createElement('option');
-        option.value = provider;
-        
-        // Translate provider names to Traditional Chinese
-        switch(provider) {
-            case 'google':
-                option.textContent = 'Google 語音合成';
-                break;
-            case 'microsoft':
-                option.textContent = 'Microsoft Azure 語音';
-                break;
-            case 'forvo':
-                option.textContent = 'Forvo 使用者發音';
-                break;
-            default:
-                option.textContent = provider;
-        }
-        
+        option.value = provider.value;
+        option.textContent = provider.text;
         providerSelect.appendChild(option);
     });
     
-    // Set default value
-    providerSelect.value = cloudAudioService.currentProvider;
+    // Set default value - FreeDictionaryAPI
+    providerSelect.value = 'FreeDictionaryAPI';
     
     // Add change event listener
     providerSelect.addEventListener('change', () => {
-        cloudAudioService.setProvider(providerSelect.value);
-        // Update status
-        updateAudioStatus(`已更改音訊提供者為 ${providerSelect.value}`);
+        // If user selects speech synthesis, directly use it as primary
+        if (providerSelect.value === 'speechSynthesis') {
+            updateAudioStatus(`已更改為直接使用瀏覽器語音合成`);
+            
+            // Show voice selector
+            const voiceSelectorContainer = document.getElementById('voiceSelectorContainer') || createVoiceSelector();
+            if (voiceSelectorContainer) {
+                voiceSelectorContainer.style.display = 'block';
+            }
+        } else {
+            updateAudioStatus(`已更改音訊提供者為 ${providerSelect.value}`);
+        }
     });
     
     // Append elements
@@ -229,13 +226,13 @@ function updateCardDisplay() {
 function preloadWordAudio(word) {
     // Only preload if in English-to-Chinese mode
     if (currentDirection === 'english-chinese') {
-        // Silently preload from cloud
-        cloudAudioService.getWordAudio(word.english)
+        // Silently preload from FreeDictionary API
+        cloudAudioService.getFreeDictionaryAPI(word.english)
             .then(() => {
                 // Audio is now cached in the service
             })
             .catch(() => {
-                // Ignore errors during preloading
+                // Ignore errors during preloading - we'll use speech synthesis as fallback when needed
             });
     }
 }
@@ -316,10 +313,10 @@ function playCurrentAudio() {
     // Show loading state
     toggleAudioLoading(true);
     
-    // Use cloud audio service directly
-    cloudAudioService.getWordAudio(word.english)
+    // Use FreeDictionary API first (through cloudAudioService)
+    cloudAudioService.getFreeDictionaryAPI(word.english)
         .then(cloudUrl => {
-            updateAudioStatus('正在播放音訊...');
+            updateAudioStatus('正在播放詞典發音...');
             const cloudAudio = new Audio();
             cloudAudio.crossOrigin = 'anonymous'; // Allow cross-origin requests
             cloudAudio.src = cloudUrl;
@@ -332,75 +329,64 @@ function playCurrentAudio() {
                     })
                     .catch(err => {
                         console.error('音訊播放錯誤:', err);
-                        toggleAudioLoading(false);
-                        audioLoading = false;
-                        updateAudioStatus('無法播放音訊');
+                        // If playing fails, fall back to speech synthesis
+                        useSpeechSynthesisFallback(word.english);
                     });
             };
             
             cloudAudio.onerror = () => {
                 console.error('音訊載入錯誤');
-                
-                // Fallback to browser's native speech synthesis
-                if ('speechSynthesis' in window && currentDirection === 'english-chinese') {
-                    const wordToSpeak = currentWords[currentIndex].english;
-                    const utterance = new SpeechSynthesisUtterance(wordToSpeak);
-                    utterance.lang = 'en-US';
-                    
-                    // Use the user's preferred voice if available
-                    const preferredVoice = getSpeechSynthesisVoice();
-                    if (preferredVoice) {
-                        utterance.voice = preferredVoice;
-                    }
-                    
-                    // Show voice selector when using speech synthesis
-                    const voiceSelectorContainer = document.getElementById('voiceSelectorContainer') || createVoiceSelector();
-                    if (voiceSelectorContainer) {
-                        voiceSelectorContainer.style.display = 'block';
-                    }
-                    
-                    speechSynthesis.speak(utterance);
-                    updateAudioStatus('使用瀏覽器語音合成');
-                } else {
-                    updateAudioStatus('無法載入音訊');
-                }
-                
-                toggleAudioLoading(false);
-                audioLoading = false;
+                // If loading fails, fall back to speech synthesis
+                useSpeechSynthesisFallback(word.english);
             };
             
             cloudAudio.load();
         })
         .catch(err => {
-            console.error('音訊獲取錯誤:', err);
-            
-            // Fallback to browser's native speech synthesis on network errors too
-            if ('speechSynthesis' in window && currentDirection === 'english-chinese') {
-                const wordToSpeak = currentWords[currentIndex].english;
-                const utterance = new SpeechSynthesisUtterance(wordToSpeak);
-                utterance.lang = 'en-US';
-                
-                // Use the user's preferred voice if available
-                const preferredVoice = getSpeechSynthesisVoice();
-                if (preferredVoice) {
-                    utterance.voice = preferredVoice;
-                }
-                
-                // Show voice selector when using speech synthesis
-                const voiceSelectorContainer = document.getElementById('voiceSelectorContainer') || createVoiceSelector();
-                if (voiceSelectorContainer) {
-                    voiceSelectorContainer.style.display = 'block';
-                }
-                
-                speechSynthesis.speak(utterance);
-                updateAudioStatus('使用瀏覽器語音合成');
-            } else {
-                updateAudioStatus('無法獲取音訊');
-            }
-            
+            console.log('FreeDictionary API 獲取音訊失敗:', err);
+            // Fall back to speech synthesis
+            useSpeechSynthesisFallback(word.english);
+        });
+}
+
+// Helper function to use speech synthesis as fallback
+function useSpeechSynthesisFallback(wordToSpeak) {
+    if ('speechSynthesis' in window && currentDirection === 'english-chinese') {
+        updateAudioStatus('使用瀏覽器語音合成');
+        const utterance = new SpeechSynthesisUtterance(wordToSpeak);
+        utterance.lang = 'en-US';
+        
+        // Use the user's preferred voice if available
+        const preferredVoice = getSpeechSynthesisVoice();
+        if (preferredVoice) {
+            utterance.voice = preferredVoice;
+        }
+        
+        // Show voice selector when using speech synthesis
+        const voiceSelectorContainer = document.getElementById('voiceSelectorContainer') || createVoiceSelector();
+        if (voiceSelectorContainer) {
+            voiceSelectorContainer.style.display = 'block';
+        }
+        
+        // Add event listener to reset loading state after speaking is done
+        utterance.onend = () => {
             toggleAudioLoading(false);
             audioLoading = false;
-        });
+        };
+        
+        // Add event listener for errors
+        utterance.onerror = () => {
+            console.error('語音合成錯誤');
+            updateAudioStatus('語音合成失敗');
+            toggleAudioLoading(false);
+            audioLoading = false;
+        };
+        
+        speechSynthesis.speak(utterance);
+    } else {        updateAudioStatus('無法播放音訊');
+        toggleAudioLoading(false);
+        audioLoading = false;
+    }
 }
 
 // Toggle audio loading state

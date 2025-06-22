@@ -395,7 +395,7 @@ const cloudAudioService = {
      * Get audio from FreeDictionaryAPI
      * @param {string} word - The word to get audio for
      * @returns {Promise<string>} - Audio URL
-     */
+     */    
     getFreeDictionaryAPI(word) {
         // For direct browser use, it's better to use a more reliable source
         // FreeDictionaryAPI provides pronunciation URLs
@@ -413,14 +413,14 @@ const cloudAudioService = {
                         return audioUrl;
                     }
                 }
-                // If no audio found in dictionary, fallback to Google TTS
-                console.log('No pronunciation audio found in FreeDictionaryAPI, using Google TTS for:', word);
-                return this.getGoogleTTS(word);
+                // If no audio found in dictionary, return a special marker for speech synthesis
+                console.log('No pronunciation audio found in FreeDictionaryAPI. Will use speech synthesis for:', word);
+                return Promise.reject('NO_AUDIO_USE_SPEECH_SYNTHESIS');
             })
             .catch((error) => {
-                console.log('FreeDictionaryAPI fetch error, using Google TTS fallback for:', word, error);
-                // Immediately use Google TTS as the first fallback option
-                return this.getGoogleTTS(word);
+                console.log('FreeDictionaryAPI fetch error:', word, error);
+                // Return a specific marker to indicate speech synthesis should be used
+                return Promise.reject('NO_AUDIO_USE_SPEECH_SYNTHESIS');
             });
     },
     
@@ -483,9 +483,9 @@ const cloudAudioService = {
     /**
      * Get available providers
      * @returns {Array<string>} - List of provider names
-     */
-    getAvailableProviders() {
-        return Object.values(this.providers);
+     */    getAvailableProviders() {
+        // Return only FreeDictionaryAPI as the available provider
+        return [this.providers.FREEDIC];
     }
 };
 
@@ -519,86 +519,70 @@ function playAudio(audioUrl, word) {
  * @param {string} [word] - Optional word for cloud fallback
  */
 function playAudioFromUrl(url, word) {
-    const audio = new Audio();
-    audio.crossOrigin = "anonymous"; // Enable CORS handling
-    audio.src = url;
-
     console.log('playAudioFromUrl:', url, 'for word:', word);
     
-    // Use a more reliable fallback approach for Google TTS URLs
-    if (url.includes('translate.google.com') && word) {
-        console.log('Detected Google TTS URL - using alternative pronunciation method for:', word);
+    // Check for special marker or invalid URL
+    if (!url || url === '' || url === 'NO_AUDIO_USE_SPEECH_SYNTHESIS') {
+        console.log('No valid audio URL - using speech synthesis for:', word);
         
-        // Create a SpeechSynthesis utterance as a fallback method
-        // This uses the browser's built-in speech synthesis (works in most modern browsers)
-        try {
-            const utterance = new SpeechSynthesisUtterance(word);
-            utterance.lang = 'en-US';
-            utterance.rate = 0.9; // Slightly slower for better clarity
-            
-            // Use browser's speech synthesis
-            window.speechSynthesis.speak(utterance);
-            return; // Exit early after using speech synthesis
-        } catch (err) {
-            console.error('Speech synthesis failed:', err);
-            // Continue with normal audio playback as fallback
-        }
-    }
-    
-    audio.addEventListener('error', (e) => {
-        console.log('Audio error:', e);
-        console.log('Local audio file not found or error playing:', url);
-        
-        if (word) {
-            // If we're already trying to play Google TTS and it failed, try speech synthesis
-            if (url.includes('translate.google.com')) {
-                try {
-                    console.log('Trying browser speech synthesis as last resort for:', word);
-                    const utterance = new SpeechSynthesisUtterance(word);
-                    utterance.lang = 'en-US';
-                    window.speechSynthesis.speak(utterance);
-                } catch (err) {
-                    console.error('Speech synthesis also failed:', err);
-                }
-            } else {
-                // Try to get audio from cloud service if local fails
-                cloudAudioService.getWordAudio(word)
-                    .then(cloudUrl => {
-                        if (cloudUrl !== url) { // Avoid infinite loop
-                            console.log('Using cloud audio for:', word);
-                            playAudioFromUrl(cloudUrl, word); // Recursive call with new URL
-                        } else {
-                            console.error('Cloud service returned the same URL that failed');
-                            
-                            // Try browser's speech synthesis as a last resort
-                            try {
-                                const utterance = new SpeechSynthesisUtterance(word);
-                                utterance.lang = 'en-US';
-                                window.speechSynthesis.speak(utterance);
-                            } catch (err) {
-                                console.error('Speech synthesis also failed:', err);
-                            }
-                        }
-                    })
-                    .catch(err => {
-                        console.error('Cloud audio failed:', err);
-                    });
-            }
-        }
-    });
-    
-    audio.play().catch(err => {
-        console.error('Audio playback error:', err);
-        
-        // If play fails, try speech synthesis as fallback
-        if (word) {
+        // Use speech synthesis as fallback
+        if (word && 'speechSynthesis' in window) {
             try {
                 const utterance = new SpeechSynthesisUtterance(word);
                 utterance.lang = 'en-US';
+                utterance.rate = 0.9; // Slightly slower for better clarity
                 window.speechSynthesis.speak(utterance);
             } catch (err) {
-                console.error('Speech synthesis also failed:', err);
+                console.error('Speech synthesis failed:', err);
             }
+        } else {
+            console.error('Cannot play audio: No URL and no word provided or speech synthesis not available');
+        }
+        return;
+    }
+    
+    // Create audio element
+    const audio = new Audio();
+    audio.crossOrigin = "anonymous"; // Enable CORS handling
+    audio.src = url;
+    
+    // Handle errors
+    audio.addEventListener('error', (e) => {
+        console.log('Audio error:', e);
+        console.log('Audio file not found or error playing:', url);
+        
+        // Use speech synthesis as fallback
+        if (word && 'speechSynthesis' in window) {
+            try {
+                console.log('Using speech synthesis fallback for:', word);
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.9;
+                window.speechSynthesis.speak(utterance);
+            } catch (err) {
+                console.error('Speech synthesis fallback failed:', err);
+            }
+        } else {
+            console.error('Audio fallback not available');
+        }
+    });
+      // Try to play the audio
+    audio.play().catch(err => {
+        console.error('Audio playback error:', err);
+        
+        // Use speech synthesis as fallback
+        if (word && 'speechSynthesis' in window) {
+            try {
+                console.log('Using speech synthesis after playback failure for:', word);
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.9;
+                window.speechSynthesis.speak(utterance);
+            } catch (err) {
+                console.error('Speech synthesis fallback failed:', err);
+            }
+        } else {
+            console.error('Audio playback failed and fallback not available');
         }
     });
 }
