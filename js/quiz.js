@@ -3,7 +3,7 @@ const quizSetup = document.getElementById('quizSetup');
 const quizQuestions = document.getElementById('quizQuestions');
 const quizResults = document.getElementById('quizResults');
 const quizContainer = document.querySelector('.quiz-container');
-const quizUnitSelect = document.getElementById('quizUnitSelect');
+const unitCheckboxContainer = document.getElementById('unitCheckboxContainer');
 const quizType = document.getElementById('quizType');
 const questionCount = document.getElementById('questionCount');
 const startQuiz = document.getElementById('startQuiz');
@@ -26,27 +26,72 @@ let currentQuizIndex = 0;
 let currentQuizScore = 0;
 let selectedAnswers = [];
 let missedWords = [];
-let quizUnitId = 'all';
+let selectedUnitIds = ['all']; // Changed to array to support multiple unit selection
 let quizTypeValue = 'multiple-choice';
 let quizQuestionCount = 10;
-let allUnitWords = []; // Store all words from the unit for range selection
+let allUnitWords = []; // Store all words from the selected units for range selection
+
+// Helper function to validate and fix unit IDs
+function ensureValidUnitIds() {
+    if (!Array.isArray(selectedUnitIds)) {
+        console.warn("selectedUnitIds was not an array, resetting to ['all']");
+        selectedUnitIds = ['all'];
+    } else if (selectedUnitIds.length === 0) {
+        console.warn("selectedUnitIds was empty, resetting to ['all']");
+        selectedUnitIds = ['all'];
+    }
+}
 
 // Initialize the page
 document.addEventListener('DOMContentLoaded', () => {
+    // Ensure we have valid unit IDs to start with
+    ensureValidUnitIds();
+    
     // Check if a unit was specified in the URL
     const urlParams = new URLSearchParams(window.location.search);
     const unitId = urlParams.get('unit');
     
-    // Populate unit select dropdown
+    // Populate unit checkboxes (this will pre-select default units)
     populateUnitSelect();
     
     // Set initial unit if specified in URL
     if (unitId) {
-        quizUnitSelect.value = unitId;
-        quizUnitId = unitId;
+        // Validate the unit ID
+        const unitExists = getAllUnits().some(unit => unit.id.toString() === unitId);
+        if (!unitExists) {
+            console.warn(`Unit with ID ${unitId} not found!`);
+        } else {
+            // Uncheck "all" checkbox
+            const allCheckbox = document.getElementById('unit-all');
+            if (allCheckbox) {
+                allCheckbox.checked = false;
+                allCheckbox.parentElement.classList.remove('selected');
+            }
+            
+            // Check the specified unit checkbox
+            const checkbox = document.getElementById(`unit-${unitId}`);
+            if (checkbox) {
+                checkbox.checked = true;
+                checkbox.parentElement.classList.add('selected');
+                selectedUnitIds = [unitId.toString()]; // Ensure it's a string
+                
+                // Uncheck any default units
+                getAllUnits().forEach(unit => {
+                    if (unit.default && unit.id.toString() !== unitId) {
+                        const cb = document.getElementById(`unit-${unit.id}`);
+                        if (cb) {
+                            cb.checked = false;
+                            cb.parentElement.classList.remove('selected');
+                        }
+                    }
+                });
+            } else {
+                console.warn(`Checkbox for unit ID ${unitId} not found!`);
+            }
+        }
     }
     
-    // Load all words from current unit
+    // Load all words from selected units
     loadUnitWords();
     
     // Create vocabulary range selector
@@ -59,27 +104,197 @@ document.addEventListener('DOMContentLoaded', () => {
     retakeQuiz.addEventListener('click', handleRetakeQuiz);
     newQuiz.addEventListener('click', handleNewQuiz);
     reviewMissed.addEventListener('click', handleReviewMissed);
-    quizUnitSelect.addEventListener('change', handleUnitChange);
 });
 
-// Populate the unit select dropdown
+// Populate the unit checkboxes
 function populateUnitSelect() {
     const units = getAllUnits();
+    if (!units || units.length === 0) {
+        console.error("No units found!");
+        return;
+    }
     
-    units.forEach(unit => {
-        const option = document.createElement('option');
-        option.value = unit.id;
-        option.textContent = unit.title;
-        quizUnitSelect.appendChild(option);
+    const unitCheckboxContainer = document.getElementById('unitCheckboxContainer');
+    if (!unitCheckboxContainer) {
+        console.error("Unit checkbox container not found!");
+        return;
+    }
+    
+    // Set up the "all" checkbox handler first
+    const allCheckbox = document.getElementById('unit-all');
+    if (!allCheckbox) {
+        console.error("'All' checkbox not found!");
+        return;
+    }
+    
+    allCheckbox.addEventListener('change', (e) => {
+        const unitCheckboxes = document.querySelectorAll('.unit-checkbox-item input[type="checkbox"]:not(#unit-all)');
+        
+        if (e.target.checked) {
+            // If "all" is checked, uncheck all other units
+            unitCheckboxes.forEach(cb => {
+                cb.checked = false;
+                cb.parentElement.classList.remove('selected');
+            });
+            selectedUnitIds = ['all'];
+            e.target.parentElement.classList.add('selected');
+        } else {
+            // If "all" is unchecked, we need at least one selection
+            let anyChecked = false;
+            unitCheckboxes.forEach(cb => {
+                if (cb.checked) anyChecked = true;
+            });
+            
+            if (!anyChecked) {
+                e.target.checked = true; // Keep "all" checked if nothing else is selected
+                selectedUnitIds = ['all'];
+                e.target.parentElement.classList.add('selected');
+            } else {
+                selectedUnitIds = [];
+                e.target.parentElement.classList.remove('selected');
+            }
+        }
+        
+        loadUnitWords();
+        createVocabRangeSelector();
     });
+    
+    // Initialize selectedUnitIds as an empty array if not already defined
+    if (!selectedUnitIds) {
+        selectedUnitIds = [];
+    }
+    
+    // Clear selectedUnitIds if it currently has only 'all'
+    if (selectedUnitIds.length === 1 && selectedUnitIds[0] === 'all') {
+        selectedUnitIds = [];
+    }
+    
+    // Add unit checkboxes
+    units.forEach(unit => {
+        const unitItem = document.createElement('div');
+        unitItem.className = 'unit-checkbox-item';
+        if (unit.default) {
+            unitItem.classList.add('default-unit');
+        }
+        
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.id = `unit-${unit.id}`;
+        checkbox.value = unit.id;
+        
+        const label = document.createElement('label');
+        label.htmlFor = `unit-${unit.id}`;
+        label.textContent = unit.title;
+        
+        // Pre-select units marked as default
+        if (unit.default) {
+            checkbox.checked = true;
+            unitItem.classList.add('selected');
+            
+            // Add to selectedUnitIds if not already included
+            if (!selectedUnitIds.includes(unit.id.toString())) {
+                selectedUnitIds.push(unit.id.toString());
+            }
+            
+            // Uncheck the "all" option if default units are selected
+            const allCheckbox = document.getElementById('unit-all');
+            allCheckbox.checked = false;
+            allCheckbox.parentElement.classList.remove('selected');
+        }
+          // Add event listener to each checkbox
+        checkbox.addEventListener('change', (e) => {
+            const unitId = e.target.value.toString(); // Ensure unitId is a string
+            
+            if (e.target.checked) {
+                unitItem.classList.add('selected');
+                
+                // Add to selectedUnitIds if not already included
+                if (!selectedUnitIds.includes(unitId)) {
+                    selectedUnitIds.push(unitId);
+                }
+                
+                // Uncheck the "all" option when individual units are selected
+                const allCheckbox = document.getElementById('unit-all');
+                allCheckbox.checked = false;
+                allCheckbox.parentElement.classList.remove('selected');
+            } else {
+                unitItem.classList.remove('selected');
+                
+                // Remove from selectedUnitIds
+                selectedUnitIds = selectedUnitIds.filter(id => id !== unitId);
+                
+                // If no units are selected, check the "all" option
+                if (selectedUnitIds.length === 0) {
+                    const allCheckbox = document.getElementById('unit-all');
+                    allCheckbox.checked = true;
+                    allCheckbox.parentElement.classList.add('selected');
+                    selectedUnitIds = ['all'];
+                }
+            }
+            
+            loadUnitWords();
+            createVocabRangeSelector();
+        });
+        
+        unitItem.appendChild(checkbox);
+        unitItem.appendChild(label);
+        unitCheckboxContainer.appendChild(unitItem);
+    });
+    
+    // If no units were selected as default, select 'all'
+    if (selectedUnitIds.length === 0) {
+        const allCheckbox = document.getElementById('unit-all');
+        allCheckbox.checked = true;
+        allCheckbox.parentElement.classList.add('selected');
+        selectedUnitIds = ['all'];
+    }
 }
 
-// Load all words from the selected unit
+// Load all words from the selected units
 function loadUnitWords() {
-    if (quizUnitId === 'all') {
+    // Ensure we have valid unit IDs
+    ensureValidUnitIds();
+    
+    if (selectedUnitIds.length === 1 && selectedUnitIds[0] === 'all') {
         allUnitWords = getAllWords();
     } else {
-        allUnitWords = getWordsFromUnit(quizUnitId);
+        // Merge words from all selected units
+        allUnitWords = [];
+        selectedUnitIds.forEach(unitId => {
+            // Ensure unitId is treated as a number when needed
+            const parsedUnitId = parseInt(unitId);
+            if (isNaN(parsedUnitId)) {
+                console.error(`Invalid unit ID: ${unitId}`);
+                return; // Skip this iteration
+            }
+            
+            const unitWords = getWordsFromUnit(parsedUnitId);
+            if (unitWords && unitWords.length > 0) {
+                allUnitWords = allUnitWords.concat(unitWords);
+            } else {
+                console.warn(`No words found for unit ID: ${unitId}`);
+            }
+        });
+    }
+    
+    // Safety check: if no words were loaded, fallback to all words
+    if (allUnitWords.length === 0) {
+        console.warn("No words were loaded from selected units, falling back to all words");
+        allUnitWords = getAllWords();
+        selectedUnitIds = ['all']; // Reset selection to 'all'
+        
+        // Update UI to reflect this change
+        const allCheckbox = document.getElementById('unit-all');
+        if (allCheckbox) {
+            allCheckbox.checked = true;
+            allCheckbox.parentElement.classList.add('selected');
+        }
+        
+        const unitCheckboxes = document.querySelectorAll('.unit-checkbox-item input[type="checkbox"]:not(#unit-all)');
+        unitCheckboxes.forEach(cb => {
+            cb.checked = false;
+            cb.parentElement.classList.remove('selected');
+        });
     }
 }
 
@@ -95,16 +310,14 @@ function createVocabRangeSelector() {
 }
 
 // Handle unit change
-function handleUnitChange() {
-    quizUnitId = quizUnitSelect.value;
-    loadUnitWords();
-    createVocabRangeSelector();
-}
+// Unit change handling is now done directly in the checkbox event listeners
 
 // Start a new quiz
 function handleStartQuiz() {
     // Get quiz settings
-    quizUnitId = quizUnitSelect.value;
+    // selectedUnitIds is now maintained by the checkbox event listeners
+    // so we don't need to update it here
+    
     quizTypeValue = quizType.value;
     quizQuestionCount = parseInt(questionCount.value);
     
@@ -138,10 +351,38 @@ function handleStartQuiz() {
 function prepareQuizWords() {
     let words = [];
     
-    if (quizUnitId === 'all') {
-        words = getAllWords();
+    if (selectedUnitIds.length === 1 && selectedUnitIds[0] === 'all') {
+        // For 'all' option, we need to track which unit each word belongs to
+        const units = getAllUnits();
+        units.forEach(unit => {
+            const unitWords = unit.words.map(word => ({
+                ...word, 
+                unitId: unit.id // Add unitId to each word
+            }));
+            words = words.concat(unitWords);
+        });
     } else {
-        words = getWordsFromUnit(quizUnitId);
+        // Merge words from all selected units
+        selectedUnitIds.forEach(unitId => {
+            // Parse unitId to integer to ensure compatibility with getWordsFromUnit
+            const parsedUnitId = parseInt(unitId);
+            if (isNaN(parsedUnitId)) {
+                console.error(`Invalid unit ID: ${unitId}`);
+                return; // Skip this iteration
+            }
+            
+            const unitWords = getWordsFromUnit(parsedUnitId);
+            if (!unitWords || unitWords.length === 0) {
+                console.warn(`No words found for unit ID: ${parsedUnitId}`);
+                return; // Skip this iteration
+            }
+            
+            const wordsWithUnitId = unitWords.map(word => ({
+                ...word,
+                unitId: parsedUnitId // Add unitId to each word
+            }));
+            words = words.concat(wordsWithUnitId);
+        });
     }
     
     // Get vocabulary range
@@ -433,18 +674,17 @@ function handleSubmitAnswer() {
         userAnswer: userAnswer,
         isCorrect: isCorrect
     });
-    
-    // Update score
+      // Update score
     if (isCorrect) {
         currentQuizScore++;
         
-        // Update user progress
-        userProgress.updateWordProgress(`${quizUnitId}-${word.english}`, true);
+        // Update user progress - use word.unitId instead of quizUnitId
+        userProgress.updateWordProgress(`${word.unitId}-${word.english}`, true);
     } else {
         missedWords.push(word);
         
-        // Update user progress
-        userProgress.updateWordProgress(`${quizUnitId}-${word.english}`, false);
+        // Update user progress - use word.unitId instead of quizUnitId
+        userProgress.updateWordProgress(`${word.unitId}-${word.english}`, false);
     }
     
     // Disable submit button to prevent multiple submissions
@@ -547,14 +787,44 @@ function playWordAudio(word) {
       // Add loading indicator
     const audioButtons = document.querySelectorAll('.quiz-question .audio-btn');
     audioButtons.forEach(btn => {
-        btn.innerHTML = '<i class="fas fa-spinner"></i> 加載中...';
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
         btn.disabled = true;
     });
       // Use cloud service directly for audio
     const audioSourceElement = document.getElementById(`audioSource-${word.replace(/\s+/g, '-')}`);
     
+    // Variable to track if we're using speech synthesis
+    let usingSpeechSynthesis = false;
+    
     cloudAudioService.getWordAudio(word)
         .then(audioUrl => {
+            // If we detected we'll need to use the browser's speech synthesis instead
+            if (audioUrl.includes('translate.google.com') && 'speechSynthesis' in window) {
+                usingSpeechSynthesis = true;
+                
+                // Update audio source info
+                if (audioSourceElement) {
+                    audioSourceElement.textContent = '使用瀏覽器語音合成';
+                    audioSourceElement.className = 'audio-source speech-synthesis';
+                }
+                
+                // Use the browser's speech synthesis
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.9; // Slightly slower for better clarity
+                
+                // Handle completion to reset buttons
+                utterance.onend = () => {
+                    audioButtons.forEach(btn => {
+                        btn.innerHTML = '<i class="fas fa-volume-up"></i>';
+                        btn.disabled = false;
+                    });
+                };
+                
+                window.speechSynthesis.speak(utterance);
+                return null; // Return null to indicate we don't need to play an Audio object
+            }
+            
             const audio = new Audio(audioUrl);
             
             // Display which service is being used
@@ -570,6 +840,10 @@ function playWordAudio(word) {
                     audioSourceElement.className = 'audio-source fallback';
                 }
             }
+              // If we're using speech synthesis, we don't need to play the audio object
+            if (usingSpeechSynthesis) {
+                return;
+            }
             
             audio.play()
                 .then(() => {
@@ -580,30 +854,44 @@ function playWordAudio(word) {
                     });
                 })
                 .catch(error => {
-                    console.error('Error playing audio, trying Google TTS fallback:', error);                    // If playing fails, try again with Google TTS directly
-                    const googleTtsUrl = cloudAudioService.getGoogleTTS(word);
-                    const fallbackAudio = new Audio(googleTtsUrl);
+                    console.error('Error playing audio, trying speech synthesis fallback:', error);
                     
-                    // Update source info
-                    if (audioSourceElement) {
-                        audioSourceElement.textContent = '使用Google TTS發音 (回退)';
-                        audioSourceElement.className = 'audio-source google';
-                    }
-                    
-                    fallbackAudio.play()
-                        .then(() => {
+                    // If playing fails, try speech synthesis as a last resort
+                    if ('speechSynthesis' in window) {
+                        // Update source info
+                        if (audioSourceElement) {
+                            audioSourceElement.textContent = '使用瀏覽器語音合成 (回退)';
+                            audioSourceElement.className = 'audio-source speech-synthesis';
+                        }
+                        
+                        const utterance = new SpeechSynthesisUtterance(word);
+                        utterance.lang = 'en-US';
+                        
+                        utterance.onend = () => {
                             audioButtons.forEach(btn => {
                                 btn.innerHTML = '<i class="fas fa-volume-up"></i>';
                                 btn.disabled = false;
                             });
-                        })
-                        .catch(fallbackError => {
-                            console.error('Fallback audio also failed:', fallbackError);
+                        };
+                        
+                        // If synthesis fails or doesn't start after 3 seconds, reset button anyway
+                        setTimeout(() => {
                             audioButtons.forEach(btn => {
-                                btn.innerHTML = '<i class="fas fa-volume-up"></i>';
-                                btn.disabled = false;
+                                if (btn.innerHTML.includes('fa-spinner')) {
+                                    btn.innerHTML = '<i class="fas fa-volume-up"></i>';
+                                    btn.disabled = false;
+                                }
                             });
+                        }, 3000);
+                        
+                        window.speechSynthesis.speak(utterance);
+                    } else {
+                        // No speech synthesis available, just reset the buttons
+                        audioButtons.forEach(btn => {
+                            btn.innerHTML = '<i class="fas fa-volume-up"></i>';
+                            btn.disabled = false;
                         });
+                    }
                 });
         })
         .catch(error => {

@@ -29,14 +29,15 @@
                 
                 <!-- Quiz Setup -->
                 <div id="quizSetup">
-                    <p>透過測驗來測試您的詞彙知識。請在下面選擇您的設置：</p>
-                    
-                    <div class="form-group">
-                        <label for="quizUnitSelect">選擇單元：</label>
-                        <select id="quizUnitSelect">
-                            <option value="all">所有單元</option>
+                    <p>透過測驗來測試您的詞彙知識。請在下面選擇您的設置：</p>                    <div class="form-group">
+                        <label>選擇單元：</label>
+                        <div id="unitCheckboxContainer" class="unit-checkbox-container">
+                            <div class="unit-checkbox-item">
+                                <input type="checkbox" id="unit-all" value="all">
+                                <label for="unit-all">所有單元</label>
+                            </div>
                             <!-- Units will be dynamically loaded here -->
-                        </select>
+                        </div>
                     </div>
                       <div class="form-group">
                         <label for="quizType">測驗類型：</label>
