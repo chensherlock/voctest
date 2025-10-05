@@ -48,55 +48,13 @@ document.addEventListener('DOMContentLoaded', () => {
 function createAudioProviderSelector() {
     const headerEl = document.querySelector('#unitHeader');
     if (!headerEl || document.getElementById('audioProviderSelect')) return;
-    
-    const providerContainer = document.createElement('div');
-    providerContainer.className = 'audio-provider-container';
-    
-    const providerLabel = document.createElement('label');
-    providerLabel.setAttribute('for', 'audioProviderSelect');
-    providerLabel.textContent = '音訊提供者：';
-    
-    const providerSelect = document.createElement('select');
-    providerSelect.id = 'audioProviderSelect';
-    
-    // Get available providers
-    const providers = cloudAudioService.getAvailableProviders();
-    
-    // Add options for each provider
-    providers.forEach(provider => {
-        const option = document.createElement('option');
-        option.value = provider;
-        
-        // Translate provider names to Traditional Chinese
-        switch(provider) {
-            case 'google':
-                option.textContent = 'Google 語音合成';
-                break;
-            case 'microsoft':
-                option.textContent = 'Microsoft Azure 語音';
-                break;
-            case 'forvo':
-                option.textContent = 'Forvo 使用者發音';
-                break;
-            default:
-                option.textContent = provider;
+
+    const providerContainer = audioService.createProviderSelector({
+        onChange: (provider) => {
+            showAudioStatus(`已更改音訊提供者為 ${provider}`);
         }
-        
-        providerSelect.appendChild(option);
     });
-    
-    // Set default value
-    providerSelect.value = cloudAudioService.currentProvider;
-    
-    // Add change event listener
-    providerSelect.addEventListener('change', () => {
-        cloudAudioService.setProvider(providerSelect.value);
-        showAudioStatus(`已更改音訊提供者為 ${providerSelect.value}`);
-    });
-    
-    // Append elements
-    providerContainer.appendChild(providerLabel);
-    providerContainer.appendChild(providerSelect);
+
     headerEl.appendChild(providerContainer);
 }
 
@@ -104,45 +62,16 @@ function createAudioProviderSelector() {
 function createVoiceSelector() {
     // Check if selector already exists
     if (document.getElementById('voiceSelectorContainer')) return;
-    
-    // Create container for the voice selector
-    const voiceSelectorContainer = document.createElement('div');
+
+    const voiceSelectorContainer = audioService.createVoiceSelector({
+        onChange: (voiceURI) => {
+            showAudioStatus('已更改語音合成聲音');
+        }
+    });
+
     voiceSelectorContainer.id = 'voiceSelectorContainer';
-    voiceSelectorContainer.className = 'voice-selector-container';
     voiceSelectorContainer.style.display = 'none'; // Hidden by default
-    
-    const voiceLabel = document.createElement('label');
-    voiceLabel.setAttribute('for', 'voiceSelect');
-    voiceLabel.textContent = '語音合成聲音：';
-    
-    const voiceSelect = document.createElement('select');
-    voiceSelect.id = 'voiceSelect';
-    
-    // Populate with available voices
-    populateVoiceSelector(voiceSelect);
-    
-    // Add event listener
-    voiceSelect.addEventListener('change', function() {
-        const voiceURI = this.value;
-        localStorage.setItem('preferredVoice', voiceURI);
-        showAudioStatus(`已更改語音合成聲音`);
-    });
-    
-    // Add refresh button for voices
-    const refreshButton = document.createElement('button');
-    refreshButton.className = 'refresh-voices-btn';
-    refreshButton.innerHTML = '<i class="fas fa-sync-alt"></i>';
-    refreshButton.title = '重新載入可用語音';
-    refreshButton.addEventListener('click', () => {
-        populateVoiceSelector(voiceSelect);
-        showAudioStatus('已更新可用語音列表');
-    });
-    
-    // Append elements
-    voiceSelectorContainer.appendChild(voiceLabel);
-    voiceSelectorContainer.appendChild(voiceSelect);
-    voiceSelectorContainer.appendChild(refreshButton);
-    
+
     // Add to page - after audio provider if it exists
     const audioProviderContainer = document.querySelector('.audio-provider-container');
     if (audioProviderContainer) {
@@ -153,74 +82,8 @@ function createVoiceSelector() {
             unitHeader.appendChild(voiceSelectorContainer);
         }
     }
-    
+
     return voiceSelectorContainer;
-}
-
-// Populate voice selector with available voices
-function populateVoiceSelector(selectElement) {
-    if (!selectElement) return;
-    
-    // Clear existing options
-    selectElement.innerHTML = '';
-    
-    // Get all available voices
-    const voices = window.speechSynthesis.getVoices();
-    
-    // Add default option
-    const defaultOption = document.createElement('option');
-    defaultOption.value = '';
-    defaultOption.textContent = '預設語音';
-    selectElement.appendChild(defaultOption);
-    
-    // Filter for English voices first, then add others
-    const englishVoices = voices.filter(voice => voice.lang.includes('en'));
-    const otherVoices = voices.filter(voice => !voice.lang.includes('en'));
-    
-    // Add English voices with a group
-    if (englishVoices.length > 0) {
-        const englishGroup = document.createElement('optgroup');
-        englishGroup.label = '英文語音';
-        
-        englishVoices.forEach(voice => {
-            const option = document.createElement('option');
-            option.value = voice.voiceURI;
-            option.textContent = `${voice.name} (${voice.lang})`;
-            englishGroup.appendChild(option);
-        });
-        
-        selectElement.appendChild(englishGroup);
-    }
-    
-    // Add other voices with a group
-    if (otherVoices.length > 0) {
-        const otherGroup = document.createElement('optgroup');
-        otherGroup.label = '其他語音';
-        
-        otherVoices.forEach(voice => {
-            const option = document.createElement('option');
-            option.value = voice.voiceURI;
-            option.textContent = `${voice.name} (${voice.lang})`;
-            otherGroup.appendChild(option);
-        });
-        
-        selectElement.appendChild(otherGroup);
-    }
-    
-    // Set selected value from localStorage if available
-    const preferredVoice = localStorage.getItem('preferredVoice');
-    if (preferredVoice) {
-        selectElement.value = preferredVoice;
-    }
-}
-
-// Get the user's preferred speech synthesis voice
-function getSpeechSynthesisVoice() {
-    const preferredVoiceURI = localStorage.getItem('preferredVoice');
-    if (!preferredVoiceURI) return null;
-    
-    const voices = window.speechSynthesis.getVoices();
-    return voices.find(voice => voice.voiceURI === preferredVoiceURI);
 }
 
 // Speech synthesis voices can load asynchronously
@@ -229,7 +92,7 @@ if ('speechSynthesis' in window) {
     if (window.speechSynthesis.getVoices().length > 0) {
         createVoiceSelector();
     }
-    
+
     // Add event listener for when voices change/load
     window.speechSynthesis.onvoiceschanged = function() {
         createVoiceSelector();
@@ -375,151 +238,39 @@ function playAudio(word) {
     if (!word) return;
 
     console.log('Playing audio for word:', word);
-    
+
     // Show loading state on the button that triggered this
     const audioButtons = document.querySelectorAll('.audio-btn');
     const clickedButton = Array.from(audioButtons).find(btn => btn === document.activeElement);
-    
+
     // Set loading state
     if (clickedButton) {
         const originalIcon = clickedButton.innerHTML;
         clickedButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
         clickedButton.disabled = true;
         clickedButton.classList.add('loading');
-        
+
         // Function to restore button state
         const restoreButton = () => {
             clickedButton.innerHTML = originalIcon;
             clickedButton.disabled = false;
             clickedButton.classList.remove('loading');
         };
-        
+
         // Show status message
         showAudioStatus('播放音訊中...');
-        
-        // Use cloud service directly
-        useCloudAudio(word, restoreButton);
+
+        // Use audio service
+        audioService.playWord(word, {
+            onEnd: restoreButton,
+            onError: (err) => {
+                console.error('Audio playback error:', err);
+                showAudioStatus('無法播放音訊');
+                restoreButton();
+            }
+        });
     } else {
         // No active button, just play the audio without visual feedback
-        useCloudAudio(word);
+        audioService.playWord(word);
     }
-}
-
-// Local fallback if global playAudio isn't available
-function localPlayAudio(audioUrl, word, callback) {
-    if (audioUrl) {
-        const audio = new Audio(audioUrl);
-        
-        audio.onerror = () => {
-            console.log('本地音訊檔案未找到:', audioUrl);
-            if (word && typeof cloudAudioService !== 'undefined') {
-                useCloudAudio(word, callback);
-            } else if (callback) {
-                callback();
-            }
-        };
-        
-        audio.play().catch(err => {
-            console.error('音訊播放錯誤:', err);
-            if (word && typeof cloudAudioService !== 'undefined') {
-                useCloudAudio(word, callback);
-            } else if (callback) {
-                callback();
-            }
-        });
-    } else if (word && typeof cloudAudioService !== 'undefined') {
-        useCloudAudio(word, callback);
-    } else if (callback) {
-        callback();
-    }
-}
-
-// Use cloud audio service for playback
-function useCloudAudio(word, callback) {
-    //showAudioStatus('使用雲端音訊服務...');
-    
-    cloudAudioService.getWordAudio(word)
-        .then(cloudUrl => {
-            console.log('Audio URL:', cloudUrl);
-
-            const cloudAudio = new Audio();
-            cloudAudio.crossOrigin = "anonymous"; // Enable CORS handling
-            cloudAudio.src = cloudUrl;
-            
-            cloudAudio.onloadeddata = () => {
-                cloudAudio.play()
-                    .then(() => {
-                        if (callback) callback();
-                    })
-                    .catch(err => {
-                        console.error('雲端音訊播放錯誤:', err);
-                        showAudioStatus('無法播放音訊');
-                        if (callback) callback();
-                    });
-            };
-            
-            cloudAudio.onerror = () => {
-                console.error('雲端音訊載入錯誤', cloudAudio.error);
-                showAudioStatus('嘗試使用瀏覽器語音合成...');
-                                
-                // Fallback to browser's native speech synthesis
-                if ('speechSynthesis' in window) {
-                    // Create utterance with the word
-                    const utterance = new SpeechSynthesisUtterance(word);
-                    utterance.lang = 'en-US';
-                    
-                    // Use the user's preferred voice if available
-                    const preferredVoice = getSpeechSynthesisVoice();
-                    if (preferredVoice) {
-                        utterance.voice = preferredVoice;
-                    }
-                    
-                    // Show voice selector when using speech synthesis
-                    const voiceSelectorContainer = document.getElementById('voiceSelectorContainer') || createVoiceSelector();
-                    if (voiceSelectorContainer) {
-                        voiceSelectorContainer.style.display = 'block';
-                    }
-                    
-                    // Speak the word
-                    speechSynthesis.speak(utterance);
-                    showAudioStatus('使用瀏覽器語音合成');
-                } else {
-                    showAudioStatus('無法播放音訊');
-                }
-                                
-                if (callback) callback();
-            };
-            
-            cloudAudio.load();
-        })
-        .catch(err => {
-            console.error('雲端音訊獲取錯誤:', err);
-            
-            // Fallback to browser's native speech synthesis on network errors too
-            if ('speechSynthesis' in window) {
-                // Create utterance with the word
-                const utterance = new SpeechSynthesisUtterance(word);
-                utterance.lang = 'en-US';
-                
-                // Use the user's preferred voice if available
-                const preferredVoice = getSpeechSynthesisVoice();
-                if (preferredVoice) {
-                    utterance.voice = preferredVoice;
-                }
-                
-                // Show voice selector when using speech synthesis
-                const voiceSelectorContainer = document.getElementById('voiceSelectorContainer') || createVoiceSelector();
-                if (voiceSelectorContainer) {
-                    voiceSelectorContainer.style.display = 'block';
-                }
-                
-                // Speak the word
-                speechSynthesis.speak(utterance);
-                showAudioStatus('使用瀏覽器語音合成');
-            } else {
-                showAudioStatus('無法獲取音訊');
-            }
-            
-            if (callback) callback();
-        });
 }

@@ -784,140 +784,40 @@ function handleReviewMissed() {
 // Play audio for a word
 function playWordAudio(word) {
     if (!word) return;
-      // Add loading indicator
+
+    // Add loading indicator
     const audioButtons = document.querySelectorAll('.quiz-question .audio-btn');
     audioButtons.forEach(btn => {
         btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
         btn.disabled = true;
     });
-      // Use cloud service directly for audio
+
     const audioSourceElement = document.getElementById(`audioSource-${word.replace(/\s+/g, '-')}`);
-    
-    // Variable to track if we're using speech synthesis
-    let usingSpeechSynthesis = false;
-    
-    cloudAudioService.getWordAudio(word)
-        .then(audioUrl => {
-            // If we detected we'll need to use the browser's speech synthesis instead
-            if (audioUrl.includes('translate.google.com') && 'speechSynthesis' in window) {
-                usingSpeechSynthesis = true;
-                
-                // Update audio source info
-                if (audioSourceElement) {
-                    audioSourceElement.textContent = '使用瀏覽器語音合成';
-                    audioSourceElement.className = 'audio-source speech-synthesis';
-                }
-                
-                // Use the browser's speech synthesis
-                const utterance = new SpeechSynthesisUtterance(word);
-                utterance.lang = 'en-US';
-                utterance.rate = 0.9; // Slightly slower for better clarity
-                
-                // Handle completion to reset buttons
-                utterance.onend = () => {
-                    audioButtons.forEach(btn => {
-                        btn.innerHTML = '<i class="fas fa-volume-up"></i>';
-                        btn.disabled = false;
-                    });
-                };
-                
-                window.speechSynthesis.speak(utterance);
-                return null; // Return null to indicate we don't need to play an Audio object
-            }
-            
-            const audio = new Audio(audioUrl);
-            
-            // Display which service is being used
-            if (audioSourceElement) {
-                if (audioUrl.includes('dictionaryapi')) {
-                    audioSourceElement.textContent = '使用詞典發音';
-                    audioSourceElement.className = 'audio-source freedic';
-                } else if (audioUrl.includes('translate.google.com')) {
-                    audioSourceElement.textContent = '使用Google TTS發音';
-                    audioSourceElement.className = 'audio-source google';
-                } else {
-                    audioSourceElement.textContent = '使用其他發音源';
-                    audioSourceElement.className = 'audio-source fallback';
-                }
-            }
-              // If we're using speech synthesis, we don't need to play the audio object
-            if (usingSpeechSynthesis) {
-                return;
-            }
-            
-            audio.play()
-                .then(() => {
-                    // Reset button state
-                    audioButtons.forEach(btn => {
-                        btn.innerHTML = '<i class="fas fa-volume-up"></i>';
-                        btn.disabled = false;
-                    });
-                })
-                .catch(error => {
-                    console.error('Error playing audio, trying speech synthesis fallback:', error);
-                    
-                    // If playing fails, try speech synthesis as a last resort
-                    if ('speechSynthesis' in window) {
-                        // Update source info
-                        if (audioSourceElement) {
-                            audioSourceElement.textContent = '使用瀏覽器語音合成 (回退)';
-                            audioSourceElement.className = 'audio-source speech-synthesis';
-                        }
-                        
-                        const utterance = new SpeechSynthesisUtterance(word);
-                        utterance.lang = 'en-US';
-                        
-                        utterance.onend = () => {
-                            audioButtons.forEach(btn => {
-                                btn.innerHTML = '<i class="fas fa-volume-up"></i>';
-                                btn.disabled = false;
-                            });
-                        };
-                        
-                        // If synthesis fails or doesn't start after 3 seconds, reset button anyway
-                        setTimeout(() => {
-                            audioButtons.forEach(btn => {
-                                if (btn.innerHTML.includes('fa-spinner')) {
-                                    btn.innerHTML = '<i class="fas fa-volume-up"></i>';
-                                    btn.disabled = false;
-                                }
-                            });
-                        }, 3000);
-                        
-                        window.speechSynthesis.speak(utterance);
-                    } else {
-                        // No speech synthesis available, just reset the buttons
-                        audioButtons.forEach(btn => {
-                            btn.innerHTML = '<i class="fas fa-volume-up"></i>';
-                            btn.disabled = false;
-                        });
-                    }
-                });
-        })
-        .catch(error => {
-            console.error('Error getting audio URL, using Google TTS:', error);            // If getting the URL fails, go straight to Google TTS
-            const googleTtsUrl = cloudAudioService.getGoogleTTS(word);
-            const fallbackAudio = new Audio(googleTtsUrl);
-            
-            // Update source info
-            if (audioSourceElement) {
-                audioSourceElement.textContent = '使用Google TTS發音 (緊急回退)';
-                audioSourceElement.className = 'audio-source fallback';
-            }
-            
-            fallbackAudio.play()
-                .then(() => {
-                    audioButtons.forEach(btn => {
-                        btn.innerHTML = '<i class="fas fa-volume-up"></i>';
-                        btn.disabled = false;
-                    });
-                })
-                .catch(fallbackError => {
-                    console.error('Fallback audio also failed:', fallbackError);
-                    audioButtons.forEach(btn => {
-                        btn.innerHTML = '<i class="fas fa-volume-up"></i>';
-                        btn.disabled = false;
-                    });
-                });
+
+    // Reset button function
+    const resetButtons = () => {
+        audioButtons.forEach(btn => {
+            btn.innerHTML = '<i class="fas fa-volume-up"></i>';
+            btn.disabled = false;
         });
+    };
+
+    // Use audio service
+    audioService.playWord(word, {
+        onStart: () => {
+            if (audioSourceElement) {
+                audioSourceElement.textContent = '正在播放發音';
+                audioSourceElement.className = 'audio-source';
+            }
+        },
+        onEnd: resetButtons,
+        onError: (err) => {
+            console.error('Audio playback error:', err);
+            if (audioSourceElement) {
+                audioSourceElement.textContent = '無法播放音訊';
+                audioSourceElement.className = 'audio-source error';
+            }
+            resetButtons();
+        }
+    });
 }
