@@ -149,9 +149,10 @@ function updateAudioStatus(message) {
 }
 
 // Populate the unit select dropdown
-function populateUnitSelect() {
+async function populateUnitSelect() {
+    await loadUnitsIndex();
     const units = getAllUnits();
-    
+
     units.forEach(unit => {
         const option = document.createElement('option');
         option.value = unit.id;
@@ -161,12 +162,12 @@ function populateUnitSelect() {
 }
 
 // Load words based on current unit and settings
-function loadWords() {
+async function loadWords() {
     // Store all words from the current unit
     if (currentUnitId === 'all') {
-        allUnitWords = getAllWords();
+        allUnitWords = await getAllWords();
     } else {
-        allUnitWords = getWordsFromUnit(currentUnitId);
+        allUnitWords = await getWordsFromUnit(currentUnitId);
     }
     
     // Check if we need to apply a range filter

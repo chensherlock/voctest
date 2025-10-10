@@ -107,7 +107,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Populate the unit checkboxes
-function populateUnitSelect() {
+async function populateUnitSelect() {
+    await loadUnitsIndex();
     const units = getAllUnits();
     if (!units || units.length === 0) {
         console.error("No units found!");
@@ -251,45 +252,45 @@ function populateUnitSelect() {
 }
 
 // Load all words from the selected units
-function loadUnitWords() {
+async function loadUnitWords() {
     // Ensure we have valid unit IDs
     ensureValidUnitIds();
-    
+
     if (selectedUnitIds.length === 1 && selectedUnitIds[0] === 'all') {
-        allUnitWords = getAllWords();
+        allUnitWords = await getAllWords();
     } else {
         // Merge words from all selected units
         allUnitWords = [];
-        selectedUnitIds.forEach(unitId => {
+        for (const unitId of selectedUnitIds) {
             // Ensure unitId is treated as a number when needed
             const parsedUnitId = parseInt(unitId);
             if (isNaN(parsedUnitId)) {
                 console.error(`Invalid unit ID: ${unitId}`);
-                return; // Skip this iteration
+                continue; // Skip this iteration
             }
-            
-            const unitWords = getWordsFromUnit(parsedUnitId);
+
+            const unitWords = await getWordsFromUnit(parsedUnitId);
             if (unitWords && unitWords.length > 0) {
                 allUnitWords = allUnitWords.concat(unitWords);
             } else {
                 console.warn(`No words found for unit ID: ${unitId}`);
             }
-        });
+        }
     }
-    
+
     // Safety check: if no words were loaded, fallback to all words
     if (allUnitWords.length === 0) {
         console.warn("No words were loaded from selected units, falling back to all words");
-        allUnitWords = getAllWords();
+        allUnitWords = await getAllWords();
         selectedUnitIds = ['all']; // Reset selection to 'all'
-        
+
         // Update UI to reflect this change
         const allCheckbox = document.getElementById('unit-all');
         if (allCheckbox) {
             allCheckbox.checked = true;
             allCheckbox.parentElement.classList.add('selected');
         }
-        
+
         const unitCheckboxes = document.querySelectorAll('.unit-checkbox-item input[type="checkbox"]:not(#unit-all)');
         unitCheckboxes.forEach(cb => {
             cb.checked = false;
@@ -313,31 +314,31 @@ function createVocabRangeSelector() {
 // Unit change handling is now done directly in the checkbox event listeners
 
 // Start a new quiz
-function handleStartQuiz() {
+async function handleStartQuiz() {
     // Get quiz settings
     // selectedUnitIds is now maintained by the checkbox event listeners
     // so we don't need to update it here
-    
+
     quizTypeValue = quizType.value;
     quizQuestionCount = parseInt(questionCount.value);
-    
+
     // Prepare quiz words
-    prepareQuizWords();
-    
+    await prepareQuizWords();
+
     if (currentQuizWords.length > 0) {
         // Reset quiz state
         currentQuizIndex = 0;
         currentQuizScore = 0;
         selectedAnswers = [];
         missedWords = [];
-        
+
         // Update UI
         totalQuestions.textContent = currentQuizWords.length;
         totalScore.textContent = currentQuizWords.length;
-        
+
         // Show first question
         displayCurrentQuestion();
-        
+
         // Show quiz questions section
         quizSetup.style.display = 'none';
         quizQuestions.style.display = 'block';
@@ -348,41 +349,42 @@ function handleStartQuiz() {
 }
 
 // Prepare words for the quiz
-function prepareQuizWords() {
+async function prepareQuizWords() {
     let words = [];
-    
+
     if (selectedUnitIds.length === 1 && selectedUnitIds[0] === 'all') {
         // For 'all' option, we need to track which unit each word belongs to
+        await preloadAllUnits();
         const units = getAllUnits();
         units.forEach(unit => {
             const unitWords = unit.words.map(word => ({
-                ...word, 
+                ...word,
                 unitId: unit.id // Add unitId to each word
             }));
             words = words.concat(unitWords);
         });
     } else {
         // Merge words from all selected units
-        selectedUnitIds.forEach(unitId => {
+        for (const unitId of selectedUnitIds) {
             // Parse unitId to integer to ensure compatibility with getWordsFromUnit
             const parsedUnitId = parseInt(unitId);
             if (isNaN(parsedUnitId)) {
                 console.error(`Invalid unit ID: ${unitId}`);
-                return; // Skip this iteration
+                continue; // Skip this iteration
             }
-            
-            const unitWords = getWordsFromUnit(parsedUnitId);
+
+            const unitWords = await getWordsFromUnit(parsedUnitId);
             if (!unitWords || unitWords.length === 0) {
                 console.warn(`No words found for unit ID: ${parsedUnitId}`);
-                return; // Skip this iteration
+                continue; // Skip this iteration
             }
-            
+
             const wordsWithUnitId = unitWords.map(word => ({
                 ...word,
                 unitId: parsedUnitId // Add unitId to each word
             }));
             words = words.concat(wordsWithUnitId);
-        });
+        }
     }
     
     // Get vocabulary range
@@ -399,30 +401,30 @@ function prepareQuizWords() {
 }
 
 // Display the current quiz question
-function displayCurrentQuestion() {
+async function displayCurrentQuestion() {
     if (currentQuizIndex < currentQuizWords.length) {
         const word = currentQuizWords[currentQuizIndex];
-        
+
         // Update progress
         currentQuestion.textContent = (currentQuizIndex + 1).toString();
         quizProgress.style.width = `${((currentQuizIndex + 1) / currentQuizWords.length) * 100}%`;
-        
+
         // Clear previous question
         quizContainer.innerHTML = '';
-        
+
         // Create question based on quiz type
         switch (quizTypeValue) {
             case 'multiple-choice':
-                createMultipleChoiceQuestion(word);
+                await createMultipleChoiceQuestion(word);
                 break;
             case 'matching':
-                createMatchingQuestion(word);
+                await createMatchingQuestion(word);
                 break;
             case 'spelling':
                 createSpellingQuestion(word);
                 break;
             case 'pronunciation':
-                createPronunciationQuestion(word);
+                await createPronunciationQuestion(word);
                 break;
         }
           // Hide submit button for multiple choice, matching, and pronunciation questions
@@ -441,9 +443,9 @@ function displayCurrentQuestion() {
 }
 
 // Create a multiple choice question
-function createMultipleChoiceQuestion(word) {
+async function createMultipleChoiceQuestion(word) {
     // Get options (1 correct + 3 random)
-    const options = getRandomOptions(word);
+    const options = await getRandomOptions(word);
 
     // Store options in a data attribute for later validation
     quizContainer.dataset.currentOptions = JSON.stringify(options);
@@ -472,9 +474,9 @@ function createMultipleChoiceQuestion(word) {
 }
 
 // Create a matching question
-function createMatchingQuestion(word) {
+async function createMatchingQuestion(word) {
     // Get options (1 correct + 3 random)
-    const options = getRandomOptions(word);
+    const options = await getRandomOptions(word);
 
     // Store options in a data attribute for later validation
     quizContainer.dataset.currentOptions = JSON.stringify(options);
@@ -535,10 +537,10 @@ function createSpellingQuestion(word) {
 }
 
 // Create a pronunciation question
-function createPronunciationQuestion(word) {
+async function createPronunciationQuestion(word) {
     // Get options (1 correct + 3 random)
-    const options = getRandomOptions(word);
-    
+    const options = await getRandomOptions(word);
+
     // Store options in a data attribute for later validation
     quizContainer.dataset.currentOptions = JSON.stringify(options);
     
@@ -577,18 +579,18 @@ function createPronunciationQuestion(word) {
 }
 
 // Get random options for multiple choice questions
-function getRandomOptions(correctWord) {
+async function getRandomOptions(correctWord) {
     const options = [correctWord];
-    const allWords = getAllWords();
-    
+    const allWords = await getAllWords();
+
     // Filter out the correct answer
     const otherWords = allWords.filter(word => word.english !== correctWord.english);
-    
+
     // Shuffle and get 3 random words
     const randomWords = [...otherWords]
         .sort(() => 0.5 - Math.random())
         .slice(0, 3);
-    
+
     // Combine and shuffle options
     return [...options, ...randomWords].sort(() => 0.5 - Math.random());
 }

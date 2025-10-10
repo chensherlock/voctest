@@ -1,0 +1,282 @@
+{
+  "id": 7,
+  "title": "高頻 Unit 7",
+  "default": false,
+  "words": [
+    {
+      "english": "anniversary",
+      "chinese": "n. [C] 周年紀念",
+      "example": ""
+    },
+    {
+      "english": "appropriate",
+      "chinese": "adj. 適當的",
+      "example": ""
+    },
+    {
+      "english": "appropriately",
+      "chinese": "adv. 適當地",
+      "example": ""
+    },
+    {
+      "english": "beginning",
+      "chinese": "n. [C] 開始",
+      "example": ""
+    },
+    {
+      "english": "begin",
+      "chinese": "vt. vi. 開始",
+      "example": "begin-began-begun"
+    },
+    {
+      "english": "celebrate",
+      "chinese": "vt. 慶祝",
+      "example": ""
+    },
+    {
+      "english": "celebration",
+      "chinese": "n. [C] [U] 慶祝",
+      "example": ""
+    },
+    {
+      "english": "decline",
+      "chinese": "vi. 婉拒, vi. 減少, 下降, 衰退, 惡化 n. [C] [U] 下降, 減少, 衰退, 惡化",
+      "example": ""
+    },
+    {
+      "english": "enable",
+      "chinese": "vt. 使能夠",
+      "example": ""
+    },
+    {
+      "english": "enjoyable",
+      "chinese": "adj. 令人愉快的",
+      "example": ""
+    },
+    {
+      "english": "enjoy",
+      "chinese": "vt. 享受, 喜歡",
+      "example": ""
+    },
+    {
+      "english": "fast",
+      "chinese": "adj. 快速的, adv. 快速地, 牢固地",
+      "example": ""
+    },
+    {
+      "english": "feature",
+      "chinese": "n. [C] 特色, 臉部表情, 專欄, vt. 以...為特色, 以...為主角, vi. 在...中扮演重要角色",
+      "example": ""
+    },
+    {
+      "english": "freeze",
+      "chinese": "vt. 使涷結, vi. 涷結, 感到涷僵",
+      "example": ""
+    },
+    {
+      "english": "frozen",
+      "chinese": "adj. 冰涷的",
+      "example": ""
+    },
+    {
+      "english": "gentle",
+      "chinese": "adj. 溫文儒雅的",
+      "example": ""
+    },
+    {
+      "english": "gentleman",
+      "chinese": "n. [C] 紳士",
+      "example": ""
+    },
+    {
+      "english": "grow",
+      "chinese": "vt. 使成長 vi. 成長, 變得",
+      "example": ""
+    },
+    {
+      "english": "grower",
+      "chinese": "n. [C] 種植者, 農家",
+      "example": ""
+    },
+    {
+      "english": "health",
+      "chinese": "n. [U] 健康",
+      "example": ""
+    },
+    {
+      "english": "healthy",
+      "chinese": "adj. 健康的",
+      "example": ""
+    },
+    {
+      "english": "heavy",
+      "chinese": "adj. 重的, 大量的, 厚實的",
+      "example": ""
+    },
+    {
+      "english": "heavily",
+      "chinese": "adv. 沉重地, 非常, 大量地",
+      "example": ""
+    },
+    {
+      "english": "help",
+      "chinese": "vt. 幫助, 給予(食物), vt. 有幫助, n. [U] 幫助",
+      "example": ""
+    },
+    {
+      "english": "helpless",
+      "chinese": "adj. 無助的",
+      "example": ""
+    },
+    {
+      "english": "hesitate",
+      "chinese": "vi. 猶豫, 遲疑",
+      "example": ""
+    },
+    {
+      "english": "hesitant",
+      "chinese": "adj. 猶豫的, 遲疑的",
+      "example": ""
+    },
+    {
+      "english": "hesitation",
+      "chinese": "n. [C] 猶豫, 遲疑",
+      "example": ""
+    },
+    {
+      "english": "link",
+      "chinese": "vt. 使有關係, 使連結, n. [C] 連結, 關係",
+      "example": ""
+    },
+    {
+      "english": "listener",
+      "chinese": "n. [C] 聆聽者",
+      "example": ""
+    },
+    {
+      "english": "listen",
+      "chinese": "vt. 聆聽, 傾聽",
+      "example": ""
+    },
+    {
+      "english": "luck",
+      "chinese": "n. [U] 運氣, 機運, 成功",
+      "example": ""
+    },
+    {
+      "english": "lucky",
+      "chinese": "adj. 幸運的",
+      "example": ""
+    },
+    {
+      "english": "match",
+      "chinese": "n. [C] 火柴, (網球)比賽, S:相配之物, vt. vi. (使)相對應, (使)相配",
+      "example": ""
+    },
+    {
+      "english": "motorist",
+      "chinese": "n. [C] 駕駛, 司機",
+      "example": ""
+    },
+    {
+      "english": "motorcycle",
+      "chinese": "n. [C] 重型機車, 摩托車",
+      "example": ""
+    },
+    {
+      "english": "newcomer",
+      "chinese": "n. [C] 新進人員, 新來的人",
+      "example": ""
+    },
+    {
+      "english": "pessimistic",
+      "chinese": "adj. 悲觀的",
+      "example": ""
+    },
+    {
+      "english": "pessimist",
+      "chinese": "n. [C] 悲觀主義者",
+      "example": ""
+    },
+    {
+      "english": "pessimism",
+      "chinese": "n. [U] 悲觀主義",
+      "example": ""
+    },
+    {
+      "english": "plain",
+      "chinese": "adj. 明白的, 明顯的, 平實的, n. [C] 平原",
+      "example": ""
+    },
+    {
+      "english": "provide",
+      "chinese": "vt. 提供",
+      "example": ""
+    },
+    {
+      "english": "readily",
+      "chinese": "adj. 容易地, 願意地",
+      "example": ""
+    },
+    {
+      "english": "real",
+      "chinese": "adj. 真實的, 真的",
+      "example": ""
+    },
+    {
+      "english": "reality",
+      "chinese": "n. [U] 真實情況, n. [C] 真實事件",
+      "example": ""
+    },
+    {
+      "english": "realize",
+      "chinese": "vt. 了解, 實現, vi. 了解",
+      "example": ""
+    },
+    {
+      "english": "realization",
+      "chinese": "n. [S] [U] 理解, 實現",
+      "example": ""
+    },
+    {
+      "english": "rooster",
+      "chinese": "n. [C] 公雞",
+      "example": ""
+    },
+    {
+      "english": "serve",
+      "chinese": "vt. vi. 上(菜), 供應(食物或飲料), 任職(於...), (為...)服務",
+      "example": ""
+    },
+    {
+      "english": "service",
+      "chinese": "n. [U] [C] 服務",
+      "example": ""
+    },
+    {
+      "english": "soon",
+      "chinese": "adv. 很快地",
+      "example": ""
+    },
+    {
+      "english": "support",
+      "chinese": "vt. 支持, 支撐, 供養",
+      "example": ""
+    },
+    {
+      "english": "supporter",
+      "chinese": "n. [C] 支持者, 擁護者, 支撐物, n. [U] 支持, n. [C][U] 支撐(物)",
+      "example": ""
+    },
+    {
+      "english": "vertical",
+      "chinese": "adj. 垂直的, 豎直的",
+      "example": ""
+    },
+    {
+      "english": "wet",
+      "chinese": "adj. 濕的",
+      "example": ""
+    }
+  ]
+}

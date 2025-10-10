@@ -1,0 +1,302 @@
+{
+  "id": 6,
+  "title": "高頻 Unit 6",
+  "default": false,
+  "words": [
+    {
+      "english": "abbreviate",
+      "chinese": "vt. 縮寫, 使變短",
+      "example": ""
+    },
+    {
+      "english": "abbreviation",
+      "chinese": "n. [C] 縮寫",
+      "example": ""
+    },
+    {
+      "english": "afford",
+      "chinese": "vt. 負擔得起, 承擔得起",
+      "example": ""
+    },
+    {
+      "english": "affordable",
+      "chinese": "adj. 負擔得起的",
+      "example": ""
+    },
+    {
+      "english": "cancellation",
+      "chinese": "n. [C] [U] 取消",
+      "example": ""
+    },
+    {
+      "english": "cancel",
+      "chinese": "vt. vi. 取消",
+      "example": ""
+    },
+    {
+      "english": "clap",
+      "chinese": "vt. vi. 拍(手); 鼓(掌) / n. [C] 巨響; 拍手",
+      "example": ""
+    },
+    {
+      "english": "complain",
+      "chinese": "vt. vi. 抱怨; 申訴",
+      "example": ""
+    },
+    {
+      "english": "complaint",
+      "chinese": "n. [U] [C] 抱怨;申訴",
+      "example": ""
+    },
+    {
+      "english": "completely",
+      "chinese": "adv. 完全, 絕對",
+      "example": ""
+    },
+    {
+      "english": "incomplete",
+      "chinese": "adj. 不完整的; 未完成的",
+      "example": ""
+    },
+    {
+      "english": "complete",
+      "chinese": "adj. 完全的; 完整的, vt. 完成; 使完整",
+      "example": ""
+    },
+    {
+      "english": "conversation",
+      "chinese": "n. [C] [U] 對話, 談話",
+      "example": ""
+    },
+    {
+      "english": "converse",
+      "chinese": "v. adj. vi. 交談, adj 相反的",
+      "example": ""
+    },
+    {
+      "english": "dedication",
+      "chinese": "n. [U] [C] 奉獻, 致力",
+      "example": ""
+    },
+    {
+      "english": "dedicate",
+      "chinese": "vt. 使奉獻, 使致力於",
+      "example": ""
+    },
+    {
+      "english": "defender",
+      "chinese": "n. [C] 守衛者; 擁護者; 辯護者",
+      "example": ""
+    },
+    {
+      "english": "defend",
+      "chinese": "vt. 抵禦;防守;為..辯護",
+      "example": ""
+    },
+    {
+      "english": "defense",
+      "chinese": "n. [U] 抵禦;防守;辯護",
+      "example": ""
+    },
+    {
+      "english": "dirt",
+      "chinese": "n [U] 泥濘; 灰塵",
+      "example": ""
+    },
+    {
+      "english": "dirty",
+      "chinese": "adj. 髒的",
+      "example": ""
+    },
+    {
+      "english": "disappear",
+      "chinese": "vt. 消失",
+      "example": ""
+    },
+    {
+      "english": "appear",
+      "chinese": "vt. 出現;似乎",
+      "example": ""
+    },
+    {
+      "english": "float",
+      "chinese": "vt. 使漂浮 vi. 漂浮; 飄浮",
+      "example": ""
+    },
+    {
+      "english": "geographical",
+      "chinese": "adj. 地理的",
+      "example": ""
+    },
+    {
+      "english": "geography",
+      "chinese": "n. [U] 地理(學)",
+      "example": ""
+    },
+    {
+      "english": "hike",
+      "chinese": "n. [C] 健行 vt. vi. 健行(於)",
+      "example": ""
+    },
+    {
+      "english": "hiking",
+      "chinese": "n. [U] 健行",
+      "example": ""
+    },
+    {
+      "english": "impact",
+      "chinese": "n [C] 影響, 衝擊 vt. vi. 影響",
+      "example": ""
+    },
+    {
+      "english": "intend",
+      "chinese": "vt. 意圖",
+      "example": ""
+    },
+    {
+      "english": "intention",
+      "chinese": "n. [C] [U] 意圖",
+      "example": ""
+    },
+    {
+      "english": "leak",
+      "chinese": "vt. vi. 漏, 滲; 洩漏 n. [C] 漏出(物);漏洞",
+      "example": ""
+    },
+    {
+      "english": "long",
+      "chinese": "adj. 長的; 久的 adv. 久久地",
+      "example": ""
+    },
+    {
+      "english": "motto",
+      "chinese": "n. [C] 座右銘; 格",
+      "example": ""
+    },
+    {
+      "english": "promote",
+      "chinese": "vt. 提倡; 宣傳; 使升遷",
+      "example": ""
+    },
+    {
+      "english": "promotion",
+      "chinese": "n. [C] [U] 宣傳; 升遷",
+      "example": ""
+    },
+    {
+      "english": "put",
+      "chinese": "vt. 放置; 使處於(...的狀態)",
+      "example": ""
+    },
+    {
+      "english": "robot",
+      "chinese": "n. [C] 機器人",
+      "example": ""
+    },
+    {
+      "english": "rude",
+      "chinese": "adj. 無禮的",
+      "example": ""
+    },
+    {
+      "english": "safety",
+      "chinese": "n. [U] 安全",
+      "example": ""
+    },
+    {
+      "english": "safe",
+      "chinese": "adj. 安全",
+      "example": ""
+    },
+    {
+      "english": "skill",
+      "chinese": "n. [C] [U] 技能 (=ability)",
+      "example": ""
+    },
+    {
+      "english": "skillfully",
+      "chinese": "adv. 巧妙地, 有技巧地",
+      "example": ""
+    },
+    {
+      "english": "skillful",
+      "chinese": "adj. 熟練的",
+      "example": ""
+    },
+    {
+      "english": "strange",
+      "chinese": "adj. 奇怪的",
+      "example": ""
+    },
+    {
+      "english": "stranger",
+      "chinese": "n. [C] 陌生人",
+      "example": ""
+    },
+    {
+      "english": "sweeten",
+      "chinese": "vt. 使變甜",
+      "example": ""
+    },
+    {
+      "english": "sweet",
+      "chinese": "adj. 甜的; 討人喜歡的",
+      "example": ""
+    },
+    {
+      "english": "transfer",
+      "chinese": "vt. 使轉移; 使調動;使轉乘 n. [C] [U] 轉移; 調動",
+      "example": ""
+    },
+    {
+      "english": "useful",
+      "chinese": "adj. 有用的; 有益的",
+      "example": ""
+    },
+    {
+      "english": "use",
+      "chinese": "v. n. vt. 使用 n.[S] [U] 使用 [C] [U] 用法",
+      "example": ""
+    },
+    {
+      "english": "useless",
+      "chinese": "adj. 無用的",
+      "example": ""
+    },
+    {
+      "english": "misuse",
+      "chinese": "n. [C] [U] 誤用; 濫用 vt. 誤用; 濫用",
+      "example": ""
+    },
+    {
+      "english": "vacation",
+      "chinese": "n. [C] [U] 度假; 休假",
+      "example": ""
+    },
+    {
+      "english": "visit",
+      "chinese": "vt. vi 拜訪; 造訪; 參觀 n. [C] 拜訪; 造訪; 參觀",
+      "example": ""
+    },
+    {
+      "english": "visitor",
+      "chinese": "n [C] 訪客; 參觀者",
+      "example": ""
+    },
+    {
+      "english": "wake",
+      "chinese": "vt vi (使)醒來",
+      "example": ""
+    },
+    {
+      "english": "weak",
+      "chinese": "adj. 弱的; 虛弱的",
+      "example": ""
+    },
+    {
+      "english": "weaken",
+      "chinese": "vt. vi. (使) 變弱",
+      "example": ""
+    }
+  ]
+}

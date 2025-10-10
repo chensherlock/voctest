@@ -127,7 +127,9 @@ function showAudioStatus(message) {
 async function displayAllUnits() {
     unitsContainer.innerHTML = '';
     try {
-        const units = await getAllUnits();
+        // Ensure units index is loaded
+        await preloadAllUnits();
+        const units = getAllUnits();
 
         units.forEach(unit => {
             const unitProgress = userProgress.getUnitProgress(unit.id);
@@ -172,15 +174,18 @@ async function displayAllUnits() {
 }
 
 // Show details for a specific unit
-function showUnitDetail(unitId) {
+async function showUnitDetail(unitId) {
     currentUnitId = unitId;
     const unit = getUnitById(unitId);
-    
+
     if (unit) {
+        // Ensure unit words are loaded
+        await getWordsFromUnit(unitId);
+
         // Update UI with unit details
         unitNumber.textContent = unit.id;
         displayUnitWords(unit);
-        
+
         // Show unit detail section, hide units list
         unitsList.style.display = 'none';
         unitDetail.style.display = 'block';

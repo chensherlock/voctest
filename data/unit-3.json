@@ -1,0 +1,327 @@
+{
+  "id": 3,
+  "title": "高頻 Unit 5",
+  "default": false,
+  "words": [
+    {
+      "english": "add",
+      "chinese": "使增加; 加總",
+      "example": ""
+    },
+    {
+      "english": "addition",
+      "chinese": "增加物; 附加物; 增加; 附加; 加法",
+      "example": ""
+    },
+    {
+      "english": "anxious",
+      "chinese": "焦慮的; 急切的",
+      "example": ""
+    },
+    {
+      "english": "balance",
+      "chinese": "平衡",
+      "example": ""
+    },
+    {
+      "english": "cheat",
+      "chinese": "欺騙; 作弊",
+      "example": ""
+    },
+    {
+      "english": "confirm",
+      "chinese": "確認; 證實",
+      "example": ""
+    },
+    {
+      "english": "consider",
+      "chinese": "考慮;視為",
+      "example": "I will consider your offer carefully."
+    },
+    {
+      "english": "considerate",
+      "chinese": "體貼的",
+      "example": ""
+    },
+    {
+      "english": "court",
+      "chinese": "法院；法庭；宮廷；運動場",
+      "example": ""
+    },
+    {
+      "english": "cunning",
+      "chinese": "狡猾的，狡猾，奸巧",
+      "example": ""
+    },
+    {
+      "english": "dialogue",
+      "chinese": "對話，台詞",
+      "example": ""
+    },
+    {
+      "english": "dominate",
+      "chinese": "統治；支配；占優勢",
+      "example": ""
+    },
+    {
+      "english": "dominant",
+      "chinese": "領導的；佔優勢的",
+      "example": ""
+    },
+    {
+      "english": "excellent",
+      "chinese": "優秀的",
+      "example": "She did an excellent job on the project."
+    },
+    {
+      "english": "excellence",
+      "chinese": "優秀",
+      "example": ""
+    },
+    {
+      "english": "fairly",
+      "chinese": "相當地; 公正地",
+      "example": ""
+    },
+    {
+      "english": "fair",
+      "chinese": "合理的; 公平的",
+      "example": ""
+    },
+    {
+      "english": "frequently",
+      "chinese": "時常; 頻繁地; 頻繁的",
+      "example": ""
+    },
+    {
+      "english": "frequent",
+      "chinese": "頻繁的",
+      "example": ""
+    },
+    {
+      "english": "fun",
+      "chinese": "樂趣",
+      "example": "We had a lot of fun at the party."
+    },
+    {
+      "english": "funny",
+      "chinese": "有趣的; 好笑的",
+      "example": ""
+    },
+    {
+      "english": "guilty",
+      "chinese": "有罪惡感的; 有罪的; 罪惡感; 罪行",
+      "example": ""
+    },
+    {
+      "english": "guilt",
+      "chinese": "罪惡感; 罪行",
+      "example": ""
+    },
+    {
+      "english": "have/has",
+      "chinese": "擁有; 使用; 吃; 喝",
+      "example": ""
+    },
+    {
+      "english": "interest",
+      "chinese": "興趣",
+      "example": "He has a keen interest in science."
+    },
+    {
+      "english": "interesting",
+      "chinese": "令人覺得有趣的",
+      "example": ""
+    },
+    {
+      "english": "interested",
+      "chinese": "感興趣的",
+      "example": ""
+    },
+    {
+      "english": "uninteresting",
+      "chinese": "令人感到無趣的",
+      "example": ""
+    },
+    {
+      "english": "loneliness",
+      "chinese": "孤單",
+      "example": ""
+    },
+    {
+      "english": "lonely",
+      "chinese": "孤單的",
+      "example": ""
+    },
+    {
+      "english": "mail",
+      "chinese": "信件，郵件; 寄出",
+      "example": ""
+    },
+    {
+      "english": "minor",
+      "chinese": "次要的; 弱勢; 少數族群; 輔修科目; 未成年人; 輔修",
+      "example": ""
+    },
+    {
+      "english": "minority",
+      "chinese": "弱勢; 少數族群",
+      "example": ""
+    },
+    {
+      "english": "mask",
+      "chinese": "面具；口罩; 掩飾",
+      "example": ""
+    },
+    {
+      "english": "nationality",
+      "chinese": "國籍",
+      "example": ""
+    },
+    {
+      "english": "nation",
+      "chinese": "國家",
+      "example": ""
+    },
+    {
+      "english": "national",
+      "chinese": "adj 國家的; 全國的; NC 國民",
+      "example": ""
+    },
+    {
+      "english": "neglect",
+      "chinese": "vt 忽視; 疏忽",
+      "example": ""
+    },
+    {
+      "english": "numerous",
+      "chinese": "許多的",
+      "example": ""
+    },
+    {
+      "english": "origin",
+      "chinese": "起源; 出生",
+      "example": ""
+    },
+    {
+      "english": "original",
+      "chinese": "起源的; 原本的; 有原創性的; 原版; 原稿; 原作",
+      "example": ""
+    },
+    {
+      "english": "point",
+      "chinese": "點; 看法; 地點; 時間點; 尖端; 重點; 原因; 目的; 指",
+      "example": ""
+    },
+    {
+      "english": "relate",
+      "chinese": "使用關聯; 有關聯",
+      "example": ""
+    },
+    {
+      "english": "related",
+      "chinese": "相關的",
+      "example": ""
+    },
+    {
+      "english": "relation",
+      "chinese": "(人際)關係; 親屬; 關聯",
+      "example": ""
+    },
+    {
+      "english": "relationship",
+      "chinese": "關係",
+      "example": ""
+    },
+    {
+      "english": "relative",
+      "chinese": "相對的; 親戚",
+      "example": "Success is relative to one's goals."
+    },
+    {
+      "english": "relatively",
+      "chinese": "相對地",
+      "example": ""
+    },
+    {
+      "english": "religion",
+      "chinese": "宗教; 信仰",
+      "example": ""
+    },
+    {
+      "english": "religious",
+      "chinese": "宗教的; 有信仰的; 虔誠的",
+      "example": ""
+    },
+    {
+      "english": "responsible",
+      "chinese": "負責的",
+      "example": "He is responsible for the project."
+    },
+    {
+      "english": "responsibility",
+      "chinese": "責任; 職責",
+      "example": "It is my responsibility to ensure safety."
+    },
+    {
+      "english": "silent",
+      "chinese": "沉默的",
+      "example": "Please remain silent during the test."
+    },
+    {
+      "english": "silence",
+      "chinese": "寂靜; 沉默; 使安靜",
+      "example": "The silence in the library was deafening."
+    },
+    {
+      "english": "suffer",
+      "chinese": "受...之苦; 承受; 受苦",
+      "example": "He suffered from a severe headache."
+    },
+    {
+      "english": "underground",
+      "chinese": "地下的; 秘密的; 非法的; 在地底下; 袐密地",
+      "example": "The underground train system is efficient."
+    },
+    {
+      "english": "understandable",
+      "chinese": "能理解的",
+      "example": "It's understandable to feel nervous before a test."
+    },
+    {
+      "english": "understand",
+      "chinese": "理解",
+      "example": "I understand the lesson."
+    },
+    {
+      "english": "misunderstand",
+      "chinese": "誤解; 誤會",
+      "example": "I misunderstood the instructions."
+    },
+    {
+      "english": "misunderstanding",
+      "chinese": "誤會",
+      "example": "I had a misunderstanding with my friend."
+    },
+    {
+      "english": "virus",
+      "chinese": "病毒",
+      "example": ""
+    },
+    {
+      "english": "lonely",
+      "chinese": "寂寞的",
+      "example": "I feel lonely when everyone is gone."
+    },
+    {
+      "english": "minor",
+      "chinese": "次要的",
+      "example": "It's only a minor issue."
+    },
+    {
+      "english": "national",
+      "chinese": "國家的",
+      "example": "It's a matter of national importance."
+    }
+  ]
+}
