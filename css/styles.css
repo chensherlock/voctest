@@ -738,9 +738,10 @@ footer {
 /* Word Number Styling */
 .word-content {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     flex: 1;
     gap: 8px; /* Add basic spacing between all child elements */
+    flex-wrap: wrap;
 }
 
 .word-number {
@@ -749,6 +750,7 @@ footer {
     margin-right: 10px;
     min-width: 24px;
     text-align: right;
+    margin-top: 2px;
 }
 
 .word-item .english {
@@ -759,6 +761,29 @@ footer {
 
 .word-item .chinese {
     color: var(--gray-color);
+}
+
+.word-item .examples {
+    width: 100%;
+    margin-top: 8px;
+    margin-left: 34px; /* Align with word content after number */
+}
+
+.word-item .example-line {
+    color: #666;
+    font-size: 14px;
+    font-style: italic;
+    margin-top: 4px;
+    padding: 4px 8px;
+    background-color: #f9f9f9;
+    border-left: 3px solid var(--primary-color);
+    border-radius: 3px;
+}
+
+.word-item .example-line .highlight-word {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-style: normal;
 }
 
 /* Quiz Audio Button */
@@ -779,6 +804,19 @@ footer {
 
 .quiz-question .audio-btn:hover {
     background-color: var(--secondary-color);
+}
+
+/* Fill-in-Blank Quiz Styles */
+.fill-blank-sentence {
+    font-size: 18px;
+    line-height: 1.8;
+    padding: 20px;
+    margin: 20px 0;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+    text-align: center;
+    font-style: italic;
 }
 
 /* Pronunciation Quiz Styles */

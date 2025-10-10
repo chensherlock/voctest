@@ -42,18 +42,26 @@ function ensureValidUnitIds() {
     }
 }
 
+// Helper function to check if a word has valid examples for fill-in-blank
+function hasValidExampleForFillInBlank(word) {
+    if (!word.example) return false;
+
+    const examples = Array.isArray(word.example) ? word.example : [word.example];
+    return examples.some(ex => ex && ex.trim() !== '' && ex.includes('[') && ex.includes(']'));
+}
+
 // Initialize the page
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     // Ensure we have valid unit IDs to start with
     ensureValidUnitIds();
-    
+
     // Check if a unit was specified in the URL
     const urlParams = new URLSearchParams(window.location.search);
     const unitId = urlParams.get('unit');
-    
+
     // Populate unit checkboxes (this will pre-select default units)
-    populateUnitSelect();
-    
+    await populateUnitSelect();
+
     // Set initial unit if specified in URL
     if (unitId) {
         // Validate the unit ID
@@ -67,14 +75,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 allCheckbox.checked = false;
                 allCheckbox.parentElement.classList.remove('selected');
             }
-            
+
             // Check the specified unit checkbox
             const checkbox = document.getElementById(`unit-${unitId}`);
             if (checkbox) {
                 checkbox.checked = true;
                 checkbox.parentElement.classList.add('selected');
                 selectedUnitIds = [unitId.toString()]; // Ensure it's a string
-                
+
                 // Uncheck any default units
                 getAllUnits().forEach(unit => {
                     if (unit.default && unit.id.toString() !== unitId) {
@@ -90,13 +98,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
-    
-    // Load all words from selected units
-    loadUnitWords();
-    
-    // Create vocabulary range selector
+
+    // Load all words from selected units (wait for it to complete)
+    await loadUnitWords();
+
+    // Create vocabulary range selector after words are loaded
     createVocabRangeSelector();
-    
+
     // Set up event listeners
     startQuiz.addEventListener('click', handleStartQuiz);
     submitAnswer.addEventListener('click', handleSubmitAnswer);
@@ -128,9 +136,9 @@ async function populateUnitSelect() {
         return;
     }
     
-    allCheckbox.addEventListener('change', (e) => {
+    allCheckbox.addEventListener('change', async (e) => {
         const unitCheckboxes = document.querySelectorAll('.unit-checkbox-item input[type="checkbox"]:not(#unit-all)');
-        
+
         if (e.target.checked) {
             // If "all" is checked, uncheck all other units
             unitCheckboxes.forEach(cb => {
@@ -145,7 +153,7 @@ async function populateUnitSelect() {
             unitCheckboxes.forEach(cb => {
                 if (cb.checked) anyChecked = true;
             });
-            
+
             if (!anyChecked) {
                 e.target.checked = true; // Keep "all" checked if nothing else is selected
                 selectedUnitIds = ['all'];
@@ -155,8 +163,8 @@ async function populateUnitSelect() {
                 e.target.parentElement.classList.remove('selected');
             }
         }
-        
-        loadUnitWords();
+
+        await loadUnitWords();
         createVocabRangeSelector();
     });
     
@@ -203,27 +211,27 @@ async function populateUnitSelect() {
             allCheckbox.parentElement.classList.remove('selected');
         }
           // Add event listener to each checkbox
-        checkbox.addEventListener('change', (e) => {
+        checkbox.addEventListener('change', async (e) => {
             const unitId = e.target.value.toString(); // Ensure unitId is a string
-            
+
             if (e.target.checked) {
                 unitItem.classList.add('selected');
-                
+
                 // Add to selectedUnitIds if not already included
                 if (!selectedUnitIds.includes(unitId)) {
                     selectedUnitIds.push(unitId);
                 }
-                
+
                 // Uncheck the "all" option when individual units are selected
                 const allCheckbox = document.getElementById('unit-all');
                 allCheckbox.checked = false;
                 allCheckbox.parentElement.classList.remove('selected');
             } else {
                 unitItem.classList.remove('selected');
-                
+
                 // Remove from selectedUnitIds
                 selectedUnitIds = selectedUnitIds.filter(id => id !== unitId);
-                
+
                 // If no units are selected, check the "all" option
                 if (selectedUnitIds.length === 0) {
                     const allCheckbox = document.getElementById('unit-all');
@@ -232,8 +240,8 @@ async function populateUnitSelect() {
                     selectedUnitIds = ['all'];
                 }
             }
-            
-            loadUnitWords();
+
+            await loadUnitWords();
             createVocabRangeSelector();
         });
         
@@ -390,10 +398,21 @@ async function prepareQuizWords() {
     // Get vocabulary range
     const vocabRangeStart = parseInt(document.getElementById('vocabRangeStart').value) - 1;
     const vocabRangeEnd = parseInt(document.getElementById('vocabRangeEnd').value);
-    
+
     // Filter words based on range
     words = words.slice(vocabRangeStart, vocabRangeEnd);
-    
+
+    // Filter words based on quiz type requirements
+    if (quizTypeValue === 'fill-in-blank') {
+        // Only include words with valid examples containing blanks
+        words = words.filter(word => hasValidExampleForFillInBlank(word));
+
+        if (words.length === 0) {
+            alert('所選單元中沒有包含填空範例的詞彙。請選擇其他測驗類型或不同的單元。');
+            return;
+        }
+    }
+
     // Shuffle and limit to question count
     currentQuizWords = [...words]
         .sort(() => 0.5 - Math.random())
@@ -425,6 +444,9 @@ async function displayCurrentQuestion() {
                 break;
             case 'pronunciation':
                 await createPronunciationQuestion(word);
+                break;
+            case 'fill-in-blank':
+                await createFillInBlankQuestion(word);
                 break;
         }
           // Hide submit button for multiple choice, matching, and pronunciation questions
@@ -578,21 +600,104 @@ async function createPronunciationQuestion(word) {
     });
 }
 
+// Create a fill-in-blank question
+async function createFillInBlankQuestion(word) {
+    // Get examples and find one with [...]
+    const examples = Array.isArray(word.example) ? word.example : [word.example];
+    const examplesWithBlanks = examples.filter(ex => ex && ex.trim() !== '' && ex.includes('[') && ex.includes(']'));
+
+    // This should not happen if prepareQuizWords filtered correctly, but just in case
+    if (examplesWithBlanks.length === 0) {
+        console.error('Fill-in-blank question created for word without valid example:', word);
+        await createMultipleChoiceQuestion(word);
+        return;
+    }
+
+    // Pick a random example with blank
+    const selectedExample = examplesWithBlanks[Math.floor(Math.random() * examplesWithBlanks.length)];
+
+    // Replace [word] with _____ for display
+    const displayExample = selectedExample.replace(/\[([^\]]+)\]/g, '_____');
+
+    // Get options (1 correct + 3 random = 4 total)
+    const options = await getRandomOptions(word, 4);
+
+    console.log('Fill-in-blank options generated:', options.length, options);
+
+    // Store options in a data attribute for later validation
+    quizContainer.dataset.currentOptions = JSON.stringify(options);
+
+    const questionElement = document.createElement('div');
+    questionElement.className = 'quiz-question';
+    questionElement.innerHTML = `
+        <h3>請選擇正確的單字填入空格</h3>
+        <div class="fill-blank-sentence">${displayExample}</div>
+        <div class="quiz-options">
+            ${options.map((option, index) => `
+                <label>
+                    <input type="radio" name="answer" value="${index}" class="auto-submit-option">
+                    ${option.english}
+                </label>
+            `).join('')}
+        </div>
+    `;
+
+    quizContainer.appendChild(questionElement);
+
+    // Add event listeners to auto-submit when an option is selected
+    const radioButtons = document.querySelectorAll('.auto-submit-option');
+    radioButtons.forEach(radio => {
+        radio.addEventListener('change', handleSubmitAnswer);
+    });
+}
+
 // Get random options for multiple choice questions
-async function getRandomOptions(correctWord) {
+async function getRandomOptions(correctWord, optionCount = 4) {
     const options = [correctWord];
-    const allWords = await getAllWords();
+
+    // Start with currentQuizWords if available, otherwise use all words
+    let wordPool;
+    if (currentQuizWords.length >= optionCount) {
+        // Use quiz words if we have enough
+        wordPool = currentQuizWords;
+    } else {
+        // Otherwise use all words
+        wordPool = await getAllWords();
+    }
 
     // Filter out the correct answer
-    const otherWords = allWords.filter(word => word.english !== correctWord.english);
+    let otherWords = wordPool.filter(word => word.english !== correctWord.english);
 
-    // Shuffle and get 3 random words
+    // Calculate how many random options we need
+    const neededOptions = optionCount - 1;
+
+    // If we don't have enough other words from the current pool, get more from all words
+    if (otherWords.length < neededOptions) {
+        console.warn(`Not enough options in word pool (${otherWords.length}), fetching from all words`);
+        const allWords = await getAllWords();
+        otherWords = allWords.filter(word => word.english !== correctWord.english);
+    }
+
+    // Shuffle and get the needed number of random words
     const randomWords = [...otherWords]
         .sort(() => 0.5 - Math.random())
-        .slice(0, 3);
+        .slice(0, neededOptions);
+
+    // Final check: if we STILL don't have enough (shouldn't happen), log error
+    if (randomWords.length < neededOptions) {
+        console.error(`Could not generate ${neededOptions} random options. Only got ${randomWords.length}. Total words available: ${otherWords.length}`);
+        // Fill with duplicates as last resort
+        while (randomWords.length < neededOptions && randomWords.length > 0) {
+            randomWords.push(randomWords[randomWords.length % randomWords.length]);
+        }
+    }
 
     // Combine and shuffle options
-    return [...options, ...randomWords].sort(() => 0.5 - Math.random());
+    const finalOptions = [...options, ...randomWords].sort(() => 0.5 - Math.random());
+
+    console.log(`Generated ${finalOptions.length} options for word "${correctWord.english}"`);
+
+    return finalOptions;
 }
 
 // Handle answer submission
@@ -604,16 +709,17 @@ function handleSubmitAnswer() {
         case 'multiple-choice':
         case 'matching':
         case 'pronunciation':
+        case 'fill-in-blank':
             const selectedOption = document.querySelector('input[name="answer"]:checked');
-            
+
             if (selectedOption) {
                 const optionIndex = parseInt(selectedOption.value);
                 const options = document.querySelectorAll('input[name="answer"]');
-                
+
                 // Get the correct labels based on quiz type
                 let answerLabels;
-                if (quizTypeValue === 'multiple-choice') {
-                    // For multiple choice, the label is a direct parent of the input
+                if (quizTypeValue === 'multiple-choice' || quizTypeValue === 'fill-in-blank') {
+                    // For multiple choice and fill-in-blank, the label is a direct parent of the input
                     answerLabels = document.querySelectorAll('.quiz-options label');
                 } else if (quizTypeValue === 'pronunciation') {
                     // For pronunciation, the label is also in .quiz-options
@@ -622,31 +728,31 @@ function handleSubmitAnswer() {
                     // For matching, we need to get the label with matching 'for' attribute
                     answerLabels = document.querySelectorAll('.matching-options label');
                 }
-                
+
                 // Get the selected answer text from the correct label
                 userAnswer = answerLabels[optionIndex].textContent.trim();
-                
+
                 // Get stored options from data attribute
                 const currentOptions = JSON.parse(quizContainer.dataset.currentOptions);
-                
+
                 // Check if the selected option is correct
                 if (quizTypeValue === 'pronunciation') {
                     isCorrect = currentOptions[optionIndex].english === word.english;
                 } else {
                     isCorrect = currentOptions[optionIndex].english === word.english;
                 }
-                
+
                 // Highlight correct and incorrect answers
                 options.forEach((option, index) => {
                     const label = answerLabels[index];
                     const optionWord = currentOptions[index];
-                    
+
                     if (optionWord.english === word.english) {
                         label.classList.add('correct');
                     } else if (index === optionIndex) {
                         label.classList.add('incorrect');
                     }
-                    
+
                     option.disabled = true;
                 });
             } else {

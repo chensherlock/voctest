@@ -214,6 +214,26 @@ function displayUnitWords(unit) {
             `<div class="chinese-line">${translation}</div>`
         ).join('');
 
+        // Check if word has example(s)
+        const hasExample = word.example && (
+            (Array.isArray(word.example) && word.example.length > 0 && word.example.some(ex => ex.trim() !== '')) ||
+            (!Array.isArray(word.example) && word.example.trim() !== '')
+        );
+
+        // Format examples for display
+        let examplesHTML = '';
+        if (hasExample) {
+            const examples = Array.isArray(word.example) ? word.example : [word.example];
+            examplesHTML = examples
+                .filter(ex => ex && ex.trim() !== '')
+                .map(example => {
+                    // Replace [word] with highlighted word (remove brackets, add blue color)
+                    const formattedExample = example.replace(/\[([^\]]+)\]/g, '<span class="highlight-word">$1</span>');
+                    return `<div class="example-line">${formattedExample}</div>`;
+                })
+                .join('');
+        }
+
         // Check if word has video URL
         const hasVideo = word.video && word.video.trim() !== '';
         const videoButton = hasVideo ?
@@ -226,6 +246,7 @@ function displayUnitWords(unit) {
                 <span class="word-number">${wordNumber}.</span>
                 <span class="english">${word.english}</span>
                 <div class="chinese">${chineseHTML}</div>
+                ${hasExample ? `<div class="examples">${examplesHTML}</div>` : ''}
             </div>
             <div class="word-actions">
                 ${videoButton}

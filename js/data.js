@@ -28,8 +28,8 @@ async function loadUnitsIndex() {
     }
 }
 
-// Load a specific unit's words
-async function loadUnitWords(unitId) {
+// Load a specific unit's words from JSON file
+async function loadUnitWordsFromFile(unitId) {
     // Check if already cached
     if (unitCache[unitId]) {
         return unitCache[unitId];
@@ -62,7 +62,7 @@ async function loadUnitWords(unitId) {
 // Preload all units
 async function preloadAllUnits() {
     const units = await loadUnitsIndex();
-    const promises = units.map(unit => loadUnitWords(unit.id));
+    const promises = units.map(unit => loadUnitWordsFromFile(unit.id));
     await Promise.all(promises);
     return vocabularyData.units;
 }
@@ -84,7 +84,7 @@ async function getWordsFromUnit(unitId) {
 
     // Load words if not already loaded
     if (unit.words.length === 0) {
-        await loadUnitWords(unitId);
+        await loadUnitWordsFromFile(unitId);
     }
 
     return unit.words;

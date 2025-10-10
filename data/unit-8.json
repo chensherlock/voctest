@@ -5,21 +5,28 @@
   "words": [
     {
       "english": "absent",
-      "chinese": "adj. 缺席的, 不在場的",
-      "example": ""
+      "chinese": "adj. 缺席的, 不在場的 (=missing)",
+      "example": "John is [absent] from class because he is sick."
     },
     {
       "english": "absence",
-      "chinese": "n. [C] [U] 缺席 (期間)",
-      "example": ""
+      "chinese": [
+        "n. [C] [U] 缺席 (期間)",
+        "n. [S] [U] 不存在"
+      ],
+      "example": "I'd like to request a two-day leave of [absence] next week because my relatives are coming to Tainan and I want to show them around the city."
     },
     {
       "english": "aid",
       "chinese": [
-        "n. [U] 幫助, 支援, 資助",
-        "n. [C] 輔助工具"
+        "n. [U] 幫助, 支援 (=assistance, help, support), 資助",
+        "n. [C] 輔助工具",
+        "vt. 幫助, 援助 (=help, assist, support), 金援"
       ],
-      "example": ""
+      "example": [
+        "When I needed help, Lisa come to my [aid].",
+        "A good dictionary will [aid] you in learning to language"
+      ]
     },
     {
       "english": "aide",
@@ -28,8 +35,8 @@
     },
     {
       "english": "assist",
-      "chinese": "vt. vi. 幫助, 協助",
-      "example": ""
+      "chinese": "vt. vi. 幫助, 協助 (=aid, help)",
+      "example": "Rescue teams from all over the wrold came to [assist] with the search for the soccer team that had been trapped in the cave for days."
     },
     {
       "english": "assistant",
@@ -45,11 +52,15 @@
     {
       "english": "break",
       "chinese": [
-        "vt. vi. (使) 破碎",
-        "vt. 違反",
-        "n. [C] 休息"
+        "vt. vi. (使) 破碎 (=crack, crush)",
+        "vt. 違反 (=violate)",
+        "n. [C] 休息 (=rest, time off)"
       ],
-      "example": "break-broke-broken"
+      "tense": "break-broke-broken",
+      "example": [
+        "Anyone caught [breaking] this traffic rule will receive a fine of at least NT$2000.",
+        "After working for two hours, Jack stopped to take a short [break]."
+      ]
     },
     {
       "english": "brush",
@@ -57,20 +68,27 @@
         "n. [C] 刷子, 梳子 ",
         "vt. 刷洗, (用手或刷子) 拂去"
       ],
-      "example": ""
+      "example": [
+        "Dianna used a makeup [brush] to put some blush on her cheeks.",
+        "I always [brush] my teeth right after I wake up"
+      ]
     },
     {
       "english": "cash",
-      "chinese": "n. [U] 現金",
-      "example": ""
+      "chinese": "n. [U] 現金 (=money)",
+      "example": [
+        "Julia paid by credit card because she didn't have enough [cash] with her."
+      ]
     },
     {
       "english": "compose",
       "chinese": [
-        "vt. 創作, 組成",
+        "vt. 創作 (=write), 組成(=constitute, make up)",
         "vi. 創作"
       ],
-      "example": ""
+      "example": [
+        "Beethoven was a well-known muscian who [composed] many great classical pieces"
+      ]
     },
     {
       "english": "composer",
@@ -88,7 +106,7 @@
     {
       "english": "curious",
       "chinese": "adj. 好奇的",
-      "example": ""
+      "example": "The orphan is [curious] about who his real parents where."
     },
     {
       "english": "curiousity",
@@ -98,7 +116,9 @@
     {
       "english": "deep",
       "chinese": "adj. 深的",
-      "example": ""
+      "example": [
+        "The swimming pool is only for adults because the water is very [deep]."
+      ]
     },
     {
       "english": "deepen",
@@ -109,27 +129,36 @@
       "english": "depth",
       "chinese": [
         "n. [U][C] 深度",
-        "n. [P] 海底深淵"
+        "n. [P] 海底深淵 (the ~)"
       ],
-      "example": ""
+      "example": [
+        "The engineers built a machine that could travel to the [depths] of the ocean."
+      ]
     },
     {
       "english": "delete",
-      "chinese": "vt. 刪除",
-      "example": ""
+      "chinese": "vt. 刪除 (=remove, cross out, wipe out)",
+      "example": [
+        "Michael had to write his article again after he accidentally [deleted] the file."
+      ]
     },
     {
       "english": "desire",
       "chinese": [
-        "n. [C][U] 欲望, 渴望",
+        "n. [C][U] 欲望, 渴望 (=thirst)",
         "vt. 渴望"
       ],
-      "example": ""
+      "example": [
+        "Sally has no [desire] to go out because she is tired.",
+        "The job applicant [desires] to get the well-paying job."
+      ]
     },
     {
       "english": "effortless",
       "chinese": "adj. 不費力的, 輕鬆的",
-      "example": ""
+      "example": [
+        "The performer's impressive jumps seemed [effortless]."
+      ]
     },
     {
       "english": "effort",
@@ -138,13 +167,18 @@
     },
     {
       "english": "enormous",
-      "chinese": "adj. 巨大的",
-      "example": ""
+      "chinese": "adj. 巨大的 (=giganitc, huge, tremendous)",
+      "example": [
+        "Dinosaurs where [enormous] creatures that lived on Earth millions of years ago."
+      ]
     },
     {
       "english": "express",
-      "chinese": "vt. 表逹",
-      "example": ""
+      "chinese": "vt. 表逹 (=communicate, convey)",
+      "example": [
+        "Gary [expressed] his feelings to Sarah inb a long letter.",
+        "I traveled by [express] train because it was faster than the regular one."
+      ]
     },
     {
       "english": "expression",
@@ -152,27 +186,35 @@
         "n. [C][U] 表逹",
         "n. [C] 表情"
       ],
-      "example": ""
+      "example": []
     },
     {
       "english": "expressive",
       "chinese": "adj. 表情生動的",
-      "example": ""
+      "example": [
+        "One of the reasons George Clooney is such a great actor is because he is very [expressive]."
+      ]
     },
     {
       "english": "fulfill",
-      "chinese": "vt. 滿足, 逹成",
-      "example": ""
+      "chinese": "vt. 滿足, 逹成 (=accomplish, achieve, realize)",
+      "example": [
+        "Henry [fulfilled] his goal of becoming an officer when he got admitted to the police department."
+      ]
     },
     {
       "english": "global",
-      "chinese": "adj. 全球的",
-      "example": ""
+      "chinese": "adj. 全球的 (=international, universal, worldwide)",
+      "example": [
+        "\"Happy Birthday\" is a [global] song sung all over the wrold"
+      ]
     },
     {
       "english": "idea",
-      "chinese": "n. [C] 想法, 靈感",
-      "example": ""
+      "chinese": "n. [C] 想法, 靈感 (=concept, opinionm, thought)",
+      "example": [
+        "Paula always comes up with good [ideas] in meetings."
+      ]
     },
     {
       "english": "ideal",
@@ -184,8 +226,10 @@
     },
     {
       "english": "joy",
-      "chinese": "n. [C][U] (令人)快樂(之事)",
-      "example": ""
+      "chinese": "n. [C][U] (令人)快樂(之事) (=amusement, delight, enjoyment)",
+      "example": [
+        "The man's heart was filled with [joy] when he found his lost dog."
+      ]
     },
     {
       "english": "joyful",
@@ -194,21 +238,27 @@
     },
     {
       "english": "mill",
-      "chinese": "n. [C] 磨坊, 磨具, 工廠",
-      "example": ""
+      "chinese": "n. [C] 磨坊, 磨具, 工廠 (=factory)",
+      "example": [
+        "The workers bring the cotton they pick to the [mill] every day."
+      ]
     },
     {
       "english": "moisture",
-      "chinese": "n. [U] 濕氣, 水氣",
-      "example": ""
+      "chinese": "n. [U] 濕氣, 水氣 (=humidity)",
+      "example": [
+        "To protect the camera from [moisture], I keep it in a dry cabinet."
+      ]
     },
     {
       "english": "noise",
       "chinese": [
         "n. [U] 噪音",
-        "n. [C] 聲音"
+        "n. [C] 聲音 (=sound)"
       ],
-      "example": "",
+      "example": [
+        "Ellen couldn't concentrate on her homework because her brother was making a lot of [noise]."
+      ],
       "video": "https://magazine.english4u.net/vocmemory/video/3655"
     },
     {
@@ -219,37 +269,51 @@
     {
       "english": "nutrition",
       "chinese": "n. [U] 營養, 營養學",
-      "example": ""
+      "example": [
+        "The child is short and skinny because of poor [nutrition]."
+      ]
     },
     {
       "english": "nutritious",
       "chinese": "adj. 有營養的",
-      "example": ""
+      "example": [
+        "Gary alwasy tries to have [nutritious] meals instead of eating junk food."
+      ]
     },
     {
       "english": "obtain",
-      "chinese": "vt. 獲得",
-      "example": ""
+      "chinese": "vt. 獲得 (=acquire, gain, get)",
+      "example": [
+        "The university has [obtained] several awards for its quality teaching methods."
+      ]
     },
     {
       "english": "obvious",
-      "chinese": "adj. 明顯的",
-      "example": ""
+      "chinese": "adj. 明顯的(=apparent, evident, plain)",
+      "example": [
+        "It's [obvious] George is drunk because the can't walk properly."
+      ]
     },
     {
       "english": "obviously",
       "chinese": "adv. 顯然地",
-      "example": ""
+      "example": [
+        "Stephen [obviously] likes Jessica; he blushes every time they talk."
+      ]
     },
     {
       "english": "offend",
-      "chinese": "vt. 冒犯",
-      "example": ""
+      "chinese": "vt. 冒犯 (=annoy, insult, upset)",
+      "example": [
+        "Dora was [offended] when James asked how old she was."
+      ]
     },
     {
       "english": "offensive",
-      "chinese": "adj. 冒犯人的, 令人不快的",
-      "example": ""
+      "chinese": "adj. 冒犯人的, 令人不快的 (=annoying, disturbing)",
+      "example": [
+        "Jeff found it [offensive] when Linda called him a liar."
+      ]
     },
     {
       "english": "offense",
@@ -259,19 +323,25 @@
     {
       "english": "pollute",
       "chinese": "vt. 汙染",
-      "example": "",
+      "example": [
+        "The company decided to stop using this chemical in their products as it [pollutes] the environment."
+      ],
       "video": "https://magazine.english4u.net/vocmemory/video/3696"
     },
     {
       "english": "pollution",
       "chinese": "n. [U] 汙染",
-      "example": "",
+      "example": [
+        "Smoke from vehicles is the main source of air [pollution] in Taipei."
+      ],
       "video": "https://magazine.english4u.net/vocmemory/video/3696"
     },
     {
       "english": "proof",
-      "chinese": "n. [C][U] 證明, 證據",
-      "example": ""
+      "chinese": "n. [C][U] 證明, 證據 (=evidence)",
+      "example": [
+        "The police arrested a suspect, but they didn't have enough [proof] to keep him in jail."
+      ]
     },
     {
       "english": "prove",
@@ -281,25 +351,33 @@
     {
       "english": "rebel",
       "chinese": [
-        "n. [C] 反判者",
-        "vi. 反判"
+        "n. [C] 反判者 (=opponent)",
+        "vi. 反判 (=resist, overthrow)"
       ],
-      "example": ""
+      "example": [
+        "It is normal for citizens to [rebel] against a brutal government."
+      ]
     },
     {
       "english": "rebellion",
-      "chinese": "n. [C][U] 反判, 判逆",
-      "example": ""
+      "chinese": "n. [C][U] 反判 (=revolution), 判逆",
+      "example": [
+        "Mark is going through a typical stage of teenages [rebellion] and refusing to obey his parents' rules."
+      ]
     },
     {
       "english": "relieve",
-      "chinese": "vt. 緩解, 使放心",
-      "example": ""
+      "chinese": "vt. 緩解 (=ease, soothe), 使放心",
+      "example": [
+        "I took some medicine to [relieve] the pain in my back."
+      ]
     },
     {
       "english": "relieved",
       "chinese": "adj. 放心的",
-      "example": ""
+      "example": [
+        "The mother was [relieved] to see her child arrive home safe and sound."
+      ]
     },
     {
       "english": "relief",
@@ -308,21 +386,35 @@
     },
     {
       "english": "reserve",
-      "chinese": "n. [C] 儲備(常用複數形), 自然保護區",
-      "example": ""
+      "chinese": [
+        "n. [C] 儲備(常用複數形) (=supply), 自然保護區 (=preserve, reservation)",
+        "vt. vi. 預定, 保留 (=save)"
+      ],
+      "example": [
+        "Charlotte keeps some money in [reserve] in case of an emergency.",
+        "This talbe is [reserved] for some special guests."
+      ]
     },
     {
       "english": "reservation",
       "chinese": [
-        "n. [C] 預約, 自然保護區",
-        "n. [C][U] 存疑(常用複數形)"
+        "n. [C] 預約 (=booking), 自然保護區 (=preserve, reserve)",
+        "n. [C][U] 存疑(常用複數形) (=doubt)"
       ],
-      "example": ""
+      "example": [
+        "Ann made a [reservation] at the hotel she planned to stay at."
+      ]
     },
     {
       "english": "scan",
-      "chinese": "vt. vi. 掃描, 迅速瀏覽, 細看, 審視",
-      "example": ""
+      "chinese": [
+        "vt. vi. 掃描, 迅速瀏覽 (=browse, look through), 細看, 審視 (=check, examine)",
+        "n. [C] (身體的) 掃描檢查"
+      ],
+      "example": [
+        "Victor always [scans] the newspaper for major news before he goes to work.",
+        "Nancy had to receive a brain [scan] to see if there was any damage to her brain."
+      ]
     },
     {
       "english": "scanner",
@@ -331,13 +423,17 @@
     },
     {
       "english": "voice",
-      "chinese": "n. [C][U] 說話聲, 嗓音",
-      "example": ""
+      "chinese": "n. [C][U] 說話聲, 嗓音 (=sounds)",
+      "example": [
+        "Allen raised his [voice] so the students in the back cloud hear him."
+      ]
     },
     {
       "english": "wonderful",
-      "chinese": "adj. 非常棒的",
-      "example": "",
+      "chinese": "adj. 非常棒的 (=brilliant, excellent, outstanding)",
+      "example": [
+        "Joyce is a [wonderful] cook; everybody likes the food she makes."
+      ],
       "video": "https://magazine.english4u.net/vocmemory/video/3858"
     },
     {
