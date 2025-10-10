@@ -430,6 +430,7 @@ async function displayCurrentQuestion() {
 
         // Clear previous question
         quizContainer.innerHTML = '';
+        quizContainer.classList.remove('fill-in-blank-mode');
 
         // Create question based on quiz type
         switch (quizTypeValue) {
@@ -602,6 +603,9 @@ async function createPronunciationQuestion(word) {
 
 // Create a fill-in-blank question
 async function createFillInBlankQuestion(word) {
+    // Add class to widen the container
+    quizContainer.classList.add('fill-in-blank-mode');
+
     // Get examples and find one with [...]
     const examples = Array.isArray(word.example) ? word.example : [word.example];
     const examplesWithBlanks = examples.filter(ex => ex && ex.trim() !== '' && ex.includes('[') && ex.includes(']'));
@@ -628,7 +632,7 @@ async function createFillInBlankQuestion(word) {
     quizContainer.dataset.currentOptions = JSON.stringify(options);
 
     const questionElement = document.createElement('div');
-    questionElement.className = 'quiz-question';
+    questionElement.className = 'quiz-question fill-in-blank';
     questionElement.innerHTML = `
         <h3>請選擇正確的單字填入空格</h3>
         <div class="fill-blank-sentence">${displayExample}</div>
