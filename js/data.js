@@ -9,7 +9,7 @@ const unitCache = {};
 // Load units index
 async function loadUnitsIndex() {
     try {
-        const response = await fetch('data/units-index.json');
+        const response = await fetch(`data/units-index.json?v=${Date.now()}`);
         if (!response.ok) {
             throw new Error(`Failed to load units index: ${response.statusText}`);
         }
@@ -19,6 +19,7 @@ async function loadUnitsIndex() {
             title: unit.title,
             default: unit.default,
             file: unit.file,
+            video: unit.video || '',
             words: [] // Words will be loaded on demand
         }));
         return vocabularyData.units;
@@ -41,7 +42,7 @@ async function loadUnitWordsFromFile(unitId) {
             throw new Error(`Unit ${unitId} not found in index`);
         }
 
-        const response = await fetch(`data/${unit.file}`);
+        const response = await fetch(`data/${unit.file}?v=${Date.now()}`);
         if (!response.ok) {
             throw new Error(`Failed to load unit ${unitId}: ${response.statusText}`);
         }

@@ -1,16 +1,16 @@
 {
   "units": [
     {
-      "id": 1,
-      "title": "課本 Unit 3",
+      "id": 23,
+      "title": "課本2 Unit 3",
       "default": false,
-      "file": "unit-1.json"
+      "file": "unit-23.json"
     },
     {
-      "id": 2,
-      "title": "課本 Unit 4",
+      "id": 24,
+      "title": "課本2 Unit 4",
       "default": false,
-      "file": "unit-2.json"
+      "file": "unit-24.json"
     },
     {
       "id": 3,
@@ -46,13 +46,29 @@
       "id": 8,
       "title": "高頻 Unit 8",
       "default": true,
-      "file": "unit-8.json"
+      "file": "unit-8.json",
+      "video": ""
     },
     {
       "id": 9,
       "title": "高頻 Unit 9",
       "default": true,
-      "file": "unit-9.json"
+      "file": "unit-9.json",
+      "video": ""
+    },
+    {
+      "id": 31,
+      "title": "課本3 Unit 1",
+      "default": true,
+      "file": "unit-31.json",
+      "video": "https://www.sanmin.com.tw/api/attachment/URL3/4711289874621"
+    },
+    {
+      "id": 32,
+      "title": "課本3 Unit 2",
+      "default": true,
+      "file": "unit-32.json",
+      "video": "https://www.sanmin.com.tw/api/attachment/URL6/4711289874621"
     }
   ]
 }

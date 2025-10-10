@@ -136,13 +136,21 @@ async function displayAllUnits() {
 
         units.forEach(unit => {
             const hasWords = unit.words && unit.words.length > 0;
+            const hasVideo = unit.video && unit.video.trim() !== '';
 
             const unitCard = document.createElement('div');
-            unitCard.className = 'unit-card';
+            unitCard.className = `unit-card ${unit.default ? 'default-unit' : ''}`;
+
+            // Create buttons HTML
+            let buttonsHTML = `<a href="units.html?unit=${unit.id}" class="btn-small ${!hasWords ? 'disabled' : ''}">${hasWords ? '學習' : '無詞彙'}</a>`;
+            if (hasVideo) {
+                buttonsHTML += `<button class="btn-small btn-video" data-video-url="${unit.video}" title="觀看單元影片"><i class="fas fa-video"></i></button>`;
+            }
+
             unitCard.innerHTML = `
                 <h3>${unit.title}</h3>
                 <p>${unit.words.length} 個詞彙</p>
-                <a href="units.html?unit=${unit.id}" class="btn-small ${!hasWords ? 'disabled' : ''}">${hasWords ? '學習' : '無詞彙'}</a>
+                <div class="unit-card-buttons">${buttonsHTML}</div>
             `;
 
             const studyButton = unitCard.querySelector('a');
@@ -158,6 +166,16 @@ async function displayAllUnits() {
                 // Prevent navigation for empty units
                 studyButton.addEventListener('click', (e) => {
                     e.preventDefault();
+                });
+            }
+
+            // Add video button event listener
+            if (hasVideo) {
+                const videoBtn = unitCard.querySelector('.btn-video');
+                videoBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const videoUrl = videoBtn.dataset.videoUrl;
+                    window.open(videoUrl, '_blank');
                 });
             }
 

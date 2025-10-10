@@ -1,0 +1,314 @@
+{
+  "id": 32,
+  "title": "課本3 Unit 2",
+  "words": [
+    {
+      "english": "grocery",
+      "chinese": [
+        "n. [pl.][C] 食品雜貨, 食品雜貨店"
+      ],
+      "example": [
+      ]
+    },
+    {
+      "english": "weird",
+      "chinese": [
+        "adj. 奇怪的"
+      ],
+      "example": [
+      ]
+    },
+    {
+      "english": "tough",
+      "chinese": [
+        "adj. 困難的, 艱苦的"
+      ],
+      "example": [
+      ]
+    },
+    {
+      "english": "advice",
+      "chinese": [
+        "n. [U] 意見, 忠告"
+      ],
+      "example": [
+      ]
+    },
+    {
+      "english": "advise",
+      "chinese": [
+        "vt. vi. 建議, 勸告"
+      ],
+      "example": [
+      ]
+    },
+    {
+      "english": "distribute",
+      "chinese": [
+        "vt. 分發"
+      ],
+      "example": [
+      ]
+    },
+    {
+      "important": true,
+      "english": "solution",
+      "chinese": [
+        "n. [C] 解決辦法"
+      ],
+      "example": [
+      ]
+    },
+    {
+      "english": "solve",
+      "chinese": [
+        "vt. 解決"
+      ],
+      "example": [
+      ]
+    },
+    {
+      "english": "celebrity",
+      "chinese": [
+        "n. [C] 名人"
+      ],
+      "example": [
+      ]
+    },
+    {
+      "english": "support",
+      "chinese": [
+        "vt. 支持"
+      ],
+      "example": [
+      ]
+    },
+    {
+      "english": "activity",
+      "chinese": [
+        "n. [C] 活動"
+      ],
+      "example": [
+      ]
+    },
+    {
+      "english": "prevent",
+      "chinese": [
+        "vt. 避免"
+      ],
+      "example": [
+      ]
+    },
+    {
+      "english": "odd",
+      "chinese": [
+        "adj. 古怪的"
+      ],
+      "example": [
+      ]
+    },
+    {
+      "english": "educate",
+      "chinese": [
+        "vt. 教導"
+      ],
+      "example": [
+      ]
+    },
+    {
+      "english": "education",
+      "chinese": [
+        "n. [U][Sing.] 教育"
+      ],
+      "example": [
+      ]
+    },
+    {
+      "important": true,
+      "english": "invest",
+      "chinese": [
+        "vt. vi. 投資"
+      ],
+      "example": [
+      ]
+    },
+    {
+      "english": "investment",
+      "chinese": [
+        "n. [C][U] 投資"
+      ],
+      "example": [
+      ]
+    },
+    {
+      "important": true,
+      "english": "issue",
+      "chinese": [
+        "n. [C] 議題"
+      ],
+      "example": [
+      ]
+    },
+    {
+      "english": "eventually",
+      "chinese": [
+        "adv. 最後, 終於"
+      ],
+      "example": [
+      ]
+    },
+    {
+      "english": "eventual",
+      "chinese": [
+        "adj. 最終的"
+      ],
+      "example": [
+      ]
+    },
+    {
+      "english": "assist",
+      "chinese": [
+        "vt. vi. 幫忙"
+      ],
+      "example": [
+      ]
+    },
+    {
+      "english": "assistant",
+      "chinese": [
+        "n. [C] 助理, 助手"
+      ],
+      "example": [
+      ]
+    },
+    {
+      "english": "treasure",
+      "chinese": [
+        "vt. 珍惜",
+        "n. [C] 寶藏, 珍寶"
+      ],
+      "example": [
+      ]
+    },
+    {
+      "english": "checkout",
+      "chinese": [
+        "n. [C] 收銀台"
+      ],
+      "example": [
+      ]
+    },
+    {
+      "english": "twin",
+      "chinese": [
+        "n. [C] 雙胞胎之一"
+      ],
+      "example": [
+      ]
+    },
+    {
+      "english": "cucumber",
+      "chinese": [
+        "n. [C][U] 黃瓜"
+      ],
+      "example": [
+      ]
+    },
+    {
+      "english": "carrot",
+      "chinese": [
+        "n. [C][U] 紅蘿蔔"
+      ],
+      "example": [
+      ]
+    },
+    {
+      "english": "imperfect",
+      "chinese": [
+        "adj. 不完美的, 有缺陷的"
+      ],
+      "example": [
+      ]
+    },
+    {
+      "important": true,
+      "english": "edible",
+      "chinese": [
+        "adj. 可食用的"
+      ],
+      "example": [
+      ]
+    },
+    {
+      "english": "crayon",
+      "chinese": [
+        "n. [C] 蠟筆"
+      ],
+      "example": [
+      ]
+    },
+    {
+      "english": "not ... at all",
+      "chinese": [
+        "一點也不..."
+      ],
+      "example": [
+        "Jim thought that the math test was [not] difficult [at all]."
+      ]
+    },
+    {
+      "english": "throw away",
+      "chinese": [
+        "丟掉"
+      ],
+      "example": [
+        "Megan decided to [throw away] her old sofa and buy a new one."
+      ]
+    },
+    {
+      "english": "turn on",
+      "chinese": [
+        "打開 (開關)"
+      ],
+      "example": [
+        "Charlie always [turns on] the the radio while he is driving."
+      ]
+    },
+    {
+      "english": "believe in",
+      "chinese": [
+        "相信, 信任"
+      ],
+      "example": [
+        "I cloud not [believe in] Albert after he revealed my secret."
+      ]
+    },
+    {
+      "english": "make use of",
+      "chinese": [
+        "利用, 使用"
+      ],
+      "example": [
+        "Foreign visitors can [make] good [use of] their time in Taiwan by trying different local snacks."
+      ]
+    },
+    {
+      "english": "in need",
+      "chinese": [
+        "需要 (幫助或物資)"
+      ],
+      "example": [
+        "It was kind of Sarah to donate her old clothes and shoes to people [in need]."
+      ]
+    },
+    {
+      "english": "after all",
+      "chinese": [
+        "畢竟"
+      ],
+      "example": [
+        "Martin dressed up before he went to the interview. [After all], first impressions are important."
+      ]
+    }
+  ]
+}
