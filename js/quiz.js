@@ -444,10 +444,10 @@ function displayCurrentQuestion() {
 function createMultipleChoiceQuestion(word) {
     // Get options (1 correct + 3 random)
     const options = getRandomOptions(word);
-    
+
     // Store options in a data attribute for later validation
     quizContainer.dataset.currentOptions = JSON.stringify(options);
-    
+
     const questionElement = document.createElement('div');
     questionElement.className = 'quiz-question';
     questionElement.innerHTML = `
@@ -456,14 +456,14 @@ function createMultipleChoiceQuestion(word) {
             ${options.map((option, index) => `
                 <label>
                     <input type="radio" name="answer" value="${index}" class="auto-submit-option">
-                    ${option.chinese}
+                    ${formatChineseDisplay(option)}
                 </label>
             `).join('')}
         </div>
     `;
-    
+
     quizContainer.appendChild(questionElement);
-    
+
     // Add event listeners to auto-submit when an option is selected
     const radioButtons = document.querySelectorAll('.auto-submit-option');
     radioButtons.forEach(radio => {
@@ -475,10 +475,10 @@ function createMultipleChoiceQuestion(word) {
 function createMatchingQuestion(word) {
     // Get options (1 correct + 3 random)
     const options = getRandomOptions(word);
-    
+
     // Store options in a data attribute for later validation
     quizContainer.dataset.currentOptions = JSON.stringify(options);
-    
+
     const questionElement = document.createElement('div');
     questionElement.className = 'quiz-question';
     questionElement.innerHTML = `
@@ -487,14 +487,14 @@ function createMatchingQuestion(word) {
             ${options.map((option, index) => `
                 <div class="matching-option">
                     <input type="radio" id="option-${index}" name="answer" value="${index}" class="auto-submit-option">
-                    <label for="option-${index}">${option.chinese}</label>
+                    <label for="option-${index}">${formatChineseDisplay(option)}</label>
                 </div>
             `).join('')}
         </div>
     `;
-    
+
     quizContainer.appendChild(questionElement);
-    
+
     // Add event listeners to auto-submit when an option is selected
     const radioButtons = document.querySelectorAll('.auto-submit-option');
     radioButtons.forEach(radio => {
@@ -506,20 +506,24 @@ function createMatchingQuestion(word) {
 function createSpellingQuestion(word) {
     const questionElement = document.createElement('div');
     questionElement.className = 'quiz-question';
+
+    // Format Chinese translations (supports both string and array)
+    const chineseDisplay = formatChineseDisplay(word);
+
     questionElement.innerHTML = `
-        <h3>"${word.chinese}" 的英文單詞是什麼？</h3>
+        <h3>"${chineseDisplay}" 的英文單詞是什麼？</h3>
         <div class="spelling-input">
             <input type="text" id="spelling-answer" placeholder="請在此輸入答案" autocomplete="off">
         </div>
     `;
-    
+
     quizContainer.appendChild(questionElement);
-    
+
     // Focus on the input field
     setTimeout(() => {
         const spellingInput = document.getElementById('spelling-answer');
         spellingInput.focus();
-        
+
         // Add event listener for Enter key
         spellingInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
@@ -726,15 +730,18 @@ function showQuizResults() {
     
     // Generate quiz summary
     quizSummary.innerHTML = '<h4>測驗摘要：</h4>';
-    
+
     selectedAnswers.forEach((answer, index) => {
+        // Format Chinese translations (supports both string and array)
+        const chineseDisplay = formatChineseDisplay(answer.word);
+
         quizSummary.innerHTML += `
             <div class="summary-item ${answer.isCorrect ? 'correct' : 'incorrect'}">
                 <span class="question-number">${index + 1}.</span>
                 <span class="question-word">${answer.word.english}</span>
-                <span class="question-answer">${answer.isCorrect ? 
-                    `<i class="fas fa-check"></i> ${answer.userAnswer}` : 
-                    `<i class="fas fa-times"></i> 您的答案：「${answer.userAnswer}」（正確答案：「${answer.word.chinese}」）`}
+                <span class="question-answer">${answer.isCorrect ?
+                    `<i class="fas fa-check"></i> ${answer.userAnswer}` :
+                    `<i class="fas fa-times"></i> 您的答案：「${answer.userAnswer}」（正確答案：「${chineseDisplay}」）`}
                 </span>
             </div>
         `;

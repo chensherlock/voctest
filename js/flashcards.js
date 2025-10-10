@@ -201,23 +201,43 @@ function loadWords() {
 // Update the flashcard display
 function updateCardDisplay() {
     if (currentWords.length === 0) return;
-    
+
     const word = currentWords[currentIndex];
-    
+
+    // Get Chinese translations as array for multi-line display
+    const chineseTranslations = getChineseTranslations(word);
+
     if (currentDirection === 'english-chinese') {
+        // English on front, Chinese on back (multi-line)
         frontWord.textContent = word.english;
-        backWord.textContent = word.chinese;
+
+        // Clear and rebuild backWord with multiple lines
+        backWord.innerHTML = '';
+        chineseTranslations.forEach(translation => {
+            const line = document.createElement('div');
+            line.className = 'chinese-line';
+            line.textContent = translation;
+            backWord.appendChild(line);
+        });
     } else {
-        frontWord.textContent = word.chinese;
+        // Chinese on front (multi-line), English on back
+        frontWord.innerHTML = '';
+        chineseTranslations.forEach(translation => {
+            const line = document.createElement('div');
+            line.className = 'chinese-line';
+            line.textContent = translation;
+            frontWord.appendChild(line);
+        });
+
         backWord.textContent = word.english;
     }
-    
+
     // Remove flipped class if present
     flashcard.classList.remove('flipped');
-    
+
     // Update card counter
     currentCardNumber.textContent = (currentIndex + 1).toString();
-    
+
     // Preload audio for smoother experience
     preloadWordAudio(word);
 }

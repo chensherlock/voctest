@@ -202,13 +202,28 @@ function displayUnitWords(unit) {
         
         const wordItem = document.createElement('div');
         wordItem.className = `word-item ${masteredClass}`;
+
+        // Get Chinese translations as array for multi-line display
+        const chineseTranslations = getChineseTranslations(word);
+        const chineseHTML = chineseTranslations.map(translation =>
+            `<div class="chinese-line">${translation}</div>`
+        ).join('');
+
+        // Check if word has video URL
+        const hasVideo = word.video && word.video.trim() !== '';
+        const videoButton = hasVideo ?
+            `<button class="video-btn" data-video-url="${word.video}" aria-label="Watch video">
+                <i class="fas fa-video"></i>
+            </button>` : '';
+
         wordItem.innerHTML = `
             <div class="word-content">
                 <span class="word-number">${wordNumber}.</span>
                 <span class="english">${word.english}</span>
-                <span class="chinese">${word.chinese}</span>
+                <div class="chinese">${chineseHTML}</div>
             </div>
             <div class="word-actions">
+                ${videoButton}
                 <button class="audio-btn" aria-label="Play pronunciation">
                     <i class="fas fa-volume-up"></i>
                 </button>
@@ -221,7 +236,16 @@ function displayUnitWords(unit) {
         audioBtn.addEventListener('click', () => {
             playAudio(word.english);
         });
-        
+
+        // Add event listener for video button if it exists
+        if (hasVideo) {
+            const videoBtn = wordItem.querySelector('.video-btn');
+            videoBtn.addEventListener('click', () => {
+                const videoUrl = videoBtn.dataset.videoUrl;
+                window.open(videoUrl, '_blank');
+            });
+        }
+
         wordList.appendChild(wordItem);
     });
 }

@@ -718,6 +718,23 @@ footer {
     transform: scale(1.2);
 }
 
+/* Unit Word List Video Button */
+.word-item .video-btn {
+    background: none;
+    border: none;
+    color: #ff6b6b;
+    cursor: pointer;
+    font-size: 18px;
+    transition: var(--transition);
+    padding: 5px;
+    margin-right: 5px;
+}
+
+.word-item .video-btn:hover {
+    color: #ee5a52;
+    transform: scale(1.2);
+}
+
 /* Word Number Styling */
 .word-content {
     display: flex;

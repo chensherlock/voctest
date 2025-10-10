@@ -140,7 +140,7 @@ const vocabularyData = {
         },
         {
             id: 4,
-            title: "📚 課本 Unit 5",
+            title: "課本 Unit 5",
             default: false,
             words: [
                 { english: "costume", chinese: "n. [C][U] (特殊場合的) 服裝", example: "" },
@@ -272,8 +272,8 @@ const vocabularyData = {
         },
         {
             id: 7,
-            title: "📚 高頻 Unit 7",
-            default: true,
+            title: "高頻 Unit 7",
+            default: false,
             words: [
                 { english: "anniversary", chinese: "n. [C] 周年紀念", example: "" },
                 { english: "appropriate", chinese: "adj. 適當的", example: "" },
@@ -339,39 +339,83 @@ const vocabularyData = {
             words: [
                 { english: "absent", chinese: "adj. 缺席的, 不在場的", example: "" },
                 { english: "absence", chinese: "n. [C] [U] 缺席 (期間)", example: "" },
-                { english: "aid", chinese: "n. [U] 幫助, 支援, 資助, n. [C] 輔助工具", example: "" },
+                { english: "aid", 
+                    chinese: [
+                        "n. [U] 幫助, 支援, 資助",
+                        "n. [C] 輔助工具"
+                    ], example: "" },
                 { english: "aide", chinese: "n. 幕僚", example: "" },
                 { english: "assist", chinese: "vt. vi. 幫助, 協助", example: "" },
                 { english: "assistant", chinese: "n. [C] 助理", example: "" },
-                { english: "assistance", chinese: "n. [U] 幫助", example: "" },
-                { english: "break", chinese: "vt. vi. (使) 破碎, vt. 違反, n. [C] 休息", example: "break-broke-broken" },
-                { english: "brush", chinese: "n. [C] 刷子, 梳子 vt. 刷洗, (用手或刷子) 拂去", example: "" },
+                { english: "assistance", chinese: "n. [U] 幫助", example: "", video: "https://magazine.english4u.net/vocmemory/video/3382" },
+                { english: "break", 
+                    chinese: [
+                        "vt. vi. (使) 破碎", 
+                        "vt. 違反", 
+                        "n. [C] 休息"
+                    ], example: "break-broke-broken" },
+                { english: "brush", 
+                    chinese: [
+                        "n. [C] 刷子, 梳子 ",
+                        "vt. 刷洗, (用手或刷子) 拂去"
+                    ], example: "" },
                 { english: "cash", chinese: "n. [U] 現金", example: "" },
-                { english: "compose", chinese: "vt. 創作, 組成, vi. 創作", example: "" },
+                { english: "compose", 
+                    chinese: [
+                        "vt. 創作, 組成",
+                        "vi. 創作"
+                    ], example: "" },
                 { english: "composer", chinese: "n. [C] 作曲家", example: "" },
-                { english: "composition", chinese: "n. [U] 組裝 n. [C] 創作作品", example: "" },
+                { english: "composition", 
+                    chinese: [
+                        "n. [U] 組裝",
+                        "n. [C] 創作作品"
+                    ], example: "" },
                 { english: "curious", chinese: "adj. 好奇的", example: "" },
                 { english: "curiousity", chinese: "n. [S] [U] 好奇心", example: "" },
                 { english: "deep", chinese: "adj. 深的", example: "" },
                 { english: "deepen", chinese: "vt. vi. (使)變深", example: "" },
-                { english: "depth", chinese: "n. [U][C] 深度 [P] 海底深淵", example: "" },
+                { english: "depth", 
+                    chinese: [
+                        "n. [U][C] 深度",
+                        "n. [P] 海底深淵"
+                    ], example: "" },
                 { english: "delete", chinese: "vt. 刪除", example: "" },
-                { english: "desire", chinese: "n. [C][U] 欲望, 渴望, vt. 渴望", example: "" },
+                { english: "desire", 
+                    chinese: [
+                        "n. [C][U] 欲望, 渴望",
+                        "vt. 渴望"
+                    ], example: "" },
                 { english: "effortless", chinese: "adj. 不費力的, 輕鬆的", example: "" },
                 { english: "effort", chinese: "n. [C][U] 努力, 精力", example: "" },
                 { english: "enormous", chinese: "adj. 巨大的", example: "" },
                 { english: "express", chinese: "vt. 表逹", example: "" },
-                { english: "expression", chinese: "n. [C][U] 表逹, [C] 表情", example: "" },
+                { english: "expression", 
+                    chinese: [
+                        "n. [C][U] 表逹",
+                        "n. [C] 表情"
+                    ], example: "" },
                 { english: "expressive", chinese: "adj. 表情生動的", example: "" },
                 { english: "fulfill", chinese: "vt. 滿足, 逹成", example: "" },
                 { english: "global", chinese: "adj. 全球的", example: "" },
                 { english: "idea", chinese: "n. [C] 想法, 靈感", example: "" },
-                { english: "ideal", chinese: "adj. 理想的, n. [C] 理想", example: "" },
+                { english: "ideal", 
+                    chinese: [
+                        "adj. 理想的",
+                        "n. [C] 理想"
+                    ], example: "" },
                 { english: "joy", chinese: "n. [C][U] (令人)快樂(之事)", example: "" },
                 { english: "joyful", chinese: "adj. 高興的, 令人開心的", example: "" },
                 { english: "mill", chinese: "n. [C] 磨坊, 磨具, 工廠", example: "" },
                 { english: "moisture", chinese: "n. [U] 濕氣, 水氣", example: "" },
-                { english: "noise", chinese: "n. [U] 噪音, [C] 聲音", example: "" },
+                { english: "noise", 
+                    chinese: [
+                        "n. [U] 噪音", 
+                        "n. [C] 聲音"
+                    ], 
+                    example: "",
+                    video: "https://magazine.english4u.net/vocmemory/video/3655" 
+                },
                 { english: "noisy", chinese: "adj. 吵鬧的", example: "" },
                 { english: "nutrition", chinese: "n. [U] 營養, 營養學", example: "" },
                 { english: "nutritious", chinese: "adj. 有營養的", example: "" },
@@ -381,22 +425,45 @@ const vocabularyData = {
                 { english: "offend", chinese: "vt. 冒犯", example: "" },
                 { english: "offensive", chinese: "adj. 冒犯人的, 令人不快的", example: "" },
                 { english: "offense", chinese: "n. [C][U] 冒犯", example: "" },
-                { english: "pollute", chinese: "vt. 汙染", example: "" },
-                { english: "pollution", chinese: "n. [U] 汙染", example: "" },
+                { english: "pollute", 
+                    chinese: "vt. 汙染", 
+                    example: "", 
+                    video: "https://magazine.english4u.net/vocmemory/video/3696"
+                },
+                { english: "pollution", 
+                    chinese: "n. [U] 汙染", 
+                    example: "",
+                    video: "https://magazine.english4u.net/vocmemory/video/3696" 
+                },
                 { english: "proof", chinese: "n. [C][U] 證明, 證據", example: "" },
                 { english: "prove", chinese: "vt. 證實", example: "" },
-                { english: "rebel", chinese: "n. [C] 反判者, vi. 反判", example: "" },
+                { english: "rebel", 
+                    chinese: [
+                        "n. [C] 反判者",
+                        "vi. 反判"
+                    ], example: "" },
                 { english: "rebellion", chinese: "n. [C][U] 反判, 判逆", example: "" },
                 { english: "relieve", chinese: "vt. 緩解, 使放心", example: "" },
                 { english: "relieved", chinese: "adj. 放心的", example: "" },
                 { english: "relief", chinese: "n. [S][U] 放鬆, 放心", example: "" },
                 { english: "reserve", chinese: "n. [C] 儲備(常用複數形), 自然保護區", example: "" },
-                { english: "reservation", chinese: "n. [C] 預約, 自然保護區, [C][U] 存疑(常用複數形)", example: "" },
+                { english: "reservation", 
+                    chinese: [
+                        "n. [C] 預約, 自然保護區", 
+                        "n. [C][U] 存疑(常用複數形)"
+                    ], example: "" },
                 { english: "scan", chinese: "vt. vi. 掃描, 迅速瀏覽, 細看, 審視", example: "" },
                 { english: "scanner", chinese: "n. [C] 掃描機", example: "" },
                 { english: "voice", chinese: "n. [C][U] 說話聲, 嗓音", example: "" },
-                { english: "wonderful", chinese: "adj. 非常棒的", example: "" },
-                { english: "wonder", chinese: "vt. vi. 納悶, 想知道, n [C][U] 驚奇", example: "" },
+                { english: "wonderful", 
+                    chinese: "adj. 非常棒的", 
+                    example: "", 
+                    video: "https://magazine.english4u.net/vocmemory/video/3858"  },
+                { english: "wonder", 
+                    chinese: [
+                        "vt. vi. 納悶, 想知道",
+                        "n. [C][U] 驚奇"
+                    ], example: "" },
             ]
         },
         {
@@ -410,29 +477,84 @@ const vocabularyData = {
                 { english: "admirable", chinese: "adj. 值得仰慕的", example: "" },
                 { english: "applicant", chinese: "n. [C] 申請人, 應徵者", example: "" },
                 { english: "applicantion", chinese: "n. [C] [U] 申請, 應用", example: "" },
-                { english: "apply", chinese: "vt. 使用, 應用, 塗抹", example: "" },
-                { english: "apply", chinese: "vt. 使用, 應用, 塗抹 vt. 申請", example: "" },
-                { english: "benefit", chinese: "n. [U] [C] 利益, 好處 [C] 福利(常用複數形) vt. 有利於 (=help, profit) vi. 受惠", example: "" },
+                { english: "apply", 
+                    chinese: [
+                        "vt. 使用, 應用, 塗抹", 
+                        "vt. 申請"
+                    ], 
+                    example: "" },
+                { english: "benefit", 
+                    chinese: [
+                        "n. [U] [C] 利益, 好處",
+                        "n. [C] 福利(常用複數形)", 
+                        "vt. 有利於 (=help, profit)", 
+                        "vi. 受惠"], 
+                    example: "" },
                 { english: "beneficial", chinese: "adj. 有好處的 (=helpful, profitable, useful)", example: "" },
-                { english: "bribe", chinese: "vt. 賄賂 (=buy off) n. [C] 賄賂", example: "" },
+                { english: "bribe", 
+                    chinese: [
+                        "vt. 賄賂 (=buy off)",
+                        "n. [C] 賄賂"
+                    ], 
+                    example: "" },
                 { english: "calculate", chinese: "vt. 計算 (=figure out, work out), 預測, 估計", example: "" },
-                { english: "calculation", chinese: "n. [U][C] 算式, 計算 [C] 判斷 (=judgment)", example: "" },
+                { english: "calculation", 
+                    chinese: [
+                        "n. [U][C] 算式, 計算",
+                        "n [C] 判斷 (=judgment)"
+                    ], 
+                    example: "" },
                 { english: "calculator", chinese: "n. [C] 計算機", example: "" },
-                { english: "connect", chinese: "vt. 使連結 (=attach, join), 使有關聯 (=associate, vi. 連結, 接駁, 理解(=relate)", example: "" },
-                { english: "connection", chinese: "n. [C] 關連 (=association, relation, network), 關係(通常用複數形) (=relations), 通訊連結 [U] 連結", example: "" },
+                { english: "connect", 
+                    chinese: ["vt. 使連結 (=attach, join), 使有關聯 (=associate, vi. 連結, 接駁, 理解(=relate)"], example: "" },
+                { english: "connection", 
+                    chinese: [
+                        "n. [C] 關連 (=association, relation, network), 關係(通常用複數形) (=relations), 通訊連結",
+                        "[U] 連結"
+                    ], 
+                    example: "" },
                 { english: "currently", chinese: "adv. 目前, 當下 (=now, at present, at the moment)", example: "" },
-                { english: "current", chinese: "adj 目前的, n[C] 水流, [C][U] 電流", example: "" },
-                { english: "cut", chinese: "vt. 剪, 切, 割, 減少 (=decrease, reduce), 使簡短 (=shorten), n. [C] 割傷 (=injury, wound), 減少 (=decrease, reduction), 剪, 切, 割 (當用單數形)", example: "" },
+                { english: "current", 
+                    chinese: [
+                        "adj 目前的",
+                        "n[C] 水流", 
+                        "[C][U] 電流"
+                    ]
+                    , example: "" },
+                { english: "cut", 
+                    chinese: [
+                        "vt. 剪, 切, 割, 減少 (=decrease, reduce), 使簡短 (=shorten),", 
+                        "n. [C] 割傷 (=injury, wound), 減少 (=decrease, reduction), 剪, 切, 割 (當用單數形)"
+                    ], 
+                    example: "" },
                 { english: "device", chinese: "n. [C] 設備, 裝置 (=appliance, equipment, gear)", example: "" },
                 { english: "devise", chinese: "vt. 設計", example: "" },
                 { english: "exclude", chinese: "vt. 排除, 阻擋 (=block, prevent), 排擠", example: "" },
                 { english: "exhibition", chinese: "n. [C] 展覽 (=demostration, display, show)", example: "" },
-                { english: "exhibit", chinese: "vt. vi. 展示, n. [C] 展出物, 展覽", example: "" },
-                { english: "finish", chinese: "vt. 使結束 (=close, end), 完成 (=complete), 耗盡 (=consume, use up) vi. 結束", example: "", video: "https://magazine.english4u.net/vocmemory/video/3517" },
-                { english: "follow", chinese: "vt. 跟隨 (=pursue, track) 遵守 (=obay), 明白 vi. 跟隨", example: "" },
+                { english: "exhibit", 
+                    chinese: [
+                        "vt. vi. 展示",
+                        "n. [C] 展出物, 展覽"
+                    ], example: "" },
+                { english: "finish", 
+                    chinese: [
+                        "vt. 使結束 (=close, end), 完成 (=complete), 耗盡 (=consume, use up)",
+                        "vi. 結束"
+                    ], 
+                    example: "", 
+                    video: "https://magazine.english4u.net/vocmemory/video/3517" },
+                { english: "follow", 
+                    chinese: [
+                        "vt. 跟隨 (=pursue, track) 遵守 (=obay), 明白",
+                        "vi. 跟隨"
+                    ], example: "" },
                 { english: "follower", chinese: "n. [C] 追隨者", example: "" },
                 { english: "following", chinese: "adj. 接著的, 下列的", example: "" },
-                { english: "hit", chinese: "vt. 打 (=beat, punch, strike), 撞擊 (bump into, crash) 擊中 (=shoot) n. [C] 大受歡迎的人或事物 (=success), 襲擊", example: "hit-hit-hit" },
+                { english: "hit", 
+                    chinese: [
+                        "vt. 打 (=beat, punch, strike), 撞擊 (bump into, crash) 擊中 (=shoot)",
+                        "n. [C] 大受歡迎的人或事物 (=success), 襲擊"
+                    ], example: "hit-hit-hit" },
                 { english: "important", chinese: "adj. 重要的 (=critical, essential, signficant)", video: "https://magazine.english4u.net/vocmemory/video/3581" },
                 { english: "importance", chinese: "n. [U] 重要的", example: "", video: "" },
                 { english: "lend", chinese: "vt. 借(給), 提供 (幇助)", example: "lend-lent-lent", video: "https://magazine.english4u.net/vocmemory/video/3612" },
@@ -441,18 +563,44 @@ const vocabularyData = {
                 { english: "manner", chinese: "n. [S] 方式, [P] 禮貌, 規矩", example: "", video: "" },
                 { english: "networking", chinese: "n. [U] 網路系統", example: "", video: "" },
                 { english: "network", chinese: "n. [C] 網路系統", example: "", video: "" },
-                { english: "official", chinese: "adj. 公務的, 官方的, 公開的, n. [C] 官員", example: "", video: "" },
+                { english: "official", 
+                    chinese: [
+                        "adj. 公務的, 官方的, 公開的",
+                        "n. [C] 官員"
+                    ], example: "", video: "" },
                 { english: "option", chinese: "n. [C] 選項 (=choice)", example: "", video: "" },
                 { english: "optional", chinese: "adj. 選擇性的", example: "", video: "" },
-                { english: "people", chinese: "n. 人們 (person 的複數形) [C] 民族", example: "", video: "https://magazine.english4u.net/vocmemory/video/3682" },
+                { english: "people", 
+                    chinese: [
+                        "n. 人們 (person 的複數形)",
+                        "[C] 民族"
+                    ], example: "", video: "https://magazine.english4u.net/vocmemory/video/3682" },
                 { english: "previous", chinese: "adj. 先前的 (=former)", example: "", video: "" },
                 { english: "propose", chinese: "vt. vi. 提議, 求婚", example: "", video: "" },
-                { english: "quarrel", chinese: "n. [C] 爭執 (=argument, dispute, fight) [S] 不合 (=disagreement) vt. 爭執 (=argue, dispute, fight)", example: "", video: "" },
-                { english: "reflection", chinese: "n. [C] 倒影 (=image), 反映, [U] 深思 (=consideration", example: "", video: "" },
+                { english: "quarrel", 
+                    chinese: [
+                        "n. [C] 爭執 (=argument, dispute, fight)",
+                        "n. [S] 不合 (=disagreement)",
+                        "vt. 爭執 (=argue, dispute, fight)"
+                    ], example: "", video: "" },
+                { english: "reflection", 
+                    chinese: [
+                        "n. [C] 倒影 (=image), 反映, ",
+                        "n. [U] 深思 (=consideration)"
+                    ], example: "", video: "" },
                 { english: "reflect", chinese: "vt. vi. 反射, 反映", example: "", video: "" },
                 { english: "river", chinese: "n. [C] 河流 (=brook, stream)", example: "", video: "" },
-                { english: "sign", chinese: "n. [C] [U] 徵兆, 跡象 (=clue, hint, signal) [C] 標示 (=notice), 手勢 (=hand gesture), 符號 vt. vi. 簽(名), (向...)打手勢", example: "", video: "" },
-                { english: "signal", chinese: "n. [C] 信號, 跡象 vt. vi. (向...)打信號", example: "", video: "" },
+                { english: "sign", 
+                    chinese: [
+                        "n. [C] [U] 徵兆, 跡象 (=clue, hint, signal)",
+                        "n. [C] 標示 (=notice), 手勢 (=hand gesture), 符號",
+                        "vt. vi. 簽(名), (向...)打手勢"
+                    ], example: "", video: "" },
+                { english: "signal", 
+                    chinese: [
+                        "n. [C] 信號, 跡象",
+                        "vt. vi. (向...)打信號"
+                    ], example: "", video: "" },
                 { english: "signature", chinese: "n. [C] 簽名", example: "", video: "" },
                 { english: "sincere", chinese: "adj. 真誠的, 誠摯的 (=earnest, genuine, honest)", example: "", video: "" },
                 { english: "sincerity", chinese: "n. [U] 真誠", example: "", video: "" },
@@ -461,7 +609,12 @@ const vocabularyData = {
                 { english: "unlikely", chinese: "adj. 不太可能的", example: "", video: "" },
                 { english: "likely", chinese: "adj. 可能的", example: "", video: "" },
                 { english: "likelihood", chinese: "n [S][U] 可能性 (=probability)", example: "", video: "" },
-                { english: "volunteer", chinese: "n. [C] 志工, 自願者, vt. vi. 自願(做), 主動提出", example: "", video: "" },
+                { english: "volunteer", 
+                    chinese: [
+                        "n. [C] 志工, 自願者" , 
+                        "vt. vi. 自願(做), 主動提出" 
+                    ],
+                    example: "", video: "" },
                 { english: "wild", chinese: "adj. 野生的, 瘋狂的, 猛烈的", example: "", video: "" },
             ]
         }
@@ -500,14 +653,27 @@ function getAllWords() {
     }, []);
 }
 
+// Helper function to get Chinese translations as an array
+function getChineseTranslations(word) {
+    if (!word.chinese) return [];
+    return Array.isArray(word.chinese) ? word.chinese : [word.chinese];
+}
+
+// Helper function to format Chinese translations for display
+function formatChineseDisplay(word) {
+    const translations = getChineseTranslations(word);
+    return translations.join('; ');
+}
+
 // Function to search for words
 function searchWords(query) {
     query = query.toLowerCase();
     const allWords = getAllWords();
-    return allWords.filter(word => 
-        word.english.toLowerCase().includes(query) || 
-        word.chinese.includes(query)
-    );
+    return allWords.filter(word => {
+        const chineseTranslations = getChineseTranslations(word);
+        return word.english.toLowerCase().includes(query) ||
+               chineseTranslations.some(chinese => chinese.includes(query));
+    });
 }
 
 // Function to get a random set of words
