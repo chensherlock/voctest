@@ -25,18 +25,21 @@
     <main>
         <div class="container">
             <section>
-                <h2>閃卡</h2>
-                <p>點擊卡片翻轉並顯示翻譯。使用按鈕在卡片之間切換。</p>
-                
+                <h2>閃卡練習</h2>
+                <p>使用閃卡來記憶詞彙。點擊卡片翻轉查看翻譯，或使用鍵盤快捷鍵快速學習。</p>
+
                 <div class="flashcard-settings">
                     <div class="form-group">
-                        <label for="unitSelect">選擇單元：</label>
-                        <select id="unitSelect">
-                            <option value="all">所有單元</option>
+                        <label>選擇單元：</label>
+                        <div id="unitCheckboxContainer" class="unit-checkbox-container">
+                            <div class="unit-checkbox-item">
+                                <input type="checkbox" id="unit-all" value="all">
+                                <label for="unit-all">所有單元</label>
+                            </div>
                             <!-- Units will be dynamically loaded here -->
-                        </select>
+                        </div>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="cardDirection">卡片方向：</label>
                         <select id="cardDirection">
@@ -44,8 +47,15 @@
                             <option value="chinese-english">中文到英文</option>
                         </select>
                     </div>
-                    
-                    <div class="form-group" id="voiceSelectorContainer">
+
+                    <div class="form-group">
+                        <label>詞彙範圍：</label>
+                        <div id="vocabRangeContainer" class="vocab-range-container">
+                            <!-- Vocabulary range selector will be added here dynamically -->
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="voiceSelectorContainer" style="display: none;">
                         <label for="voiceSelect">語音合成聲音：</label>
                         <div class="voice-selector-wrapper">
                             <select id="voiceSelect">
@@ -57,31 +67,63 @@
                             </button>
                         </div>
                     </div>
+
+                    <button class="btn btn-start-flashcards" id="startFlashcards">
+                        <i class="fas fa-play"></i> 開始練習
+                    </button>
                 </div>
                 
-                <div class="flashcard-container">
-                    <div class="flashcard" id="flashcard">
-                        <div class="flashcard-inner">
-                            <div class="flashcard-front">
-                                <div class="flashcard-word" id="frontWord">點擊開始</div>
-                                <p>點擊卡片翻轉</p>
-                            </div>
-                            <div class="flashcard-back">
-                                <div class="flashcard-word" id="backWord"></div>
-                                <button class="audio-btn" id="playAudio"><i class="fas fa-volume-up"></i></button>
+                <div class="flashcard-layout">
+                    <div class="flashcard-container">
+                        <div class="flashcard" id="flashcard">
+                            <div class="flashcard-inner">
+                                <div class="flashcard-front">
+                                    <div class="flashcard-word" id="frontWord">點擊開始</div>
+                                    <p>點擊卡片翻轉</p>
+                                </div>
+                                <div class="flashcard-back">
+                                    <div class="flashcard-word" id="backWord"></div>
+                                    <button class="audio-btn" id="playAudio"><i class="fas fa-volume-up"></i></button>
+                                </div>
                             </div>
                         </div>
+
+                        <div class="flashcard-progress">
+                            <span id="currentCardNumber">0</span> / <span id="totalCards">0</span>
+                        </div>
+
+                        <div class="flashcard-controls">
+                            <button class="btn" id="prevCard" disabled><i class="fas fa-arrow-left"></i> 上一張</button>
+                            <button class="btn" id="nextCard">下一張 <i class="fas fa-arrow-right"></i></button>
+                            <button class="btn" id="shuffleCards"><i class="fas fa-random"></i> 隨機排序</button>
+                            <button class="btn" id="startOver"><i class="fas fa-redo"></i> 重新開始</button>
+                        </div>
                     </div>
-                    
-                    <div class="flashcard-progress">
-                        <span id="currentCardNumber">0</span> / <span id="totalCards">0</span>
-                    </div>
-                    
-                    <div class="flashcard-controls">
-                        <button class="btn" id="prevCard" disabled><i class="fas fa-arrow-left"></i> 上一張</button>
-                        <button class="btn" id="nextCard">下一張 <i class="fas fa-arrow-right"></i></button>
-                        <button class="btn" id="shuffleCards"><i class="fas fa-random"></i> 隨機排序</button>
-                        <button class="btn" id="startOver"><i class="fas fa-redo"></i> 重新開始</button>
+
+                    <div class="keyboard-shortcuts">
+                        <h4><i class="fas fa-keyboard"></i> 鍵盤快捷鍵</h4>
+                        <div class="shortcuts-grid">
+                            <div class="shortcut-item">
+                                <span class="shortcut-key">←</span>
+                                <span class="shortcut-description">上一張卡片</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-key">→</span>
+                                <span class="shortcut-description">下一張卡片</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-key">Space</span>
+                                <span class="shortcut-description">翻轉卡片</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-key">P</span>
+                                <span class="shortcut-description">播放發音</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-key">R</span>
+                                <span class="shortcut-description">隨機排序</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -96,6 +138,6 @@
 
     <script src="js/data.js"></script>
     <script src="js/audio-service.js"></script>
-    <script src="js/flashcards.js"></script>
+    <script src="js/flashcards.js?v=6"></script>
 </body>
 </html>

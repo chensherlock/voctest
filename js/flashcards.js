@@ -7,87 +7,99 @@ const prevCard = document.getElementById('prevCard');
 const nextCard = document.getElementById('nextCard');
 const shuffleCards = document.getElementById('shuffleCards');
 const startOver = document.getElementById('startOver');
-const unitSelect = document.getElementById('unitSelect');
 const cardDirection = document.getElementById('cardDirection');
 const currentCardNumber = document.getElementById('currentCardNumber');
 const totalCards = document.getElementById('totalCards');
 const voiceSelect = document.getElementById('voiceSelect');
 const refreshVoicesBtn = document.getElementById('refreshVoices');
+const startFlashcardsBtn = document.getElementById('startFlashcards');
 
 // State variables
 let currentWords = [];
 let currentIndex = 0;
 let currentDirection = 'english-chinese'; // or 'chinese-english'
-let currentUnitId = 'all';
+let selectedUnitIds = []; // Array of selected unit IDs
 let audioLoading = false;
 let allUnitWords = []; // Store all words from the unit for range selection
 
 // Initialize the page
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    // Populate unit checkboxes
+    await populateUnitCheckboxes();
+
     // Check if a unit was specified in the URL
     const urlParams = new URLSearchParams(window.location.search);
     const unitId = urlParams.get('unit');
-    
-    // Populate unit select dropdown
-    populateUnitSelect();
-    
+
     // Set initial unit if specified in URL
     if (unitId) {
-        unitSelect.value = unitId;
-        currentUnitId = unitId;
+        const checkbox = document.querySelector(`input[value="${unitId}"]`);
+        if (checkbox) {
+            checkbox.checked = true;
+            handleUnitCheckboxChange();
+        }
+    } else {
+        // Select default units
+        selectDefaultUnits();
     }
-    
+
+    // Create vocabulary range selector
+    await createVocabRangeSelector();
+
     // Load words based on initial settings
-    loadWords();
-    
+    await loadWords();
+
     // Set up event listeners
     flashcard.addEventListener('click', flipCard);
     prevCard.addEventListener('click', showPreviousCard);
     nextCard.addEventListener('click', showNextCard);
     shuffleCards.addEventListener('click', shuffleCurrentWords);
     startOver.addEventListener('click', resetFlashcards);
-    unitSelect.addEventListener('change', handleUnitChange);
     cardDirection.addEventListener('change', handleDirectionChange);
+    startFlashcardsBtn.addEventListener('click', handleStartFlashcards);
     playAudioBtn.addEventListener('click', (e) => {
         e.stopPropagation(); // Prevent the card from flipping
         playCurrentAudio();
     });
-    
+
     // Create audio provider selector if it doesn't exist
     createAudioProviderSelector();
-    
-    // Create vocabulary range selector
-    createVocabRangeSelector();
-    
+
     // Initialize voice selector
     initializeVoiceSelector();
+
+    // Add keyboard shortcuts
+    setupKeyboardShortcuts();
+
+    // Update progress bar width
+    updateProgressBar();
 });
 
 // Create audio provider selector dropdown
 function createAudioProviderSelector() {
     const settingsContainer = document.querySelector('.flashcard-settings');
-    
+
     if (!settingsContainer) return;
-    
+
     // Check if the selector already exists
     if (document.getElementById('audioProviderSelect')) return;
-    
+
     const providerFormGroup = document.createElement('div');
     providerFormGroup.className = 'form-group';
-    
+
     const providerLabel = document.createElement('label');
     providerLabel.setAttribute('for', 'audioProviderSelect');
     providerLabel.textContent = '音訊提供者：';
-    
+
     const providerSelect = document.createElement('select');
     providerSelect.id = 'audioProviderSelect';
-    
+
     // Create options for available providers
     const providers = [
         { value: 'FreeDictionaryAPI', text: '英文詞典 API' },
         { value: 'speechSynthesis', text: '瀏覽器語音合成' }
     ];
-    
+
     // Add options for each provider
     providers.forEach(provider => {
         const option = document.createElement('option');
@@ -95,16 +107,16 @@ function createAudioProviderSelector() {
         option.textContent = provider.text;
         providerSelect.appendChild(option);
     });
-    
+
     // Set default value - FreeDictionaryAPI
     providerSelect.value = 'FreeDictionaryAPI';
-    
+
     // Add change event listener
     providerSelect.addEventListener('change', () => {
         // If user selects speech synthesis, directly use it as primary
         if (providerSelect.value === 'speechSynthesis') {
             updateAudioStatus(`已更改為直接使用瀏覽器語音合成`);
-            
+
             // Show voice selector
             const voiceSelectorContainer = document.getElementById('voiceSelectorContainer') || createVoiceSelector();
             if (voiceSelectorContainer) {
@@ -114,11 +126,18 @@ function createAudioProviderSelector() {
             updateAudioStatus(`已更改音訊提供者為 ${providerSelect.value}`);
         }
     });
-    
+
     // Append elements
     providerFormGroup.appendChild(providerLabel);
     providerFormGroup.appendChild(providerSelect);
-    settingsContainer.appendChild(providerFormGroup);
+
+    // Insert before the start button
+    const startButton = document.getElementById('startFlashcards');
+    if (startButton) {
+        settingsContainer.insertBefore(providerFormGroup, startButton);
+    } else {
+        settingsContainer.appendChild(providerFormGroup);
+    }
 }
 
 // Update audio status indicator
@@ -148,26 +167,170 @@ function updateAudioStatus(message) {
     }, 2000);
 }
 
-// Populate the unit select dropdown
-async function populateUnitSelect() {
+// Populate unit checkboxes
+async function populateUnitCheckboxes() {
     await loadUnitsIndex();
     const units = getAllUnits();
+    const container = document.getElementById('unitCheckboxContainer');
 
     units.forEach(unit => {
-        const option = document.createElement('option');
-        option.value = unit.id;
-        option.textContent = unit.title;
-        unitSelect.appendChild(option);
+        const checkboxItem = document.createElement('div');
+        checkboxItem.className = `unit-checkbox-item${unit.default ? ' default-unit' : ''}`;
+
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.id = `unit-${unit.id}`;
+        checkbox.value = unit.id;
+        checkbox.addEventListener('change', handleUnitCheckboxChange);
+
+        const label = document.createElement('label');
+        label.setAttribute('for', `unit-${unit.id}`);
+        label.textContent = unit.title;
+
+        checkboxItem.appendChild(checkbox);
+        checkboxItem.appendChild(label);
+        container.appendChild(checkboxItem);
     });
+
+    // Setup "all units" checkbox
+    const allCheckbox = document.getElementById('unit-all');
+    allCheckbox.addEventListener('change', handleAllUnitsCheckbox);
+}
+
+// Select default units on page load
+function selectDefaultUnits() {
+    const units = getAllUnits();
+    units.forEach(unit => {
+        if (unit.default) {
+            const checkbox = document.querySelector(`input[value="${unit.id}"]`);
+            if (checkbox) {
+                checkbox.checked = true;
+            }
+        }
+    });
+    handleUnitCheckboxChange();
+}
+
+// Handle "all units" checkbox
+function handleAllUnitsCheckbox() {
+    const allCheckbox = document.getElementById('unit-all');
+    const unitCheckboxes = document.querySelectorAll('.unit-checkbox-item input[type="checkbox"]:not(#unit-all)');
+
+    unitCheckboxes.forEach(checkbox => {
+        checkbox.checked = allCheckbox.checked;
+    });
+
+    handleUnitCheckboxChange();
+}
+
+// Handle individual unit checkbox change
+async function handleUnitCheckboxChange() {
+    const allCheckbox = document.getElementById('unit-all');
+    const unitCheckboxes = document.querySelectorAll('.unit-checkbox-item input[type="checkbox"]:not(#unit-all)');
+
+    // Update selected units array
+    selectedUnitIds = Array.from(unitCheckboxes)
+        .filter(cb => cb.checked)
+        .map(cb => parseInt(cb.value));
+
+    // Update "all units" checkbox state
+    const allChecked = Array.from(unitCheckboxes).every(cb => cb.checked);
+    allCheckbox.checked = allChecked;
+
+    // Update checkbox item styling
+    unitCheckboxes.forEach(checkbox => {
+        const parent = checkbox.closest('.unit-checkbox-item');
+        if (checkbox.checked) {
+            parent.classList.add('selected');
+        } else {
+            parent.classList.remove('selected');
+        }
+    });
+
+    // Update the "all units" checkbox item styling
+    const allCheckboxItem = allCheckbox.closest('.unit-checkbox-item');
+    if (allCheckbox.checked) {
+        allCheckboxItem.classList.add('selected');
+    } else {
+        allCheckboxItem.classList.remove('selected');
+    }
+
+    // Load words from selected units
+    await loadWords();
+}
+
+// Handle start flashcards button
+async function handleStartFlashcards() {
+    if (selectedUnitIds.length === 0) {
+        alert('請至少選擇一個單元');
+        return;
+    }
+
+    // Reload words and start flashcards
+    await loadWords();
+
+    // Collapse the settings panel
+    collapseSettingsPanel();
+
+    // Show feedback
+    updateAudioStatus(`已載入 ${currentWords.length} 個詞彙`);
+}
+
+// Collapse settings panel
+function collapseSettingsPanel() {
+    const settingsPanel = document.querySelector('.flashcard-settings');
+    if (!settingsPanel) return;
+
+    // Add collapsed class
+    settingsPanel.classList.add('collapsed');
+
+    // Create or update summary text
+    let summaryDiv = settingsPanel.querySelector('.settings-summary');
+    if (!summaryDiv) {
+        summaryDiv = document.createElement('div');
+        summaryDiv.className = 'settings-summary';
+        summaryDiv.innerHTML = '<i class="fas fa-cog"></i> <span class="summary-text"></span> <i class="fas fa-chevron-down"></i>';
+        settingsPanel.insertBefore(summaryDiv, settingsPanel.firstChild);
+
+        // Add click handler to expand
+        summaryDiv.addEventListener('click', toggleSettingsPanel);
+    }
+
+    // Update summary text
+    const summaryText = summaryDiv.querySelector('.summary-text');
+    const unitCount = selectedUnitIds.length;
+    const wordCount = currentWords.length;
+    const direction = cardDirection.value === 'english-chinese' ? '英文→中文' : '中文→英文';
+    summaryText.textContent = `${unitCount} 個單元 · ${wordCount} 個詞彙 · ${direction}`;
+}
+
+// Expand settings panel
+function expandSettingsPanel() {
+    const settingsPanel = document.querySelector('.flashcard-settings');
+    if (!settingsPanel) return;
+
+    settingsPanel.classList.remove('collapsed');
+}
+
+// Toggle settings panel
+function toggleSettingsPanel() {
+    const settingsPanel = document.querySelector('.flashcard-settings');
+    if (!settingsPanel) return;
+
+    if (settingsPanel.classList.contains('collapsed')) {
+        expandSettingsPanel();
+    } else {
+        collapseSettingsPanel();
+    }
 }
 
 // Load words based on current unit and settings
 async function loadWords() {
-    // Store all words from the current unit
-    if (currentUnitId === 'all') {
-        allUnitWords = await getAllWords();
+    // Store all words from selected units
+    if (selectedUnitIds.length === 0) {
+        allUnitWords = [];
     } else {
-        allUnitWords = await getWordsFromUnit(currentUnitId);
+        allUnitWords = await getWordsFromUnits(selectedUnitIds);
     }
     
     // Check if we need to apply a range filter
@@ -197,6 +360,49 @@ async function loadWords() {
     
     // Update custom range selection options based on the number of words
     updateCustomRangeOptions();
+}
+
+// Setup keyboard shortcuts
+function setupKeyboardShortcuts() {
+    document.addEventListener('keydown', (e) => {
+        // Ignore if user is typing in an input
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
+
+        switch(e.key) {
+            case 'ArrowLeft':
+                e.preventDefault();
+                if (!prevCard.disabled) showPreviousCard();
+                break;
+            case 'ArrowRight':
+                e.preventDefault();
+                if (!nextCard.disabled) showNextCard();
+                break;
+            case ' ':
+            case 'Enter':
+                e.preventDefault();
+                flipCard();
+                break;
+            case 'p':
+            case 'P':
+                e.preventDefault();
+                playCurrentAudio();
+                break;
+            case 'r':
+            case 'R':
+                e.preventDefault();
+                shuffleCurrentWords();
+                break;
+        }
+    });
+}
+
+// Update progress bar width
+function updateProgressBar() {
+    const progressElement = document.querySelector('.flashcard-progress');
+    if (progressElement && currentWords.length > 0) {
+        const progressPercent = ((currentIndex + 1) / currentWords.length) * 100;
+        progressElement.style.setProperty('--progress-width', `${progressPercent}%`);
+    }
 }
 
 // Update the flashcard display
@@ -238,6 +444,9 @@ function updateCardDisplay() {
 
     // Update card counter
     currentCardNumber.textContent = (currentIndex + 1).toString();
+
+    // Update progress bar
+    updateProgressBar();
 
     // Preload audio for smoother experience
     preloadWordAudio(word);
@@ -296,11 +505,6 @@ function resetFlashcards() {
     updateNavigationButtons();
 }
 
-// Handle unit selection change
-function handleUnitChange() {
-    currentUnitId = unitSelect.value;
-    loadWords();
-}
 
 // Handle direction change
 function handleDirectionChange() {
@@ -365,129 +569,93 @@ function toggleAudioLoading(isLoading) {
     }
 }
 
-// Create vocabulary range selector
-function createVocabRangeSelector() {
-    const settingsContainer = document.querySelector('.flashcard-settings');
-    
-    if (!settingsContainer) return;
-    
-    // Check if the selector already exists
-    if (document.getElementById('vocabRangeSelectContainer')) return;
-    
-    // Create container for all range selection elements
-    const rangeContainer = document.createElement('div');
-    rangeContainer.id = 'vocabRangeSelectContainer';
-    rangeContainer.className = 'form-group range-selector-container';
-    
-    // Create label
-    const rangeLabel = document.createElement('label');
-    rangeLabel.textContent = '詞彙範圍：';
-    
-    // Create standard range selector
-    const rangeSelect = document.createElement('select');
-    rangeSelect.id = 'vocabRangeSelect';
-    rangeSelect.className = 'range-select';
-    
-    // Add option for all words
-    const allOption = document.createElement('option');
-    allOption.value = 'all';
-    allOption.textContent = '全部';
-    rangeSelect.appendChild(allOption);
-    
-    // Add option for custom range
-    const customOption = document.createElement('option');
-    customOption.value = 'custom';
-    customOption.textContent = '自定義範圍';
-    rangeSelect.appendChild(customOption);
-    
-    // Add common predefined ranges
-    const ranges = [
-        { value: '1-10', text: '1-10' },
-        { value: '11-20', text: '11-20' },
-        { value: '21-30', text: '21-30' }
-    ];
-    
-    ranges.forEach(range => {
-        const option = document.createElement('option');
-        option.value = range.value;
-        option.textContent = range.text;
-        rangeSelect.appendChild(option);
-    });
-    
-    // Set default value
-    rangeSelect.value = 'all';
-    
-    // Create custom range div (initially hidden)
-    const customRangeDiv = document.createElement('div');
-    customRangeDiv.id = 'customRangeDiv';
-    customRangeDiv.className = 'custom-range-inputs';
-    customRangeDiv.style.display = 'none';
-    
-    // Create start range selector
-    const startContainer = document.createElement('div');
-    startContainer.className = 'custom-range-input';
-    
+// Create vocabulary range selector (now using vocab-range-container like quiz)
+async function createVocabRangeSelector() {
+    const container = document.getElementById('vocabRangeContainer');
+    if (!container) return;
+
+    // Wait for words to be loaded
+    if (allUnitWords.length === 0) {
+        await loadWords();
+    }
+
+    // Create start input
     const startLabel = document.createElement('label');
-    startLabel.setAttribute('for', 'startVocabSelect');
-    startLabel.textContent = '起始詞彙：';
-    
-    const startSelect = document.createElement('select');
-    startSelect.id = 'startVocabSelect';
-    
-    // Create end range selector
-    const endContainer = document.createElement('div');
-    endContainer.className = 'custom-range-input';
-    
+    startLabel.textContent = '起始：';
+
+    const startInput = document.createElement('input');
+    startInput.type = 'number';
+    startInput.id = 'vocabRangeStart';
+    startInput.min = '1';
+    startInput.max = allUnitWords.length.toString();
+    startInput.value = '1';
+
+    // Create end input
     const endLabel = document.createElement('label');
-    endLabel.setAttribute('for', 'endVocabSelect');
-    endLabel.textContent = '結束詞彙：';
-    
-    const endSelect = document.createElement('select');
-    endSelect.id = 'endVocabSelect';
-    
-    // Apply button for custom range
-    const applyBtn = document.createElement('button');
-    applyBtn.textContent = '應用範圍';
-    applyBtn.id = 'applyCustomRange';
-    applyBtn.className = 'btn-apply-range';
-    applyBtn.type = 'button';
-    
+    endLabel.textContent = '結束：';
+
+    const endInput = document.createElement('input');
+    endInput.type = 'number';
+    endInput.id = 'vocabRangeEnd';
+    endInput.min = '1';
+    endInput.max = allUnitWords.length.toString();
+    endInput.value = allUnitWords.length.toString();
+
     // Append elements
-    startContainer.appendChild(startLabel);
-    startContainer.appendChild(startSelect);
-    
-    endContainer.appendChild(endLabel);
-    endContainer.appendChild(endSelect);
-    
-    customRangeDiv.appendChild(startContainer);
-    customRangeDiv.appendChild(endContainer);
-    customRangeDiv.appendChild(applyBtn);
-    
-    rangeContainer.appendChild(rangeLabel);
-    rangeContainer.appendChild(rangeSelect);
-    rangeContainer.appendChild(customRangeDiv);
-    
-    settingsContainer.appendChild(rangeContainer);
-    
-    // Add event listeners
-    rangeSelect.addEventListener('change', () => {
-        if (rangeSelect.value === 'custom') {
-            customRangeDiv.style.display = 'block';
-            updateCustomRangeOptions();
-        } else {
-            customRangeDiv.style.display = 'none';
-            handleRangeChange(rangeSelect.value);
+    container.appendChild(startLabel);
+    container.appendChild(startInput);
+    container.appendChild(endLabel);
+    container.appendChild(endInput);
+
+    // Add event listeners to handle range changes
+    startInput.addEventListener('change', () => {
+        if (parseInt(startInput.value) > parseInt(endInput.value)) {
+            startInput.value = endInput.value;
         }
+        applyVocabRange();
     });
-    
-    applyBtn.addEventListener('click', applyCustomRange);
-    
-    // Update unit change handler to update custom range options
-    unitSelect.addEventListener('change', () => {
-        if (rangeSelect.value === 'custom') {
-            updateCustomRangeOptions();
+
+    endInput.addEventListener('change', () => {
+        if (parseInt(endInput.value) < parseInt(startInput.value)) {
+            endInput.value = startInput.value;
         }
+        applyVocabRange();
     });
+}
+
+// Update vocab range inputs when units change
+function updateVocabRangeInputs() {
+    const startInput = document.getElementById('vocabRangeStart');
+    const endInput = document.getElementById('vocabRangeEnd');
+
+    if (startInput && endInput && allUnitWords.length > 0) {
+        startInput.max = allUnitWords.length.toString();
+        endInput.max = allUnitWords.length.toString();
+        endInput.value = allUnitWords.length.toString();
+    }
+}
+
+// Apply vocabulary range filter
+function applyVocabRange() {
+    const startInput = document.getElementById('vocabRangeStart');
+    const endInput = document.getElementById('vocabRangeEnd');
+
+    if (!startInput || !endInput) return;
+
+    const start = parseInt(startInput.value);
+    const end = parseInt(endInput.value);
+
+    if (start && end && start <= end) {
+        currentWords = allUnitWords.slice(start - 1, end);
+
+        if (currentWords.length > 0) {
+            currentIndex = 0;
+            updateCardDisplay();
+            updateNavigationButtons();
+            totalCards.textContent = currentWords.length;
+            updateAudioStatus(`已套用詞彙範圍：${start} 到 ${end}`);
+        }
+    }
 }
 
 // Handle range selection change

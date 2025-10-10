@@ -132,7 +132,6 @@ async function displayAllUnits() {
         const units = getAllUnits();
 
         units.forEach(unit => {
-            const unitProgress = userProgress.getUnitProgress(unit.id);
             const hasWords = unit.words && unit.words.length > 0;
 
             const unitCard = document.createElement('div');
@@ -140,12 +139,6 @@ async function displayAllUnits() {
             unitCard.innerHTML = `
                 <h3>${unit.title}</h3>
                 <p>${unit.words.length} 個詞彙</p>
-                <div class="progress-display">
-                    <div class="progress-bar">
-                        <div class="progress" style="width: ${unitProgress.percentage}%"></div>
-                    </div>
-                    <span class="progress-text">${unitProgress.percentage}% 完成</span>
-                </div>
                 <a href="units.html?unit=${unit.id}" class="btn-small ${!hasWords ? 'disabled' : ''}">${hasWords ? '學習' : '無詞彙'}</a>
             `;
 
@@ -210,6 +203,64 @@ function displayUnitWords(unit) {
 
         // Get Chinese translations as array for multi-line display
         const chineseTranslations = getChineseTranslations(word);
+
+        // Grammar term Chinese translations
+        const grammarTooltips = {
+            'n.': '名詞',
+            'adj.': '形容詞',
+            'adv.': '副詞',
+            'vt.': '及物動詞',
+            'vi.': '不及物動詞',
+            'v.': '動詞',
+            'prep.': '介系詞',
+            'conj.': '連接詞',
+            'pron.': '代名詞',
+            'det.': '限定詞',
+            'interj.': '感嘆詞',
+            '[c]': '可數名詞',
+            '[u]': '不可數名詞',
+            '[s]': '單數名詞',
+            '[p]': '複數名詞'
+        };
+
+        // Extract grammatical information (part of speech and countability markers)
+        const grammarInfo = [];
+        const seenGrammar = new Set(); // Track unique grammar badges to avoid duplicates
+
+        chineseTranslations.forEach(translation => {
+            // Match all grammar patterns in the beginning of the translation
+            // This will capture patterns like "vt. vi." or "n. [C] [U]"
+            const grammarMatch = translation.match(/^([^,，]+?)(?=[\s,，][\u4e00-\u9fff]|$)/);
+            if (grammarMatch) {
+                const grammarText = grammarMatch[1].trim();
+
+                // Split grammar text into individual parts and create tooltips
+                const parts = grammarText.match(/vt\.|vi\.|v\.|n\.|adj\.|adv\.|prep\.|conj\.|pron\.|det\.|interj\.|\[C\]|\[U\]|\[S\]|\[P\]/gi);
+                if (parts) {
+                    parts.forEach(part => {
+                        const normalizedPart = part.toLowerCase();
+                        const key = normalizedPart;
+
+                        // Only add if we haven't seen this grammar badge yet
+                        if (!seenGrammar.has(key)) {
+                            seenGrammar.add(key);
+                            const tooltip = grammarTooltips[normalizedPart] || part;
+                            grammarInfo.push({
+                                grammar: part,
+                                tooltip: tooltip
+                            });
+                        }
+                    });
+                }
+            }
+        });
+
+        // Create grammar badges HTML with tooltips
+        const grammarBadgesHTML = grammarInfo.length > 0 ?
+            `<div class="grammar-badges">${grammarInfo.map(info =>
+                `<span class="grammar-badge" data-tooltip="${info.tooltip}">${info.grammar}</span>`
+            ).join('')}</div>` : '';
+
         const chineseHTML = chineseTranslations.map(translation =>
             `<div class="chinese-line">${translation}</div>`
         ).join('');
@@ -244,9 +295,14 @@ function displayUnitWords(unit) {
         wordItem.innerHTML = `
             <div class="word-content">
                 <span class="word-number">${wordNumber}.</span>
-                <span class="english">${word.english}</span>
-                <div class="chinese">${chineseHTML}</div>
-                ${hasExample ? `<div class="examples">${examplesHTML}</div>` : ''}
+                <div class="word-main">
+                    <div class="word-header">
+                        <span class="english">${word.english}</span>
+                        ${grammarBadgesHTML}
+                    </div>
+                    <div class="chinese">${chineseHTML}</div>
+                    ${hasExample ? `<div class="examples">${examplesHTML}</div>` : ''}
+                </div>
             </div>
             <div class="word-actions">
                 ${videoButton}
