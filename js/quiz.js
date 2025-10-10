@@ -499,21 +499,21 @@ async function createMultipleChoiceQuestion(word) {
 // Create a matching question
 async function createMatchingQuestion(word) {
     // Get options (1 correct + 3 random)
-    const options = await getRandomOptions(word);
+    const options = await getRandomOptions(word, 4);
 
     // Store options in a data attribute for later validation
     quizContainer.dataset.currentOptions = JSON.stringify(options);
 
     const questionElement = document.createElement('div');
-    questionElement.className = 'quiz-question';
+    questionElement.className = 'quiz-question matching';
     questionElement.innerHTML = `
         <h3>請選擇 "${word.english}" 的正確翻譯</h3>
-        <div class="matching-options">
+        <div class="quiz-options">
             ${options.map((option, index) => `
-                <div class="matching-option">
-                    <input type="radio" id="option-${index}" name="answer" value="${index}" class="auto-submit-option">
-                    <label for="option-${index}">${formatChineseDisplay(option)}</label>
-                </div>
+                <label>
+                    <input type="radio" name="answer" value="${index}" class="auto-submit-option">
+                    ${formatChineseDisplay(option)}
+                </label>
             `).join('')}
         </div>
     `;
@@ -721,17 +721,8 @@ function handleSubmitAnswer() {
                 const options = document.querySelectorAll('input[name="answer"]');
 
                 // Get the correct labels based on quiz type
-                let answerLabels;
-                if (quizTypeValue === 'multiple-choice' || quizTypeValue === 'fill-in-blank') {
-                    // For multiple choice and fill-in-blank, the label is a direct parent of the input
-                    answerLabels = document.querySelectorAll('.quiz-options label');
-                } else if (quizTypeValue === 'pronunciation') {
-                    // For pronunciation, the label is also in .quiz-options
-                    answerLabels = document.querySelectorAll('.quiz-options label');
-                } else {
-                    // For matching, we need to get the label with matching 'for' attribute
-                    answerLabels = document.querySelectorAll('.matching-options label');
-                }
+                // All quiz types now use .quiz-options
+                const answerLabels = document.querySelectorAll('.quiz-options label');
 
                 // Get the selected answer text from the correct label
                 userAnswer = answerLabels[optionIndex].textContent.trim();

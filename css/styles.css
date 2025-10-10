@@ -814,6 +814,7 @@ h2::after {
 .quiz-options {
     margin-top: 25px;
     display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
 }
 
@@ -1121,6 +1122,48 @@ label.incorrect::after {
     color: var(--dark-color);
 }
 
+.word-header .audio-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-size: 16px;
+    padding: 4px 6px;
+    transition: var(--transition);
+    border-radius: 4px;
+}
+
+.word-header .audio-btn:hover {
+    color: var(--secondary-color);
+    background-color: rgba(52, 152, 219, 0.1);
+    transform: scale(1.15);
+}
+
+.word-header .audio-btn:active {
+    transform: scale(0.95);
+}
+
+.word-header .video-btn {
+    background: none;
+    border: none;
+    color: #ff6b6b;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 4px 6px;
+    transition: var(--transition);
+    border-radius: 4px;
+}
+
+.word-header .video-btn:hover {
+    color: #ee5a52;
+    background-color: rgba(255, 107, 107, 0.1);
+    transform: scale(1.15);
+}
+
+.word-header .video-btn:active {
+    transform: scale(0.95);
+}
+
 .grammar-badges {
     display: flex;
     gap: 6px;
@@ -1272,6 +1315,10 @@ footer {
     .flashcard-controls .btn {
         padding: 10px 16px;
         font-size: 14px;
+    }
+
+    .quiz-options {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -1467,38 +1514,7 @@ footer {
     box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
 }
 
-/* Unit Word List Audio Button */
-.word-item .audio-btn {
-    background: none;
-    border: none;
-    color: var(--primary-color);
-    cursor: pointer;
-    font-size: 18px;
-    transition: var(--transition);
-    padding: 5px;
-}
-
-.word-item .audio-btn:hover {
-    color: var(--secondary-color);
-    transform: scale(1.2);
-}
-
-/* Unit Word List Video Button */
-.word-item .video-btn {
-    background: none;
-    border: none;
-    color: #ff6b6b;
-    cursor: pointer;
-    font-size: 18px;
-    transition: var(--transition);
-    padding: 5px;
-    margin-right: 5px;
-}
-
-.word-item .video-btn:hover {
-    color: #ee5a52;
-    transform: scale(1.2);
-}
+/* Old word-actions audio and video button styles removed - now in word-header */
 
 /* Word Number Styling */
 .word-content {
@@ -1529,7 +1545,7 @@ footer {
 }
 
 .word-item .examples {
-    width: 100%;
+    width: calc(100% - 42px); /* Subtract left margin (34px) and right padding (8px) */
     margin-top: 8px;
     margin-left: 34px; /* Align with word content after number */
 }
@@ -1539,16 +1555,52 @@ footer {
     font-size: 14px;
     font-style: italic;
     margin-top: 4px;
+    margin-bottom: 4px;
     padding: 4px 8px;
     background-color: #f9f9f9;
     border-left: 3px solid var(--primary-color);
     border-radius: 3px;
 }
 
+.word-item .example-line .example-text {
+    display: inline;
+}
+
 .word-item .example-line .highlight-word {
     color: var(--primary-color);
     font-weight: 600;
     font-style: normal;
+}
+
+.word-item .example-audio-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-size: 12px;
+    padding: 2px 4px;
+    margin-left: 4px;
+    transition: var(--transition);
+    border-radius: 4px;
+    vertical-align: middle;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.word-item .example-audio-btn:hover {
+    color: var(--secondary-color);
+    background-color: rgba(52, 152, 219, 0.1);
+    transform: scale(1.1);
+}
+
+.word-item .example-audio-btn:active {
+    transform: scale(0.95);
+}
+
+.word-item .example-audio-btn.loading {
+    opacity: 0.7;
+    pointer-events: none;
 }
 
 /* Quiz Audio Button */

@@ -12,32 +12,35 @@ const takeQuiz = document.getElementById('takeQuiz');
 let currentUnitId = null;
 
 // Initialize the page
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    // Ensure units data is loaded first
+    await loadUnitsIndex();
+
     // Check if a unit was specified in the URL
     const urlParams = new URLSearchParams(window.location.search);
     const unitId = urlParams.get('unit');
-    
+
     if (unitId) {
-        showUnitDetail(unitId);
+        await showUnitDetail(unitId);
     } else {
         displayAllUnits();
     }
-    
+
     // Set up event listeners
     backToUnits.addEventListener('click', () => {
         showUnitsList();
         // Update URL without the unit parameter
         window.history.pushState({}, '', 'units.html');
     });
-    
+
     practiceFlashcards.addEventListener('click', () => {
         window.location.href = `flashcards.html?unit=${currentUnitId}`;
     });
-    
+
     takeQuiz.addEventListener('click', () => {
         window.location.href = `quiz.html?unit=${currentUnitId}`;
     });
-    
+
     // Add audio provider selector if available
     if (typeof cloudAudioService !== 'undefined') {
         createAudioProviderSelector();
@@ -277,10 +280,17 @@ function displayUnitWords(unit) {
             const examples = Array.isArray(word.example) ? word.example : [word.example];
             examplesHTML = examples
                 .filter(ex => ex && ex.trim() !== '')
-                .map(example => {
+                .map((example, exIndex) => {
                     // Replace [word] with highlighted word (remove brackets, add blue color)
                     const formattedExample = example.replace(/\[([^\]]+)\]/g, '<span class="highlight-word">$1</span>');
-                    return `<div class="example-line">${formattedExample}</div>`;
+                    // Extract the clean sentence for TTS (remove brackets but keep the word)
+                    const cleanSentence = example.replace(/\[([^\]]+)\]/g, '$1');
+                    return `<div class="example-line">
+                        <span class="example-text">${formattedExample}</span>
+                        <button class="example-audio-btn" data-sentence="${cleanSentence.replace(/"/g, '&quot;')}" aria-label="Play example sentence">
+                            <i class="fas fa-volume-up"></i>
+                        </button>
+                    </div>`;
                 })
                 .join('');
         }
@@ -299,16 +309,16 @@ function displayUnitWords(unit) {
                     <div class="word-header">
                         <span class="english">${word.english}</span>
                         ${grammarBadgesHTML}
+                        <button class="audio-btn" aria-label="Play pronunciation">
+                            <i class="fas fa-volume-up"></i>
+                        </button>
+                        ${videoButton}
                     </div>
                     <div class="chinese">${chineseHTML}</div>
                     ${hasExample ? `<div class="examples">${examplesHTML}</div>` : ''}
                 </div>
             </div>
             <div class="word-actions">
-                ${videoButton}
-                <button class="audio-btn" aria-label="Play pronunciation">
-                    <i class="fas fa-volume-up"></i>
-                </button>
                 ${wordProgress.mastered ? '<span class="mastery-badge"><i class="fas fa-check-circle"></i></span>' : ''}
             </div>
         `;
@@ -327,6 +337,16 @@ function displayUnitWords(unit) {
                 window.open(videoUrl, '_blank');
             });
         }
+
+        // Add event listeners for example audio buttons
+        const exampleAudioBtns = wordItem.querySelectorAll('.example-audio-btn');
+        exampleAudioBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const sentence = btn.dataset.sentence;
+                playExampleSentence(sentence, btn);
+            });
+        });
 
         wordList.appendChild(wordItem);
     });
@@ -378,5 +398,50 @@ function playAudio(word) {
     } else {
         // No active button, just play the audio without visual feedback
         audioService.playWord(word);
+    }
+}
+
+// Play audio for example sentence using speech synthesis
+function playExampleSentence(sentence, button) {
+    if (!sentence) return;
+
+    console.log('Playing example sentence:', sentence);
+
+    // Set loading state
+    const originalIcon = button.innerHTML;
+    button.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+    button.disabled = true;
+    button.classList.add('loading');
+
+    // Function to restore button state
+    const restoreButton = () => {
+        button.innerHTML = originalIcon;
+        button.disabled = false;
+        button.classList.remove('loading');
+    };
+
+    // Show status message
+    showAudioStatus('播放例句中...');
+
+    // Use speech synthesis for sentences
+    if ('speechSynthesis' in window) {
+        const utterance = new SpeechSynthesisUtterance(sentence);
+        utterance.lang = 'en-US';
+        utterance.rate = 0.9; // Slightly slower for better comprehension
+
+        utterance.onend = () => {
+            restoreButton();
+        };
+
+        utterance.onerror = (err) => {
+            console.error('Speech synthesis error:', err);
+            showAudioStatus('無法播放例句');
+            restoreButton();
+        };
+
+        window.speechSynthesis.speak(utterance);
+    } else {
+        showAudioStatus('您的瀏覽器不支援語音合成');
+        restoreButton();
     }
 }
