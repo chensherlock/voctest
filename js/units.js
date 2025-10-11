@@ -150,9 +150,11 @@ async function displayAllUnits() {
                 : '';
 
             unitCard.innerHTML = `
-                <h3>${unit.title}</h3>
+                <div class="unit-card-header">
+                    ${videoButtonHTML || ''}
+                    <h3>${unit.title}</h3>
+                </div>
                 <p>${unit.words.length} 個詞彙</p>
-                ${videoButtonHTML ? `<div class="unit-card-buttons">${videoButtonHTML}</div>` : ''}
             `;
 
             // Make the entire card clickable for units with words

@@ -178,11 +178,20 @@ async function loadUnitWords() {
 // Create vocabulary range selector
 function createVocabRangeSelector() {
     const vocabRangeContainer = document.getElementById('vocabRangeContainer');
+    if (!vocabRangeContainer) return;
+
+    const totalWords = Math.max(allUnitWords.length, 1);
+
     vocabRangeContainer.innerHTML = `
-        <label for="vocabRangeStart">起始：</label>
-        <input type="number" id="vocabRangeStart" min="1" max="${allUnitWords.length}" value="1">
-        <label for="vocabRangeEnd">結束：</label>
-        <input type="number" id="vocabRangeEnd" min="1" max="${allUnitWords.length}" value="${allUnitWords.length}">
+        <label class="vocab-range-field">
+            <span>起始</span>
+            <input type="number" id="vocabRangeStart" min="1" max="${totalWords}" value="1">
+        </label>
+        <span class="vocab-range-separator">至</span>
+        <label class="vocab-range-field">
+            <span>結束</span>
+            <input type="number" id="vocabRangeEnd" min="1" max="${totalWords}" value="${totalWords}">
+        </label>
     `;
 }
 

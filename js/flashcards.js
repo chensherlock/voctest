@@ -603,49 +603,38 @@ async function createVocabRangeSelector() {
     const container = document.getElementById('vocabRangeContainer');
     if (!container) return;
 
-    // Wait for words to be loaded
     if (allUnitWords.length === 0) {
         await loadWords();
     }
 
-    // Create start input
-    const startLabel = document.createElement('label');
-    startLabel.textContent = '起始：';
+    const totalWords = Math.max(allUnitWords.length, 1);
 
-    const startInput = document.createElement('input');
-    startInput.type = 'number';
-    startInput.id = 'vocabRangeStart';
-    startInput.min = '1';
-    startInput.max = allUnitWords.length.toString();
-    startInput.value = '1';
+    container.innerHTML = `
+        <label class="vocab-range-field">
+            <span>起始</span>
+            <input type="number" id="vocabRangeStart" min="1" max="${totalWords}" value="1">
+        </label>
+        <span class="vocab-range-separator">至</span>
+        <label class="vocab-range-field">
+            <span>結束</span>
+            <input type="number" id="vocabRangeEnd" min="1" max="${totalWords}" value="${totalWords}">
+        </label>
+    `;
 
-    // Create end input
-    const endLabel = document.createElement('label');
-    endLabel.textContent = '結束：';
+    const startInput = container.querySelector('#vocabRangeStart');
+    const endInput = container.querySelector('#vocabRangeEnd');
 
-    const endInput = document.createElement('input');
-    endInput.type = 'number';
-    endInput.id = 'vocabRangeEnd';
-    endInput.min = '1';
-    endInput.max = allUnitWords.length.toString();
-    endInput.value = allUnitWords.length.toString();
+    if (!startInput || !endInput) return;
 
-    // Append elements
-    container.appendChild(startLabel);
-    container.appendChild(startInput);
-    container.appendChild(endLabel);
-    container.appendChild(endInput);
-
-    // Add event listeners to handle range changes
     startInput.addEventListener('change', () => {
-        if (parseInt(startInput.value) > parseInt(endInput.value)) {
+        if (parseInt(startInput.value, 10) > parseInt(endInput.value, 10)) {
             startInput.value = endInput.value;
         }
         applyVocabRange();
     });
 
     endInput.addEventListener('change', () => {
-        if (parseInt(endInput.value) < parseInt(startInput.value)) {
+        if (parseInt(endInput.value, 10) < parseInt(startInput.value, 10)) {
             endInput.value = startInput.value;
         }
         applyVocabRange();
