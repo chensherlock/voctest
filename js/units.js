@@ -44,6 +44,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Add audio provider selector if available
     if (typeof cloudAudioService !== 'undefined') {
         createAudioProviderSelector();
+        createSpeedControlSelector();
+        createVoiceSelectorUI();
     }
 });
 
@@ -61,44 +63,45 @@ function createAudioProviderSelector() {
     headerEl.appendChild(providerContainer);
 }
 
-// Create voice selector for speech synthesis
-function createVoiceSelector() {
-    // Check if selector already exists
-    if (document.getElementById('voiceSelectorContainer')) return;
+// Create pronunciation speed control
+function createSpeedControlSelector() {
+    const headerEl = document.querySelector('#unitHeader');
+    if (!headerEl || document.getElementById('speedControl')) return;
 
-    const voiceSelectorContainer = audioService.createVoiceSelector({
-        onChange: (voiceURI) => {
-            showAudioStatus('已更改語音合成聲音');
+    const speedContainer = audioService.createSpeedControl({
+        onChange: (speed) => {
+            showAudioStatus(`發音速度已設為 ${speed.toFixed(1)}x`);
         }
     });
 
-    voiceSelectorContainer.id = 'voiceSelectorContainer';
-    voiceSelectorContainer.style.display = 'none'; // Hidden by default
+    headerEl.appendChild(speedContainer);
+}
 
-    // Add to page - after audio provider if it exists
-    const audioProviderContainer = document.querySelector('.audio-provider-container');
-    if (audioProviderContainer) {
-        audioProviderContainer.parentNode.insertBefore(voiceSelectorContainer, audioProviderContainer.nextSibling);
-    } else {
-        const unitHeader = document.querySelector('#unitHeader');
-        if (unitHeader) {
-            unitHeader.appendChild(voiceSelectorContainer);
+// Create voice selector UI for speech synthesis
+function createVoiceSelectorUI() {
+    const headerEl = document.querySelector('#unitHeader');
+    if (!headerEl || document.getElementById('voiceSelect')) return;
+
+    const voiceSelectorContainer = audioService.createVoiceSelector({
+        onChange: (voiceURI) => {
+            const voiceName = audioService.voices.find(v => v.voiceURI === voiceURI)?.name || '預設';
+            showAudioStatus(`已更改語音：${voiceName}`);
         }
-    }
+    });
 
-    return voiceSelectorContainer;
+    voiceSelectorContainer.classList.add('form-group');
+    headerEl.appendChild(voiceSelectorContainer);
 }
 
 // Speech synthesis voices can load asynchronously
 if ('speechSynthesis' in window) {
-    // Check if voices are already loaded
-    if (window.speechSynthesis.getVoices().length > 0) {
-        createVoiceSelector();
-    }
-
-    // Add event listener for when voices change/load
     window.speechSynthesis.onvoiceschanged = function() {
-        createVoiceSelector();
+        audioService.loadVoices();
+        // Update the voice selector if it exists
+        const voiceSelect = document.getElementById('voiceSelect');
+        if (voiceSelect) {
+            audioService.populateVoiceSelector(voiceSelect);
+        }
     };
 }
 
@@ -445,7 +448,15 @@ function playExampleSentence(sentence, button) {
     if ('speechSynthesis' in window) {
         const utterance = new SpeechSynthesisUtterance(sentence);
         utterance.lang = 'en-US';
-        utterance.rate = 0.9; // Slightly slower for better comprehension
+
+        // Apply pronunciation speed (base rate 0.9 * user speed)
+        utterance.rate = 0.9 * audioService.getPronunciationSpeed();
+
+        // Use preferred voice if available
+        const preferredVoice = audioService.getPreferredVoice();
+        if (preferredVoice) {
+            utterance.voice = preferredVoice;
+        }
 
         utterance.onend = () => {
             restoreButton();

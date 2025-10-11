@@ -65,6 +65,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Create audio provider selector if it doesn't exist
     createAudioProviderSelector();
 
+    // Create speed control selector
+    createSpeedControlSelector();
+
     // Initialize voice selector
     initializeVoiceSelector();
 
@@ -113,14 +116,17 @@ function createAudioProviderSelector() {
 
     // Add change event listener
     providerSelect.addEventListener('change', () => {
-        // If user selects speech synthesis, directly use it as primary
+        // Update audio service provider
+        audioService.setProvider(providerSelect.value);
+
+        // If user selects speech synthesis, reload and update voice list
         if (providerSelect.value === 'speechSynthesis') {
             updateAudioStatus(`已更改為直接使用瀏覽器語音合成`);
 
-            // Show voice selector
-            const voiceSelectorContainer = document.getElementById('voiceSelectorContainer') || createVoiceSelector();
-            if (voiceSelectorContainer) {
-                voiceSelectorContainer.style.display = 'block';
+            // Reload voices and update the voice selector
+            audioService.loadVoices();
+            if (voiceSelect) {
+                audioService.populateVoiceSelector(voiceSelect);
             }
         } else {
             updateAudioStatus(`已更改音訊提供者為 ${providerSelect.value}`);
@@ -137,6 +143,29 @@ function createAudioProviderSelector() {
         settingsContainer.insertBefore(providerFormGroup, startButton);
     } else {
         settingsContainer.appendChild(providerFormGroup);
+    }
+}
+
+// Create pronunciation speed control
+function createSpeedControlSelector() {
+    const settingsContainer = document.querySelector('.flashcard-settings');
+    if (!settingsContainer || document.getElementById('speedControl')) return;
+
+    const speedControlDiv = audioService.createSpeedControl({
+        onChange: (speed) => {
+            updateAudioStatus(`發音速度已設為 ${speed.toFixed(1)}x`);
+        }
+    });
+
+    // Add form-group class for consistent styling
+    speedControlDiv.classList.add('form-group');
+
+    // Insert before the start button
+    const startButton = document.getElementById('startFlashcards');
+    if (startButton) {
+        settingsContainer.insertBefore(speedControlDiv, startButton);
+    } else {
+        settingsContainer.appendChild(speedControlDiv);
     }
 }
 

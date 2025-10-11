@@ -21,11 +21,15 @@ const audioService = {
     voices: [],
     preferredVoiceURI: null,
 
+    // Pronunciation speed (0.5 to 2.0, default 1.0)
+    pronunciationSpeed: 1.0,
+
     /**
      * Initialize the audio service
      */
     init() {
         this.loadPreferredVoice();
+        this.loadPronunciationSpeed();
         this.loadVoices();
 
         // Speech synthesis voices can load asynchronously
@@ -59,6 +63,35 @@ const audioService = {
     setPreferredVoice(voiceURI) {
         this.preferredVoiceURI = voiceURI;
         localStorage.setItem('preferredVoice', voiceURI);
+    },
+
+    /**
+     * Load pronunciation speed from localStorage
+     */
+    loadPronunciationSpeed() {
+        const savedSpeed = localStorage.getItem('pronunciationSpeed');
+        if (savedSpeed) {
+            this.pronunciationSpeed = parseFloat(savedSpeed);
+        }
+    },
+
+    /**
+     * Set pronunciation speed
+     * @param {number} speed - Speed value between 0.25 and 2.0
+     */
+    setPronunciationSpeed(speed) {
+        // Clamp speed between 0.25 and 2.0
+        speed = Math.max(0.25, Math.min(2.0, speed));
+        this.pronunciationSpeed = speed;
+        localStorage.setItem('pronunciationSpeed', speed.toString());
+    },
+
+    /**
+     * Get current pronunciation speed
+     * @returns {number} - Current speed value
+     */
+    getPronunciationSpeed() {
+        return this.pronunciationSpeed;
     },
 
     /**
@@ -221,6 +254,9 @@ const audioService = {
             audio.crossOrigin = "anonymous";
             audio.src = url;
 
+            // Apply pronunciation speed to audio playback
+            audio.playbackRate = this.pronunciationSpeed;
+
             audio.addEventListener('error', (e) => {
                 console.log('Audio error, falling back to speech synthesis:', e);
                 this.speakWord(word, { onEnd, onError });
@@ -262,7 +298,9 @@ const audioService = {
             try {
                 const utterance = new SpeechSynthesisUtterance(word);
                 utterance.lang = 'en-US';
-                utterance.rate = 0.9; // Slightly slower for better clarity
+
+                // Apply pronunciation speed (base rate 0.9 * user speed)
+                utterance.rate = 0.9 * this.pronunciationSpeed;
 
                 // Use preferred voice if available
                 const preferredVoice = this.getPreferredVoice();
@@ -300,7 +338,7 @@ const audioService = {
         const { onChange } = options;
 
         const container = document.createElement('div');
-        container.className = 'voice-selector-container';
+        container.className = 'audio-provider-container'; // Match audio provider styling
 
         const label = document.createElement('label');
         label.setAttribute('for', 'voiceSelect');
@@ -308,7 +346,6 @@ const audioService = {
 
         const select = document.createElement('select');
         select.id = 'voiceSelect';
-        select.className = 'voice-select';
 
         // Populate with voices
         this.populateVoiceSelector(select);
@@ -319,21 +356,8 @@ const audioService = {
             if (onChange) onChange(select.value);
         });
 
-        // Add refresh button
-        const refreshButton = document.createElement('button');
-        refreshButton.className = 'refresh-voices-btn';
-        refreshButton.innerHTML = '<i class="fas fa-sync-alt"></i>';
-        refreshButton.title = '重新載入可用語音';
-        refreshButton.type = 'button';
-        refreshButton.addEventListener('click', () => {
-            this.loadVoices();
-            this.populateVoiceSelector(select);
-            if (onChange) onChange(select.value);
-        });
-
         container.appendChild(label);
         container.appendChild(select);
-        container.appendChild(refreshButton);
 
         return container;
     },
@@ -447,6 +471,69 @@ const audioService = {
 
         container.appendChild(label);
         container.appendChild(select);
+
+        return container;
+    },
+
+    /**
+     * Create pronunciation speed control UI element
+     * @param {Object} options - Configuration options
+     * @param {Function} options.onChange - Callback when speed changes
+     * @returns {HTMLElement} - Speed control container
+     */
+    createSpeedControl(options = {}) {
+        const { onChange } = options;
+
+        const container = document.createElement('div');
+        container.className = 'speed-control-container';
+
+        const label = document.createElement('label');
+        label.setAttribute('for', 'speedControl');
+        label.textContent = '發音速度：';
+
+        const controlGroup = document.createElement('div');
+        controlGroup.className = 'speed-control-group';
+
+        const slider = document.createElement('input');
+        slider.type = 'range';
+        slider.id = 'speedControl';
+        slider.className = 'speed-slider';
+        slider.min = '0.25';
+        slider.max = '2.0';
+        slider.step = '0.05';
+        slider.value = this.pronunciationSpeed.toString();
+
+        const valueDisplay = document.createElement('span');
+        valueDisplay.className = 'speed-value';
+        valueDisplay.textContent = `${this.pronunciationSpeed.toFixed(1)}x`;
+
+        // Update display and call onChange when slider changes
+        slider.addEventListener('input', () => {
+            const speed = parseFloat(slider.value);
+            valueDisplay.textContent = `${speed.toFixed(1)}x`;
+            this.setPronunciationSpeed(speed);
+            if (onChange) onChange(speed);
+        });
+
+        // Reset button
+        const resetBtn = document.createElement('button');
+        resetBtn.type = 'button';
+        resetBtn.className = 'speed-reset-btn';
+        resetBtn.textContent = '重置';
+        resetBtn.title = '重置為預設速度 (1.0x)';
+        resetBtn.addEventListener('click', () => {
+            slider.value = '1.0';
+            valueDisplay.textContent = '1.0x';
+            this.setPronunciationSpeed(1.0);
+            if (onChange) onChange(1.0);
+        });
+
+        controlGroup.appendChild(slider);
+        controlGroup.appendChild(valueDisplay);
+        controlGroup.appendChild(resetBtn);
+
+        container.appendChild(label);
+        container.appendChild(controlGroup);
 
         return container;
     }
