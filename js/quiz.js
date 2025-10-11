@@ -491,7 +491,6 @@ async function createFillInBlankQuestion(word) {
     const questionElement = document.createElement('div');
     questionElement.className = 'quiz-question fill-in-blank';
     questionElement.innerHTML = `
-        <h3>請選擇正確的單字填入空格</h3>
         <div class="fill-blank-sentence">${displayExample}</div>
         <div class="quiz-options">
             ${options.map((option, index) => `

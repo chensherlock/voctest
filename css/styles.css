@@ -530,6 +530,105 @@ h2::after {
     position: relative;
 }
 
+/* Top corner buttons (restart and shuffle) */
+.flashcard-corner-btn {
+    position: absolute;
+    top: 15px;
+    padding: 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.25);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.flashcard-corner-top-left {
+    left: 15px;
+}
+
+.flashcard-corner-top-right {
+    right: 15px;
+}
+
+.flashcard-corner-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.flashcard-corner-btn:active {
+    transform: scale(0.95);
+}
+
+.flashcard-corner-btn i {
+    font-size: 18px;
+}
+
+/* Bottom navigation buttons (prev/next) */
+.flashcard-nav-btn {
+    position: absolute;
+    bottom: 15px;
+    padding: 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.25);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    width: 50px;
+    height: 50px;
+}
+
+.flashcard-nav-prev {
+    left: 15px;
+}
+
+.flashcard-nav-next {
+    right: 15px;
+}
+
+.flashcard-nav-btn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.flashcard-nav-btn:active:not(:disabled) {
+    transform: scale(0.95);
+}
+
+.flashcard-nav-btn:disabled {
+    background: rgba(150, 150, 150, 0.3);
+    color: rgba(255, 255, 255, 0.5);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    opacity: 0.5;
+}
+
+.flashcard-nav-btn i {
+    font-size: 18px;
+}
+
 .flashcard::before {
     content: '';
     position: absolute;
@@ -561,8 +660,9 @@ h2::after {
 }
 
 .flashcard-front {
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-    border: 3px solid #e0e0e0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: 3px solid #5a67d8;
     position: relative;
     overflow: hidden;
 }
@@ -574,16 +674,29 @@ h2::after {
     left: 50%;
     transform: translateX(-50%);
     font-size: 14px;
-    color: var(--gray-color);
-    opacity: 0.6;
+    color: rgba(255, 255, 255, 0.7);
+    opacity: 0.8;
     pointer-events: none;
 }
 
 .flashcard-back {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background: linear-gradient(135deg, #8e44ad 0%, #9b59b6 100%);
     color: white;
     transform: rotateY(180deg);
     position: relative;
+}
+
+.flashcard-front-hint {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 18px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    opacity: 0.8;
+    text-align: center;
+    max-width: 90%;
 }
 
 .flashcard-back::before {
@@ -626,8 +739,18 @@ h2::after {
     max-width: 100%;
 }
 
+.flashcard-front .flashcard-word {
+    color: white;
+}
+
+.flashcard-back .flashcard-word {
+    font-size: 52px;
+    font-weight: 800;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
 .flashcard-front p {
-    color: var(--gray-color);
+    color: rgba(255, 255, 255, 0.9);
     font-size: 16px;
     margin-top: 20px;
     opacity: 0.8;
@@ -671,40 +794,7 @@ h2::after {
 }
 
 .flashcard-controls {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 20px;
-    flex-wrap: wrap;
-}
-
-.flashcard-controls .btn {
-    padding: 14px 24px;
-    font-size: 16px;
-    font-weight: 600;
-    border-radius: 10px;
-    transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
-}
-
-.flashcard-controls .btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(52, 152, 219, 0.3);
-}
-
-.flashcard-controls .btn:disabled {
-    background-color: #cccccc;
-    color: #888888;
-    cursor: not-allowed;
-    transform: none;
-    box-shadow: none;
-}
-
-.flashcard-controls .btn i {
-    font-size: 14px;
+    display: none;
 }
 
 /* Keyboard shortcuts helper */
@@ -1429,14 +1519,53 @@ footer {
         font-size: 32px;
     }
 
-    /* Flashcard controls - stack on mobile */
-    .flashcard-controls {
-        gap: 10px;
+    .flashcard-back .flashcard-word {
+        font-size: 40px;
     }
 
-    .flashcard-controls .btn {
-        padding: 12px 20px;
-        font-size: 15px;
+    /* Flashcard front hint on tablet */
+    .flashcard-front-hint {
+        font-size: 16px;
+        top: 18px;
+    }
+
+    .flashcard-back .audio-btn {
+        width: 56px;
+        height: 56px;
+        font-size: 22px;
+        bottom: 18px;
+    }
+
+    /* Flashcard corner buttons on tablet */
+    .flashcard-corner-btn {
+        padding: 8px 10px;
+        font-size: 14px;
+        top: 12px;
+        min-width: 36px;
+        min-height: 36px;
+    }
+
+    .flashcard-corner-top-left {
+        left: 12px;
+    }
+
+    .flashcard-corner-top-right {
+        right: 12px;
+    }
+
+    /* Flashcard navigation buttons on tablet */
+    .flashcard-nav-btn {
+        padding: 10px 14px;
+        font-size: 13px;
+        bottom: 12px;
+    }
+
+    .flashcard-nav-prev {
+        left: 12px;
+    }
+
+    .flashcard-nav-next {
+        right: 12px;
     }
 
     /* Quiz layout */
@@ -1609,25 +1738,66 @@ footer {
         font-size: 28px;
     }
 
+    .flashcard-back .flashcard-word {
+        font-size: 34px;
+    }
+
     .flashcard-front, .flashcard-back {
         padding: 20px 15px;
     }
 
-    .flashcard-controls {
-        gap: 8px;
-        flex-direction: column;
+    /* Flashcard front hint on mobile */
+    .flashcard-front-hint {
+        font-size: 14px;
+        top: 15px;
     }
 
-    .flashcard-controls .btn {
-        width: 100%;
-        padding: 14px;
-        font-size: 15px;
+    /* Flashcard corner buttons on mobile */
+    .flashcard-corner-btn {
+        padding: 0;
+        font-size: 14px;
+        top: 5px;
+        min-width: 32px;
+        width: 32px;
+        height: 32px;
+    }
+
+    .flashcard-corner-top-left {
+        left: 5px;
+    }
+
+    .flashcard-corner-top-right {
+        right: 5px;
+    }
+
+    /* Flashcard navigation buttons on mobile */
+    .flashcard-nav-btn {
+        padding: 0;
+        font-size: 14px;
+        bottom: 5px;
+        gap: 0;
+        min-width: 32px;
+        width: 32px;
+        height: 32px;
+    }
+
+    .flashcard-nav-prev {
+        left: 5px;
+    }
+
+    .flashcard-nav-next {
+        right: 5px;
+    }
+
+    .flashcard-nav-btn i {
+        font-size: 14px;
     }
 
     .flashcard-back .audio-btn {
-        width: 56px;
-        height: 56px;
-        font-size: 22px;
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+        bottom: 50px;
     }
 
     /* Quiz */
@@ -1828,6 +1998,129 @@ footer {
     }
 }
 
+/* Landscape mode for small devices (670x360) */
+@media (max-width: 736px) and (max-height: 414px) and (orientation: landscape) {
+    /* Compact header for landscape */
+    header {
+        padding: 8px 0;
+    }
+
+    header h1 {
+        font-size: 16px;
+    }
+
+    nav a {
+        font-size: 11px;
+        padding: 6px 8px;
+    }
+
+    /* Reduce main padding */
+    main {
+        padding: 10px 0;
+    }
+
+    /* Compact flashcard settings */
+    .flashcard-settings {
+        padding: 12px 10px;
+        margin-bottom: 15px;
+    }
+
+    .flashcard-settings .form-group {
+        margin-bottom: 12px;
+    }
+
+    /* Smaller flashcard for landscape */
+    .flashcard {
+        height: 240px;
+    }
+
+    .flashcard-word {
+        font-size: 24px;
+    }
+
+    .flashcard-back .flashcard-word {
+        font-size: 28px;
+    }
+
+    .flashcard-front, .flashcard-back {
+        padding: 15px 10px;
+    }
+
+    .flashcard-front-hint {
+        font-size: 12px;
+        top: 10px;
+    }
+
+    /* Smaller buttons for landscape */
+    .flashcard-corner-btn {
+        padding: 0;
+        font-size: 12px;
+        top: 4px;
+        min-width: 28px;
+        width: 28px;
+        height: 28px;
+    }
+
+    .flashcard-corner-top-left {
+        left: 4px;
+    }
+
+    .flashcard-corner-top-right {
+        right: 4px;
+    }
+
+    .flashcard-nav-btn {
+        padding: 0;
+        font-size: 12px;
+        bottom: 4px;
+        min-width: 28px;
+        width: 28px;
+        height: 28px;
+    }
+
+    .flashcard-nav-prev {
+        left: 4px;
+    }
+
+    .flashcard-nav-next {
+        right: 4px;
+    }
+
+    .flashcard-nav-btn i,
+    .flashcard-corner-btn i {
+        font-size: 12px;
+    }
+
+    .flashcard-back .audio-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+        bottom: 40px;
+    }
+
+    /* Compact progress */
+    .flashcard-progress {
+        padding: 10px 15px;
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+
+    .flashcard-progress span:first-child {
+        font-size: 20px;
+    }
+
+    /* Hide or compact keyboard shortcuts in landscape */
+    .keyboard-shortcuts {
+        display: none;
+    }
+
+    /* Smaller container for landscape */
+    .container {
+        width: 98%;
+        padding: 0 5px;
+    }
+}
+
 /* Very small phones */
 @media (max-width: 360px) {
     .container {
@@ -1850,6 +2143,55 @@ footer {
 
     .flashcard-word {
         font-size: 24px;
+    }
+
+    /* Further reduce flashcard button sizes on very small screens */
+    .flashcard-corner-btn {
+        padding: 0;
+        font-size: 12px;
+        top: 4px;
+        width: 30px !important;
+        height: 30px !important;
+        min-width: 30px;
+        min-height: 30px;
+    }
+
+    .flashcard-corner-top-left {
+        left: 4px;
+    }
+
+    .flashcard-corner-top-right {
+        right: 4px;
+    }
+
+    .flashcard-nav-btn {
+        padding: 0;
+        font-size: 12px;
+        bottom: 4px;
+        gap: 0;
+        width: 30px !important;
+        height: 30px !important;
+        min-width: 30px;
+        min-height: 30px;
+    }
+
+    .flashcard-nav-prev {
+        left: 4px;
+    }
+
+    .flashcard-nav-next {
+        right: 4px;
+    }
+
+    .flashcard-nav-btn i {
+        font-size: 12px;
+    }
+
+    .flashcard-back .audio-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+        bottom: 45px;
     }
 
     .word-item .english {
@@ -2087,20 +2429,24 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 20px;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
 }
 
 .flashcard-back .audio-btn:hover {
     background: rgba(255, 255, 255, 0.4);
-    transform: scale(1.1);
+    transform: translateX(-50%) scale(1.1);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 .flashcard-back .audio-btn:active {
-    transform: scale(0.95);
+    transform: translateX(-50%) scale(0.95);
 }
 
 .flashcard-back .audio-btn:focus {
@@ -2221,8 +2567,8 @@ footer {
 .fill-blank-sentence {
     font-size: 20px;
     line-height: 2;
-    padding: 25px 20px;
-    margin: 25px 0;
+    padding: 10px 10px;
+    margin: 12px 0;
     background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
     border-radius: 12px;
     border-left: 5px solid var(--primary-color);
@@ -2238,7 +2584,7 @@ footer {
 }
 
 .fill-blank-sentence::before {
-    content: '"';
+    content: '';
     font-size: 48px;
     color: var(--primary-color);
     opacity: 0.2;
@@ -2295,7 +2641,7 @@ footer {
 .quiz-question .quiz-options label {    
     position: relative;
     display: block;
-    padding: 15px;
+    padding: 10px;
     margin-bottom: 6px;
     background-color: var(--light-color);
     border-radius: 4px;

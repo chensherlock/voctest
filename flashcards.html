@@ -10,7 +10,6 @@
 <body>
     <header>
         <div class="container">
-            <h1>詞彙記憶</h1>
             <nav>
                 <ul>
                     <li><a href="index.html">首頁</a></li>
@@ -25,8 +24,6 @@
     <main>
         <div class="container">
             <section>
-                <h2>閃卡練習</h2>
-
                 <div class="flashcard-settings">
                     <div class="form-group">
                         <label>選擇單元：</label>
@@ -75,27 +72,25 @@
                 <div class="flashcard-layout">
                     <div class="flashcard-container">
                         <div class="flashcard" id="flashcard">
+                            <button class="btn flashcard-corner-btn flashcard-corner-top-left" id="startOver" title="重新開始"><i class="fas fa-redo"></i></button>
+                            <button class="btn flashcard-corner-btn flashcard-corner-top-right" id="shuffleCards" title="隨機排序"><i class="fas fa-random"></i></button>
                             <div class="flashcard-inner">
                                 <div class="flashcard-front">
                                     <div class="flashcard-word" id="frontWord">點擊開始</div>
                                     <p>點擊卡片翻轉</p>
                                 </div>
                                 <div class="flashcard-back">
+                                    <div class="flashcard-front-hint" id="frontHint"></div>
                                     <div class="flashcard-word" id="backWord"></div>
                                     <button class="audio-btn" id="playAudio"><i class="fas fa-volume-up"></i></button>
                                 </div>
                             </div>
+                            <button class="btn flashcard-nav-btn flashcard-nav-prev" id="prevCard" disabled><i class="fas fa-arrow-left"></i></button>
+                            <button class="btn flashcard-nav-btn flashcard-nav-next" id="nextCard"><i class="fas fa-arrow-right"></i></button>
                         </div>
 
                         <div class="flashcard-progress">
                             <span id="currentCardNumber">0</span> / <span id="totalCards">0</span>
-                        </div>
-
-                        <div class="flashcard-controls">
-                            <button class="btn" id="prevCard" disabled><i class="fas fa-arrow-left"></i> 上一張</button>
-                            <button class="btn" id="nextCard">下一張 <i class="fas fa-arrow-right"></i></button>
-                            <button class="btn" id="shuffleCards"><i class="fas fa-random"></i> 隨機排序</button>
-                            <button class="btn" id="startOver"><i class="fas fa-redo"></i> 重新開始</button>
                         </div>
                     </div>
 

@@ -2,6 +2,7 @@
 const flashcard = document.getElementById('flashcard');
 const frontWord = document.getElementById('frontWord');
 const backWord = document.getElementById('backWord');
+const frontHint = document.getElementById('frontHint');
 const playAudioBtn = document.getElementById('playAudio');
 const prevCard = document.getElementById('prevCard');
 const nextCard = document.getElementById('nextCard');
@@ -447,6 +448,9 @@ function updateCardDisplay() {
         // English on front, Chinese on back (multi-line)
         frontWord.textContent = word.english;
 
+        // Show front word as hint on back
+        frontHint.textContent = word.english;
+
         // Clear and rebuild backWord with multiple lines
         backWord.innerHTML = '';
         chineseTranslations.forEach(translation => {
@@ -455,6 +459,9 @@ function updateCardDisplay() {
             line.textContent = translation;
             backWord.appendChild(line);
         });
+
+        // Adjust font size based on content length
+        adjustBackWordFontSize(chineseTranslations.join(' '));
     } else {
         // Chinese on front (multi-line), English on back
         frontWord.innerHTML = '';
@@ -465,7 +472,13 @@ function updateCardDisplay() {
             frontWord.appendChild(line);
         });
 
+        // Show front Chinese as hint on back
+        frontHint.textContent = chineseTranslations.join(' / ');
+
         backWord.textContent = word.english;
+
+        // Adjust font size based on content length
+        adjustBackWordFontSize(word.english);
     }
 
     // Remove flipped class if present
@@ -479,6 +492,28 @@ function updateCardDisplay() {
 
     // Preload audio for smoother experience
     preloadWordAudio(word);
+}
+
+// Adjust back word font size based on content length
+function adjustBackWordFontSize(text) {
+    if (!backWord) return;
+
+    // Reset any previous custom font size
+    backWord.style.fontSize = '';
+
+    const textLength = text.length;
+
+    // Define breakpoints for font size adjustment
+    if (textLength > 100) {
+        backWord.style.fontSize = '28px';
+    } else if (textLength > 80) {
+        backWord.style.fontSize = '32px';
+    } else if (textLength > 60) {
+        backWord.style.fontSize = '38px';
+    } else if (textLength > 40) {
+        backWord.style.fontSize = '44px';
+    }
+    // else: use default CSS font size (52px)
 }
 
 // Preload audio for the current word
