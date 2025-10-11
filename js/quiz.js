@@ -26,21 +26,10 @@ let currentQuizIndex = 0;
 let currentQuizScore = 0;
 let selectedAnswers = [];
 let missedWords = [];
-let selectedUnitIds = ['all']; // Changed to array to support multiple unit selection
+let selectedUnitIds = []; // Array of selected unit IDs
 let quizTypeValue = 'multiple-choice';
 let quizQuestionCount = 10;
 let allUnitWords = []; // Store all words from the selected units for range selection
-
-// Helper function to validate and fix unit IDs
-function ensureValidUnitIds() {
-    if (!Array.isArray(selectedUnitIds)) {
-        console.warn("selectedUnitIds was not an array, resetting to ['all']");
-        selectedUnitIds = ['all'];
-    } else if (selectedUnitIds.length === 0) {
-        console.warn("selectedUnitIds was empty, resetting to ['all']");
-        selectedUnitIds = ['all'];
-    }
-}
 
 // Helper function to check if a word has valid examples for fill-in-blank
 function hasValidExampleForFillInBlank(word) {
@@ -52,55 +41,24 @@ function hasValidExampleForFillInBlank(word) {
 
 // Initialize the page
 document.addEventListener('DOMContentLoaded', async () => {
-    // Ensure we have valid unit IDs to start with
-    ensureValidUnitIds();
+    // Populate unit checkboxes
+    await populateUnitSelect();
 
     // Check if a unit was specified in the URL
     const urlParams = new URLSearchParams(window.location.search);
     const unitId = urlParams.get('unit');
 
-    // Populate unit checkboxes (this will pre-select default units)
-    await populateUnitSelect();
-
     // Set initial unit if specified in URL
     if (unitId) {
-        // Validate the unit ID
-        const unitExists = getAllUnits().some(unit => unit.id.toString() === unitId);
-        if (!unitExists) {
-            console.warn(`Unit with ID ${unitId} not found!`);
-        } else {
-            // Uncheck "all" checkbox
-            const allCheckbox = document.getElementById('unit-all');
-            if (allCheckbox) {
-                allCheckbox.checked = false;
-                allCheckbox.parentElement.classList.remove('selected');
-            }
-
-            // Check the specified unit checkbox
-            const checkbox = document.getElementById(`unit-${unitId}`);
-            if (checkbox) {
-                checkbox.checked = true;
-                checkbox.parentElement.classList.add('selected');
-                selectedUnitIds = [unitId.toString()]; // Ensure it's a string
-
-                // Uncheck any default units
-                getAllUnits().forEach(unit => {
-                    if (unit.default && unit.id.toString() !== unitId) {
-                        const cb = document.getElementById(`unit-${unit.id}`);
-                        if (cb) {
-                            cb.checked = false;
-                            cb.parentElement.classList.remove('selected');
-                        }
-                    }
-                });
-            } else {
-                console.warn(`Checkbox for unit ID ${unitId} not found!`);
-            }
+        const checkbox = document.querySelector(`input[value="${unitId}"]`);
+        if (checkbox) {
+            checkbox.checked = true;
+            handleUnitCheckboxChange();
         }
+    } else {
+        // Select default units
+        selectDefaultUnits();
     }
-
-    // Load all words from selected units (wait for it to complete)
-    await loadUnitWords();
 
     // Create vocabulary range selector after words are loaded
     createVocabRangeSelector();
@@ -118,192 +76,102 @@ document.addEventListener('DOMContentLoaded', async () => {
 async function populateUnitSelect() {
     await loadUnitsIndex();
     const units = getAllUnits();
-    if (!units || units.length === 0) {
-        console.error("No units found!");
-        return;
-    }
-    
-    const unitCheckboxContainer = document.getElementById('unitCheckboxContainer');
-    if (!unitCheckboxContainer) {
-        console.error("Unit checkbox container not found!");
-        return;
-    }
-    
-    // Set up the "all" checkbox handler first
-    const allCheckbox = document.getElementById('unit-all');
-    if (!allCheckbox) {
-        console.error("'All' checkbox not found!");
-        return;
-    }
-    
-    allCheckbox.addEventListener('change', async (e) => {
-        const unitCheckboxes = document.querySelectorAll('.unit-checkbox-item input[type="checkbox"]:not(#unit-all)');
+    const container = document.getElementById('unitCheckboxContainer');
 
-        if (e.target.checked) {
-            // If "all" is checked, uncheck all other units
-            unitCheckboxes.forEach(cb => {
-                cb.checked = false;
-                cb.parentElement.classList.remove('selected');
-            });
-            selectedUnitIds = ['all'];
-            e.target.parentElement.classList.add('selected');
-        } else {
-            // If "all" is unchecked, we need at least one selection
-            let anyChecked = false;
-            unitCheckboxes.forEach(cb => {
-                if (cb.checked) anyChecked = true;
-            });
-
-            if (!anyChecked) {
-                e.target.checked = true; // Keep "all" checked if nothing else is selected
-                selectedUnitIds = ['all'];
-                e.target.parentElement.classList.add('selected');
-            } else {
-                selectedUnitIds = [];
-                e.target.parentElement.classList.remove('selected');
-            }
-        }
-
-        await loadUnitWords();
-        createVocabRangeSelector();
-    });
-    
-    // Initialize selectedUnitIds as an empty array if not already defined
-    if (!selectedUnitIds) {
-        selectedUnitIds = [];
-    }
-    
-    // Clear selectedUnitIds if it currently has only 'all'
-    if (selectedUnitIds.length === 1 && selectedUnitIds[0] === 'all') {
-        selectedUnitIds = [];
-    }
-    
-    // Add unit checkboxes
     units.forEach(unit => {
-        const unitItem = document.createElement('div');
-        unitItem.className = 'unit-checkbox-item';
-        if (unit.default) {
-            unitItem.classList.add('default-unit');
-        }
-        
+        const checkboxItem = document.createElement('div');
+        checkboxItem.className = `unit-checkbox-item${unit.default ? ' default-unit' : ''}`;
+
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.id = `unit-${unit.id}`;
         checkbox.value = unit.id;
-        
+        checkbox.addEventListener('change', handleUnitCheckboxChange);
+
         const label = document.createElement('label');
-        label.htmlFor = `unit-${unit.id}`;
+        label.setAttribute('for', `unit-${unit.id}`);
         label.textContent = unit.title;
-        
-        // Pre-select units marked as default
-        if (unit.default) {
-            checkbox.checked = true;
-            unitItem.classList.add('selected');
-            
-            // Add to selectedUnitIds if not already included
-            if (!selectedUnitIds.includes(unit.id.toString())) {
-                selectedUnitIds.push(unit.id.toString());
-            }
-            
-            // Uncheck the "all" option if default units are selected
-            const allCheckbox = document.getElementById('unit-all');
-            allCheckbox.checked = false;
-            allCheckbox.parentElement.classList.remove('selected');
-        }
-          // Add event listener to each checkbox
-        checkbox.addEventListener('change', async (e) => {
-            const unitId = e.target.value.toString(); // Ensure unitId is a string
 
-            if (e.target.checked) {
-                unitItem.classList.add('selected');
-
-                // Add to selectedUnitIds if not already included
-                if (!selectedUnitIds.includes(unitId)) {
-                    selectedUnitIds.push(unitId);
-                }
-
-                // Uncheck the "all" option when individual units are selected
-                const allCheckbox = document.getElementById('unit-all');
-                allCheckbox.checked = false;
-                allCheckbox.parentElement.classList.remove('selected');
-            } else {
-                unitItem.classList.remove('selected');
-
-                // Remove from selectedUnitIds
-                selectedUnitIds = selectedUnitIds.filter(id => id !== unitId);
-
-                // If no units are selected, check the "all" option
-                if (selectedUnitIds.length === 0) {
-                    const allCheckbox = document.getElementById('unit-all');
-                    allCheckbox.checked = true;
-                    allCheckbox.parentElement.classList.add('selected');
-                    selectedUnitIds = ['all'];
-                }
-            }
-
-            await loadUnitWords();
-            createVocabRangeSelector();
-        });
-        
-        unitItem.appendChild(checkbox);
-        unitItem.appendChild(label);
-        unitCheckboxContainer.appendChild(unitItem);
+        checkboxItem.appendChild(checkbox);
+        checkboxItem.appendChild(label);
+        container.appendChild(checkboxItem);
     });
-    
-    // If no units were selected as default, select 'all'
-    if (selectedUnitIds.length === 0) {
-        const allCheckbox = document.getElementById('unit-all');
-        allCheckbox.checked = true;
-        allCheckbox.parentElement.classList.add('selected');
-        selectedUnitIds = ['all'];
+
+    // Setup "all units" checkbox
+    const allCheckbox = document.getElementById('unit-all');
+    allCheckbox.addEventListener('change', handleAllUnitsCheckbox);
+}
+
+// Select default units on page load
+function selectDefaultUnits() {
+    const units = getAllUnits();
+    units.forEach(unit => {
+        if (unit.default) {
+            const checkbox = document.querySelector(`input[value="${unit.id}"]`);
+            if (checkbox) {
+                checkbox.checked = true;
+            }
+        }
+    });
+    handleUnitCheckboxChange();
+}
+
+// Handle "all units" checkbox
+function handleAllUnitsCheckbox() {
+    const allCheckbox = document.getElementById('unit-all');
+    const unitCheckboxes = document.querySelectorAll('.unit-checkbox-item input[type="checkbox"]:not(#unit-all)');
+
+    unitCheckboxes.forEach(checkbox => {
+        checkbox.checked = allCheckbox.checked;
+    });
+
+    handleUnitCheckboxChange();
+}
+
+// Handle individual unit checkbox change
+async function handleUnitCheckboxChange() {
+    const allCheckbox = document.getElementById('unit-all');
+    const unitCheckboxes = document.querySelectorAll('.unit-checkbox-item input[type="checkbox"]:not(#unit-all)');
+
+    // Update selected units array
+    selectedUnitIds = Array.from(unitCheckboxes)
+        .filter(cb => cb.checked)
+        .map(cb => parseInt(cb.value));
+
+    // Update "all units" checkbox state
+    const allChecked = Array.from(unitCheckboxes).every(cb => cb.checked);
+    allCheckbox.checked = allChecked;
+
+    // Update checkbox item styling
+    unitCheckboxes.forEach(checkbox => {
+        const parent = checkbox.closest('.unit-checkbox-item');
+        if (checkbox.checked) {
+            parent.classList.add('selected');
+        } else {
+            parent.classList.remove('selected');
+        }
+    });
+
+    // Update the "all units" checkbox item styling
+    const allCheckboxItem = allCheckbox.closest('.unit-checkbox-item');
+    if (allCheckbox.checked) {
+        allCheckboxItem.classList.add('selected');
+    } else {
+        allCheckboxItem.classList.remove('selected');
     }
+
+    // Load words from selected units
+    await loadUnitWords();
+    createVocabRangeSelector();
 }
 
 // Load all words from the selected units
 async function loadUnitWords() {
-    // Ensure we have valid unit IDs
-    ensureValidUnitIds();
-
-    if (selectedUnitIds.length === 1 && selectedUnitIds[0] === 'all') {
-        allUnitWords = await getAllWords();
-    } else {
-        // Merge words from all selected units
+    // Store all words from selected units
+    if (selectedUnitIds.length === 0) {
         allUnitWords = [];
-        for (const unitId of selectedUnitIds) {
-            // Ensure unitId is treated as a number when needed
-            const parsedUnitId = parseInt(unitId);
-            if (isNaN(parsedUnitId)) {
-                console.error(`Invalid unit ID: ${unitId}`);
-                continue; // Skip this iteration
-            }
-
-            const unitWords = await getWordsFromUnit(parsedUnitId);
-            if (unitWords && unitWords.length > 0) {
-                allUnitWords = allUnitWords.concat(unitWords);
-            } else {
-                console.warn(`No words found for unit ID: ${unitId}`);
-            }
-        }
-    }
-
-    // Safety check: if no words were loaded, fallback to all words
-    if (allUnitWords.length === 0) {
-        console.warn("No words were loaded from selected units, falling back to all words");
-        allUnitWords = await getAllWords();
-        selectedUnitIds = ['all']; // Reset selection to 'all'
-
-        // Update UI to reflect this change
-        const allCheckbox = document.getElementById('unit-all');
-        if (allCheckbox) {
-            allCheckbox.checked = true;
-            allCheckbox.parentElement.classList.add('selected');
-        }
-
-        const unitCheckboxes = document.querySelectorAll('.unit-checkbox-item input[type="checkbox"]:not(#unit-all)');
-        unitCheckboxes.forEach(cb => {
-            cb.checked = false;
-            cb.parentElement.classList.remove('selected');
-        });
+    } else {
+        allUnitWords = await getWordsFromUnits(selectedUnitIds);
     }
 }
 
@@ -360,41 +228,21 @@ async function handleStartQuiz() {
 async function prepareQuizWords() {
     let words = [];
 
-    if (selectedUnitIds.length === 1 && selectedUnitIds[0] === 'all') {
-        // For 'all' option, we need to track which unit each word belongs to
-        await preloadAllUnits();
-        const units = getAllUnits();
-        units.forEach(unit => {
-            const unitWords = unit.words.map(word => ({
-                ...word,
-                unitId: unit.id // Add unitId to each word
-            }));
-            words = words.concat(unitWords);
-        });
-    } else {
-        // Merge words from all selected units
-        for (const unitId of selectedUnitIds) {
-            // Parse unitId to integer to ensure compatibility with getWordsFromUnit
-            const parsedUnitId = parseInt(unitId);
-            if (isNaN(parsedUnitId)) {
-                console.error(`Invalid unit ID: ${unitId}`);
-                continue; // Skip this iteration
-            }
-
-            const unitWords = await getWordsFromUnit(parsedUnitId);
-            if (!unitWords || unitWords.length === 0) {
-                console.warn(`No words found for unit ID: ${parsedUnitId}`);
-                continue; // Skip this iteration
-            }
-
-            const wordsWithUnitId = unitWords.map(word => ({
-                ...word,
-                unitId: parsedUnitId // Add unitId to each word
-            }));
-            words = words.concat(wordsWithUnitId);
+    // Merge words from all selected units and add unitId to each word
+    for (const unitId of selectedUnitIds) {
+        const unitWords = await getWordsFromUnit(unitId);
+        if (!unitWords || unitWords.length === 0) {
+            console.warn(`No words found for unit ID: ${unitId}`);
+            continue;
         }
+
+        const wordsWithUnitId = unitWords.map(word => ({
+            ...word,
+            unitId: unitId // Add unitId to each word
+        }));
+        words = words.concat(wordsWithUnitId);
     }
-    
+
     // Get vocabulary range
     const vocabRangeStart = parseInt(document.getElementById('vocabRangeStart').value) - 1;
     const vocabRangeEnd = parseInt(document.getElementById('vocabRangeEnd').value);
@@ -796,13 +644,15 @@ function handleSubmitAnswer() {
     
     // Disable submit button to prevent multiple submissions
     submitAnswer.disabled = true;
-    
-    // Automatically advance to the next question after a short delay (1.5 seconds)
+
+    // Automatically advance to the next question after a delay
+    // Wait longer for incorrect answers (3 seconds) to allow review
+    const delay = isCorrect ? 1500 : 3000;
     setTimeout(() => {
         currentQuizIndex++;
         displayCurrentQuestion();
         submitAnswer.disabled = false;
-    }, 1500);
+    }, delay);
 }
 
 // Move to the next question

@@ -10,19 +10,21 @@ document.addEventListener('DOMContentLoaded', () => {
 function initializeNavigation() {
     // Add mobile navigation toggle if screen width is small
     if (window.innerWidth < 768) {
-        const header = document.querySelector('header');
+        const container = document.querySelector('header .container');
         const nav = document.querySelector('nav');
-        
+
+        if (!container || !nav) return;
+
         // Create mobile menu toggle button
         const mobileMenuToggle = document.createElement('button');
         mobileMenuToggle.className = 'mobile-menu-toggle';
         mobileMenuToggle.innerHTML = '<i class="fas fa-bars"></i>';
         mobileMenuToggle.setAttribute('aria-label', '切換導航選單');
-        
+
         // Add event listener to toggle mobile menu
         mobileMenuToggle.addEventListener('click', () => {
             nav.classList.toggle('show');
-            
+
             // Toggle icon between bars and times
             const icon = mobileMenuToggle.querySelector('i');
             if (icon.classList.contains('fa-bars')) {
@@ -33,9 +35,9 @@ function initializeNavigation() {
                 icon.classList.add('fa-bars');
             }
         });
-        
-        // Insert toggle button before the nav element
-        header.insertBefore(mobileMenuToggle, nav);
+
+        // Insert toggle button before the nav element (nav is a child of container)
+        container.insertBefore(mobileMenuToggle, nav);
     }
 }
 
