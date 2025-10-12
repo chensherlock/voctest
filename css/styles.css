@@ -1316,6 +1316,80 @@ label.incorrect::after {
 .word-header .audio-btn:active {
     transform: scale(0.95);
 }
+.word-header .generate-example-btn {
+    background: none;
+    border: none;
+    color: var(--secondary-color);
+    cursor: pointer;
+    font-size: 16px;
+    padding: 4px 6px;
+    transition: var(--transition);
+    border-radius: 4px;
+}
+
+.word-header .generate-example-btn:hover {
+    color: var(--selection-color);
+    background-color: rgba(255, 123, 0, 0.12);
+    transform: scale(1.1);
+}
+
+.word-header .generate-example-btn:disabled,
+.word-header .generate-example-btn.loading {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+#unitHeader h2 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.prompt-api-flag-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px dashed var(--secondary-color);
+    background-color: rgba(52, 152, 219, 0.08);
+    color: var(--secondary-color);
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.prompt-api-flag-btn i {
+    font-size: 0.95rem;
+}
+
+.prompt-api-flag-btn span {
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.prompt-api-flag-btn:hover {
+    background-color: rgba(52, 152, 219, 0.16);
+    border-color: var(--selection-color);
+    color: var(--selection-color);
+    transform: translateY(-1px);
+}
+
+.prompt-api-flag-btn:active {
+    transform: translateY(0);
+}
+
+.word-item .example-line.generated-example {
+    border-left-color: var(--selection-color);
+    background-color: rgba(255, 248, 236, 0.6);
+}
+
+.word-item .example-line.generated-example .example-text {
+    font-style: normal;
+}
+
 
 .word-header .video-btn {
     background: none;
@@ -1621,7 +1695,8 @@ footer {
     }
 
     .word-header .audio-btn,
-    .word-header .video-btn {
+    .word-header .video-btn,
+    .word-header .generate-example-btn {
         padding: 8px 10px;
         font-size: 18px;
         min-width: 44px;
@@ -1890,7 +1965,8 @@ footer {
     }
 
     .word-header .audio-btn,
-    .word-header .video-btn {
+    .word-header .video-btn,
+    .word-header .generate-example-btn {
         padding: 10px 12px;
         font-size: 20px;
         min-width: 48px;
