@@ -344,14 +344,15 @@ h2::after {
 
 /* Flashcards Page */
 .flashcard-settings {
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    background-color: #ffffff;
     padding: 25px 20px;
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    margin-bottom: 40px;
-    border: 1px solid rgba(52, 152, 219, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    margin: 0 auto 30px;
+    border: 1px solid rgba(52, 152, 219, 0.08);
     position: relative;
     overflow: hidden;
+    max-width: 800px;
 }
 
 /* Collapsed state */
@@ -508,23 +509,33 @@ h2::after {
 
 /* Flashcard layout with shortcuts on the right */
 .flashcard-layout {
-    display: grid;
-    grid-template-columns: 1fr auto;
+    display: flex;
+    flex-direction: column;
     gap: 30px;
-    align-items: start;
+    margin: 0 auto;
+    max-width: 800px;
+    width: 100%;
+    align-items: stretch;
 }
 
 .flashcard-container {
-    max-width: 700px;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .flashcard {
     background-color: transparent;
     height: 450px;
     perspective: 1500px;
-    margin-bottom: 30px;
+    margin: 0 auto 30px;
     cursor: pointer;
     position: relative;
+    width: 100%;
+    max-width: 700px;
 }
 
 /* Top corner buttons (restart and shuffle) */
@@ -806,13 +817,14 @@ h2::after {
 /* Keyboard shortcuts helper */
 .keyboard-shortcuts {
     padding: 20px;
-    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    background-color: #ffffff;
     border-radius: 12px;
-    border: 1px solid rgba(52, 152, 219, 0.1);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    min-width: 240px;
-    position: sticky;
-    top: 100px;
+    border: 1px solid rgba(52, 152, 219, 0.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    position: static;
 }
 
 .keyboard-shortcuts h4 {
@@ -830,8 +842,8 @@ h2::after {
 }
 
 .shortcuts-grid {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 12px;
 }
 
@@ -1253,6 +1265,7 @@ label.incorrect::after {
     align-items: center;
     transition: all 0.2s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+    position: relative;
 }
 
 .word-item:hover {
@@ -1497,17 +1510,15 @@ footer {
     /* Flashcard settings */
     .flashcard-settings {
         padding: 20px 15px;
-        grid-template-columns: 1fr;
     }
 
     .flashcard-layout {
-        grid-template-columns: 1fr;
         gap: 20px;
     }
 
     .keyboard-shortcuts {
         position: static;
-        min-width: auto;
+        max-width: 100%;
     }
 
     .shortcuts-grid {
@@ -2535,6 +2546,72 @@ footer {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+}
+
+.example-word {
+    display: inline-block;
+    padding: 0 2px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.example-word.current-word {
+    background-color: var(--selection-color);
+    color: #ffffff;
+}
+
+.example-word.current-word.highlight-word {
+    background-color: var(--selection-color);
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.word-item.playing {
+    border-color: var(--selection-color);
+    box-shadow: 0 6px 18px rgba(255, 123, 0, 0.25);
+    background: linear-gradient(135deg, rgba(255, 248, 236, 0.95) 0%, #ffffff 100%);
+    transform: translateX(3px);
+}
+
+.word-item.playing::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    bottom: 10px;
+    width: 5px;
+    border-radius: 4px;
+    background: var(--selection-color);
+    box-shadow: 0 0 12px rgba(255, 123, 0, 0.35);
+}
+
+.word-item.playing .english {
+    color: var(--selection-color);
+    font-weight: 600;
+}
+
+.word-item .example-line.playing {
+    background-color: rgba(255, 138, 0, 0.12);
+    border-left-color: var(--selection-color);
+    box-shadow: inset 2px 0 0 rgba(255, 123, 0, 0.4);
+}
+
+.word-item .example-line.playing .example-text {
+    color: var(--dark-color);
+}
+
+.word-item .example-line.playing .highlight-word {
+    color: #555555;
+    font-weight: 700;
+}
+
+.word-item .example-line.playing .highlight-word.current-word {
+    color: #ffffff;
+    background-color: var(--selection-color);
+}
+
+.word-item .example-line.playing .example-audio-btn {
+    color: var(--selection-color);
 }
 
 .word-item .example-audio-btn:hover {

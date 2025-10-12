@@ -10,6 +10,7 @@ const takeQuiz = document.getElementById('takeQuiz');
 
 // Current unit being viewed
 let currentUnitId = null;
+let activeExamplePlayback = null;
 
 // Initialize the page
 document.addEventListener('DOMContentLoaded', async () => {
@@ -27,11 +28,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // Set up event listeners
-    backToUnits.addEventListener('click', () => {
-        showUnitsList();
-        // Update URL without the unit parameter
-        window.history.pushState({}, '', 'units.html');
-    });
+    if (backToUnits) {
+        backToUnits.addEventListener('click', () => {
+            showUnitsList();
+            // Update URL without the unit parameter
+            window.history.pushState({}, '', 'units.html');
+        });
+    }
 
     practiceFlashcards.addEventListener('click', () => {
         window.location.href = `flashcards.html?unit=${currentUnitId}`;
@@ -127,6 +130,75 @@ function showAudioStatus(message) {
             statusEl.style.opacity = '1';
         }, 500);
     }, 2000);
+}
+
+// Utility helpers for example sentence rendering and highlighting
+function escapeHtml(str) {
+    return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+function normalizeWordForHighlight(word) {
+    return word.replace(/[^\w'-]/g, '').toLowerCase();
+}
+
+function buildExampleMarkup(exampleSentence) {
+    const highlightMatches = [...exampleSentence.matchAll(/\[([^\]]+)\]/g)];
+    const highlightWords = new Set();
+
+    highlightMatches.forEach(match => {
+        match[1]
+            .split(/\s+/)
+            .map(part => normalizeWordForHighlight(part))
+            .filter(Boolean)
+            .forEach(normalized => highlightWords.add(normalized));
+    });
+
+    const cleanSentence = exampleSentence.replace(/\[([^\]]+)\]/g, '$1');
+    const htmlSegments = [];
+    const wordRegex = /\S+/g;
+
+    let lastIndex = 0;
+    let wordIndex = 0;
+    let match;
+
+    while ((match = wordRegex.exec(cleanSentence)) !== null) {
+        const start = match.index;
+        const end = start + match[0].length;
+
+        if (start > lastIndex) {
+            const spacer = cleanSentence.slice(lastIndex, start);
+            htmlSegments.push(escapeHtml(spacer));
+        }
+
+        const displayWord = match[0];
+        const normalizedWord = normalizeWordForHighlight(displayWord);
+        const classes = ['example-word'];
+
+        if (highlightWords.has(normalizedWord)) {
+            classes.push('highlight-word');
+        }
+
+        htmlSegments.push(
+            `<span class="${classes.join(' ')}" data-word-index="${wordIndex}" data-start="${start}" data-end="${end}">${escapeHtml(displayWord)}</span>`
+        );
+
+        wordIndex += 1;
+        lastIndex = end;
+    }
+
+    if (lastIndex < cleanSentence.length) {
+        htmlSegments.push(escapeHtml(cleanSentence.slice(lastIndex)));
+    }
+
+    return {
+        html: htmlSegments.join(''),
+        cleanSentence
+    };
 }
 
 // Display all available units
@@ -311,13 +383,11 @@ function displayUnitWords(unit) {
             examplesHTML = examples
                 .filter(ex => ex && ex.trim() !== '')
                 .map((example, exIndex) => {
-                    // Replace [word] with highlighted word (remove brackets, add blue color)
-                    const formattedExample = example.replace(/\[([^\]]+)\]/g, '<span class="highlight-word">$1</span>');
-                    // Extract the clean sentence for TTS (remove brackets but keep the word)
-                    const cleanSentence = example.replace(/\[([^\]]+)\]/g, '$1');
-                    return `<div class="example-line">
-                        <span class="example-text">${formattedExample}</span>
-                        <button class="example-audio-btn" data-sentence="${cleanSentence.replace(/"/g, '&quot;')}" aria-label="Play example sentence">
+                    const { html: exampleMarkup, cleanSentence } = buildExampleMarkup(example);
+                    const encodedSentence = escapeHtml(cleanSentence);
+                    return `<div class="example-line" data-sentence="${encodedSentence}">
+                        <span class="example-text" data-sentence="${encodedSentence}">${exampleMarkup}</span>
+                        <button class="example-audio-btn" data-sentence="${encodedSentence}" aria-label="Play example sentence">
                             <i class="fas fa-volume-up"></i>
                         </button>
                     </div>`;
@@ -437,18 +507,122 @@ function playExampleSentence(sentence, button) {
 
     console.log('Playing example sentence:', sentence);
 
+    if (activeExamplePlayback) {
+        const previousPlayback = activeExamplePlayback;
+        activeExamplePlayback = null;
+
+        if (typeof previousPlayback.clearWordHighlight === 'function') {
+            previousPlayback.clearWordHighlight();
+        }
+
+        if (typeof previousPlayback.restoreButton === 'function') {
+            previousPlayback.restoreButton();
+        } else if (previousPlayback.button) {
+            previousPlayback.button.innerHTML = previousPlayback.originalIcon || '<i class="fas fa-volume-up"></i>';
+            previousPlayback.button.disabled = false;
+            previousPlayback.button.classList.remove('loading');
+        }
+
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+        }
+    }
+
     // Set loading state
     const originalIcon = button.innerHTML;
     button.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
     button.disabled = true;
     button.classList.add('loading');
 
+    const wordItem = button.closest('.word-item');
+    const exampleLine = button.closest('.example-line');
+    const exampleText = exampleLine ? exampleLine.querySelector('.example-text') : null;
+    const wordSpans = exampleText ? Array.from(exampleText.querySelectorAll('.example-word')) : [];
+    const wordBoundaries = wordSpans.map(span => ({
+        start: Number(span.dataset.start),
+        end: Number(span.dataset.end),
+        span
+    }));
+    let currentWordSpan = null;
+
+    if (wordItem) {
+        wordItem.classList.add('playing');
+    }
+
+    if (exampleLine) {
+        exampleLine.classList.add('playing');
+    }
+
+    const clearWordHighlight = () => {
+        if (currentWordSpan) {
+            currentWordSpan.classList.remove('current-word');
+            currentWordSpan = null;
+        }
+        wordSpans.forEach(span => span.classList.remove('current-word'));
+    };
+
+    const highlightWordAtChar = (charIndex) => {
+        if (!wordBoundaries.length || typeof charIndex !== 'number') {
+            return;
+        }
+
+        let target = null;
+        for (let i = 0; i < wordBoundaries.length; i += 1) {
+            const boundary = wordBoundaries[i];
+            if (charIndex >= boundary.start && charIndex < boundary.end) {
+                target = boundary;
+                break;
+            }
+            if (charIndex >= boundary.end) {
+                target = boundary;
+            }
+        }
+
+        if (!target) {
+            target = wordBoundaries[wordBoundaries.length - 1];
+        }
+
+        if (target && target.span !== currentWordSpan) {
+            if (currentWordSpan) {
+                currentWordSpan.classList.remove('current-word');
+            }
+            target.span.classList.add('current-word');
+            currentWordSpan = target.span;
+        }
+    };
+
+    const cleanupHighlight = () => {
+        clearWordHighlight();
+        if (exampleLine) {
+            exampleLine.classList.remove('playing');
+        }
+        if (wordItem) {
+            wordItem.classList.remove('playing');
+        }
+    };
+
+    const playbackContext = {
+        button,
+        originalIcon,
+        cleanupHighlight,
+        clearWordHighlight,
+        restoreButton: null
+    };
+
+    activeExamplePlayback = playbackContext;
+
     // Function to restore button state
     const restoreButton = () => {
         button.innerHTML = originalIcon;
         button.disabled = false;
         button.classList.remove('loading');
+        cleanupHighlight();
+        if (activeExamplePlayback === playbackContext) {
+            activeExamplePlayback = null;
+        }
     };
+
+    playbackContext.restoreButton = restoreButton;
 
     // Show status message
     showAudioStatus('播放例句中...');
@@ -467,6 +641,16 @@ function playExampleSentence(sentence, button) {
             utterance.voice = preferredVoice;
         }
 
+        utterance.onstart = () => {
+            highlightWordAtChar(0);
+        };
+
+        utterance.onboundary = (event) => {
+            if (typeof event.charIndex === 'number') {
+                highlightWordAtChar(event.charIndex);
+            }
+        };
+
         utterance.onend = () => {
             restoreButton();
         };
@@ -477,6 +661,8 @@ function playExampleSentence(sentence, button) {
             restoreButton();
         };
 
+        playbackContext.utterance = utterance;
+        clearWordHighlight();
         window.speechSynthesis.speak(utterance);
     } else {
         showAudioStatus('您的瀏覽器不支援語音合成');
