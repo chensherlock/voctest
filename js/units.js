@@ -11,6 +11,27 @@ const takeQuiz = document.getElementById('takeQuiz');
 // Current unit being viewed
 let currentUnitId = null;
 let activeExamplePlayback = null;
+const translationProvider = typeof window !== 'undefined' && window.Translator
+    ? window.Translator
+    : (typeof navigator !== 'undefined' && navigator.translation
+        ? navigator.translation
+        : (typeof window !== 'undefined' ? window.translation : null));
+
+const supportsTranslationApi = !!translationProvider;
+const createTranslatorFn = translationProvider
+    ? (typeof translationProvider.create === 'function'
+        ? translationProvider.create.bind(translationProvider)
+        : (typeof translationProvider.createTranslator === 'function'
+            ? translationProvider.createTranslator.bind(translationProvider)
+            : null))
+    : null;
+let translatorPromise = null;
+const translationCache = new Map();
+let htmlDecodeElement = null;
+const translationOptions = {
+    sourceLanguage: 'en',
+    targetLanguage: 'zh-Hant'
+};
 
 // Initialize the page
 document.addEventListener('DOMContentLoaded', async () => {
@@ -109,6 +130,26 @@ if ('speechSynthesis' in window) {
 }
 
 // Display status message
+function scheduleTranslatorWarmup() {
+    if (!supportsTranslationApi || translatorPromise) {
+        return;
+    }
+
+    const warmup = () => {
+        getExampleTranslator();
+    };
+
+    if (typeof window !== 'undefined') {
+        if (typeof window.requestIdleCallback === 'function') {
+            window.requestIdleCallback(() => warmup());
+        } else {
+            window.setTimeout(warmup, 0);
+        }
+    } else {
+        warmup();
+    }
+}
+
 function showAudioStatus(message) {
     // Create status element if it doesn't exist
     let statusEl = document.querySelector('.audio-status');
@@ -144,6 +185,16 @@ function escapeHtml(str) {
 
 function normalizeWordForHighlight(word) {
     return word.replace(/[^\w'-]/g, '').toLowerCase();
+}
+
+function decodeHtmlEntities(str) {
+    if (!str) return '';
+    if (!htmlDecodeElement && typeof document !== 'undefined') {
+        htmlDecodeElement = document.createElement('textarea');
+    }
+    if (!htmlDecodeElement) return str;
+    htmlDecodeElement.innerHTML = str;
+    return htmlDecodeElement.value;
 }
 
 function buildExampleMarkup(exampleSentence) {
@@ -383,14 +434,24 @@ function displayUnitWords(unit) {
             examplesHTML = examples
                 .filter(ex => ex && ex.trim() !== '')
                 .map((example, exIndex) => {
-                    const { html: exampleMarkup, cleanSentence } = buildExampleMarkup(example);
-                    const encodedSentence = escapeHtml(cleanSentence);
-                    return `<div class="example-line" data-sentence="${encodedSentence}">
-                        <span class="example-text" data-sentence="${encodedSentence}">${exampleMarkup}</span>
-                        <button class="example-audio-btn" data-sentence="${encodedSentence}" aria-label="Play example sentence">
-                            <i class="fas fa-volume-up"></i>
-                        </button>
-                    </div>`;
+        const { html: exampleMarkup, cleanSentence } = buildExampleMarkup(example);
+        const encodedSentence = escapeHtml(cleanSentence);
+        const translateButtonHTML = supportsTranslationApi ? `
+            <button class="example-translate-btn" data-sentence="${encodedSentence}" aria-label="翻譯成繁體中文" title="翻譯成繁體中文">
+                <i class="fas fa-language"></i>
+            </button>` : '';
+        const translationOutputHTML = supportsTranslationApi ? `<div class="example-translation" aria-live="polite"></div>` : '';
+
+        return `<div class="example-line" data-sentence="${encodedSentence}">
+            <span class="example-text" data-sentence="${encodedSentence}">${exampleMarkup}</span>
+            <div class="example-action-buttons">
+                <button class="example-audio-btn" data-sentence="${encodedSentence}" aria-label="Play example sentence">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+                ${translateButtonHTML}
+            </div>
+            ${translationOutputHTML}
+        </div>`;
                 })
                 .join('');
         }
@@ -443,13 +504,26 @@ function displayUnitWords(unit) {
         exampleAudioBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                const sentence = btn.dataset.sentence;
+                const sentence = decodeHtmlEntities(btn.dataset.sentence || '');
                 playExampleSentence(sentence, btn);
             });
         });
 
+        if (supportsTranslationApi) {
+            const translateButtons = wordItem.querySelectorAll('.example-translate-btn');
+            translateButtons.forEach(btn => {
+                btn.addEventListener('click', async (e) => {
+                    e.stopPropagation();
+                    const sentence = decodeHtmlEntities(btn.dataset.sentence || '');
+                    await translateExampleSentence(sentence, btn);
+                });
+            });
+        }
+
         wordList.appendChild(wordItem);
     });
+
+    scheduleTranslatorWarmup();
 }
 
 // Show the list of all units
@@ -498,6 +572,97 @@ function playAudio(word) {
     } else {
         // No active button, just play the audio without visual feedback
         audioService.playWord(word);
+    }
+}
+
+async function getExampleTranslator() {
+    if (!supportsTranslationApi || !createTranslatorFn) {
+        return null;
+    }
+    if (!translatorPromise) {
+        translatorPromise = (async () => {
+            try {
+                if (typeof translationProvider.requestPermission === 'function') {
+                    const permission = await translationProvider.requestPermission(translationOptions);
+                    if (permission !== 'granted') {
+                        return null;
+                    }
+                }
+
+                const availability = typeof translationProvider.availability === 'function'
+                    ? await translationProvider.availability(translationOptions)
+                    : 'available';
+
+                if (availability === false || availability === 'unavailable') {
+                    return null;
+                }
+
+                return await createTranslatorFn(translationOptions);
+            } catch (err) {
+                console.error('Translator creation failed:', err);
+                return null;
+            }
+        })();
+    }
+    return translatorPromise;
+}
+
+async function translateExampleSentence(sentence, button) {
+    if (!supportsTranslationApi || !sentence || !button) return;
+
+    const normalizedSentence = sentence.trim();
+    if (!normalizedSentence) return;
+
+    const exampleLine = button.closest('.example-line');
+    const translationOutput = exampleLine ? exampleLine.querySelector('.example-translation') : null;
+
+    const originalIcon = button.innerHTML;
+    button.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+    button.disabled = true;
+    button.classList.add('loading');
+
+    const restoreButton = () => {
+        button.innerHTML = originalIcon;
+        button.disabled = false;
+        button.classList.remove('loading');
+    };
+
+    try {
+        if (translationCache.has(normalizedSentence)) {
+            if (translationOutput) {
+                translationOutput.textContent = translationCache.get(normalizedSentence);
+            }
+            restoreButton();
+            return;
+        }
+
+        const translator = await getExampleTranslator();
+        if (!translator) {
+            translatorPromise = null;
+            if (translationOutput) {
+                translationOutput.textContent = '無法使用翻譯服務';
+            }
+            restoreButton();
+            return;
+        }
+
+        if (translationOutput) {
+            translationOutput.textContent = '翻譯中...';
+        }
+
+        const translated = await translator.translate(normalizedSentence);
+        const translatedText = typeof translated === "string" ? translated : (translated && (translated.translatedText || translated.text)) || '';
+        translationCache.set(normalizedSentence, translatedText || normalizedSentence);
+        if (translationOutput) {
+            translationOutput.textContent = translatedText || normalizedSentence;
+        }
+    } catch (error) {
+        console.error('Translation error:', error);
+        if (translationOutput) {
+            translationOutput.textContent = '翻譯失敗，請稍後再試';
+        }
+    } finally {
+        restoreButton();
     }
 }
 
