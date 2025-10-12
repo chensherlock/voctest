@@ -132,6 +132,7 @@ nav li {
 nav a {
     color: var(--dark-color);
     font-weight: 500;
+    font-size: 24px;
 }
 
 nav a:hover, nav a.active {
@@ -244,7 +245,7 @@ h2::after {
 
 .unit-card {
     background-color: white;
-    padding: 16px 18px;
+    padding: 10px 14px;
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
     text-align: left;
@@ -288,8 +289,14 @@ h2::after {
 .unit-card h3 {
     margin: 0;
     color: var(--primary-color);
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.3;
+}
+
+.unit-card h3 .word-count {
+    color: var(--gray-color);
+    font-size: 13px;
+    font-weight: 400;
 }
 
 .unit-card:not(.disabled):hover h3 {
@@ -345,16 +352,6 @@ h2::after {
     border: 1px solid rgba(52, 152, 219, 0.1);
     position: relative;
     overflow: hidden;
-}
-
-.flashcard-settings::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
 }
 
 /* Collapsed state */
@@ -744,9 +741,18 @@ h2::after {
 }
 
 .flashcard-back .flashcard-word {
-    font-size: 52px;
+    font-size: 28px;
     font-weight: 800;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    line-height: 1.4;
+}
+
+.chinese-line {
+    margin-bottom: 8px;
+}
+
+.chinese-line:last-child {
+    margin-bottom: 0;
 }
 
 .flashcard-front p {
@@ -883,13 +889,13 @@ h2::after {
 }
 
 #quizSetup .form-group {
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 
 #quizSetup .form-group label {
     display: block;
     font-weight: 600;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     color: var(--dark-color);
     font-size: 16px;
 }
@@ -917,10 +923,10 @@ h2::after {
 
 #startQuiz {
     width: 100%;
-    padding: 15px;
+    padding: 10px;
     font-size: 18px;
     font-weight: 600;
-    margin-top: 20px;
+    margin-top: 10px;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
     transition: all 0.3s ease;
@@ -1441,13 +1447,13 @@ footer {
     }
 
     nav a {
-        font-size: 14px;
+        font-size: 20px;
         padding: 8px 12px;
     }
 
     /* Main content spacing */
     main {
-        padding: 20px 0;
+        padding: 5px 0;
     }
 
     .container {
@@ -1472,7 +1478,7 @@ footer {
     }
 
     .unit-card {
-        min-height: 100px;
+        min-height: 70px;
     }
 
     /* Buttons - larger touch targets */
@@ -1520,7 +1526,8 @@ footer {
     }
 
     .flashcard-back .flashcard-word {
-        font-size: 40px;
+        font-size: 26px;
+        line-height: 1.4;
     }
 
     /* Flashcard front hint on tablet */
@@ -1689,7 +1696,7 @@ footer {
     }
 
     nav a {
-        font-size: 13px;
+        font-size: 19px;
         padding: 8px 10px;
     }
 
@@ -1739,7 +1746,8 @@ footer {
     }
 
     .flashcard-back .flashcard-word {
-        font-size: 34px;
+        font-size: 22px;
+        line-height: 1.4;
     }
 
     .flashcard-front, .flashcard-back {
@@ -2010,7 +2018,7 @@ footer {
     }
 
     nav a {
-        font-size: 11px;
+        font-size: 18px;
         padding: 6px 8px;
     }
 
@@ -2039,7 +2047,8 @@ footer {
     }
 
     .flashcard-back .flashcard-word {
-        font-size: 28px;
+        font-size: 20px;
+        line-height: 1.4;
     }
 
     .flashcard-front, .flashcard-back {
@@ -2133,7 +2142,7 @@ footer {
     }
 
     nav a {
-        font-size: 12px;
+        font-size: 18px;
         padding: 6px 8px;
     }
 
@@ -2734,11 +2743,11 @@ footer {
 .unit-checkbox-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 12px;
-    margin-bottom: 15px;
-    max-height: 280px;
+    gap: 2px;
+    margin-bottom: 10px;
+    max-height: 272px;
     overflow-y: auto;
-    padding: 16px;
+    padding: 3px;
     border: 2px solid #e0e0e0;
     border-radius: 12px;
     background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
@@ -2766,7 +2775,7 @@ footer {
 .unit-checkbox-item {
     display: flex;
     align-items: center;
-    padding: 10px 14px;
+    padding: 6px 10px;
     border-radius: 8px;
     background-color: white;
     cursor: pointer;
@@ -2774,7 +2783,7 @@ footer {
     border: 2px solid #e0e0e0;
     position: relative;
     overflow: hidden;
-    min-height: 44px;
+    min-height: 38px;
 }
 
 .unit-checkbox-item::before {
@@ -2832,28 +2841,6 @@ footer {
 .units-container .unit-card.default-unit h3 {
     color: var(--selection-color);
     font-weight: 700;
-}
-
-.units-container .unit-card.default-unit::before {
-    content: '★';
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    color: var(--selection-color);
-    font-size: 24px;
-    opacity: 0.8;
-    animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-    0%, 100% {
-        transform: scale(1);
-        opacity: 0.8;
-    }
-    50% {
-        transform: scale(1.2);
-        opacity: 1;
-    }
 }
 
 /* Default unit styling for quiz/flashcard checkbox items */

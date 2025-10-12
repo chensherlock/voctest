@@ -14,6 +14,7 @@ const totalCards = document.getElementById('totalCards');
 const voiceSelect = document.getElementById('voiceSelect');
 const refreshVoicesBtn = document.getElementById('refreshVoices');
 const startFlashcardsBtn = document.getElementById('startFlashcards');
+const flashcardBack = document.querySelector('.flashcard-back');
 
 // State variables
 let currentWords = [];
@@ -22,6 +23,55 @@ let currentDirection = 'english-chinese'; // or 'chinese-english'
 let selectedUnitIds = []; // Array of selected unit IDs
 let audioLoading = false;
 let allUnitWords = []; // Store all words from the unit for range selection
+
+function fitTextToDivFast(container, textElement, translations) {
+  // Get available space from the container (flashcard-back)
+  const containerWidth = container.clientWidth;
+  const containerHeight = container.clientHeight;
+
+  // Handle both array (multi-line) and string (single line) inputs
+  const isMultiLine = Array.isArray(translations);
+
+  // Set the text content based on type
+  if (isMultiLine) {
+    // Create multi-line structure
+    textElement.innerHTML = '';
+    translations.forEach(translation => {
+      const line = document.createElement('div');
+      line.className = 'chinese-line';
+      line.textContent = translation;
+      textElement.appendChild(line);
+    });
+  } else {
+    // Single line text
+    textElement.textContent = translations;
+  }
+
+  // Account for hint and audio button space
+  const hint = container.querySelector('.flashcard-front-hint');
+  const audioBtn = container.querySelector('.audio-btn');
+
+  let reservedHeight = 40; // Base padding
+  if (hint) reservedHeight += hint.offsetHeight + 20; // Hint + margin
+  if (audioBtn) reservedHeight += audioBtn.offsetHeight + 20; // Audio button + margin
+
+  const maxWidth = containerWidth - 40; // Account for padding
+  const maxHeight = containerHeight - reservedHeight;
+
+  let min = 10, max = 200, mid;
+  while (min <= max) {
+    mid = Math.floor((min + max) / 2);
+    textElement.style.fontSize = mid + 'px';
+
+    // For multi-line, check if all lines fit within the container
+    if (textElement.scrollWidth <= maxWidth && textElement.scrollHeight <= maxHeight) {
+      min = mid + 1; // try bigger
+    } else {
+      max = mid - 1; // too big
+    }
+  }
+  textElement.style.fontSize = max + 'px';
+}
 
 // Initialize the page
 document.addEventListener('DOMContentLoaded', async () => {
@@ -43,9 +93,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Select default units
         selectDefaultUnits();
     }
-
-    // Create vocabulary range selector
-    await createVocabRangeSelector();
 
     // Load words based on initial settings
     await loadWords();
@@ -203,6 +250,13 @@ async function populateUnitCheckboxes() {
     const units = getAllUnits();
     const container = document.getElementById('unitCheckboxContainer');
 
+    // Sort units: default units first, then others
+    units.sort((a, b) => {
+        if (a.default && !b.default) return -1;
+        if (!a.default && b.default) return 1;
+        return 0;
+    });
+
     units.forEach(unit => {
         const checkboxItem = document.createElement('div');
         checkboxItem.className = `unit-checkbox-item${unit.default ? ' default-unit' : ''}`;
@@ -302,6 +356,12 @@ async function handleStartFlashcards() {
     // Collapse the settings panel
     collapseSettingsPanel();
 
+    // Scroll to top of page
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+
     // Show feedback
     updateAudioStatus(`已載入 ${currentWords.length} 個詞彙`);
 }
@@ -362,16 +422,9 @@ async function loadWords() {
     } else {
         allUnitWords = await getWordsFromUnits(selectedUnitIds);
     }
-    
-    // Check if we need to apply a range filter
-    const rangeSelect = document.getElementById('vocabRangeSelect');
-    if (rangeSelect && rangeSelect.value !== 'all') {
-        const [start, end] = rangeSelect.value.split('-').map(Number);
-        currentWords = allUnitWords.slice(start - 1, end);
-    } else {
-        currentWords = [...allUnitWords]; // Use all words if no range is selected
-    }
-    
+
+    currentWords = [...allUnitWords]; // Use all words
+
     if (currentWords.length > 0) {
         // Shuffle words initially
         shuffleCurrentWords();
@@ -387,9 +440,6 @@ async function loadWords() {
         currentCardNumber.textContent = "0";
         disableNavigationButtons();
     }
-    
-    // Update custom range selection options based on the number of words
-    updateCustomRangeOptions();
 }
 
 // Setup keyboard shortcuts
@@ -451,17 +501,9 @@ function updateCardDisplay() {
         // Show front word as hint on back
         frontHint.textContent = word.english;
 
-        // Clear and rebuild backWord with multiple lines
-        backWord.innerHTML = '';
-        chineseTranslations.forEach(translation => {
-            const line = document.createElement('div');
-            line.className = 'chinese-line';
-            line.textContent = translation;
-            backWord.appendChild(line);
-        });
-
-        // Adjust font size based on content length
-        adjustBackWordFontSize(chineseTranslations.join(' '));
+        // Adjust font size and display Chinese translations on separate lines
+        // fitTextToDivFast will create the multi-line structure
+        adjustBackWordFontSize(chineseTranslations);
     } else {
         // Chinese on front (multi-line), English on back
         frontWord.innerHTML = '';
@@ -475,9 +517,8 @@ function updateCardDisplay() {
         // Show front Chinese as hint on back
         frontHint.textContent = chineseTranslations.join(' / ');
 
-        backWord.textContent = word.english;
-
-        // Adjust font size based on content length
+        // Adjust font size and display English on back
+        // fitTextToDivFast will set the single-line text
         adjustBackWordFontSize(word.english);
     }
 
@@ -495,25 +536,12 @@ function updateCardDisplay() {
 }
 
 // Adjust back word font size based on content length
-function adjustBackWordFontSize(text) {
-    if (!backWord) return;
+function adjustBackWordFontSize(translations) {
+    if (!backWord || !flashcardBack) return;
 
-    // Reset any previous custom font size
-    backWord.style.fontSize = '';
-
-    const textLength = text.length;
-
-    // Define breakpoints for font size adjustment
-    if (textLength > 100) {
-        backWord.style.fontSize = '28px';
-    } else if (textLength > 80) {
-        backWord.style.fontSize = '32px';
-    } else if (textLength > 60) {
-        backWord.style.fontSize = '38px';
-    } else if (textLength > 40) {
-        backWord.style.fontSize = '44px';
-    }
-    // else: use default CSS font size (52px)
+    // Use fitTextToDivFast to dynamically adjust font size
+    // Pass the container (flashcard-back), the text element (backWord), and the translations (array or string)
+    fitTextToDivFast(flashcardBack, backWord, translations);
 }
 
 // Preload audio for the current word
@@ -631,188 +659,6 @@ function toggleAudioLoading(isLoading) {
         playAudioBtn.classList.remove('loading');
         playAudioBtn.querySelector('i').className = 'fas fa-volume-up';
     }
-}
-
-// Create vocabulary range selector (now using vocab-range-container like quiz)
-async function createVocabRangeSelector() {
-    const container = document.getElementById('vocabRangeContainer');
-    if (!container) return;
-
-    if (allUnitWords.length === 0) {
-        await loadWords();
-    }
-
-    const totalWords = Math.max(allUnitWords.length, 1);
-
-    container.innerHTML = `
-        <label class="vocab-range-field">
-            <span>起始</span>
-            <input type="number" id="vocabRangeStart" min="1" max="${totalWords}" value="1">
-        </label>
-        <span class="vocab-range-separator">至</span>
-        <label class="vocab-range-field">
-            <span>結束</span>
-            <input type="number" id="vocabRangeEnd" min="1" max="${totalWords}" value="${totalWords}">
-        </label>
-    `;
-
-    const startInput = container.querySelector('#vocabRangeStart');
-    const endInput = container.querySelector('#vocabRangeEnd');
-
-    if (!startInput || !endInput) return;
-
-    startInput.addEventListener('change', () => {
-        if (parseInt(startInput.value, 10) > parseInt(endInput.value, 10)) {
-            startInput.value = endInput.value;
-        }
-        applyVocabRange();
-    });
-
-    endInput.addEventListener('change', () => {
-        if (parseInt(endInput.value, 10) < parseInt(startInput.value, 10)) {
-            endInput.value = startInput.value;
-        }
-        applyVocabRange();
-    });
-}
-
-// Update vocab range inputs when units change
-function updateVocabRangeInputs() {
-    const startInput = document.getElementById('vocabRangeStart');
-    const endInput = document.getElementById('vocabRangeEnd');
-
-    if (startInput && endInput && allUnitWords.length > 0) {
-        startInput.max = allUnitWords.length.toString();
-        endInput.max = allUnitWords.length.toString();
-        endInput.value = allUnitWords.length.toString();
-    }
-}
-
-// Apply vocabulary range filter
-function applyVocabRange() {
-    const startInput = document.getElementById('vocabRangeStart');
-    const endInput = document.getElementById('vocabRangeEnd');
-
-    if (!startInput || !endInput) return;
-
-    const start = parseInt(startInput.value);
-    const end = parseInt(endInput.value);
-
-    if (start && end && start <= end) {
-        currentWords = allUnitWords.slice(start - 1, end);
-
-        if (currentWords.length > 0) {
-            currentIndex = 0;
-            updateCardDisplay();
-            updateNavigationButtons();
-            totalCards.textContent = currentWords.length;
-            updateAudioStatus(`已套用詞彙範圍：${start} 到 ${end}`);
-        }
-    }
-}
-
-// Handle range selection change
-function handleRangeChange(range) {
-    if (range === 'all') {
-        currentWords = allUnitWords;
-    } else if (range === 'custom') {
-        // Do nothing, will be handled by applyCustomRange
-        return;
-    } else {
-        const [start, end] = range.split('-').map(Number);
-        currentWords = allUnitWords.slice(start - 1, end);
-    }
-    
-    if (currentWords.length > 0) {
-        // Reset to first card
-        currentIndex = 0;
-        updateCardDisplay();
-        updateNavigationButtons();
-        totalCards.textContent = currentWords.length;
-        updateAudioStatus(`已套用詞彙範圍，共 ${currentWords.length} 個詞彙`);
-    } else {
-        frontWord.textContent = "無詞彙可用";
-        backWord.textContent = "";
-        totalCards.textContent = "0";
-        currentCardNumber.textContent = "0";
-        disableNavigationButtons();
-    }
-}
-
-// Update custom range dropdown options
-function updateCustomRangeOptions() {
-    const startSelect = document.getElementById('startVocabSelect');
-    const endSelect = document.getElementById('endVocabSelect');
-    
-    if (!startSelect || !endSelect) return;
-    
-    // Clear existing options
-    startSelect.innerHTML = '';
-    endSelect.innerHTML = '';
-    
-    if (allUnitWords.length === 0) return;
-    
-    // Populate options with vocabulary words
-    allUnitWords.forEach((word, index) => {
-        const startOption = document.createElement('option');
-        startOption.value = index;
-        startOption.textContent = `${index + 1}. ${word.english}`;
-        startSelect.appendChild(startOption);
-        
-        const endOption = document.createElement('option');
-        endOption.value = index;
-        endOption.textContent = `${index + 1}. ${word.english}`;
-        endSelect.appendChild(endOption);
-    });
-    
-    // Set default selections (first and last words)
-    startSelect.value = '0';
-    endSelect.value = (allUnitWords.length - 1).toString();
-    
-    // Add event listeners for validation
-    startSelect.addEventListener('change', validateCustomRange);
-    endSelect.addEventListener('change', validateCustomRange);
-}
-
-// Validate that the start index is not greater than the end index
-function validateCustomRange() {
-    const startSelect = document.getElementById('startVocabSelect');
-    const endSelect = document.getElementById('endVocabSelect');
-    
-    if (!startSelect || !endSelect) return;
-    
-    const startIndex = parseInt(startSelect.value);
-    const endIndex = parseInt(endSelect.value);
-    
-    if (startIndex > endIndex) {
-        // If start is after end, set end to start
-        endSelect.value = startSelect.value;
-    }
-}
-
-// Apply custom vocabulary range
-function applyCustomRange() {
-    const startSelect = document.getElementById('startVocabSelect');
-    const endSelect = document.getElementById('endVocabSelect');
-    
-    if (!startSelect || !endSelect) return;
-    
-    const startIndex = parseInt(startSelect.value);
-    const endIndex = parseInt(endSelect.value);
-    
-    // Slice the vocabulary list based on the selected range
-    currentWords = allUnitWords.slice(startIndex, endIndex + 1);
-    
-    // Reset to first card
-    currentIndex = 0;
-    updateCardDisplay();
-    updateNavigationButtons();
-    totalCards.textContent = currentWords.length;
-    
-    // Show feedback to user
-    const startWord = allUnitWords[startIndex].english;
-    const endWord = allUnitWords[endIndex].english;
-    updateAudioStatus(`已套用詞彙範圍：${startWord} 到 ${endWord}`);
 }
 
 // Initialize voice selector for speech synthesis

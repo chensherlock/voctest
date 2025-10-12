@@ -60,9 +60,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         selectDefaultUnits();
     }
 
-    // Create vocabulary range selector after words are loaded
-    createVocabRangeSelector();
-
     // Set up event listeners
     startQuiz.addEventListener('click', handleStartQuiz);
     submitAnswer.addEventListener('click', handleSubmitAnswer);
@@ -77,6 +74,13 @@ async function populateUnitSelect() {
     await loadUnitsIndex();
     const units = getAllUnits();
     const container = document.getElementById('unitCheckboxContainer');
+
+    // Sort units: default units first, then others
+    units.sort((a, b) => {
+        if (a.default && !b.default) return -1;
+        if (!a.default && b.default) return 1;
+        return 0;
+    });
 
     units.forEach(unit => {
         const checkboxItem = document.createElement('div');
@@ -162,7 +166,6 @@ async function handleUnitCheckboxChange() {
 
     // Load words from selected units
     await loadUnitWords();
-    createVocabRangeSelector();
 }
 
 // Load all words from the selected units
@@ -173,26 +176,6 @@ async function loadUnitWords() {
     } else {
         allUnitWords = await getWordsFromUnits(selectedUnitIds);
     }
-}
-
-// Create vocabulary range selector
-function createVocabRangeSelector() {
-    const vocabRangeContainer = document.getElementById('vocabRangeContainer');
-    if (!vocabRangeContainer) return;
-
-    const totalWords = Math.max(allUnitWords.length, 1);
-
-    vocabRangeContainer.innerHTML = `
-        <label class="vocab-range-field">
-            <span>起始</span>
-            <input type="number" id="vocabRangeStart" min="1" max="${totalWords}" value="1">
-        </label>
-        <span class="vocab-range-separator">至</span>
-        <label class="vocab-range-field">
-            <span>結束</span>
-            <input type="number" id="vocabRangeEnd" min="1" max="${totalWords}" value="${totalWords}">
-        </label>
-    `;
 }
 
 // Handle unit change
@@ -251,13 +234,6 @@ async function prepareQuizWords() {
         }));
         words = words.concat(wordsWithUnitId);
     }
-
-    // Get vocabulary range
-    const vocabRangeStart = parseInt(document.getElementById('vocabRangeStart').value) - 1;
-    const vocabRangeEnd = parseInt(document.getElementById('vocabRangeEnd').value);
-
-    // Filter words based on range
-    words = words.slice(vocabRangeStart, vocabRangeEnd);
 
     // Filter words based on quiz type requirements
     if (quizTypeValue === 'fill-in-blank') {

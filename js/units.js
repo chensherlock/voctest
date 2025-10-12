@@ -137,6 +137,13 @@ async function displayAllUnits() {
         await preloadAllUnits();
         const units = getAllUnits();
 
+        // Sort units: default units first, then others
+        units.sort((a, b) => {
+            if (a.default && !b.default) return -1;
+            if (!a.default && b.default) return 1;
+            return 0;
+        });
+
         units.forEach(unit => {
             const hasWords = unit.words && unit.words.length > 0;
             const hasVideo = unit.video && unit.video.trim() !== '';
@@ -151,10 +158,8 @@ async function displayAllUnits() {
 
             unitCard.innerHTML = `
                 <div class="unit-card-header">
-                    ${videoButtonHTML || ''}
-                    <h3>${unit.title}</h3>
+                    <h3>${unit.title} <span class="word-count">(${unit.words.length} 個詞彙)</span> ${videoButtonHTML || ''}</h3>
                 </div>
-                <p>${unit.words.length} 個詞彙</p>
             `;
 
             // Make the entire card clickable for units with words
@@ -246,7 +251,9 @@ function displayUnitWords(unit) {
             '[c]': '可數名詞',
             '[u]': '不可數名詞',
             '[s]': '單數名詞',
-            '[p]': '複數名詞'
+            '[p]': '複數名詞',
+            '[sing.]': '單數名詞',
+            '[pl.]': '複數名詞'
         };
 
         // Extract grammatical information (part of speech and countability markers)
@@ -261,7 +268,7 @@ function displayUnitWords(unit) {
                 const grammarText = grammarMatch[1].trim();
 
                 // Split grammar text into individual parts and create tooltips
-                const parts = grammarText.match(/vt\.|vi\.|v\.|n\.|adj\.|adv\.|prep\.|conj\.|pron\.|det\.|interj\.|\[C\]|\[U\]|\[S\]|\[P\]/gi);
+                const parts = grammarText.match(/vt\.|vi\.|v\.|n\.|adj\.|adv\.|prep\.|conj\.|pron\.|det\.|interj\.|\[C\]|\[U\]|\[S\]|\[P\]|\[Sing\.\]|\[pl\.\]/gi);
                 if (parts) {
                     parts.forEach(part => {
                         const normalizedPart = part.toLowerCase();
