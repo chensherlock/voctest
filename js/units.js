@@ -27,6 +27,9 @@ const createTranslatorFn = translationProvider
 let writerPromise = null;
 let writerSession = null;
 let writerUnavailable = false;
+let rewriterPromise = null;
+let rewriterSession = null;
+let rewriterUnavailable = false;
 let translatorPromise = null;
 const translationCache = new Map();
 let htmlDecodeElement = null;
@@ -50,6 +53,39 @@ function getWriterEntryPoint() {
 
 function isWriterSupported() {
     return !!getWriterEntryPoint();
+}
+
+function getRewriterEntryPoint() {
+    // Check window.Rewriter or self.Rewriter (Chrome Built-in AI Rewriter API)
+    if (typeof window !== 'undefined' && window.Rewriter) {
+        return window.Rewriter;
+    }
+    if (typeof self !== 'undefined' && self.Rewriter) {
+        return self.Rewriter;
+    }
+    if (typeof globalThis !== 'undefined' && globalThis.Rewriter) {
+        return globalThis.Rewriter;
+    }
+    if (typeof globalThis !== 'undefined' && globalThis.ai && globalThis.ai.rewriter) {
+        return globalThis.ai.rewriter;
+    }
+    return null;
+}
+
+function isRewriterSupported() {
+    return !!getRewriterEntryPoint();
+}
+
+function getRewriterCreator() {
+    const entryPoint = getRewriterEntryPoint();
+    if (!entryPoint) {
+        return null;
+    }
+    const createFn = entryPoint.create;
+    if (typeof createFn === 'function') {
+        return createFn.bind(entryPoint);
+    }
+    return null;
 }
 
 function getWriterCreator() {
@@ -92,6 +128,34 @@ function getWriterApiFlagInfo() {
     return null;
 }
 
+function getRewriterApiFlagInfo() {
+    if (typeof navigator === 'undefined') {
+        return null;
+    }
+
+    const userAgent = navigator.userAgent || '';
+    const isEdge = /Edg\//.test(userAgent);
+    const isChrome = !isEdge && /Chrome\//.test(userAgent);
+
+    if (isEdge) {
+        return {
+            browser: 'edge',
+            url: 'edge://flags/#edge-llm-rewriter-api-for-phi-mini',
+            label: '啟用 Rewriter API'
+        };
+    }
+
+    if (isChrome) {
+        return {
+            browser: 'chrome',
+            url: 'chrome://flags/#rewriter-api-for-gemini-nano',
+            label: '啟用 Rewriter API'
+        };
+    }
+
+    return null;
+}
+
 function updateWriterApiFlagButton() {
     const header = document.getElementById('unitHeader');
     if (!header) return;
@@ -120,6 +184,78 @@ function updateWriterApiFlagButton() {
         flagButton.type = 'button';
         flagButton.className = 'writer-api-flag-btn';
         flagButton.innerHTML = '<i class="fas fa-flask"></i><span>啟用 Writer API</span>';
+        unitHeading.appendChild(flagButton);
+    }
+
+    const labelSpan = flagButton.querySelector('span');
+    if (labelSpan) {
+        labelSpan.textContent = flagInfo.label;
+    }
+
+    const navigateToFlags = async (event) => {
+        event.stopPropagation();
+        event.preventDefault();
+        const destination = flagInfo.url;
+        let openedWindow = null;
+        try {
+            openedWindow = window.open(destination, '_blank', 'noopener');
+        } catch (err) {
+            openedWindow = null;
+        }
+        if (!openedWindow) {
+            const fallbackMessage = `${flagInfo.label}：請在網址列輸入 ${destination}`;
+            if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+                try {
+                    await navigator.clipboard.writeText(destination);
+                    showAudioStatus(`${fallbackMessage}（網址已複製）`);
+                    return;
+                } catch (err) {
+                    // Clipboard write failed; fall through to basic message
+                }
+            }
+            showAudioStatus(fallbackMessage);
+        }
+    };
+
+    flagButton.onclick = navigateToFlags;
+    flagButton.dataset.flagUrl = flagInfo.url;
+    if (flagInfo.browser) {
+        flagButton.dataset.browser = flagInfo.browser;
+    } else {
+        delete flagButton.dataset.browser;
+    }
+    flagButton.setAttribute('aria-label', `${flagInfo.label}（開啟瀏覽器實驗功能）`);
+    flagButton.title = `${flagInfo.label} - 開啟瀏覽器實驗功能`;
+}
+
+function updateRewriterApiFlagButton() {
+    const header = document.getElementById('unitHeader');
+    if (!header) return;
+    const unitHeading = header.querySelector('h2');
+    if (!unitHeading) return;
+
+    let flagButton = unitHeading.querySelector('.rewriter-api-flag-btn');
+
+    if (isRewriterSupported()) {
+        if (flagButton) {
+            flagButton.remove();
+        }
+        return;
+    }
+
+    const flagInfo = getRewriterApiFlagInfo();
+    if (!flagInfo) {
+        if (flagButton) {
+            flagButton.remove();
+        }
+        return;
+    }
+
+    if (!flagButton) {
+        flagButton = document.createElement('button');
+        flagButton.type = 'button';
+        flagButton.className = 'rewriter-api-flag-btn';
+        flagButton.innerHTML = '<i class="fas fa-flask"></i><span>啟用 Rewriter API</span>';
         unitHeading.appendChild(flagButton);
     }
 
@@ -556,6 +692,113 @@ async function runWriterPrompt(session, promptText) {
     return '';
 }
 
+async function getRewriter() {
+    if (!isRewriterSupported()) {
+        return null;
+    }
+
+    const rewriterProvider = getRewriterEntryPoint();
+    const createRewriterFn = getRewriterCreator();
+    if (!rewriterProvider || !createRewriterFn) {
+        return null;
+    }
+
+    if (rewriterSession) {
+        return rewriterSession;
+    }
+
+    if (rewriterUnavailable) {
+        return null;
+    }
+
+    if (!rewriterPromise) {
+        rewriterPromise = (async () => {
+            try {
+                if (typeof rewriterProvider.availability === 'function') {
+                    const availability = await rewriterProvider.availability();
+                    if (availability === false || availability === 'unavailable') {
+                        rewriterUnavailable = true;
+                        return null;
+                    }
+                }
+
+                const session = await createRewriterFn({
+                    sharedContext: 'Rewrite English example sentences for vocabulary learning, keeping them clear and natural.'
+                });
+                const hasRewrite = session && (typeof session.rewrite === 'function' ||
+                    typeof session.rewriteStreaming === 'function');
+                if (!hasRewrite) {
+                    console.warn('Rewriter session missing rewrite capabilities.');
+                    return null;
+                }
+                rewriterSession = session;
+                return session;
+            } catch (err) {
+                console.error('Rewriter creation failed:', err);
+                if (err && err.name === 'NotAllowedError') {
+                    rewriterPromise = null;
+                }
+                return null;
+            }
+        })();
+    }
+
+    const session = await rewriterPromise;
+    if (!session) {
+        if (!rewriterSession && !rewriterUnavailable) {
+            rewriterPromise = null;
+        }
+        return null;
+    }
+    return session;
+}
+
+async function runRewrite(session, inputText, context) {
+    if (!session || !inputText) {
+        return '';
+    }
+
+    const normalizeResponse = (response) => {
+        if (!response) return '';
+        if (typeof response === 'string') return response;
+        if (typeof response.text === 'string') return response.text;
+        if (typeof response.output === 'string') return response.output;
+        if (typeof response.response === 'string') return response.response;
+        if (Array.isArray(response)) return response.join('');
+        return '';
+    };
+
+    if (typeof session.rewrite === 'function') {
+        try {
+            const response = await session.rewrite(inputText, { context });
+            const normalized = normalizeResponse(response);
+            if (normalized) {
+                return normalized;
+            }
+        } catch (err) {
+            console.error('Rewriter rewrite error:', err);
+        }
+    }
+
+    if (typeof session.rewriteStreaming === 'function') {
+        try {
+            let combined = '';
+            const stream = session.rewriteStreaming(inputText, { context });
+            for await (const chunk of stream) {
+                const chunkText = normalizeResponse(chunk) || (typeof chunk === 'string' ? chunk : '');
+                combined += chunkText;
+            }
+            if (combined.trim()) {
+                return combined;
+            }
+        } catch (err) {
+            console.error('Rewriter streaming error:', err);
+        }
+    }
+
+    return '';
+}
+
 function ensureExamplesContainer(wordItem) {
     if (!wordItem) return null;
     let container = wordItem.querySelector('.examples');
@@ -591,6 +834,18 @@ function attachExampleLineHandlers(exampleLine) {
             });
         }
     }
+
+    if (isRewriterSupported()) {
+        const rewriteBtn = exampleLine.querySelector('.example-rewrite-btn');
+        if (rewriteBtn) {
+            rewriteBtn.addEventListener('click', async (e) => {
+                e.stopPropagation();
+                const sentence = decodeHtmlEntities(rewriteBtn.dataset.sentence || '');
+                const englishWord = rewriteBtn.dataset.word || '';
+                await rewriteExampleSentence(sentence, englishWord, rewriteBtn);
+            });
+        }
+    }
 }
 
 function highlightWordInSentence(word, sentence) {
@@ -609,10 +864,15 @@ function appendGeneratedExampleLine(wordItem, englishWord, sentence) {
     const highlightedSentence = highlightWordInSentence(englishWord, sentence);
     const { html: exampleMarkup, cleanSentence } = buildExampleMarkup(highlightedSentence);
     const encodedSentence = escapeHtml(cleanSentence);
+    const encodedWord = escapeHtml(englishWord);
 
     const translateButtonHTML = supportsTranslationApi ? `
         <button class="example-translate-btn" data-sentence="${encodedSentence}" aria-label="翻譯成繁體中文" title="翻譯成繁體中文">
             <i class="fas fa-language"></i>
+        </button>` : '';
+    const rewriteButtonHTML = isRewriterSupported() ? `
+        <button class="example-rewrite-btn" data-sentence="${encodedSentence}" data-word="${encodedWord}" aria-label="重寫例句" title="重寫例句">
+            <i class="fas fa-sync-alt"></i>
         </button>` : '';
     const translationOutputHTML = supportsTranslationApi ? '<div class="example-translation" aria-live="polite"></div>' : '';
 
@@ -622,6 +882,7 @@ function appendGeneratedExampleLine(wordItem, englishWord, sentence) {
                 <i class="fas fa-volume-up"></i>
             </button>
             ${translateButtonHTML}
+            ${rewriteButtonHTML}
         </div>
         ${translationOutputHTML}`;
 
@@ -975,6 +1236,7 @@ async function showUnitDetail(unitId) {
         // Update UI with unit details
         unitNumber.textContent = unit.id;
         updateWriterApiFlagButton();
+        updateRewriterApiFlagButton();
         displayUnitWords(unit);
 
         // Show unit detail section, hide units list
@@ -1080,9 +1342,14 @@ function displayUnitWords(unit) {
                 .map((example) => {
                     const { html: exampleMarkup, cleanSentence } = buildExampleMarkup(example);
                     const encodedSentence = escapeHtml(cleanSentence);
+                    const encodedWord = escapeHtml(word.english);
                     const translateButtonHTML = supportsTranslationApi ? `
                         <button class="example-translate-btn" data-sentence="${encodedSentence}" aria-label="翻譯成繁體中文" title="翻譯成繁體中文">
                             <i class="fas fa-language"></i>
+                        </button>` : '';
+                    const rewriteButtonHTML = isRewriterSupported() ? `
+                        <button class="example-rewrite-btn" data-sentence="${encodedSentence}" data-word="${encodedWord}" aria-label="重寫例句" title="重寫例句">
+                            <i class="fas fa-sync-alt"></i>
                         </button>` : '';
                     const translationOutputHTML = supportsTranslationApi ? `<div class="example-translation" aria-live="polite"></div>` : '';
 
@@ -1093,6 +1360,7 @@ function displayUnitWords(unit) {
                                 <i class="fas fa-volume-up"></i>
                             </button>
                             ${translateButtonHTML}
+                            ${rewriteButtonHTML}
                         </div>
                         ${translationOutputHTML}
                     </div>`;
@@ -1182,6 +1450,18 @@ function displayUnitWords(unit) {
             });
         }
 
+        if (isRewriterSupported()) {
+            const rewriteButtons = wordItem.querySelectorAll('.example-rewrite-btn');
+            rewriteButtons.forEach(btn => {
+                btn.addEventListener('click', async (e) => {
+                    e.stopPropagation();
+                    const sentence = decodeHtmlEntities(btn.dataset.sentence || '');
+                    const englishWord = decodeHtmlEntities(btn.dataset.word || '');
+                    await rewriteExampleSentence(sentence, englishWord, btn);
+                });
+            });
+        }
+
         wordList.appendChild(wordItem);
     });
 
@@ -1244,13 +1524,6 @@ async function getExampleTranslator() {
     if (!translatorPromise) {
         translatorPromise = (async () => {
             try {
-                if (typeof translationProvider.requestPermission === 'function') {
-                    const permission = await translationProvider.requestPermission(translationOptions);
-                    if (permission !== 'granted') {
-                        return null;
-                    }
-                }
-
                 const availability = typeof translationProvider.availability === 'function'
                     ? await translationProvider.availability(translationOptions)
                     : 'available';
@@ -1259,11 +1532,27 @@ async function getExampleTranslator() {
                     return null;
                 }
 
-                return await createTranslatorFn(translationOptions);
+                // Show status if model needs download
+                if (availability === 'downloadable') {
+                    showAudioStatus('首次使用需要下載翻譯模型，請稍候…');
+                } else if (availability === 'downloading') {
+                    showAudioStatus('翻譯模型下載中，請稍候…');
+                }
+
+                if (typeof translationProvider.requestPermission === 'function') {
+                    const permission = await translationProvider.requestPermission(translationOptions);
+                    if (permission !== 'granted') {
+                        return null;
+                    }
+                }
+
+                const translator = await createTranslatorFn(translationOptions);
+                return translator;
             } catch (err) {
                 console.error('Translator creation failed:', err);
                 if (err && err.name === 'NotAllowedError') {
                     translatorPromise = null;
+                    showAudioStatus('請再次點擊翻譯按鈕以下載模型');
                 }
                 return null;
             }
@@ -1326,6 +1615,60 @@ async function translateExampleSentence(sentence, button) {
         if (translationOutput) {
             translationOutput.textContent = '翻譯失敗，請稍後再試';
         }
+    } finally {
+        restoreButton();
+    }
+}
+
+async function rewriteExampleSentence(sentence, englishWord, button) {
+    if (!isRewriterSupported() || !sentence || !button) return;
+
+    const normalizedSentence = sentence.trim();
+    if (!normalizedSentence) return;
+
+    const exampleLine = button.closest('.example-line');
+    const wordItem = button.closest('.word-item');
+
+    const originalIcon = button.innerHTML;
+    button.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+    button.disabled = true;
+    button.classList.add('loading');
+
+    const restoreButton = () => {
+        button.innerHTML = originalIcon;
+        button.disabled = false;
+        button.classList.remove('loading');
+    };
+
+    try {
+        const rewriter = await getRewriter();
+        if (!rewriter) {
+            showAudioStatus('無法使用重寫功能');
+            restoreButton();
+            return;
+        }
+
+        showAudioStatus('重寫例句中...');
+
+        // Use Rewriter API to rewrite the sentence
+        const context = englishWord ? `Rewrite this example sentence using the word "${englishWord}". Keep it clear, simple, and natural for vocabulary learning.` : 'Rewrite this example sentence to make it clearer and more natural for vocabulary learning.';
+        const rewritten = await runRewrite(rewriter, normalizedSentence, context);
+        const rewrittenSentence = cleanGeneratedSentence(rewritten).trim();
+
+        if (!rewrittenSentence || !isValidGeneratedSentence(rewrittenSentence, englishWord)) {
+            showAudioStatus('無法重寫例句');
+            restoreButton();
+            return;
+        }
+
+        // Append the rewritten sentence as a new example instead of replacing
+        if (wordItem && englishWord) {
+            appendGeneratedExampleLine(wordItem, englishWord, rewrittenSentence);
+            showAudioStatus('已新增重寫例句');
+        }
+    } catch (error) {
+        console.error('Rewrite error:', error);
+        showAudioStatus('重寫失敗，請稍後再試');
     } finally {
         restoreButton();
     }
