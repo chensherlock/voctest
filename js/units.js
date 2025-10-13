@@ -37,6 +37,47 @@ const translationOptions = {
     sourceLanguage: 'en',
     targetLanguage: 'zh-Hant'
 };
+const rewriterToneVariants = [
+    {
+        key: 'friendly',
+        prompt: 'Use a friendly and encouraging tone that feels like a supportive teacher.'
+    },
+    {
+        key: 'playful',
+        prompt: 'Give the sentence a playful, imaginative tone while keeping it easy to understand.'
+    },
+    {
+        key: 'motivational',
+        prompt: 'Adopt a motivational tone that inspires the learner to keep practicing.'
+    },
+    {
+        key: 'curious',
+        prompt: 'Lean into a curious tone that invites the learner to explore the idea further.'
+    },
+    {
+        key: 'calm',
+        prompt: 'Keep the tone calm and reassuring, like a patient tutor guiding the learner.'
+    }
+];
+let lastRewriterToneKey = null;
+
+function pickRandomRewriterTone() {
+    if (!rewriterToneVariants.length) {
+        return null;
+    }
+
+    let candidates = rewriterToneVariants;
+    if (rewriterToneVariants.length > 1 && lastRewriterToneKey) {
+        const filtered = rewriterToneVariants.filter(variant => variant.key !== lastRewriterToneKey);
+        if (filtered.length > 0) {
+            candidates = filtered;
+        }
+    }
+
+    const selected = candidates[Math.floor(Math.random() * candidates.length)] || null;
+    lastRewriterToneKey = selected ? selected.key : lastRewriterToneKey;
+    return selected;
+}
 
 function getWriterEntryPoint() {
     if (typeof globalThis === 'undefined') {
@@ -753,9 +794,17 @@ async function getRewriter() {
     return session;
 }
 
-async function runRewrite(session, inputText, context) {
+async function runRewrite(session, inputText, options = {}) {
     if (!session || !inputText) {
         return '';
+    }
+
+    const rewriteOptions = typeof options === 'string'
+        ? { context: options }
+        : (options && typeof options === 'object' ? Object.assign({}, options) : {});
+
+    if (!rewriteOptions.context) {
+        rewriteOptions.context = '';
     }
 
     const normalizeResponse = (response) => {
@@ -770,7 +819,7 @@ async function runRewrite(session, inputText, context) {
 
     if (typeof session.rewrite === 'function') {
         try {
-            const response = await session.rewrite(inputText, { context });
+            const response = await session.rewrite(inputText, rewriteOptions);
             const normalized = normalizeResponse(response);
             if (normalized) {
                 return normalized;
@@ -783,7 +832,7 @@ async function runRewrite(session, inputText, context) {
     if (typeof session.rewriteStreaming === 'function') {
         try {
             let combined = '';
-            const stream = session.rewriteStreaming(inputText, { context });
+            const stream = session.rewriteStreaming(inputText, rewriteOptions);
             for await (const chunk of stream) {
                 const chunkText = normalizeResponse(chunk) || (typeof chunk === 'string' ? chunk : '');
                 combined += chunkText;
@@ -854,7 +903,7 @@ function highlightWordInSentence(word, sentence) {
     if (regex.test(sentence)) {
         return sentence.replace(regex, (match) => `[${match}]`);
     }
-    return `[${word}] ${sentence}`;
+    return sentence;
 }
 
 function appendGeneratedExampleLine(wordItem, englishWord, sentence) {
@@ -1651,13 +1700,39 @@ async function rewriteExampleSentence(sentence, englishWord, button) {
         showAudioStatus('重寫例句中...');
 
         // Use Rewriter API to rewrite the sentence
-        const context = englishWord ? `Rewrite this example sentence using the word "${englishWord}". Keep it clear, simple, and natural for vocabulary learning.` : 'Rewrite this example sentence to make it clearer and more natural for vocabulary learning.';
-        const rewritten = await runRewrite(rewriter, normalizedSentence, context);
-        const rewrittenSentence = cleanGeneratedSentence(rewritten).trim();
+        const baseContext = englishWord
+            ? `Rewrite this example sentence using the word "${englishWord}". Keep it clear, simple, and natural for vocabulary learning.`
+            : 'Rewrite this example sentence to make it clearer and more natural for vocabulary learning.';
+        const toneVariant = pickRandomRewriterTone();
+        const toneInstruction = toneVariant ? ` ${toneVariant.prompt}` : '';
+        const includeWordInstruction = englishWord
+            ? ` The rewritten sentence must include the word "${englishWord}" (case-insensitive) and stay natural.`
+            : '';
+        const contexts = [
+            `${baseContext}${toneInstruction}${includeWordInstruction}`.trim()
+        ];
+        if (englishWord) {
+            contexts.push(`${baseContext} Keep the sentence concise and ensure the exact word "${englishWord}" appears somewhere in the sentence.`.trim());
+        }
 
-        if (!rewrittenSentence || !isValidGeneratedSentence(rewrittenSentence, englishWord)) {
-            showAudioStatus('無法重寫例句');
-            restoreButton();
+        let rewrittenSentence = '';
+        for (let i = 0; i < contexts.length && !rewrittenSentence; i += 1) {
+            const context = contexts[i];
+            const rewriteOptions = { context };
+            const rewritten = await runRewrite(rewriter, normalizedSentence, rewriteOptions);
+            const cleaned = cleanGeneratedSentence(rewritten).trim();
+            if (!cleaned) {
+                continue;
+            }
+            if (isValidGeneratedSentence(cleaned, englishWord)) {
+                rewrittenSentence = cleaned;
+                break;
+            }
+            console.log('Invalid rewritten sentence attempt:', cleaned);
+        }
+
+        if (!rewrittenSentence) {
+            showAudioStatus('重寫的句子缺少該單字，請再試一次');
             return;
         }
 
