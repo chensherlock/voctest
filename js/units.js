@@ -24,9 +24,9 @@ const createTranslatorFn = translationProvider
             ? translationProvider.createTranslator.bind(translationProvider)
             : null))
     : null;
-let languageModelPromise = null;
-let languageModelSession = null;
-let languageModelUnavailable = false;
+let writerPromise = null;
+let writerSession = null;
+let writerUnavailable = false;
 let translatorPromise = null;
 const translationCache = new Map();
 let htmlDecodeElement = null;
@@ -35,25 +35,25 @@ const translationOptions = {
     targetLanguage: 'zh-Hant'
 };
 
-function getLanguageModelEntryPoint() {
+function getWriterEntryPoint() {
     if (typeof globalThis === 'undefined') {
         return null;
     }
-    if (globalThis.LanguageModel) {
-        return globalThis.LanguageModel;
+    if (globalThis.Writer) {
+        return globalThis.Writer;
     }
-    if (globalThis.ai && globalThis.ai.languageModel) {
-        return globalThis.ai.languageModel;
+    if (globalThis.ai && globalThis.ai.writer) {
+        return globalThis.ai.writer;
     }
     return null;
 }
 
-function isLanguageModelSupported() {
-    return !!getLanguageModelEntryPoint();
+function isWriterSupported() {
+    return !!getWriterEntryPoint();
 }
 
-function getLanguageModelCreator() {
-    const entryPoint = getLanguageModelEntryPoint();
+function getWriterCreator() {
+    const entryPoint = getWriterEntryPoint();
     if (!entryPoint) {
         return null;
     }
@@ -64,7 +64,7 @@ function getLanguageModelCreator() {
     return null;
 }
 
-function getPromptApiFlagInfo() {
+function getWriterApiFlagInfo() {
     if (typeof navigator === 'undefined') {
         return null;
     }
@@ -76,38 +76,38 @@ function getPromptApiFlagInfo() {
     if (isEdge) {
         return {
             browser: 'edge',
-            url: 'edge://flags/#edge-llm-prompt-api-for-phi-mini',
-            label: '啟用 Prompt API'
+            url: 'edge://flags/#edge-llm-writer-api-for-phi-mini',
+            label: '啟用 Writer API'
         };
     }
 
     if (isChrome) {
         return {
             browser: 'chrome',
-            url: 'chrome://flags/#prompt-api-for-gemini-nano',
-            label: '啟用 Prompt API'
+            url: 'chrome://flags/#writer-api-for-gemini-nano',
+            label: '啟用 Writer API'
         };
     }
 
     return null;
 }
 
-function updateLanguageModelFlagButton() {
+function updateWriterApiFlagButton() {
     const header = document.getElementById('unitHeader');
     if (!header) return;
     const unitHeading = header.querySelector('h2');
     if (!unitHeading) return;
 
-    let flagButton = unitHeading.querySelector('.prompt-api-flag-btn');
+    let flagButton = unitHeading.querySelector('.writer-api-flag-btn');
 
-    if (isLanguageModelSupported()) {
+    if (isWriterSupported()) {
         if (flagButton) {
             flagButton.remove();
         }
         return;
     }
 
-    const flagInfo = getPromptApiFlagInfo();
+    const flagInfo = getWriterApiFlagInfo();
     if (!flagInfo) {
         if (flagButton) {
             flagButton.remove();
@@ -118,8 +118,8 @@ function updateLanguageModelFlagButton() {
     if (!flagButton) {
         flagButton = document.createElement('button');
         flagButton.type = 'button';
-        flagButton.className = 'prompt-api-flag-btn';
-        flagButton.innerHTML = '<i class="fas fa-flask"></i><span>啟用 Prompt API</span>';
+        flagButton.className = 'writer-api-flag-btn';
+        flagButton.innerHTML = '<i class="fas fa-flask"></i><span>啟用 Writer API</span>';
         unitHeading.appendChild(flagButton);
     }
 
@@ -298,178 +298,221 @@ function scheduleTranslatorWarmup() {
     }
 }
 
-function scheduleLanguageModelWarmup() {
-    if (!isLanguageModelSupported() || languageModelPromise) {
+async function scheduleWriterWarmup() {
+    if (!isWriterSupported() || writerPromise) {
         return;
     }
 
-    const warmup = () => {
-        getLanguageModel();
-    };
+    const writerProvider = getWriterEntryPoint();
+    if (!writerProvider) {
+        return;
+    }
 
-    if (typeof window !== 'undefined') {
-        if (typeof window.requestIdleCallback === 'function') {
-            window.requestIdleCallback(() => warmup());
-        } else {
-            window.setTimeout(warmup, 0);
+    // Check availability first - don't try to create if it requires download
+    // because that needs a user gesture
+    if (typeof writerProvider.availability === 'function') {
+        try {
+            const availability = await writerProvider.availability();
+            // Only warm up if the model is already available
+            // Don't try to create when downloadable/downloading as it requires user gesture
+            if (availability === 'readily' || availability === 'available' || availability === true) {
+                const warmup = () => {
+                    getWriter();
+                };
+
+                if (typeof window !== 'undefined') {
+                    if (typeof window.requestIdleCallback === 'function') {
+                        window.requestIdleCallback(() => warmup());
+                    } else {
+                        window.setTimeout(warmup, 0);
+                    }
+                } else {
+                    warmup();
+                }
+            }
+        } catch (err) {
+            console.warn('Writer availability check failed during warmup:', err);
         }
-    } else {
-        warmup();
     }
 }
 
-function createLanguageModelOptions() {
-    if (typeof window === 'undefined') return {};
+function createWriterDownloadUI() {
+    // Remove any existing download UI
+    const existing = document.getElementById('writerDownloadOverlay');
+    if (existing) {
+        existing.remove();
+    }
+
+    // Create overlay
+    const overlay = document.createElement('div');
+    overlay.id = 'writerDownloadOverlay';
+    overlay.className = 'writer-download-overlay';
+
+    // Create modal
+    const modal = document.createElement('div');
+    modal.className = 'writer-download-modal';
+
+    modal.innerHTML = `
+        <div class="writer-download-header">
+            <i class="fas fa-download writer-download-icon"></i>
+            <h3 class="writer-download-title">下載 Writer 模型</h3>
+        </div>
+        <p class="writer-download-message">首次使用需要下載語言模型，請稍候片刻…</p>
+        <div class="writer-download-progress-container">
+            <div class="writer-download-progress-bar">
+                <div class="writer-download-progress-fill" id="writerProgressFill" style="width: 0%"></div>
+            </div>
+            <div class="writer-download-stats">
+                <span class="writer-download-percentage" id="writerProgressPercent">0.00%</span>
+            </div>
+        </div>
+    `;
+
+    overlay.appendChild(modal);
+    document.body.appendChild(overlay);
+
     return {
-        monitor: (model) => {
-            if (!model || typeof model.addEventListener !== 'function') return;
-            model.addEventListener('downloadprogress', (event) => {
+        overlay,
+        updateProgress: (loaded, total) => {
+            const percent = total > 0 ? Math.min(100, ((loaded / total) * 100)) : 0;
+            const fillElement = document.getElementById('writerProgressFill');
+            const percentElement = document.getElementById('writerProgressPercent');
+
+            if (fillElement) fillElement.style.width = `${percent.toFixed(2)}%`;
+            if (percentElement) percentElement.textContent = `${percent.toFixed(2)}%`;
+        },
+        remove: () => {
+            if (overlay && overlay.parentNode) {
+                overlay.style.opacity = '0';
+                setTimeout(() => overlay.remove(), 300);
+            }
+        }
+    };
+}
+
+function createWriterOptions() {
+    if (typeof window === 'undefined') return {};
+
+    let downloadUI = null;
+
+    return {
+        monitor: (writer) => {
+            if (!writer || typeof writer.addEventListener !== 'function') return;
+
+            writer.addEventListener('downloadprogress', (event) => {
                 if (!event || typeof event.loaded !== 'number' || typeof event.total !== 'number' || event.total === 0) {
-                    showAudioStatus('語言模型下載中…');
+                    if (!downloadUI) {
+                        downloadUI = createWriterDownloadUI();
+                    }
                     return;
                 }
-                const percent = Math.min(100, Math.round((event.loaded / event.total) * 100));
-                showAudioStatus(`語言模型下載中 ${percent}%`);
+
+                // Create UI if not exists
+                if (!downloadUI) {
+                    downloadUI = createWriterDownloadUI();
+                }
+
+                // Update progress
+                downloadUI.updateProgress(event.loaded, event.total);
+
+                // Remove UI when complete
+                if (event.loaded >= event.total) {
+                    setTimeout(() => {
+                        if (downloadUI) {
+                            downloadUI.remove();
+                            downloadUI = null;
+                        }
+                    }, 1000);
+                }
             });
         }
     };
 }
 
-async function getLanguageModel() {
-    if (!isLanguageModelSupported()) {
+async function getWriter() {
+    if (!isWriterSupported()) {
         return null;
     }
 
-    const languageModelProvider = getLanguageModelEntryPoint();
-    const createLanguageModelFn = getLanguageModelCreator();
-    if (!languageModelProvider || !createLanguageModelFn) {
+    const writerProvider = getWriterEntryPoint();
+    const createWriterFn = getWriterCreator();
+    if (!writerProvider || !createWriterFn) {
         return null;
     }
 
-    if (languageModelSession) {
-        return languageModelSession;
+    if (writerSession) {
+        return writerSession;
     }
 
-    if (languageModelUnavailable) {
+    if (writerUnavailable) {
         return null;
     }
 
-    if (!languageModelPromise) {
-        languageModelPromise = (async () => {
+    if (!writerPromise) {
+        writerPromise = (async () => {
             try {
-                if (typeof languageModelProvider.requestPermission === 'function') {
-                    const permission = await languageModelProvider.requestPermission();
-                    if (permission !== 'granted') {
-                        languageModelUnavailable = true;
-                        return null;
-                    }
-                }
-
-                if (typeof languageModelProvider.availability === 'function') {
-                    const availability = await languageModelProvider.availability();
+                if (typeof writerProvider.availability === 'function') {
+                    const availability = await writerProvider.availability();
                     if (availability === false || availability === 'unavailable') {
-                        languageModelUnavailable = true;
+                        writerUnavailable = true;
                         return null;
                     }
+                    // Don't return null for 'downloadable' or 'downloading'
+                    // Let the create() call handle the download automatically
                     if (availability === 'downloadable' || availability === 'downloading') {
-                        showAudioStatus('語言模型準備中…');
-                        return null;
+                        showAudioStatus('Writer 模型下載中，請稍候…');
                     }
                 }
 
                 const sessionOptions = Object.assign(
                     {
-                        temperature: 0.8,
-                        topK: 5,
-                        outputLanguage: 'en',
-                        responseLanguage: 'en',
-                        output: {
-                            format: 'text',
-                            language: 'en'
-                        },
-                        response: {
-                            language: 'en'
-                        }
+                        tone: 'neutral',
+                        format: 'plain-text',
+                        length: 'medium',
+                        sharedContext: 'Generate clear, natural example sentences for English vocabulary learning.'
                     },
-                    createLanguageModelOptions()
+                    createWriterOptions()
                 );
-                const session = await createLanguageModelFn(sessionOptions);
-                const hasPrompt = session && (typeof session.prompt === 'function' ||
-                    typeof session.promptStreaming === 'function');
-                if (!hasPrompt) {
-                    console.warn('Language model session missing prompt capabilities.');
+                const session = await createWriterFn(sessionOptions);
+                const hasWrite = session && (typeof session.write === 'function' ||
+                    typeof session.writeStreaming === 'function');
+                if (!hasWrite) {
+                    console.warn('Writer session missing write capabilities.');
                     return null;
                 }
-                if (session && typeof session === 'object') {
-                    if ('outputLanguage' in session && session.outputLanguage !== 'en') {
-                        try {
-                            session.outputLanguage = 'en';
-                        } catch (err) {
-                            console.warn('Unable to set session.outputLanguage:', err);
-                        }
-                    }
-                    if ('responseLanguage' in session && session.responseLanguage !== 'en') {
-                        try {
-                            session.responseLanguage = 'en';
-                        } catch (err) {
-                            console.warn('Unable to set session.responseLanguage:', err);
-                        }
-                    }
-                    if ('output' in session && session.output && typeof session.output === 'object') {
-                        session.output.language = session.output.language || 'en';
-                        if (!session.output.format) {
-                            session.output.format = 'text';
-                        }
-                    }
-                    if ('response' in session && session.response && typeof session.response === 'object') {
-                        session.response.language = session.response.language || 'en';
-                    }
-                }
-                languageModelSession = session;
+                writerSession = session;
+                showAudioStatus('Writer 已就緒');
                 return session;
             } catch (err) {
-                console.error('Language model creation failed:', err);
+                console.error('Writer creation failed:', err);
+
+                // If it's a NotAllowedError (user gesture required), reset promise
+                // so next user click can retry
+                if (err && err.name === 'NotAllowedError') {
+                    writerPromise = null;
+                    showAudioStatus('請再次點擊按鈕以下載模型');
+                } else {
+                    showAudioStatus('Writer 初始化失敗');
+                }
                 return null;
             }
         })();
     }
 
-    const session = await languageModelPromise;
+    const session = await writerPromise;
     if (!session) {
-        if (!languageModelSession && !languageModelUnavailable) {
-            languageModelPromise = null;
+        if (!writerSession && !writerUnavailable) {
+            writerPromise = null;
         }
         return null;
     }
     return session;
 }
 
-async function runLanguageModelPrompt(session, promptText) {
+async function runWriterPrompt(session, promptText) {
     if (!session || !promptText) {
         return '';
     }
-
-    const outputOptions = {
-        format: 'text',
-        language: 'en'
-    };
-    const promptOptions = {
-        outputLanguage: 'en',
-        responseLanguage: 'en',
-        response: {
-            language: 'en'
-        },
-        output: outputOptions
-    };
-    const promptRequest = {
-        prompt: promptText,
-        outputLanguage: 'en',
-        responseLanguage: 'en',
-        response: {
-            language: 'en'
-        },
-        output: outputOptions
-    };
 
     const normalizeResponse = (response) => {
         if (!response) return '';
@@ -478,39 +521,26 @@ async function runLanguageModelPrompt(session, promptText) {
         if (typeof response.output === 'string') return response.output;
         if (typeof response.response === 'string') return response.response;
         if (Array.isArray(response)) return response.join('');
-        if (Array.isArray(response.output)) {
-            return response.output.filter(chunk => typeof chunk === 'string').join('');
-        }
         return '';
     };
 
-    if (typeof session.prompt === 'function') {
+    if (typeof session.write === 'function') {
         try {
-            const response = await session.prompt(promptRequest);
+            const response = await session.write(promptText);
             const normalized = normalizeResponse(response);
             if (normalized) {
                 return normalized;
             }
         } catch (err) {
-            console.error('Language model prompt error (object signature):', err);
-        }
-
-        try {
-            const response = await session.prompt(promptText, promptOptions);
-            const normalized = normalizeResponse(response);
-            if (normalized) {
-                return normalized;
-            }
-        } catch (err) {
-            console.error('Language model prompt error (legacy signature):', err);
+            console.error('Writer write error:', err);
         }
     }
 
-    if (typeof session.promptStreaming === 'function') {
+    if (typeof session.writeStreaming === 'function') {
         try {
             let combined = '';
-            const stream = session.promptStreaming(promptRequest);
-            // promptStreaming returns an async iterable of chunks
+            const stream = session.writeStreaming(promptText);
+            // writeStreaming returns an async iterable of chunks
             for await (const chunk of stream) {
                 const chunkText = normalizeResponse(chunk) || (typeof chunk === 'string' ? chunk : '');
                 combined += chunkText;
@@ -519,38 +549,7 @@ async function runLanguageModelPrompt(session, promptText) {
                 return combined;
             }
         } catch (err) {
-            console.error('Language model streaming error (object signature):', err);
-        }
-
-        try {
-            let combined = '';
-            const stream = session.promptStreaming(promptText, promptOptions);
-            for await (const chunk of stream) {
-                const chunkText = normalizeResponse(chunk) || (typeof chunk === 'string' ? chunk : '');
-                combined += chunkText;
-            }
-            if (combined.trim()) {
-                return combined;
-            }
-        } catch (err) {
-            console.error('Language model streaming error (legacy signature):', err);
-        }
-    }
-
-    const languageModelProvider = getLanguageModelEntryPoint();
-    if (languageModelProvider && typeof languageModelProvider.prompt === 'function') {
-        try {
-            const response = await languageModelProvider.prompt(promptRequest);
-            return normalizeResponse(response);
-        } catch (err) {
-            console.error('Language model provider prompt error (object signature):', err);
-        }
-
-        try {
-            const response = await languageModelProvider.prompt(promptText, promptOptions);
-            return normalizeResponse(response);
-        } catch (err) {
-            console.error('Language model provider prompt error (legacy signature):', err);
+            console.error('Writer streaming error:', err);
         }
     }
 
@@ -650,8 +649,19 @@ async function generateExampleForWord(englishWord, wordItem, button) {
     };
 
     try {
-        const model = await getLanguageModel();
-        if (!model) {
+        // Check availability before attempting to get writer
+        const writerProvider = getWriterEntryPoint();
+        if (writerProvider && typeof writerProvider.availability === 'function') {
+            const availability = await writerProvider.availability();
+            if (availability === 'downloadable') {
+                showAudioStatus('首次使用需要下載模型，請稍候…');
+            } else if (availability === 'downloading') {
+                showAudioStatus('模型下載中，請稍候…');
+            }
+        }
+
+        const writer = await getWriter();
+        if (!writer) {
             showAudioStatus('無法使用例句生成功能');
             return;
         }
@@ -664,15 +674,14 @@ async function generateExampleForWord(englishWord, wordItem, button) {
         const existingNormalized = new Set(previousExamples.map(example => example.normalized));
         const lastExample = previousExamples.length > 0 ? previousExamples[previousExamples.length - 1].sentence : '';
 
-        const basePrompt = `make a sentence with "${englishWord}"`;
+        const basePrompt = `Write a single example sentence using the word "${englishWord}".`;
         let attempt = 0;
         let sentence = '';
 
         while (attempt < 3 && !sentence) {
             let prompt = basePrompt;
-            //prompt += ' Return only the sentence.';
 
-            const candidateRaw = await runLanguageModelPrompt(model, prompt);
+            const candidateRaw = await runWriterPrompt(writer, prompt);
             const candidate = cleanGeneratedSentence(candidateRaw).trim();
             if (!candidate) {
                 attempt += 1;
@@ -962,7 +971,7 @@ async function showUnitDetail(unitId) {
 
         // Update UI with unit details
         unitNumber.textContent = unit.id;
-        updateLanguageModelFlagButton();
+        updateWriterApiFlagButton();
         displayUnitWords(unit);
 
         // Show unit detail section, hide units list
@@ -1088,11 +1097,11 @@ function displayUnitWords(unit) {
                 .join('');
         }
 
-        const languageModelAvailable = isLanguageModelSupported();
+        const writerAvailable = isWriterSupported();
 
         // Check if word has video URL
         const hasVideo = word.video && word.video.trim() !== '';
-        const exampleGeneratorButtonHTML = languageModelAvailable ?
+        const exampleGeneratorButtonHTML = writerAvailable ?
             `<button class="generate-example-btn" data-word="${escapeHtml(word.english)}" aria-label="產生新的例句" title="產生新的例句">
                 <i class="fas fa-magic"></i>
             </button>` : '';
@@ -1100,7 +1109,7 @@ function displayUnitWords(unit) {
             `<button class="video-btn" data-video-url="${word.video}" aria-label="Watch video">
                 <i class="fas fa-video"></i>
             </button>` : '';
-        const examplesWrapperHTML = (hasExample || languageModelAvailable) ? `<div class="examples">${examplesHTML}</div>` : '';
+        const examplesWrapperHTML = (hasExample || writerAvailable) ? `<div class="examples">${examplesHTML}</div>` : '';
 
         wordItem.innerHTML = `
             <div class="word-content">
@@ -1139,7 +1148,7 @@ function displayUnitWords(unit) {
             });
         }
 
-        if (languageModelAvailable) {
+        if (writerAvailable) {
             const exampleGeneratorBtn = wordItem.querySelector('.generate-example-btn');
             if (exampleGeneratorBtn) {
                 exampleGeneratorBtn.addEventListener('click', async (e) => {
@@ -1173,7 +1182,7 @@ function displayUnitWords(unit) {
         wordList.appendChild(wordItem);
     });
 
-    scheduleLanguageModelWarmup();
+    scheduleWriterWarmup();
 }
 
 // Show the list of all units

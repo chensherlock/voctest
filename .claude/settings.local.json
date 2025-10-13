@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(node -e:*)",
-      "Bash(git mv:*)"
+      "Bash(git mv:*)",
+      "WebFetch(domain:chrome.dev)",
+      "WebFetch(domain:developer.chrome.com)"
     ],
     "deny": [],
     "ask": []
