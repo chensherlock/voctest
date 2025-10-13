@@ -468,7 +468,7 @@ async function getWriter() {
                     {
                         tone: 'neutral',
                         format: 'plain-text',
-                        length: 'medium',
+                        length: 'short',
                         sharedContext: 'Generate clear, natural example sentences for English vocabulary learning.'
                     },
                     createWriterOptions()
@@ -674,7 +674,10 @@ async function generateExampleForWord(englishWord, wordItem, button) {
         const existingNormalized = new Set(previousExamples.map(example => example.normalized));
         const lastExample = previousExamples.length > 0 ? previousExamples[previousExamples.length - 1].sentence : '';
 
-        const basePrompt = `Write a single example sentence using the word "${englishWord}".`;
+        var basePrompt = `Write a single example sentence using the word "${englishWord}".`;
+        basePrompt += `Use basic grammar and vocabulary suitable for students aged 12–15.`;
+        //basePrompt += `The sentence should be short (under 15 words).`;
+        basePrompt += `Do not include explanations or translations—just the sentence itself.`;
         let attempt = 0;
         let sentence = '';
 
