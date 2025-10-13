@@ -1449,7 +1449,7 @@ function displayUnitWords(unit) {
                 </div>
             </div>
             <div class="word-actions">
-                ${wordProgress.mastered ? '<span class="mastery-badge"><i class="fas fa-check-circle"></i></span>' : ''}
+                ${wordProgress.mastered ? '<span class="mastery-badge"></span>' : ''}
             </div>
         `;
         
@@ -1514,7 +1514,6 @@ function displayUnitWords(unit) {
         wordList.appendChild(wordItem);
     });
 
-    scheduleWriterWarmup();
 }
 
 // Show the list of all units
