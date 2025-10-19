@@ -16,12 +16,12 @@
         "約翰拒絕解釋昨晚他去哪裡待了好幾個小時。"
       ],
       "phrases": [
-        "open an account 開戶",
-        "savings account 存款帳戶",
-        "take sth into account / take account of sth. 將某事物納入考量",
-        "by (from) all accounts 根據大家所說",
-        "on account of sb./sth. 因為…",
-        "account for sth. 導致某事物；解釋某事物；占某比例"
+        {"english": "open an account", "chinese": "開戶"},
+        {"english": "savings account", "chinese": "存款帳戶"},
+        {"english": "take sth into account / take account of sth.", "chinese": "將某事物納入考量"},
+        {"english": "by (from) all accounts", "chinese": "根據大家所說"},
+        {"english": "on account of sb./sth.", "chinese": "因為…"},
+        {"english": "account for sth.", "chinese": "導致某事物；解釋某事物；占某比例"}
       ],
       "pronunciation": "/ə'kaunt/",
       "related": [{
@@ -53,10 +53,10 @@
         "我們很感激你昨晚提供的協助。"
       ],
       "phrases": [
-        "appreciate that + S + V 理解",
-        "fully appreciate 完全理解",
-        "be truly/properly appreciated 受到真正地/適切地重視",
-        "I/We would appreciate it if S + V-ed 如果…的話，我（們）會很感激的。"
+        {"english": "appreciate that + S + V", "chinese": "理解"},
+        {"english": "fully appreciate", "chinese": "完全理解"},
+        {"english": "be truly/properly appreciated", "chinese": "受到真正地/適切地重視"},
+        {"english": "I/We would appreciate it if S + V-ed", "chinese": "如果…的話，我（們）會很感激的。"}
       ],
       "pronunciation": "/ə'priʃɪ,et/",
       "video": "https://magazine.english4u.net/vocmemory/video/3380"
@@ -71,12 +71,12 @@
         "黛安娜出生於富裕家庭，過著有錢人的生活。"
       ],
       "phrases": [
-        "be born into a(n) ... family 出生於…的家庭",
-        "be born to sb. 為某人所生的",
-        "be born with a silver spoon in one's mouth 含著金湯匙出生的",
-        "a born leader/salesperson/optimist 天生的領導人/業務/樂觀主義者",
-        "born and bred 土生土長的",
-        "I wasn't born yesterday. 我又不是三歲小孩。"
+        {"english": "be born into a(n) ... family", "chinese": "出生於…的家庭"},
+        {"english": "be born to sb.", "chinese": "為某人所生的"},
+        {"english": "be born with a silver spoon in one's mouth", "chinese": "含著金湯匙出生的"},
+        {"english": "a born leader/salesperson/optimist", "chinese": "天生的領導人/業務/樂觀主義者"},
+        {"english": "born and bred", "chinese": "土生土長的"},
+        {"english": "I wasn't born yesterday.", "chinese": "我又不是三歲小孩。"}
       ],
       "related": [{
         "english": "bear",
@@ -101,10 +101,10 @@
         "許多人發起反對酒駕的運動。"
       ],
       "phrases": [
-        "campaign for/against sth. 從事支持/反對某事的運動",
-        "launch/conduct/carry on a campaign 發起運動",
-        "elections/sales campaign 選舉/促銷 活動",
-        "antinuclear/anti-smoking campaign 反核/禁菸 運動"
+        {"english": "campaign for/against sth.", "chinese": "從事支持/反對某事的運動"},
+        {"english": "launch/conduct/carry on a campaign", "chinese": "發起運動"},
+        {"english": "elections/sales campaign", "chinese": "選舉/促銷 活動"},
+        {"english": "antinuclear/anti-smoking campaign", "chinese": "反核/禁菸 運動"}
       ],
       "pronunciation": "/kæm'pen/"
     },
@@ -118,7 +118,7 @@
         "蘿拉是教育運動的支持者，她相信每個孩童都應受到良好的教育。"
       ],
       "phrases": [
-        "campaigner for/against sth. 支持/反對 某事的運動參與者"
+        {"english": "campaigner for/against sth.", "chinese": "支持/反對 某事的運動參與者"}
       ],
       "pronunciation": "/kæm'penɚ/"
     },
@@ -133,11 +133,11 @@
         "這間大型電器用品店提供電腦買家多種選擇。"
       ],
       "phrases": [
-        "freedom of choice 選擇的自由",
-        "be given the choice 有選擇的權利",
-        "make a choice (between A and B) (在A和B之間) 做出選擇",
-        "one's first/second choice 某人的第一/第二志願",
-        "have no choice but to do sth. 不得不做某事"
+        {"english": "freedom of choice", "chinese": "選擇的自由"},
+        {"english": "be given the choice", "chinese": "有選擇的權利"},
+        {"english": "make a choice (between A and B)", "chinese": "(在A和B之間) 做出選擇"},
+        {"english": "one's first/second choice", "chinese": "某人的第一/第二志願"},
+        {"english": "have no choice but to do sth.", "chinese": "不得不做某事"}
       ],
       "related": [{
         "english": "choose",
@@ -159,7 +159,7 @@
         "我愛聽古典音樂，特別是貝多芬所作的曲子。"
       ],
       "phrases": [
-        "classical music 古典音樂"
+        {"english": "classical music", "chinese": "古典音樂"}
       ],
       "related": [{
         "english": "classic",
@@ -181,8 +181,8 @@
         "那位廚師結合日本菜和泰式香料創造出一道新奇有趣的料理。"
       ],
       "phrases": [
-        "combine with sth. 和某物結合",
-        "combine A with/and B 將A與B結合"
+        {"english": "combine with sth.", "chinese": "和某物結合"},
+        {"english": "combine A with/and B", "chinese": "將A與B結合"}
       ],
       "pronunciation": "/kəm'baɪn/"
     },
@@ -196,9 +196,9 @@
         "請避免將此維他命和其它藥物混合服用。"
       ],
       "phrases": [
-        "combination of A and B A與B的結合",
-        "in combination (with sb./sth.) (與…的) 結合",
-        "combination lock 密碼鎖"
+        {"english": "combination of A and B", "chinese": "A與B的結合"},
+        {"english": "in combination (with sb./sth.)", "chinese": "(與…的) 結合"},
+        {"english": "combination lock", "chinese": "密碼鎖"}
       ],
       "pronunciation": "/kɑmbə'neʃən/"
     },
@@ -215,15 +215,15 @@
         "一個國家的總統要同時處理外交及內政事務。"
       ],
       "phrases": [
-        "deal between A and B A與B之間的協議",
-        "cut/make/reach/strike a deal (with sb.) (與某人) 達成協議",
-        "get a good deal (on sth.) 用好價錢買到 (某物)",
-        "a good/great deal of sth. 大量的某物 (不可數)",
-        "What's the deal? 怎麼了？",
-        "It's a deal. 就這麼說定了。",
-        "It's no big/not that big (of) a deal. 這沒什麼。",
-        "deal with sb./sth. 處理…；應付…",
-        "deal in sth. 經營某物"
+        {"english": "deal between A and B", "chinese": "A與B之間的協議"},
+        {"english": "cut/make/reach/strike a deal (with sb.)", "chinese": "(與某人) 達成協議"},
+        {"english": "get a good deal (on sth.)", "chinese": "用好價錢買到 (某物)"},
+        {"english": "a good/great deal of sth.", "chinese": "大量的某物 (不可數)"},
+        {"english": "What's the deal?", "chinese": "怎麼了？"},
+        {"english": "It's a deal.", "chinese": "就這麼說定了。"},
+        {"english": "It's no big/not that big (of) a deal.", "chinese": "這沒什麼。"},
+        {"english": "deal with sb./sth.", "chinese": "處理…；應付…"},
+        {"english": "deal in sth.", "chinese": "經營某物"}
       ],
       "related": [{
         "english": "dealer",
@@ -237,7 +237,8 @@
         "present": "deal",
         "past": "dealt",
         "participle": "dealt"
-      }
+      },
+      "video": "https://magazine.english4u.net/vocmemory/video/3452"
     },
     {
       "english": "extensive",
@@ -249,7 +250,7 @@
         "美國流行文化對全世界的年輕人影響廣泛。"
       ],
       "phrases": [
-        "extensive reading 廣泛閱讀"
+        {"english": "extensive reading", "chinese": "廣泛閱讀"}
       ],
       "related": [
         {
@@ -284,7 +285,7 @@
         "薇薇安的祖父母曾靠種稻為生。"
       ],
       "phrases": [
-        "on a farm 在農場上"
+        {"english": "on a farm", "chinese": "在農場上"}
       ],
       "related": [{
         "english": "farmer",
@@ -306,9 +307,9 @@
         "每個世代對於婚姻的觀念都有所不同。"
       ],
       "phrases": [
-        "the older/younger generation 較年長/較年輕的世代",
-        "the generation gap 代溝",
-        "from generation to generation 世世代代"
+        {"english": "the older/younger generation", "chinese": "較年長/較年輕的世代"},
+        {"english": "the generation gap", "chinese": "代溝"},
+        {"english": "from generation to generation", "chinese": "世世代代"}
       ],
       "related": [{
         "english": "generate",
@@ -377,13 +378,13 @@
         "喬治因趕著出門而忘了帶傘。"
       ],
       "phrases": [
-        "hurry up 趕快",
-        "hurry sb. up/along 催促某人",
-        "hurry to do sth. 匆忙做某事",
-        "hurry sb. into doing sth. 催趕某人做某事",
-        "be in a hurry 急迫的",
-        "be in no hurry / not be in any hurry 不急的",
-        "There's no hurry. 不急。"
+        {"english": "hurry up", "chinese": "趕快"},
+        {"english": "hurry sb. up/along", "chinese": "催促某人"},
+        {"english": "hurry to do sth.", "chinese": "匆忙做某事"},
+        {"english": "hurry sb. into doing sth.", "chinese": "催趕某人做某事"},
+        {"english": "be in a hurry", "chinese": "急迫的"},
+        {"english": "be in no hurry / not be in any hurry", "chinese": "不急的"},
+        {"english": "There's no hurry.", "chinese": "不急。"}
       ],
       "pronunciation": "/'hʌri/"
     },
@@ -398,7 +399,7 @@
         "在會議開始前，那位經理被要求做自我介紹。"
       ],
       "phrases": [
-        "make the introductions 互相做自我介紹"
+        {"english": "make the introductions", "chinese": "互相做自我介紹"}
       ],
       "related": [{
         "english": "introduce",
@@ -423,12 +424,12 @@
         "人們往往憑第一印象來評判他人，雖然這並不公平。"
       ],
       "phrases": [
-        "be the judge (of sth.) 讓某人自行 (對某事做出) 判斷",
-        "judge A on B 針對B評判A",
-        "judge A by B 以B評判A",
-        "judge A from B 從B評判A",
-        "judge A (to be) B 把A判斷為B",
-        "Never/Don't judge a book by its cover. 不要以貌取人。"
+        {"english": "be the judge (of sth.)", "chinese": "讓某人自行 (對某事做出) 判斷"},
+        {"english": "judge A on B", "chinese": "針對B評判A"},
+        {"english": "judge A by B", "chinese": "以B評判A"},
+        {"english": "judge A from B", "chinese": "從B評判A"},
+        {"english": "judge A (to be) B", "chinese": "把A判斷為B"},
+        {"english": "Never/Don't judge a book by its cover.", "chinese": "不要以貌取人。"}
       ],
       "pronunciation": "/dʒʌdʒ/"
     },
@@ -457,16 +458,17 @@
         "那名演員在電影中扮演紳士，但他在現實生活中卻很粗魯。"
       ],
       "phrases": [
-        "in (all) one's life 有生以來",
-        "all one's life (某人) 終其一生",
-        "for life 終其一生",
-        "lead a happy/normal/interesting life 過著快樂的/正常的/有趣的生活",
-        "risk one's life / put one's life at risk 冒著生命危險",
-        "life-size 真實大小的",
-        "daily life 日常生活",
-        "life vest/jacket 救生衣"
+        {"english": "in (all) one's life", "chinese": "有生以來"},
+        {"english": "all one's life", "chinese": "(某人) 終其一生"},
+        {"english": "for life", "chinese": "終其一生"},
+        {"english": "lead a happy/normal/interesting life", "chinese": "過著快樂的/正常的/有趣的生活"},
+        {"english": "risk one's life / put one's life at risk", "chinese": "冒著生命危險"},
+        {"english": "life-size", "chinese": "真實大小的"},
+        {"english": "daily life", "chinese": "日常生活"},
+        {"english": "life vest/jacket", "chinese": "救生衣"}
       ],
-      "pronunciation": "/laɪf/"
+      "pronunciation": "/laɪf/",
+      "video": "https://magazine.english4u.net/vocmemory/video/3615"
     },
     {
       "english": "master",
@@ -481,10 +483,11 @@
         "你要精通英語就必須每天使用這個語言。"
       ],
       "phrases": [
-        "master of/at sth. 某方面的專家",
-        "master's degree 碩士學位"
+        {"english": "master of/at sth.", "chinese": "某方面的專家"},
+        {"english": "master's degree", "chinese": "碩士學位"}
       ],
-      "pronunciation": "/'mæstɚ/"
+      "pronunciation": "/'mæstɚ/",
+      "master": "https://magazine.english4u.net/vocmemory/video/3627"
     },
     {
       "english": "movie",
@@ -496,9 +499,9 @@
         "看悲劇電影總是讓珍妮難過。"
       ],
       "phrases": [
-        "go to the movies 看電影",
-        "horror/romantic/sci-fi/animated/B movie 恐怖/浪漫/科幻/動畫/低成本 電影",
-        "silent movie 默劇"
+        {"english": "go to the movies", "chinese": "看電影"},
+        {"english": "horror/romantic/sci-fi/animated/B movie", "chinese": "恐怖/浪漫/科幻/動畫/低成本 電影"},
+        {"english": "silent movie", "chinese": "默劇"}
       ],
       "pronunciation": "/'muvi/"
     },
@@ -515,14 +518,14 @@
         "大眾運輸系統非常方便，因此沒有必要買車。"
       ],
       "phrases": [
-        "need A for B 因B而需要A",
-        "need to do sth. 必須做某事",
-        "need sb. to do sth. 需要某人做某事",
-        "need for sth./sth. 對於…的需求",
-        "there is a/no need (for sb.) to do sth. (某人) 有/沒有做某事的需要",
-        "meet/fulfill a need 滿足需求",
-        "those in need 貧苦人家",
-        "in need of sth. 需要某事物"
+        {"english": "need A for B", "chinese": "因B而需要A"},
+        {"english": "need to do sth.", "chinese": "必須做某事"},
+        {"english": "need sb. to do sth.", "chinese": "需要某人做某事"},
+        {"english": "need for sth./sth.", "chinese": "對於…的需求"},
+        {"english": "there is a/no need (for sb.) to do sth.", "chinese": "(某人) 有/沒有做某事的需要"},
+        {"english": "meet/fulfill a need", "chinese": "滿足需求"},
+        {"english": "those in need", "chinese": "貧苦人家"},
+        {"english": "in need of sth.", "chinese": "需要某事物"}
       ],
       "pronunciation": "/nid/"
     },
@@ -536,9 +539,10 @@
         "旅客必須在登機前把登機證準備好。"
       ],
       "phrases": [
-        "transfer passenger 轉乘旅客"
+        {"english": "transfer passenger", "chinese": "轉乘旅客"}
       ],
-      "pronunciation": "/'pæsəndʒɚ/"
+      "pronunciation": "/'pæsəndʒɚ/",
+      "video": "https://magazine.english4u.net/vocmemory/video/3675"
     },
     {
       "english": "print",
@@ -550,9 +554,9 @@
         "那位編輯在書送印之前仔細地檢查一遍。"
       ],
       "phrases": [
-        "print (A) on B (把A) 印刷在B上",
-        "print in color/black and white 印成彩色/黑白",
-        "print sth. out/off 把某物印出來"
+        {"english": "print (A) on B", "chinese": "(把A) 印刷在B上"},
+        {"english": "print in color/black and white", "chinese": "印成彩色/黑白"},
+        {"english": "print sth. out/off", "chinese": "把某物印出來"}
       ],
       "related": [{
         "english": "printer",
@@ -561,7 +565,8 @@
           "n. [C] 印表機"
         ]
       }],
-      "pronunciation": "/prɪnt/"
+      "pronunciation": "/prɪnt/",
+      "video": "https://magazine.english4u.net/vocmemory/video/3713"
     },
     {
       "english": "protect",
@@ -573,9 +578,10 @@
         "安全帶是用來保護我們發生車禍時不致受傷。"
       ],
       "phrases": [
-        "protect A from/against B 保護A不受到B的危害"
+        {"english": "protect A from/against B", "chinese": "保護A不受到B的危害"}
       ],
-      "pronunciation": "/prə'tɛkt/"
+      "pronunciation": "/prə'tɛkt/",
+      "video": "https://magazine.english4u.net/vocmemory/video/3720"
     },
     {
       "english": "protection",
@@ -587,9 +593,9 @@
         "馬克正在籌備淨灘活動，這是他環保研究中的一部分。"
       ],
       "phrases": [
-        "copy protection 防盜拷",
-        "file protection 檔案保護",
-        "protection money 保護費"
+        {"english": "copy protection", "chinese": "防盜拷"},
+        {"english": "file protection", "chinese": "檔案保護"},
+        {"english": "protection money", "chinese": "保護費"}
       ],
       "related": [{
         "english": "protective",
@@ -611,8 +617,8 @@
         "這個調皮的男孩沒有把作業帶來，所以老師給他更多作業做為懲罰。"
       ],
       "phrases": [
-        "punish sb. for (doing) sth. 因某事懲罰某人",
-        "punish sb. with sth. 讓某人接受某懲罰"
+        {"english": "punish sb. for (doing) sth.", "chinese": "因某事懲罰某人"},
+        {"english": "punish sb. with sth.", "chinese": "讓某人接受某懲罰"}
       ],
       "related": [{
         "english": "punishment",
@@ -621,7 +627,8 @@
           "n. [C] [U] 懲罰"
         ]
       }],
-      "pronunciation": "/'pʌnɪʃ/"
+      "pronunciation": "/'pʌnɪʃ/",
+      "video": "https://magazine.english4u.net/vocmemory/video/3724"
     },
     {
       "english": "rank",
@@ -637,10 +644,10 @@
         "我們昨天看的那個電影可算是史上最好的電影之一。"
       ],
       "phrases": [
-        "senior/junior rank 高/低 階 (職位)",
-        "rank high/low 排高/排低, 位居",
-        "rank as sth. 可看作…",
-        "rank among sth. 予其是…中的一員"
+        {"english": "senior/junior rank", "chinese": "高/低 階 (職位)"},
+        {"english": "rank high/low", "chinese": "排高/排低, 位居"},
+        {"english": "rank as sth.", "chinese": "可看作…"},
+        {"english": "rank among sth.", "chinese": "予其是…中的一員"}
       ],
       "pronunciation": "/ræŋk/"
     },
@@ -657,9 +664,9 @@
         "當瑪麗看到蛇的時候全身發抖。"
       ],
       "phrases": [
-        "shiver with cold/fear/surprise 冷地/害怕地/驚訝地 顫抖",
-        "shiver of horror/shock/excitement 因 害怕/震驚/興奮 而產生的顫抖",
-        "give sb. the shivers 讓某人嚇得發抖"
+        {"english": "shiver with cold/fear/surprise", "chinese": "冷地/害怕地/驚訝地 顫抖"},
+        {"english": "shiver of horror/shock/excitement", "chinese": "因 害怕/震驚/興奮 而產生的顫抖"},
+        {"english": "give sb. the shivers", "chinese": "讓某人嚇得發抖"}
       ],
       "pronunciation": "/'ʃɪvɚ/"
     },
@@ -691,8 +698,8 @@
         "曼蒂昨晚看到一名可疑的陌生人在她家附近走動。"
       ],
       "phrases": [
-        "be suspicious about/of sb./sth. 對…抱持懷疑",
-        "suspicious glance/look 懷疑的一瞥/眼神"
+        {"english": "be suspicious about/of sb./sth.", "chinese": "對…抱持懷疑"},
+        {"english": "suspicious glance/look", "chinese": "懷疑的一瞥/眼神"}
       ],
       "related": [
         {
@@ -734,8 +741,8 @@
         "這隻小狗仍太年幼以致於無法走穩。"
       ],
       "phrases": [
-        "tiny little 極微小的",
-        "a tiny bit ... 稍微…；一點點…"
+        {"english": "tiny little", "chinese": "極微小的"},
+        {"english": "a tiny bit ...", "chinese": "稍微…；一點點…"}
       ],
       "pronunciation": "/ˈtaɪni/"
     },
@@ -752,11 +759,11 @@
         "提姆今早被玩具絆倒了。"
       ],
       "phrases": [
-        "go on/take a trip (to swh.) (到某處) 旅遊",
-        "bus/train/boat trip 搭公車/火車/船之旅",
-        "business/fishing/shopping trip 出差/釣魚/購物行",
-        "trip (sb.) up 絆倒 (某人)",
-        "trip on/over sth. 被某物絆倒"
+        {"english": "go on/take a trip (to swh.)", "chinese": "(到某處) 旅遊"},
+        {"english": "bus/train/boat trip", "chinese": "搭公車/火車/船之旅"},
+        {"english": "business/fishing/shopping trip", "chinese": "出差/釣魚/購物行"},
+        {"english": "trip (sb.) up", "chinese": "絆倒 (某人)"},
+        {"english": "trip on/over sth.", "chinese": "被某物絆倒"}
       ],
       "pronunciation": "/trɪp/"
     },
@@ -773,17 +780,17 @@
         "亞倫覺得不舒服，所以提早放學去看醫生。"
       ],
       "phrases": [
-        "very/rather/fairly/pretty/quite well 非常好地",
-        "well ahead/behind 很 前面/後面",
-        "well done 做得很好",
-        "as well 也",
-        "A as well as B A 以及 B",
-        "be doing well 身體狀況好轉",
-        "may/might (just) as well do sth. 不妨做某事",
-        "may/might well do sth. 大有可能做某事；理所當然可以做某事",
-        "feel well 感到健康",
-        "all is well 一切安好",
-        "get well soon 早日康復"
+        {"english": "very/rather/fairly/pretty/quite well", "chinese": "非常好地"},
+        {"english": "well ahead/behind", "chinese": "很 前面/後面"},
+        {"english": "well done", "chinese": "做得很好"},
+        {"english": "as well", "chinese": "也"},
+        {"english": "A as well as B", "chinese": "A 以及 B"},
+        {"english": "be doing well", "chinese": "身體狀況好轉"},
+        {"english": "may/might (just) as well do sth.", "chinese": "不妨做某事"},
+        {"english": "may/might well do sth.", "chinese": "大有可能做某事；理所當然可以做某事"},
+        {"english": "feel well", "chinese": "感到健康"},
+        {"english": "all is well", "chinese": "一切安好"},
+        {"english": "get well soon", "chinese": "早日康復"}
       ],
       "pronunciation": "/wɛl/"
     }

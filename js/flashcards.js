@@ -423,7 +423,47 @@ async function loadWords() {
         allUnitWords = await getWordsFromUnits(selectedUnitIds);
     }
 
-    currentWords = [...allUnitWords]; // Use all words
+    currentWords = [...allUnitWords]; // Start with main words
+
+    // Add phrases as vocabulary items
+    for (const word of allUnitWords) {
+        if (word.phrases && Array.isArray(word.phrases) && word.phrases.length > 0) {
+            for (const phrase of word.phrases) {
+                if (typeof phrase === 'object' && phrase.english && phrase.chinese) {
+                    // Create a vocabulary item from the phrase
+                    const phraseItem = {
+                        english: phrase.english,
+                        chinese: [phrase.chinese],
+                        type: 'phrase',
+                        parentWord: word.english,
+                        pronunciation: word.pronunciation,
+                        example: [`Example: ${word.example ? word.example[0] : ''}`]
+                    };
+                    currentWords.push(phraseItem);
+                }
+            }
+        }
+    }
+
+    // Add related words as vocabulary items
+    for (const word of allUnitWords) {
+        if (word.related && Array.isArray(word.related) && word.related.length > 0) {
+            for (const relatedWord of word.related) {
+                if (typeof relatedWord === 'object' && relatedWord.english) {
+                    // Create a vocabulary item from the related word
+                    const relatedItem = {
+                        english: relatedWord.english,
+                        pronunciation: relatedWord.pronunciation || word.pronunciation,
+                        chinese: Array.isArray(relatedWord.chinese) ? relatedWord.chinese : [relatedWord.chinese],
+                        type: 'related',
+                        parentWord: word.english,
+                        example: [`Related to: ${word.english}`]
+                    };
+                    currentWords.push(relatedItem);
+                }
+            }
+        }
+    }
 
     if (currentWords.length > 0) {
         // Shuffle words initially
@@ -530,8 +570,26 @@ function updateCardDisplay() {
         
         flashcardBack.appendChild(backWordElement);
 
-        // Add related words if available
-        if (word.related && Array.isArray(word.related) && word.related.length > 0) {
+        // Add parent word indicator for phrase or related items
+        if (word.type === 'phrase' || word.type === 'related') {
+            const parentContainer = document.createElement('div');
+            parentContainer.className = 'flashcard-item-type';
+            
+            const typeLabel = document.createElement('span');
+            typeLabel.className = `item-type-label ${word.type}`;
+            typeLabel.textContent = word.type === 'phrase' ? 'Phrase' : 'Related Word';
+            parentContainer.appendChild(typeLabel);
+            
+            const parentLabel = document.createElement('span');
+            parentLabel.className = 'parent-word-label';
+            parentLabel.textContent = ` from: ${word.parentWord}`;
+            parentContainer.appendChild(parentLabel);
+            
+            flashcardBack.appendChild(parentContainer);
+        }
+
+        // Add related words if available (only for main vocabulary words, not for phrase/related items)
+        if (word.related && Array.isArray(word.related) && word.related.length > 0 && !word.type) {
             const relatedContainer = document.createElement('div');
             relatedContainer.className = 'flashcard-related';
             

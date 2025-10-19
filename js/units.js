@@ -1443,7 +1443,18 @@ function displayUnitWords(unit) {
             <div class="word-phrases">
                 <span class="phrases-label">搭：</span>
                 <ul class="phrases-list">
-                    ${word.phrases.map(phrase => `<li>${escapeHtml(phrase)}</li>`).join('')}
+                    ${word.phrases.map(phrase => {
+                        // Handle both old string format and new object format
+                        if (typeof phrase === 'object' && phrase.english) {
+                            // New format: {english, chinese}
+                            const englishPhrase = escapeHtml(phrase.english);
+                            const chinesePhrase = phrase.chinese ? ` ${escapeHtml(phrase.chinese)}` : '';
+                            return `<li><strong>${englishPhrase}</strong>${chinesePhrase}</li>`;
+                        } else {
+                            // Old format: string
+                            return `<li>${escapeHtml(phrase)}</li>`;
+                        }
+                    }).join('')}
                 </ul>
             </div>` : '';
 

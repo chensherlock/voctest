@@ -245,6 +245,46 @@ async function prepareQuizWords() {
             unitId: unitId // Add unitId to each word
         }));
         words = words.concat(wordsWithUnitId);
+
+        // Add phrases as vocabulary items
+        for (const word of unitWords) {
+            if (word.phrases && Array.isArray(word.phrases) && word.phrases.length > 0) {
+                for (const phrase of word.phrases) {
+                    if (typeof phrase === 'object' && phrase.english && phrase.chinese) {
+                        const phraseItem = {
+                            english: phrase.english,
+                            chinese: [phrase.chinese],
+                            type: 'phrase',
+                            parentWord: word.english,
+                            pronunciation: word.pronunciation,
+                            example: [`Example from: ${word.english}`],
+                            unitId: unitId
+                        };
+                        words.push(phraseItem);
+                    }
+                }
+            }
+        }
+
+        // Add related words as vocabulary items
+        for (const word of unitWords) {
+            if (word.related && Array.isArray(word.related) && word.related.length > 0) {
+                for (const relatedWord of word.related) {
+                    if (typeof relatedWord === 'object' && relatedWord.english) {
+                        const relatedItem = {
+                            english: relatedWord.english,
+                            pronunciation: relatedWord.pronunciation || word.pronunciation,
+                            chinese: Array.isArray(relatedWord.chinese) ? relatedWord.chinese : [relatedWord.chinese],
+                            type: 'related',
+                            parentWord: word.english,
+                            example: [`Related to: ${word.english}`],
+                            unitId: unitId
+                        };
+                        words.push(relatedItem);
+                    }
+                }
+            }
+        }
     }
 
     // Filter words based on quiz type requirements
@@ -323,9 +363,20 @@ async function createMultipleChoiceQuestion(word) {
     questionElement.innerHTML = `
         <h3>"${word.english}" 的中文意思是什麼？</h3>
     `;
+
+    // Add parent word indicator for phrase or related items
+    if (word.type === 'phrase' || word.type === 'related') {
+        const parentContainer = document.createElement('div');
+        parentContainer.className = 'quiz-item-type';
+        parentContainer.innerHTML = `
+            <span class="quiz-type-label ${word.type}">${word.type === 'phrase' ? 'Phrase' : 'Related Word'}</span>
+            <span class="quiz-parent-label"> from: ${escapeHtml(word.parentWord)}</span>
+        `;
+        questionElement.appendChild(parentContainer);
+    }
     
-    // Add related words as clickable buttons if available
-    if (word.related && Array.isArray(word.related) && word.related.length > 0) {
+    // Add related words as clickable buttons if available (only for main vocabulary words)
+    if (word.related && Array.isArray(word.related) && word.related.length > 0 && !word.type) {
         const relatedSection = document.createElement('div');
         relatedSection.className = 'quiz-related-section';
         
@@ -400,9 +451,20 @@ async function createMatchingQuestion(word) {
     questionElement.innerHTML = `
         <h3>請選擇 "${word.english}" 的正確翻譯</h3>
     `;
+
+    // Add parent word indicator for phrase or related items
+    if (word.type === 'phrase' || word.type === 'related') {
+        const parentContainer = document.createElement('div');
+        parentContainer.className = 'quiz-item-type';
+        parentContainer.innerHTML = `
+            <span class="quiz-type-label ${word.type}">${word.type === 'phrase' ? 'Phrase' : 'Related Word'}</span>
+            <span class="quiz-parent-label"> from: ${escapeHtml(word.parentWord)}</span>
+        `;
+        questionElement.appendChild(parentContainer);
+    }
     
-    // Add related words as clickable buttons if available
-    if (word.related && Array.isArray(word.related) && word.related.length > 0) {
+    // Add related words as clickable buttons if available (only for main vocabulary words)
+    if (word.related && Array.isArray(word.related) && word.related.length > 0 && !word.type) {
         const relatedSection = document.createElement('div');
         relatedSection.className = 'quiz-related-section';
         
@@ -515,9 +577,20 @@ async function createPronunciationQuestion(word) {
             <div class="audio-source" id="audioSource-${word.english.replace(/\s+/g, '-')}"></div>
         </div>
     `;
+
+    // Add parent word indicator for phrase or related items
+    if (word.type === 'phrase' || word.type === 'related') {
+        const parentContainer = document.createElement('div');
+        parentContainer.className = 'quiz-item-type';
+        parentContainer.innerHTML = `
+            <span class="quiz-type-label ${word.type}">${word.type === 'phrase' ? 'Phrase' : 'Related Word'}</span>
+            <span class="quiz-parent-label"> from: ${escapeHtml(word.parentWord)}</span>
+        `;
+        questionElement.appendChild(parentContainer);
+    }
     
-    // Add related words as clickable buttons if available
-    if (word.related && Array.isArray(word.related) && word.related.length > 0) {
+    // Add related words as clickable buttons if available (only for main vocabulary words)
+    if (word.related && Array.isArray(word.related) && word.related.length > 0 && !word.type) {
         const relatedSection = document.createElement('div');
         relatedSection.className = 'quiz-related-section';
         
