@@ -1431,6 +1431,61 @@ function displayUnitWords(unit) {
             </button>` : '';
         const examplesWrapperHTML = (hasExample || writerAvailable) ? `<div class="examples">${examplesHTML}</div>` : '';
 
+        // Format pronunciation if available
+        const pronunciationHTML = word.pronunciation ? `
+            <div class="word-pronunciation">
+                <span class="pronunciation-label">發音：</span>
+                <span class="pronunciation-value">${escapeHtml(word.pronunciation)}</span>
+            </div>` : '';
+
+        // Format phrases if available
+        const phrasesHTML = word.phrases && Array.isArray(word.phrases) && word.phrases.length > 0 ? `
+            <div class="word-phrases">
+                <span class="phrases-label">搭：</span>
+                <ul class="phrases-list">
+                    ${word.phrases.map(phrase => `<li>${escapeHtml(phrase)}</li>`).join('')}
+                </ul>
+            </div>` : '';
+
+        // Format related words if available
+        const relatedHTML = word.related && Array.isArray(word.related) && word.related.length > 0 ? `
+            <div class="word-related">
+                <span class="related-label">相關：</span>
+                <ul class="related-list">
+                    ${word.related.map(related => {
+                        // Handle both old string format and new object format
+                        if (typeof related === 'object' && related.english) {
+                            // New format: {english, pronunciation, chinese}
+                            const englishWord = related.english;
+                            const pronunciation = related.pronunciation ? ` ${escapeHtml(related.pronunciation)}` : '';
+                            const chineseText = Array.isArray(related.chinese) ? ` ${escapeHtml(related.chinese.join('; '))}` : '';
+                            return `<li><span class="related-first-word">${escapeHtml(englishWord)}</span>${pronunciation}${chineseText}</li>`;
+                        } else {
+                            // Old format: string
+                            const parts = related.trim().split(/\s+/);
+                            if (parts.length > 1) {
+                                const firstWord = parts[0];
+                                const restOfText = parts.slice(1).join(' ');
+                                return `<li><span class="related-first-word">${escapeHtml(firstWord)}</span> ${escapeHtml(restOfText)}</li>`;
+                            } else {
+                                return `<li><span class="related-first-word">${escapeHtml(related)}</span></li>`;
+                            }
+                        }
+                    }).join('')}
+                </ul>
+            </div>` : '';
+
+        // Format tense information if available (for verbs)
+        const tenseHTML = word.tense && typeof word.tense === 'object' ? `
+            <div class="word-tense">
+                <span class="tense-label">時態：</span>
+                <div class="tense-list">
+                    ${word.tense.present ? `<span class="tense-item"><span class="tense-name">現在式</span> ${escapeHtml(word.tense.present)}</span>` : ''}
+                    ${word.tense.past ? `<span class="tense-item"><span class="tense-name">過去式</span> ${escapeHtml(word.tense.past)}</span>` : ''}
+                    ${word.tense.participle ? `<span class="tense-item"><span class="tense-name">過去分詞</span> ${escapeHtml(word.tense.participle)}</span>` : ''}
+                </div>
+            </div>` : '';
+
         wordItem.innerHTML = `
             <div class="word-content">
                 <span class="word-number">${wordNumber}.</span>
@@ -1445,7 +1500,11 @@ function displayUnitWords(unit) {
                         ${videoButton}
                     </div>
                     <div class="chinese">${chineseHTML}</div>
+                    ${pronunciationHTML}
+                    ${tenseHTML}
                     ${examplesWrapperHTML}
+                    ${phrasesHTML}
+                    ${relatedHTML}
                 </div>
             </div>
             <div class="word-actions">

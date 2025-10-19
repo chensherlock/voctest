@@ -31,6 +31,18 @@ let quizTypeValue = 'multiple-choice';
 let quizQuestionCount = 10;
 let allUnitWords = []; // Store all words from the selected units for range selection
 
+// Helper function to escape HTML special characters
+function escapeHtml(text) {
+    const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+    };
+    return text.replace(/[&<>"']/g, m => map[m]);
+}
+
 // Helper function to check if a word has valid examples for fill-in-blank
 function hasValidExampleForFillInBlank(word) {
     if (!word.example) return false;
@@ -310,15 +322,61 @@ async function createMultipleChoiceQuestion(word) {
     questionElement.className = 'quiz-question';
     questionElement.innerHTML = `
         <h3>"${word.english}" 的中文意思是什麼？</h3>
-        <div class="quiz-options">
-            ${options.map((option, index) => `
-                <label>
-                    <input type="radio" name="answer" value="${index}" class="auto-submit-option">
-                    ${formatChineseDisplay(option)}
-                </label>
-            `).join('')}
-        </div>
     `;
+    
+    // Add related words as clickable buttons if available
+    if (word.related && Array.isArray(word.related) && word.related.length > 0) {
+        const relatedSection = document.createElement('div');
+        relatedSection.className = 'quiz-related-section';
+        
+        const relatedLabel = document.createElement('p');
+        relatedLabel.className = 'quiz-related-label';
+        relatedLabel.textContent = '相關詞彙 (點擊查看)：';
+        relatedSection.appendChild(relatedLabel);
+        
+        const relatedItems = document.createElement('div');
+        relatedItems.className = 'quiz-related-items';
+        
+        word.related.forEach(related => {
+            const relatedBtn = document.createElement('button');
+            relatedBtn.className = 'quiz-related-item-btn';
+            relatedBtn.type = 'button';
+            
+            if (typeof related === 'object' && related.english) {
+                const pronunciation = related.pronunciation ? ` ${related.pronunciation}` : '';
+                const chinese = related.chinese && Array.isArray(related.chinese) ? ` - ${related.chinese.join('; ')}` : '';
+                relatedBtn.innerHTML = `<strong>${escapeHtml(related.english)}</strong>${escapeHtml(pronunciation)}<span class="quiz-related-meaning hidden">${escapeHtml(chinese)}</span>`;
+            } else {
+                relatedBtn.textContent = escapeHtml(related);
+            }
+            
+            // Toggle showing/hiding the Chinese meaning on click
+            relatedBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const meaningSpan = relatedBtn.querySelector('.quiz-related-meaning');
+                if (meaningSpan) {
+                    meaningSpan.classList.toggle('hidden');
+                }
+            });
+            
+            relatedItems.appendChild(relatedBtn);
+        });
+        
+        relatedSection.appendChild(relatedItems);
+        questionElement.appendChild(relatedSection);
+    }
+    
+    const optionsDiv = document.createElement('div');
+    optionsDiv.className = 'quiz-options';
+    optionsDiv.innerHTML = `
+        ${options.map((option, index) => `
+            <label>
+                <input type="radio" name="answer" value="${index}" class="auto-submit-option">
+                ${formatChineseDisplay(option)}
+            </label>
+        `).join('')}
+    `;
+    questionElement.appendChild(optionsDiv);
 
     quizContainer.appendChild(questionElement);
 
@@ -341,15 +399,61 @@ async function createMatchingQuestion(word) {
     questionElement.className = 'quiz-question matching';
     questionElement.innerHTML = `
         <h3>請選擇 "${word.english}" 的正確翻譯</h3>
-        <div class="quiz-options">
-            ${options.map((option, index) => `
-                <label>
-                    <input type="radio" name="answer" value="${index}" class="auto-submit-option">
-                    ${formatChineseDisplay(option)}
-                </label>
-            `).join('')}
-        </div>
     `;
+    
+    // Add related words as clickable buttons if available
+    if (word.related && Array.isArray(word.related) && word.related.length > 0) {
+        const relatedSection = document.createElement('div');
+        relatedSection.className = 'quiz-related-section';
+        
+        const relatedLabel = document.createElement('p');
+        relatedLabel.className = 'quiz-related-label';
+        relatedLabel.textContent = '相關詞彙 (點擊查看)：';
+        relatedSection.appendChild(relatedLabel);
+        
+        const relatedItems = document.createElement('div');
+        relatedItems.className = 'quiz-related-items';
+        
+        word.related.forEach(related => {
+            const relatedBtn = document.createElement('button');
+            relatedBtn.className = 'quiz-related-item-btn';
+            relatedBtn.type = 'button';
+            
+            if (typeof related === 'object' && related.english) {
+                const pronunciation = related.pronunciation ? ` ${related.pronunciation}` : '';
+                const chinese = related.chinese && Array.isArray(related.chinese) ? ` - ${related.chinese.join('; ')}` : '';
+                relatedBtn.innerHTML = `<strong>${escapeHtml(related.english)}</strong>${escapeHtml(pronunciation)}<span class="quiz-related-meaning hidden">${escapeHtml(chinese)}</span>`;
+            } else {
+                relatedBtn.textContent = escapeHtml(related);
+            }
+            
+            // Toggle showing/hiding the Chinese meaning on click
+            relatedBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const meaningSpan = relatedBtn.querySelector('.quiz-related-meaning');
+                if (meaningSpan) {
+                    meaningSpan.classList.toggle('hidden');
+                }
+            });
+            
+            relatedItems.appendChild(relatedBtn);
+        });
+        
+        relatedSection.appendChild(relatedItems);
+        questionElement.appendChild(relatedSection);
+    }
+    
+    const optionsDiv = document.createElement('div');
+    optionsDiv.className = 'quiz-options';
+    optionsDiv.innerHTML = `
+        ${options.map((option, index) => `
+            <label>
+                <input type="radio" name="answer" value="${index}" class="auto-submit-option">
+                ${formatChineseDisplay(option)}
+            </label>
+        `).join('')}
+    `;
+    questionElement.appendChild(optionsDiv);
 
     quizContainer.appendChild(questionElement);
 
@@ -410,15 +514,61 @@ async function createPronunciationQuestion(word) {
             </button>
             <div class="audio-source" id="audioSource-${word.english.replace(/\s+/g, '-')}"></div>
         </div>
-        <div class="quiz-options">
-            ${options.map((option, index) => `
-                <label>
-                    <input type="radio" name="answer" value="${index}" class="auto-submit-option">
-                    ${option.english}
-                </label>
-            `).join('')}
-        </div>
     `;
+    
+    // Add related words as clickable buttons if available
+    if (word.related && Array.isArray(word.related) && word.related.length > 0) {
+        const relatedSection = document.createElement('div');
+        relatedSection.className = 'quiz-related-section';
+        
+        const relatedLabel = document.createElement('p');
+        relatedLabel.className = 'quiz-related-label';
+        relatedLabel.textContent = '相關詞彙 (點擊查看)：';
+        relatedSection.appendChild(relatedLabel);
+        
+        const relatedItems = document.createElement('div');
+        relatedItems.className = 'quiz-related-items';
+        
+        word.related.forEach(related => {
+            const relatedBtn = document.createElement('button');
+            relatedBtn.className = 'quiz-related-item-btn';
+            relatedBtn.type = 'button';
+            
+            if (typeof related === 'object' && related.english) {
+                const pronunciation = related.pronunciation ? ` ${related.pronunciation}` : '';
+                const chinese = related.chinese && Array.isArray(related.chinese) ? ` - ${related.chinese.join('; ')}` : '';
+                relatedBtn.innerHTML = `<strong>${escapeHtml(related.english)}</strong>${escapeHtml(pronunciation)}<span class="quiz-related-meaning hidden">${escapeHtml(chinese)}</span>`;
+            } else {
+                relatedBtn.textContent = escapeHtml(related);
+            }
+            
+            // Toggle showing/hiding the Chinese meaning on click
+            relatedBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const meaningSpan = relatedBtn.querySelector('.quiz-related-meaning');
+                if (meaningSpan) {
+                    meaningSpan.classList.toggle('hidden');
+                }
+            });
+            
+            relatedItems.appendChild(relatedBtn);
+        });
+        
+        relatedSection.appendChild(relatedItems);
+        questionElement.appendChild(relatedSection);
+    }
+    
+    const optionsDiv = document.createElement('div');
+    optionsDiv.className = 'quiz-options';
+    optionsDiv.innerHTML = `
+        ${options.map((option, index) => `
+            <label>
+                <input type="radio" name="answer" value="${index}" class="auto-submit-option">
+                ${option.english}
+            </label>
+        `).join('')}
+    `;
+    questionElement.appendChild(optionsDiv);
     
     quizContainer.appendChild(questionElement);
     

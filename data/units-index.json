@@ -45,28 +45,35 @@
     {
       "id": 8,
       "title": "高頻 Unit 8",
-      "default": true,
+      "default": false,
       "file": "unit-8.json",
       "video": ""
     },
     {
       "id": 9,
       "title": "高頻 Unit 9",
-      "default": true,
+      "default": false,
       "file": "unit-9.json",
+      "video": ""
+    },
+    {
+      "id": 10,
+      "title": "高頻 Unit 10",
+      "default": true,
+      "file": "unit-10.json",
       "video": ""
     },
     {
       "id": 31,
       "title": "課本3 Unit 1",
-      "default": true,
+      "default": false,
       "file": "unit-31.json",
       "video": "https://www.sanmin.com.tw/api/attachment/URL3/4711289874621"
     },
     {
       "id": 32,
       "title": "課本3 Unit 2",
-      "default": true,
+      "default": false,
       "file": "unit-32.json",
       "video": "https://www.sanmin.com.tw/api/attachment/URL6/4711289874621"
     }

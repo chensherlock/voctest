@@ -1,0 +1,791 @@
+{
+  "id": 10,
+  "title": "📚 高頻 Unit 10",
+  "default": true,
+  "words": [
+    {
+      "english": "account",
+      "chinese": [
+        "n. 帳戶；描述 (= description)",
+        "vt. 導致, 是…的原因；解釋 (= explain)；占…比例"
+      ],
+      "example": [
+        "Peter went to the bank to open an [account].",
+        "彼得去銀行開戶。",
+        "John refused to [account] for where he had been for several hours last night.",
+        "約翰拒絕解釋昨晚他去哪裡待了好幾個小時。"
+      ],
+      "phrases": [
+        "open an account 開戶",
+        "savings account 存款帳戶",
+        "take sth into account / take account of sth. 將某事物納入考量",
+        "by (from) all accounts 根據大家所說",
+        "on account of sb./sth. 因為…",
+        "account for sth. 導致某事物；解釋某事物；占某比例"
+      ],
+      "pronunciation": "/ə'kaunt/",
+      "related": [{
+        "english": "accountant",
+        "pronunciation": "/ə'kaʊntənt/",
+        "chinese": [
+          "n. [C] 會計"
+        ]
+      }]
+    },
+    {
+      "english": "affect",
+      "chinese": [
+        "vt. 影響 (= impact, influence)"
+      ],
+      "example": [
+        "The doctor told the pregnant mother not to smoke, as it might [affect] the baby.",
+        "醫生告訴那位懷孕的母親不要抽菸，因為這會影響到胎兒。"
+      ],
+      "pronunciation": "/ə'fekt/"
+    },
+    {
+      "english": "appreciate",
+      "chinese": [
+        "vt. 理解；欣賞 (= admire, honor, praise, respect, value)；感謝 (= thank)"
+      ],
+      "example": [
+        "We [appreciate] all the help you gave us last night.",
+        "我們很感激你昨晚提供的協助。"
+      ],
+      "phrases": [
+        "appreciate that + S + V 理解",
+        "fully appreciate 完全理解",
+        "be truly/properly appreciated 受到真正地/適切地重視",
+        "I/We would appreciate it if S + V-ed 如果…的話，我（們）會很感激的。"
+      ],
+      "pronunciation": "/ə'priʃɪ,et/",
+      "video": "https://magazine.english4u.net/vocmemory/video/3380"
+    },
+    {
+      "english": "born",
+      "chinese": [
+        "adj. 出生的；天生的"
+      ],
+      "example": [
+        "Diana was [born] into a rich family and lives a wealthy life.",
+        "黛安娜出生於富裕家庭，過著有錢人的生活。"
+      ],
+      "phrases": [
+        "be born into a(n) ... family 出生於…的家庭",
+        "be born to sb. 為某人所生的",
+        "be born with a silver spoon in one's mouth 含著金湯匙出生的",
+        "a born leader/salesperson/optimist 天生的領導人/業務/樂觀主義者",
+        "born and bred 土生土長的",
+        "I wasn't born yesterday. 我又不是三歲小孩。"
+      ],
+      "related": [{
+        "english": "bear",
+        "pronunciation": "/bɛr/",
+        "chinese": [
+          "vt. 承受 (bear-bore-borne)",
+          "vt. 生育 (bear-bore-born)"
+        ]
+      }],
+      "pronunciation": "/bɔrn/"
+    },
+    {
+      "english": "campaign",
+      "chinese": [
+        "n. [C] (社會、政治) 運動, 活動 (= movement)",
+        "vi. 從事運動；參加競選"
+      ],
+      "example": [
+        "Before the election, many candidates launched [campaigns] to promote themselves.",
+        "許多候選人在選舉前都發起活動來宣傳自己。",
+        "Many people have [campaigned] against drinking and driving.",
+        "許多人發起反對酒駕的運動。"
+      ],
+      "phrases": [
+        "campaign for/against sth. 從事支持/反對某事的運動",
+        "launch/conduct/carry on a campaign 發起運動",
+        "elections/sales campaign 選舉/促銷 活動",
+        "antinuclear/anti-smoking campaign 反核/禁菸 運動"
+      ],
+      "pronunciation": "/kæm'pen/"
+    },
+    {
+      "english": "campaigner",
+      "chinese": [
+        "n. [C] 運動者與賽"
+      ],
+      "example": [
+        "Laura is an education [campaigner] who believes every child has the right to receive a good education.",
+        "蘿拉是教育運動的支持者，她相信每個孩童都應受到良好的教育。"
+      ],
+      "phrases": [
+        "campaigner for/against sth. 支持/反對 某事的運動參與者"
+      ],
+      "pronunciation": "/kæm'penɚ/"
+    },
+    {
+      "english": "choice",
+      "chinese": [
+        "n. [S] [U] 選擇權",
+        "n. [C] 選擇 (= option)"
+      ],
+      "example": [
+        "There are many [choices] available to computer buyers at this large electronics shop.",
+        "這間大型電器用品店提供電腦買家多種選擇。"
+      ],
+      "phrases": [
+        "freedom of choice 選擇的自由",
+        "be given the choice 有選擇的權利",
+        "make a choice (between A and B) (在A和B之間) 做出選擇",
+        "one's first/second choice 某人的第一/第二志願",
+        "have no choice but to do sth. 不得不做某事"
+      ],
+      "related": [{
+        "english": "choose",
+        "pronunciation": "/tʃuz/",
+        "chinese": [
+          "vt. vi. 選擇 (choose-chose-chosen)"
+        ]
+      }],
+      "pronunciation": "/tʃɔɪs/",
+      "video": "https://magazine.english4u.net/vocmemory/video/3421"
+    },
+    {
+      "english": "classical",
+      "chinese": [
+        "adj. 古典的"
+      ],
+      "example": [
+        "I enjoy listening to [classical] music, especially pieces composed by Beethoven.",
+        "我愛聽古典音樂，特別是貝多芬所作的曲子。"
+      ],
+      "phrases": [
+        "classical music 古典音樂"
+      ],
+      "related": [{
+        "english": "classic",
+        "pronunciation": "/'klæsɪk/",
+        "chinese": [
+          "adj. 經典的"
+        ]
+      }],
+      "pronunciation": "/'klæsɪkl/",
+      "video": "https://magazine.english4u.net/vocmemory/video/3425"
+    },
+    {
+      "english": "combine",
+      "chinese": [
+        "vt. vi. (使) 結合 (= connect, link, mix)"
+      ],
+      "example": [
+        "The cook [combined] Japanese food and Thai spices to create an interesting new dish.",
+        "那位廚師結合日本菜和泰式香料創造出一道新奇有趣的料理。"
+      ],
+      "phrases": [
+        "combine with sth. 和某物結合",
+        "combine A with/and B 將A與B結合"
+      ],
+      "pronunciation": "/kəm'baɪn/"
+    },
+    {
+      "english": "combination",
+      "chinese": [
+        "n. [C] [U] 結合, 組合 (= blend, mix, mixture)；密碼組"
+      ],
+      "example": [
+        "Please avoid taking this vitamin pill in [combination] with other medicines.",
+        "請避免將此維他命和其它藥物混合服用。"
+      ],
+      "phrases": [
+        "combination of A and B A與B的結合",
+        "in combination (with sb./sth.) (與…的) 結合",
+        "combination lock 密碼鎖"
+      ],
+      "pronunciation": "/kɑmbə'neʃən/"
+    },
+    {
+      "english": "deal",
+      "chinese": [
+        "n. [C] 協議, 交易 (= contract)；大量",
+        "vt. 處理 (= handle)；買賣 (= trade)"
+      ],
+      "example": [
+        "Tom is an experienced businessman who knows how to strike [deals] with customers.",
+        "湯姆是名經驗的商人，他知道如何與顧客達成協議。",
+        "The president of a country [deals] with both foreign and domestic affairs.",
+        "一個國家的總統要同時處理外交及內政事務。"
+      ],
+      "phrases": [
+        "deal between A and B A與B之間的協議",
+        "cut/make/reach/strike a deal (with sb.) (與某人) 達成協議",
+        "get a good deal (on sth.) 用好價錢買到 (某物)",
+        "a good/great deal of sth. 大量的某物 (不可數)",
+        "What's the deal? 怎麼了？",
+        "It's a deal. 就這麼說定了。",
+        "It's no big/not that big (of) a deal. 這沒什麼。",
+        "deal with sb./sth. 處理…；應付…",
+        "deal in sth. 經營某物"
+      ],
+      "related": [{
+        "english": "dealer",
+        "pronunciation": "/dilɚ/",
+        "chinese": [
+          "n. [C] 經銷商"
+        ]
+      }],
+      "pronunciation": "/dil/",
+      "tense": {
+        "present": "deal",
+        "past": "dealt",
+        "participle": "dealt"
+      }
+    },
+    {
+      "english": "extensive",
+      "chinese": [
+        "adj. 廣闊的, 廣泛的 (= broad, vast)"
+      ],
+      "example": [
+        "American pop culture has an [extensive] influence on young people around the world.",
+        "美國流行文化對全世界的年輕人影響廣泛。"
+      ],
+      "phrases": [
+        "extensive reading 廣泛閱讀"
+      ],
+      "related": [
+        {
+          "english": "extend",
+          "pronunciation": "/ɪk'stɛnd/",
+          "chinese": [
+            "vt. vi. (使) 延伸"
+          ]
+        },
+        {
+          "english": "extension",
+          "pronunciation": "/ɪk'stɛnʃən/",
+          "chinese": [
+            "n. [C] [U] 延伸",
+            "n. [C] 延期",
+            "n. [C] 分機"
+          ]
+        }
+      ],
+      "pronunciation": "/ɪk'stɛnsɪv/"
+    },
+    {
+      "english": "farm",
+      "chinese": [
+        "n. [C] 農場, 田地 (= field)",
+        "vt. vi. 耕作"
+      ],
+      "example": [
+        "There are some small [farms] outside the city that are used for growing vegetables.",
+        "離這座城市的外面有一些用來種植蔬菜的小農場。",
+        "Vivian's grandparents used to [farm] rice for a living.",
+        "薇薇安的祖父母曾靠種稻為生。"
+      ],
+      "phrases": [
+        "on a farm 在農場上"
+      ],
+      "related": [{
+        "english": "farmer",
+        "pronunciation": "/fɑrmɚ/",
+        "chinese": [
+          "n. [C] 農夫"
+        ]
+      }],
+      "pronunciation": "/fɑrm/"
+    },
+    {
+      "english": "generation",
+      "chinese": [
+        "n. [C] [U] 世代",
+        "n. [U] 產生"
+      ],
+      "example": [
+        "Ideas about marriage differ from one [generation] to another.",
+        "每個世代對於婚姻的觀念都有所不同。"
+      ],
+      "phrases": [
+        "the older/younger generation 較年長/較年輕的世代",
+        "the generation gap 代溝",
+        "from generation to generation 世世代代"
+      ],
+      "related": [{
+        "english": "generate",
+        "pronunciation": "/dʒɛnə,ret/",
+        "chinese": [
+          "vt. 產生, 引起"
+        ]
+      }],
+      "pronunciation": "/ˌdʒɛnə'reʃən/"
+    },
+    {
+      "english": "generator",
+      "chinese": [
+        "n. [C] 發電機；產生器"
+      ],
+      "example": [
+        "The power went out, but we were able to use our backup [generator] for electricity.",
+        "雖然停電了，但我們可以改用備用發電機來發電。"
+      ],
+      "pronunciation": "/'dʒɛnə,retɚ/"
+    },
+    {
+      "english": "gray",
+      "chinese": [
+        "n. [U] 灰色",
+        "adj. 灰色的；(頭髮) 灰白的"
+      ],
+      "example": [
+        "The children couldn't see the sun through the [gray] clouds.",
+        "孩子們看不到被烏雲遮擋住的太陽。"
+      ],
+      "related": [{
+        "english": "grey",
+        "pronunciation": "/gre/",
+        "chinese": [
+          "同 gray"
+        ]
+      }],
+      "pronunciation": "/gre/"
+    },
+    {
+      "english": "handle",
+      "chinese": [
+        "vt. 處理 (= manage, deal with, take care of)",
+        "n. [C] 門把, 手把"
+      ],
+      "example": [
+        "Tracy is our best salesperson, so we let her [handle] our important clients.",
+        "崔西是我們最好的銷售員，所以我們讓她處理重要客戶。",
+        "Alice slowly turned the [handle] and opened the door.",
+        "愛麗絲慢慢地轉動門把來開門。"
+      ],
+      "pronunciation": "/'hændl/"
+    },
+    {
+      "english": "hurry",
+      "chinese": [
+        "vt. 催促 (= hasten, rush)",
+        "vi. 迅速移動 (= rush)",
+        "n. [S] [U] 匆忙 (= haste, rush)"
+      ],
+      "example": [
+        "Amy [hurried] to answer the phone because she had been expecting a call.",
+        "艾咪趕緊接電話，因為她一直在等一通電話。",
+        "George left home in a [hurry] and forgot to bring his umbrella.",
+        "喬治因趕著出門而忘了帶傘。"
+      ],
+      "phrases": [
+        "hurry up 趕快",
+        "hurry sb. up/along 催促某人",
+        "hurry to do sth. 匆忙做某事",
+        "hurry sb. into doing sth. 催趕某人做某事",
+        "be in a hurry 急迫的",
+        "be in no hurry / not be in any hurry 不急的",
+        "There's no hurry. 不急。"
+      ],
+      "pronunciation": "/'hʌri/"
+    },
+    {
+      "english": "introduction",
+      "chinese": [
+        "n. [C] 介紹",
+        "n. [U] 引進, 引入"
+      ],
+      "example": [
+        "The manager was asked to make the [introductions] before the meeting started.",
+        "在會議開始前，那位經理被要求做自我介紹。"
+      ],
+      "phrases": [
+        "make the introductions 互相做自我介紹"
+      ],
+      "related": [{
+        "english": "introduce",
+        "pronunciation": "/ˌɪntrə'djus/",
+        "chinese": [
+          "vt. 介紹",
+          "vt. 引進"
+        ]
+      }],
+      "pronunciation": "/ˌɪntrə'dʌkʃən/"
+    },
+    {
+      "english": "judge",
+      "chinese": [
+        "n. [C] 法官；裁判；評審 (= critic)",
+        "vt. vi. 判斷 (= determine)；裁判"
+      ],
+      "example": [
+        "The [judges] sampled the dishes to decide on the winner of the cooking contest.",
+        "評審們品嚐菜餚以決定烹飪大賽的冠軍。",
+        "People tend to [judge] others on first impressions, although it is unfair to do so.",
+        "人們往往憑第一印象來評判他人，雖然這並不公平。"
+      ],
+      "phrases": [
+        "be the judge (of sth.) 讓某人自行 (對某事做出) 判斷",
+        "judge A on B 針對B評判A",
+        "judge A by B 以B評判A",
+        "judge A from B 從B評判A",
+        "judge A (to be) B 把A判斷為B",
+        "Never/Don't judge a book by its cover. 不要以貌取人。"
+      ],
+      "pronunciation": "/dʒʌdʒ/"
+    },
+    {
+      "english": "latter",
+      "chinese": [
+        "adj. 後者的",
+        "pron. 後者 (the~)"
+      ],
+      "example": [
+        "This actor did not appear on screen until the [latter] part of the movie.",
+        "這名演員直到電影後半部才出現。",
+        "Between staying home and going out, Lisa chose the [latter].",
+        "在待在家和出門之間，麗莎選擇了後者。"
+      ],
+      "pronunciation": "/'lætɚ/"
+    },
+    {
+      "english": "life",
+      "chinese": [
+        "n. [C] [U] 生命；一生",
+        "n. [C] 生活 (常用單數形)"
+      ],
+      "example": [
+        "Although he plays a gentleman in the movie, the actor is rude in real [life].",
+        "那名演員在電影中扮演紳士，但他在現實生活中卻很粗魯。"
+      ],
+      "phrases": [
+        "in (all) one's life 有生以來",
+        "all one's life (某人) 終其一生",
+        "for life 終其一生",
+        "lead a happy/normal/interesting life 過著快樂的/正常的/有趣的生活",
+        "risk one's life / put one's life at risk 冒著生命危險",
+        "life-size 真實大小的",
+        "daily life 日常生活",
+        "life vest/jacket 救生衣"
+      ],
+      "pronunciation": "/laɪf/"
+    },
+    {
+      "english": "master",
+      "chinese": [
+        "n. [C] 大師, 專家 (= expert)；雇主 (舊式用法) (= boss)",
+        "vt. 精通 (= be skilled in)"
+      ],
+      "example": [
+        "Bruce Lee was a kung fu [master] who was famous with Western audiences.",
+        "李小龍是西方觀眾所熟悉的武術大師。",
+        "To [master] English, you need to use the language every day.",
+        "你要精通英語就必須每天使用這個語言。"
+      ],
+      "phrases": [
+        "master of/at sth. 某方面的專家",
+        "master's degree 碩士學位"
+      ],
+      "pronunciation": "/'mæstɚ/"
+    },
+    {
+      "english": "movie",
+      "chinese": [
+        "n. [C] 電影 (= film)"
+      ],
+      "example": [
+        "Watching sad [movies] always makes Jane upset.",
+        "看悲劇電影總是讓珍妮難過。"
+      ],
+      "phrases": [
+        "go to the movies 看電影",
+        "horror/romantic/sci-fi/animated/B movie 恐怖/浪漫/科幻/動畫/低成本 電影",
+        "silent movie 默劇"
+      ],
+      "pronunciation": "/'muvi/"
+    },
+    {
+      "english": "need",
+      "chinese": [
+        "vt. 必須, 需要 (= demand, require)",
+        "n. [S] [U] 需要 (= demand, necessity, requirement)"
+      ],
+      "example": [
+        "Kevin [needs] coffee in the morning to keep him awake.",
+        "凱文早上需要咖啡來保持清醒。",
+        "There is no [need] to buy a car, as public transportation is very convenient.",
+        "大眾運輸系統非常方便，因此沒有必要買車。"
+      ],
+      "phrases": [
+        "need A for B 因B而需要A",
+        "need to do sth. 必須做某事",
+        "need sb. to do sth. 需要某人做某事",
+        "need for sth./sth. 對於…的需求",
+        "there is a/no need (for sb.) to do sth. (某人) 有/沒有做某事的需要",
+        "meet/fulfill a need 滿足需求",
+        "those in need 貧苦人家",
+        "in need of sth. 需要某事物"
+      ],
+      "pronunciation": "/nid/"
+    },
+    {
+      "english": "passenger",
+      "chinese": [
+        "n. [C] 乘客, 旅客 (= traveler)"
+      ],
+      "example": [
+        "[Passengers] must have their boarding passes ready before getting on the airplane.",
+        "旅客必須在登機前把登機證準備好。"
+      ],
+      "phrases": [
+        "transfer passenger 轉乘旅客"
+      ],
+      "pronunciation": "/'pæsəndʒɚ/"
+    },
+    {
+      "english": "print",
+      "chinese": [
+        "vt. vi. 印, 印刷"
+      ],
+      "example": [
+        "The editor went over the book before it was [printed].",
+        "那位編輯在書送印之前仔細地檢查一遍。"
+      ],
+      "phrases": [
+        "print (A) on B (把A) 印刷在B上",
+        "print in color/black and white 印成彩色/黑白",
+        "print sth. out/off 把某物印出來"
+      ],
+      "related": [{
+        "english": "printer",
+        "pronunciation": "/'prɪntɚ/",
+        "chinese": [
+          "n. [C] 印表機"
+        ]
+      }],
+      "pronunciation": "/prɪnt/"
+    },
+    {
+      "english": "protect",
+      "chinese": [
+        "vt. vi. 保護, 防護 (= cover, defend)"
+      ],
+      "example": [
+        "Seat belts were made to [protect] us from injury in the event of a car accident.",
+        "安全帶是用來保護我們發生車禍時不致受傷。"
+      ],
+      "phrases": [
+        "protect A from/against B 保護A不受到B的危害"
+      ],
+      "pronunciation": "/prə'tɛkt/"
+    },
+    {
+      "english": "protection",
+      "chinese": [
+        "n. [U] 保護"
+      ],
+      "example": [
+        "Mark is organizing a beach cleanup as part of his studies on environmental [protection].",
+        "馬克正在籌備淨灘活動，這是他環保研究中的一部分。"
+      ],
+      "phrases": [
+        "copy protection 防盜拷",
+        "file protection 檔案保護",
+        "protection money 保護費"
+      ],
+      "related": [{
+        "english": "protective",
+        "pronunciation": "/prə'tɛktɪv/",
+        "chinese": [
+          "adj. 防護的",
+          "adj. 關懷保護的"
+        ]
+      }],
+      "pronunciation": "/prə'tɛkʃən/"
+    },
+    {
+      "english": "punish",
+      "chinese": [
+        "vt. 懲罰"
+      ],
+      "example": [
+        "The teacher [punished] the naughty boy for not bringing his textbooks by giving him more homework.",
+        "這個調皮的男孩沒有把作業帶來，所以老師給他更多作業做為懲罰。"
+      ],
+      "phrases": [
+        "punish sb. for (doing) sth. 因某事懲罰某人",
+        "punish sb. with sth. 讓某人接受某懲罰"
+      ],
+      "related": [{
+        "english": "punishment",
+        "pronunciation": "/'pʌnɪʃmənt/",
+        "chinese": [
+          "n. [C] [U] 懲罰"
+        ]
+      }],
+      "pronunciation": "/'pʌnɪʃ/"
+    },
+    {
+      "english": "rank",
+      "chinese": [
+        "n. [C] [U] 等級；位階 (= position, status)",
+        "n. [C] [U] (尤指排排站立的) 行, 列, 排",
+        "vt. vi. (使) 具有…地位, (將…) 列為…等級"
+      ],
+      "example": [
+        "Jack has just been promoted to the [rank] of sales manager.",
+        "傑克剛被升為業務經理。",
+        "The movie we saw yesterday [ranks] as one of the best movies ever made.",
+        "我們昨天看的那個電影可算是史上最好的電影之一。"
+      ],
+      "phrases": [
+        "senior/junior rank 高/低 階 (職位)",
+        "rank high/low 排高/排低, 位居",
+        "rank as sth. 可看作…",
+        "rank among sth. 予其是…中的一員"
+      ],
+      "pronunciation": "/ræŋk/"
+    },
+    {
+      "english": "shiver",
+      "chinese": [
+        "vi. 顫抖, 發抖 (= shake, tremble)",
+        "n. [C] 顫抖, 發抖"
+      ],
+      "example": [
+        "At the crime scene, the little girl [shivered] with fear.",
+        "那個女孩在犯罪現場害怕地發抖。",
+        "A [shiver] ran through Mary's body when she saw the snake.",
+        "當瑪麗看到蛇的時候全身發抖。"
+      ],
+      "phrases": [
+        "shiver with cold/fear/surprise 冷地/害怕地/驚訝地 顫抖",
+        "shiver of horror/shock/excitement 因 害怕/震驚/興奮 而產生的顫抖",
+        "give sb. the shivers 讓某人嚇得發抖"
+      ],
+      "pronunciation": "/'ʃɪvɚ/"
+    },
+    {
+      "english": "skeptically",
+      "chinese": [
+        "adv. 懷疑地 (= doubtfully, suspiciously)"
+      ],
+      "example": [
+        "Jerry looked at me [skeptically], even though I was telling the truth.",
+        "傑瑞用懷疑的眼神看著我，儘管我說的是實話。"
+      ],
+      "related": [{
+        "english": "skeptical",
+        "pronunciation": "/ˈskɛptɪkl/",
+        "chinese": [
+          "adj. 懷疑的"
+        ]
+      }],
+      "pronunciation": "/ˈskɛptɪkli/"
+    },
+    {
+      "english": "suspicious",
+      "chinese": [
+        "adj. 可疑的；懷疑的 (= doubtful, skeptical)"
+      ],
+      "example": [
+        "Mandy saw a [suspicious] stranger hanging around her house last night.",
+        "曼蒂昨晚看到一名可疑的陌生人在她家附近走動。"
+      ],
+      "phrases": [
+        "be suspicious about/of sb./sth. 對…抱持懷疑",
+        "suspicious glance/look 懷疑的一瞥/眼神"
+      ],
+      "related": [
+        {
+          "english": "suspicion",
+          "pronunciation": "/səˈspɪʃən/",
+          "chinese": [
+            "n. [C] [U] 懷疑"
+          ]
+        },
+        {
+          "english": "suspiciously",
+          "pronunciation": "/səˈspɪʃəsli/",
+          "chinese": [
+            "adv. 可疑地",
+            "adv. 懷疑地 (= doubtfully, skeptically)"
+          ]
+        }
+      ],
+      "pronunciation": "/səˈspɪʃəs/"
+    },
+    {
+      "english": "suspiciously",
+      "chinese": [
+        "adv. 可疑地；懷疑地 (= doubtfully, skeptically)"
+      ],
+      "example": [
+        "She looked at me [suspiciously], as if she knew I was lying.",
+        "她懷疑地看著我，彷彿知道我在說謊一樣。"
+      ],
+      "pronunciation": "/səˈspɪʃəsli/"
+    },
+    {
+      "english": "tiny",
+      "chinese": [
+        "adj. 微小的 (= small, little)"
+      ],
+      "example": [
+        "This [tiny] puppy is still too young to walk properly.",
+        "這隻小狗仍太年幼以致於無法走穩。"
+      ],
+      "phrases": [
+        "tiny little 極微小的",
+        "a tiny bit ... 稍微…；一點點…"
+      ],
+      "pronunciation": "/ˈtaɪni/"
+    },
+    {
+      "english": "trip",
+      "chinese": [
+        "n. [C] 旅行, 行程 (= tour)",
+        "vt. vi. (使) 絆倒 (= fall, tumble)"
+      ],
+      "example": [
+        "The travel agency provides a wide variety of [trips] for customers.",
+        "這間旅行社為顧客提供各種不同的行程。",
+        "Tim [tripped] over a toy and fell down this morning.",
+        "提姆今早被玩具絆倒了。"
+      ],
+      "phrases": [
+        "go on/take a trip (to swh.) (到某處) 旅遊",
+        "bus/train/boat trip 搭公車/火車/船之旅",
+        "business/fishing/shopping trip 出差/釣魚/購物行",
+        "trip (sb.) up 絆倒 (某人)",
+        "trip on/over sth. 被某物絆倒"
+      ],
+      "pronunciation": "/trɪp/"
+    },
+    {
+      "english": "well",
+      "chinese": [
+        "adv. 很好地；非常",
+        "adj. 健康的 (= healthy, strong)"
+      ],
+      "example": [
+        "Joyce speaks French quite [well] because she has lived in France for ten years.",
+        "喬伊絲法文講得非常好，因為她在法國居住了十年。",
+        "Allen didn't feel [well], so he left school early to see a doctor.",
+        "亞倫覺得不舒服，所以提早放學去看醫生。"
+      ],
+      "phrases": [
+        "very/rather/fairly/pretty/quite well 非常好地",
+        "well ahead/behind 很 前面/後面",
+        "well done 做得很好",
+        "as well 也",
+        "A as well as B A 以及 B",
+        "be doing well 身體狀況好轉",
+        "may/might (just) as well do sth. 不妨做某事",
+        "may/might well do sth. 大有可能做某事；理所當然可以做某事",
+        "feel well 感到健康",
+        "all is well 一切安好",
+        "get well soon 早日康復"
+      ],
+      "pronunciation": "/wɛl/"
+    }
+  ]
+}

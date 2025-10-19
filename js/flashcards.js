@@ -494,16 +494,115 @@ function updateCardDisplay() {
     // Get Chinese translations as array for multi-line display
     const chineseTranslations = getChineseTranslations(word);
 
+    // Clear and update back of card with main content + related words if available
+    const flashcardBack = document.querySelector('.flashcard-back');
+    if (flashcardBack) {
+        flashcardBack.innerHTML = '';
+        
+        // Create front hint
+        const hintElement = document.createElement('div');
+        hintElement.className = 'flashcard-front-hint';
+        hintElement.id = 'frontHint';
+        if (currentDirection === 'english-chinese') {
+            hintElement.textContent = word.english;
+        } else {
+            hintElement.textContent = chineseTranslations.join(' / ');
+        }
+        flashcardBack.appendChild(hintElement);
+
+        // Create main word/translation element
+        const backWordElement = document.createElement('div');
+        backWordElement.className = 'flashcard-word';
+        backWordElement.id = 'backWord';
+        
+        if (currentDirection === 'english-chinese') {
+            // Display Chinese translations
+            chineseTranslations.forEach(translation => {
+                const line = document.createElement('div');
+                line.className = 'chinese-line';
+                line.textContent = translation;
+                backWordElement.appendChild(line);
+            });
+        } else {
+            // Display English word
+            backWordElement.textContent = word.english;
+        }
+        
+        flashcardBack.appendChild(backWordElement);
+
+        // Add related words if available
+        if (word.related && Array.isArray(word.related) && word.related.length > 0) {
+            const relatedContainer = document.createElement('div');
+            relatedContainer.className = 'flashcard-related';
+            
+            const relatedLabel = document.createElement('div');
+            relatedLabel.className = 'flashcard-related-label';
+            relatedLabel.textContent = '相關詞彙 (點擊查看)';
+            relatedContainer.appendChild(relatedLabel);
+            
+            const relatedList = document.createElement('div');
+            relatedList.className = 'flashcard-related-list';
+            
+            word.related.forEach(related => {
+                const relatedItem = document.createElement('button');
+                relatedItem.className = 'flashcard-related-item-btn';
+                relatedItem.type = 'button';
+                
+                if (typeof related === 'object' && related.english) {
+                    // New format: {english, pronunciation, chinese}
+                    const englishSpan = document.createElement('span');
+                    englishSpan.className = 'related-english';
+                    englishSpan.textContent = related.english;
+                    relatedItem.appendChild(englishSpan);
+                    
+                    if (related.pronunciation) {
+                        const pronouncationSpan = document.createElement('span');
+                        pronouncationSpan.className = 'related-pronunciation';
+                        pronouncationSpan.textContent = ' ' + related.pronunciation;
+                        relatedItem.appendChild(pronouncationSpan);
+                    }
+                    
+                    if (related.chinese && Array.isArray(related.chinese)) {
+                        const chineseSpan = document.createElement('span');
+                        chineseSpan.className = 'related-chinese';
+                        chineseSpan.textContent = ' ' + related.chinese.join('; ');
+                        relatedItem.appendChild(chineseSpan);
+                    }
+                    
+                    // Add click handler to navigate to related word
+                    relatedItem.addEventListener('click', () => {
+                        const relatedWordIndex = currentWords.findIndex(w => w.english === related.english);
+                        if (relatedWordIndex !== -1) {
+                            currentIndex = relatedWordIndex;
+                            updateCardDisplay();
+                            updateNavigationButtons();
+                            currentCardNumber.textContent = (currentIndex + 1).toString();
+                            updateProgressBar();
+                        }
+                    });
+                } else {
+                    // Old format: string
+                    relatedItem.textContent = related;
+                }
+                
+                relatedList.appendChild(relatedItem);
+            });
+            
+            relatedContainer.appendChild(relatedList);
+            flashcardBack.appendChild(relatedContainer);
+        }
+
+        // Create audio button
+        const audioBtn = document.createElement('button');
+        audioBtn.className = 'audio-btn';
+        audioBtn.id = 'playAudio';
+        audioBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+        flashcardBack.appendChild(audioBtn);
+    }
+
     if (currentDirection === 'english-chinese') {
         // English on front, Chinese on back (multi-line)
         frontWord.textContent = word.english;
-
-        // Show front word as hint on back
-        frontHint.textContent = word.english;
-
-        // Adjust font size and display Chinese translations on separate lines
-        // fitTextToDivFast will create the multi-line structure
-        adjustBackWordFontSize(chineseTranslations);
     } else {
         // Chinese on front (multi-line), English on back
         frontWord.innerHTML = '';
@@ -513,13 +612,6 @@ function updateCardDisplay() {
             line.textContent = translation;
             frontWord.appendChild(line);
         });
-
-        // Show front Chinese as hint on back
-        frontHint.textContent = chineseTranslations.join(' / ');
-
-        // Adjust font size and display English on back
-        // fitTextToDivFast will set the single-line text
-        adjustBackWordFontSize(word.english);
     }
 
     // Remove flipped class if present
@@ -530,6 +622,9 @@ function updateCardDisplay() {
 
     // Update progress bar
     updateProgressBar();
+
+    // Adjust font size for main word/translation
+    adjustBackWordFontSize(currentDirection === 'english-chinese' ? chineseTranslations : word.english);
 
     // Preload audio for smoother experience
     preloadWordAudio(word);
