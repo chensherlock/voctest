@@ -97,6 +97,25 @@ const audioService = {
     },
 
     /**
+     * Expand common abbreviations for pronunciation
+     * Converts "sth" to "something", "sb" to "somebody", etc.
+     * @param {string} text - The text to expand
+     * @returns {string} - Text with abbreviations expanded
+     */
+    expandAbbreviations(text) {
+        if (!text) return text;
+        
+        // Replace abbreviations with word boundaries to avoid partial matches
+        let expanded = text
+            .replace(/\bsth\b/gi, 'something')
+            .replace(/\bsb\b/gi, 'somebody')
+            .replace(/\bsth\.\b/g, 'something.')
+            .replace(/\bsb\.\b/g, 'somebody.');
+        
+        return expanded;
+    },
+
+    /**
      * Get the preferred voice object
      * @returns {SpeechSynthesisVoice|null}
      */
@@ -315,7 +334,10 @@ const audioService = {
             }
 
             try {
-                const utterance = new SpeechSynthesisUtterance(word);
+                // Expand abbreviations for better pronunciation
+                const expandedWord = this.expandAbbreviations(word);
+                
+                const utterance = new SpeechSynthesisUtterance(expandedWord);
                 utterance.lang = 'en-US';
 
                 // Apply pronunciation speed (base rate 0.9 * user speed)

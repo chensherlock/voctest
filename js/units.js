@@ -11,6 +11,7 @@ const takeQuiz = document.getElementById('takeQuiz');
 // Current unit being viewed
 let currentUnitId = null;
 let activeExamplePlayback = null;
+let activePhrasePlayback = null;
 const translationProvider = typeof window !== 'undefined' && window.Translator
     ? window.Translator
     : (typeof navigator !== 'undefined' && navigator.translation
@@ -1150,6 +1151,22 @@ function decodeHtmlEntities(str) {
     return htmlDecodeElement.value;
 }
 
+/**
+ * Detect if text is primarily in English
+ * @param {string} text - The text to check
+ * @returns {boolean} - True if text is primarily English
+ */
+function isEnglishText(text) {
+    if (!text || text.trim().length === 0) return false;
+    
+    // Count English characters (letters, numbers, common punctuation, spaces)
+    const englishCharCount = (text.match(/[a-zA-Z0-9\s\-'.,:;!?]/g) || []).length;
+    const totalCharCount = text.trim().length;
+    
+    // If more than 70% of characters are English, consider it English
+    return (englishCharCount / totalCharCount) > 0.7;
+}
+
 function buildExampleMarkup(exampleSentence) {
     const highlightMatches = [...exampleSentence.matchAll(/\[([^\]]+)\]/g)];
     const highlightWords = new Set();
@@ -1392,22 +1409,29 @@ function displayUnitWords(unit) {
                     const { html: exampleMarkup, cleanSentence } = buildExampleMarkup(example);
                     const encodedSentence = escapeHtml(cleanSentence);
                     const encodedWord = escapeHtml(word.english);
-                    const translateButtonHTML = supportsTranslationApi ? `
+                    
+                    // Check if example is in English
+                    const isEnglish = isEnglishText(cleanSentence);
+                    
+                    // Only show buttons if example is in English
+                    const translateButtonHTML = (supportsTranslationApi && isEnglish) ? `
                         <button class="example-translate-btn" data-sentence="${encodedSentence}" aria-label="翻譯成繁體中文" title="翻譯成繁體中文">
                             <i class="fas fa-language"></i>
                         </button>` : '';
-                    const rewriteButtonHTML = isRewriterSupported() ? `
+                    const rewriteButtonHTML = (isRewriterSupported() && isEnglish) ? `
                         <button class="example-rewrite-btn" data-sentence="${encodedSentence}" data-word="${encodedWord}" aria-label="重寫例句" title="重寫例句">
                             <i class="fas fa-sync-alt"></i>
                         </button>` : '';
-                    const translationOutputHTML = supportsTranslationApi ? `<div class="example-translation" aria-live="polite"></div>` : '';
+                    const audioButtonHTML = isEnglish ? `
+                        <button class="example-audio-btn" data-sentence="${encodedSentence}" aria-label="Play example sentence">
+                            <i class="fas fa-volume-up"></i>
+                        </button>` : '';
+                    const translationOutputHTML = (supportsTranslationApi && isEnglish) ? `<div class="example-translation" aria-live="polite"></div>` : '';
 
                     return `<div class="example-line" data-sentence="${encodedSentence}">
                         <span class="example-text" data-sentence="${encodedSentence}">${exampleMarkup}</span>
                         <div class="example-action-buttons">
-                            <button class="example-audio-btn" data-sentence="${encodedSentence}" aria-label="Play example sentence">
-                                <i class="fas fa-volume-up"></i>
-                            </button>
+                            ${audioButtonHTML}
                             ${translateButtonHTML}
                             ${rewriteButtonHTML}
                         </div>
@@ -1436,6 +1460,9 @@ function displayUnitWords(unit) {
             <div class="word-pronunciation">
                 <span class="pronunciation-label">發音：</span>
                 <span class="pronunciation-value">${escapeHtml(word.pronunciation)}</span>
+                <button class="pronunciation-audio-btn" data-word="${escapeHtml(word.english)}" aria-label="Play pronunciation" title="播放發音">
+                    <i class="fas fa-volume-up"></i>
+                </button>
             </div>` : '';
 
         // Format phrases if available
@@ -1449,7 +1476,9 @@ function displayUnitWords(unit) {
                             // New format: {english, chinese}
                             const englishPhrase = escapeHtml(phrase.english);
                             const chinesePhrase = phrase.chinese ? ` ${escapeHtml(phrase.chinese)}` : '';
-                            return `<li><strong>${englishPhrase}</strong>${chinesePhrase}</li>`;
+                            return `<li><strong>${englishPhrase}</strong>${chinesePhrase} <button class="phrase-audio-btn" data-phrase="${englishPhrase}" aria-label="Play phrase" title="播放搭配">
+                                <i class="fas fa-volume-up"></i>
+                            </button></li>`;
                         } else {
                             // Old format: string
                             return `<li>${escapeHtml(phrase)}</li>`;
@@ -1470,7 +1499,9 @@ function displayUnitWords(unit) {
                             const englishWord = related.english;
                             const pronunciation = related.pronunciation ? ` ${escapeHtml(related.pronunciation)}` : '';
                             const chineseText = Array.isArray(related.chinese) ? ` ${escapeHtml(related.chinese.join('; '))}` : '';
-                            return `<li><span class="related-first-word">${escapeHtml(englishWord)}</span>${pronunciation}${chineseText}</li>`;
+                            return `<li><span class="related-first-word">${escapeHtml(englishWord)}</span>${pronunciation}${chineseText} <button class="related-audio-btn" data-word="${escapeHtml(englishWord)}" aria-label="Play related word" title="播放相關詞彙">
+                                <i class="fas fa-volume-up"></i>
+                            </button></li>`;
                         } else {
                             // Old format: string
                             const parts = related.trim().split(/\s+/);
@@ -1527,6 +1558,35 @@ function displayUnitWords(unit) {
         const audioBtn = wordItem.querySelector('.audio-btn');
         audioBtn.addEventListener('click', () => {
             playAudio(word.english);
+        });
+
+        // Add event listener for pronunciation audio button
+        const pronunciationAudioBtn = wordItem.querySelector('.pronunciation-audio-btn');
+        if (pronunciationAudioBtn) {
+            pronunciationAudioBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                playAudio(word.english);
+            });
+        }
+
+        // Add event listeners for phrase audio buttons
+        const phraseAudioBtns = wordItem.querySelectorAll('.phrase-audio-btn');
+        phraseAudioBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const phraseText = btn.dataset.phrase;
+                playPhraseWithHighlight(phraseText, btn, wordItem);
+            });
+        });
+
+        // Add event listeners for related word audio buttons
+        const relatedAudioBtns = wordItem.querySelectorAll('.related-audio-btn');
+        relatedAudioBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const relatedWord = btn.dataset.word;
+                playAudio(relatedWord);
+            });
         });
 
         // Add event listener for video button if it exists
@@ -1814,6 +1874,183 @@ async function rewriteExampleSentence(sentence, englishWord, button) {
         console.error('Rewrite error:', error);
         showAudioStatus('重寫失敗，請稍後再試');
     } finally {
+        restoreButton();
+    }
+}
+
+// Play phrase with highlighting
+function playPhraseWithHighlight(phraseText, button, wordItem) {
+    if (!phraseText) return;
+
+    console.log('Playing phrase:', phraseText);
+
+    if (activePhrasePlayback) {
+        const previousPlayback = activePhrasePlayback;
+        activePhrasePlayback = null;
+
+        if (typeof previousPlayback.clearWordHighlight === 'function') {
+            previousPlayback.clearWordHighlight();
+        }
+
+        if (typeof previousPlayback.restoreButton === 'function') {
+            previousPlayback.restoreButton();
+        } else if (previousPlayback.button) {
+            previousPlayback.button.innerHTML = previousPlayback.originalIcon || '<i class="fas fa-volume-up"></i>';
+            previousPlayback.button.disabled = false;
+            previousPlayback.button.classList.remove('loading');
+        }
+
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+        }
+    }
+
+    // Set loading state
+    const originalIcon = button.innerHTML;
+    button.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+    button.disabled = true;
+    button.classList.add('loading');
+
+    if (wordItem) {
+        wordItem.classList.add('playing');
+    }
+
+    // Find the phrase list item and strong tag (which contains the phrase text)
+    const phraseListItem = button.closest('li');
+    if (phraseListItem) {
+        phraseListItem.classList.add('playing');
+    }
+
+    // Get the strong element that contains the phrase text
+    const phraseElement = button.closest('li').querySelector('strong');
+    if (!phraseElement) {
+        console.error('Could not find phrase element');
+        button.innerHTML = originalIcon;
+        button.disabled = false;
+        return;
+    }
+
+    // Parse phrase text into words and create word boundaries
+    const words = phraseText.split(/\s+/);
+    let charIndex = 0;
+    const wordBoundaries = words.map(word => {
+        const start = charIndex;
+        const end = charIndex + word.length;
+        charIndex = end + 1; // +1 for space
+        return { word, start, end };
+    });
+
+    // Create span elements for each word in the phrase
+    let currentWordSpan = null;
+    phraseElement.innerHTML = words.map((word, index) => 
+        `<span class="phrase-word" data-index="${index}" data-start="${wordBoundaries[index].start}" data-end="${wordBoundaries[index].end}">${escapeHtml(word)}</span>`
+    ).join(' ');
+
+    const wordSpans = Array.from(phraseElement.querySelectorAll('.phrase-word'));
+
+    const clearWordHighlight = () => {
+        if (currentWordSpan) {
+            currentWordSpan.classList.remove('current-word');
+            currentWordSpan = null;
+        }
+        wordSpans.forEach(span => span.classList.remove('current-word'));
+    };
+
+    const highlightWordAtChar = (charIndex) => {
+        if (!wordBoundaries.length || typeof charIndex !== 'number') {
+            return;
+        }
+
+        let target = null;
+        for (let i = 0; i < wordBoundaries.length; i += 1) {
+            const boundary = wordBoundaries[i];
+            if (charIndex >= boundary.start && charIndex < boundary.end) {
+                target = boundary;
+                break;
+            }
+            if (charIndex >= boundary.end) {
+                target = boundary;
+            }
+        }
+
+        if (!target) {
+            target = wordBoundaries[wordBoundaries.length - 1];
+        }
+
+        // Find corresponding span
+        const targetIndex = wordBoundaries.indexOf(target);
+        if (targetIndex >= 0 && targetIndex < wordSpans.length) {
+            const targetSpan = wordSpans[targetIndex];
+            if (targetSpan !== currentWordSpan) {
+                if (currentWordSpan) {
+                    currentWordSpan.classList.remove('current-word');
+                }
+                targetSpan.classList.add('current-word');
+                currentWordSpan = targetSpan;
+            }
+        }
+    };
+
+    const cleanupHighlight = () => {
+        clearWordHighlight();
+        // Restore original text
+        phraseElement.innerHTML = escapeHtml(phraseText);
+        if (phraseListItem) {
+            phraseListItem.classList.remove('playing');
+        }
+        if (wordItem) {
+            wordItem.classList.remove('playing');
+        }
+    };
+
+    const playbackContext = {
+        button,
+        originalIcon,
+        cleanupHighlight,
+        clearWordHighlight
+    };
+
+    activePhrasePlayback = playbackContext;
+
+    // Function to restore button state
+    const restoreButton = () => {
+        button.innerHTML = originalIcon;
+        button.disabled = false;
+        button.classList.remove('loading');
+        cleanupHighlight();
+        if (activePhrasePlayback === playbackContext) {
+            activePhrasePlayback = null;
+        }
+    };
+
+    playbackContext.restoreButton = restoreButton;
+
+    if ('speechSynthesis' in window) {
+        const utterance = new SpeechSynthesisUtterance(phraseText);
+        utterance.lang = 'en-US';
+        utterance.rate = 0.9 * (audioService?.pronunciationSpeed || 1.0);
+
+        utterance.onboundary = (event) => {
+            if (typeof event.charIndex === 'number') {
+                highlightWordAtChar(event.charIndex);
+            }
+        };
+
+        utterance.onend = () => {
+            restoreButton();
+        };
+
+        utterance.onerror = (err) => {
+            console.error('Speech synthesis error:', err);
+            showAudioStatus('無法播放搭配');
+            restoreButton();
+        };
+
+        playbackContext.utterance = utterance;
+        clearWordHighlight();
+        window.speechSynthesis.speak(utterance);
+    } else {
+        showAudioStatus('您的瀏覽器不支援語音合成');
         restoreButton();
     }
 }
