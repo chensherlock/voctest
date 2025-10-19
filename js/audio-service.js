@@ -12,7 +12,9 @@ const audioService = {
     },
 
     // Current provider - can be changed in settings
-    currentProvider: 'FreeDictionaryAPI',
+    // Note: FreeDictionaryAPI and Google TTS are disabled due to CORS/availability issues
+    // Using browser speech synthesis as default
+    currentProvider: 'speechSynthesis',
 
     // Cache for audio URLs to prevent redundant API calls
     cache: {},
@@ -115,17 +117,25 @@ const audioService = {
             return Promise.resolve(this.cache[word]);
         }
 
-        // Use provider-specific implementation
+        // Use provider-specific implementation with fallback chain
         switch(this.currentProvider) {
             case this.providers.FREEDIC:
-                return this.getFreeDictionaryAPI(word);
+                // Try FreeDictionary first, then fallback to Google TTS on error
+                return this.getFreeDictionaryAPI(word)
+                    .catch(error => {
+                        if (error === 'USE_GOOGLE_TTS' || error === 'USE_SPEECH_SYNTHESIS') {
+                            console.log('Falling back to Google TTS for:', word);
+                            return this.getGoogleTTS(word);
+                        }
+                        throw error;
+                    });
             case this.providers.GOOGLE_TTS:
                 return this.getGoogleTTS(word);
             case this.providers.SPEECH_SYNTHESIS:
                 return Promise.reject('USE_SPEECH_SYNTHESIS');
             default:
-                console.error(`Provider ${this.currentProvider} not supported. Falling back to default.`);
-                return this.getFreeDictionaryAPI(word);
+                console.error(`Provider ${this.currentProvider} not supported. Falling back to Google TTS.`);
+                return this.getGoogleTTS(word);
         }
     },
 
@@ -137,8 +147,16 @@ const audioService = {
     getFreeDictionaryAPI(word) {
         const dictionaryUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(word)}`;
 
-        return fetch(dictionaryUrl)
-            .then(response => response.json())
+        return fetch(dictionaryUrl, {
+            mode: 'cors',
+            credentials: 'omit'
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
             .then(data => {
                 if (data && data[0] && data[0].phonetics && data[0].phonetics.length > 0) {
                     // Find the first phonetic with audio
@@ -155,7 +173,8 @@ const audioService = {
             })
             .catch((error) => {
                 console.log('FreeDictionaryAPI fetch error:', word, error);
-                return Promise.reject('USE_SPEECH_SYNTHESIS');
+                // Return a fallback to use Google TTS or speech synthesis
+                return Promise.reject('USE_GOOGLE_TTS');
             });
     },
 
