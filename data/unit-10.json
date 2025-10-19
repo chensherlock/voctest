@@ -82,10 +82,26 @@
         "english": "bear",
         "pronunciation": "/bɛr/",
         "chinese": [
-          "vt. 承受 (bear-bore-borne)",
+          "vt. 承受 (bear-bore-borne)"
+        ],
+        "tense": {
+          "present": "bear",
+          "past": "bore",
+          "participle": "borne"
+        }
+      }, {
+        "english": "bear",
+        "pronunciation": "/bɛr/",
+        "chinese": [
           "vt. 生育 (bear-bore-born)"
-        ]
-      }],
+        ],
+        "tense": {
+          "present": "bear",
+          "past": "bore",
+          "participle": "born"
+        }
+      }
+      ],
       "pronunciation": "/bɔrn/"
     },
     {
@@ -143,8 +159,13 @@
         "english": "choose",
         "pronunciation": "/tʃuz/",
         "chinese": [
-          "vt. vi. 選擇 (choose-chose-chosen)"
-        ]
+          "vt. vi. 選擇"
+        ],
+        "tense": {
+          "present": "choose",
+          "past": "chose",
+          "participle": "chosen"
+        }
       }],
       "pronunciation": "/tʃɔɪs/",
       "video": "https://magazine.english4u.net/vocmemory/video/3421"

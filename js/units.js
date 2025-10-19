@@ -1499,7 +1499,20 @@ function displayUnitWords(unit) {
                             const englishWord = related.english;
                             const pronunciation = related.pronunciation ? ` ${escapeHtml(related.pronunciation)}` : '';
                             const chineseText = Array.isArray(related.chinese) ? ` ${escapeHtml(related.chinese.join('; '))}` : '';
-                            return `<li><span class="related-first-word">${escapeHtml(englishWord)}</span>${pronunciation}${chineseText} <button class="related-audio-btn" data-word="${escapeHtml(englishWord)}" aria-label="Play related word" title="播放相關詞彙">
+                            
+                            // Add tense information if available
+                            let tenseText = '';
+                            if (related.tense && typeof related.tense === 'object') {
+                                const tenseParts = [];
+                                if (related.tense.present) tenseParts.push(`現在式: ${escapeHtml(related.tense.present)}`);
+                                if (related.tense.past) tenseParts.push(`過去式: ${escapeHtml(related.tense.past)}`);
+                                if (related.tense.participle) tenseParts.push(`過去分詞: ${escapeHtml(related.tense.participle)}`);
+                                if (tenseParts.length > 0) {
+                                    tenseText = ` <span class="related-tense">(${tenseParts.join(', ')})</span>`;
+                                }
+                            }
+                            
+                            return `<li><span class="related-first-word">${escapeHtml(englishWord)}</span>${pronunciation}${chineseText}${tenseText} <button class="related-audio-btn" data-word="${escapeHtml(englishWord)}" aria-label="Play related word" title="播放相關詞彙">
                                 <i class="fas fa-volume-up"></i>
                             </button></li>`;
                         } else {
