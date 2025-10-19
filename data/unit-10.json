@@ -16,12 +16,12 @@
         "約翰拒絕解釋昨晚他去哪裡待了好幾個小時。"
       ],
       "phrases": [
-        {"english": "open an account", "chinese": "開戶"},
-        {"english": "savings account", "chinese": "存款帳戶"},
-        {"english": "take sth into account / take account of sth.", "chinese": "將某事物納入考量"},
-        {"english": "by (from) all accounts", "chinese": "根據大家所說"},
-        {"english": "on account of sb./sth.", "chinese": "因為…"},
-        {"english": "account for sth.", "chinese": "導致某事物；解釋某事物；占某比例"}
+        {"english": "open an [account]", "chinese": "開戶"},
+        {"english": "savings [account]", "chinese": "存款帳戶"},
+        {"english": "take sth into [account] / take [account] of sth.", "chinese": "將某事物納入考量"},
+        {"english": "by (from) all [accounts]", "chinese": "根據大家所說"},
+        {"english": "on [account] of sb./sth.", "chinese": "因為…"},
+        {"english": "[account] for sth.", "chinese": "導致某事物；解釋某事物；占某比例"}
       ],
       "pronunciation": "/ə'kaunt/",
       "related": [{
@@ -55,7 +55,7 @@
       "phrases": [
         {"english": "appreciate that + S + V", "chinese": "理解"},
         {"english": "fully appreciate", "chinese": "完全理解"},
-        {"english": "be truly/properly appreciated", "chinese": "受到真正地/適切地重視"},
+        {"english": "be truly/properly [appreciated]", "chinese": "受到真正地/適切地重視"},
         {"english": "I/We would appreciate it if S + V-ed", "chinese": "如果…的話，我（們）會很感激的。"}
       ],
       "pronunciation": "/ə'priʃɪ,et/",
@@ -420,7 +420,7 @@
         "在會議開始前，那位經理被要求做自我介紹。"
       ],
       "phrases": [
-        {"english": "make the introductions", "chinese": "互相做自我介紹"}
+        {"english": "make the [introductions]", "chinese": "互相做自我介紹"}
       ],
       "related": [{
         "english": "introduce",
@@ -484,7 +484,7 @@
         {"english": "for life", "chinese": "終其一生"},
         {"english": "lead a happy/normal/interesting life", "chinese": "過著快樂的/正常的/有趣的生活"},
         {"english": "risk one's life / put one's life at risk", "chinese": "冒著生命危險"},
-        {"english": "life-size", "chinese": "真實大小的"},
+        {"english": "[life]-size", "chinese": "真實大小的"},
         {"english": "daily life", "chinese": "日常生活"},
         {"english": "life vest/jacket", "chinese": "救生衣"}
       ],
@@ -505,7 +505,7 @@
       ],
       "phrases": [
         {"english": "master of/at sth.", "chinese": "某方面的專家"},
-        {"english": "master's degree", "chinese": "碩士學位"}
+        {"english": "[master]'s degree", "chinese": "碩士學位"}
       ],
       "pronunciation": "/'mæstɚ/",
       "master": "https://magazine.english4u.net/vocmemory/video/3627"
@@ -520,7 +520,7 @@
         "看悲劇電影總是讓珍妮難過。"
       ],
       "phrases": [
-        {"english": "go to the movies", "chinese": "看電影"},
+        {"english": "go to the [movies]", "chinese": "看電影"},
         {"english": "horror/romantic/sci-fi/animated/B movie", "chinese": "恐怖/浪漫/科幻/動畫/低成本 電影"},
         {"english": "silent movie", "chinese": "默劇"}
       ],
@@ -687,7 +687,7 @@
       "phrases": [
         {"english": "shiver with cold/fear/surprise", "chinese": "冷地/害怕地/驚訝地 顫抖"},
         {"english": "shiver of horror/shock/excitement", "chinese": "因 害怕/震驚/興奮 而產生的顫抖"},
-        {"english": "give sb. the shivers", "chinese": "讓某人嚇得發抖"}
+        {"english": "give sb. the [shivers]", "chinese": "讓某人嚇得發抖"}
       ],
       "pronunciation": "/'ʃɪvɚ/"
     },

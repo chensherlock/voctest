@@ -1843,6 +1843,15 @@ label.incorrect::after {
     color: #f39c12;
 }
 
+.phrase-word {
+    transition: color 0.1s ease, font-weight 0.1s ease;
+}
+
+.phrase-word.highlight-word {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
 /* Related section */
 .word-related {
     margin-top: 12px;

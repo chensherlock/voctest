@@ -1167,6 +1167,15 @@ function isEnglishText(text) {
     return (englishCharCount / totalCharCount) > 0.7;
 }
 
+/**
+ * Escape special regex characters in a string
+ * @param {string} str - The string to escape
+ * @returns {string} - The escaped string safe for use in RegExp
+ */
+function escapeRegExp(str) {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 function buildExampleMarkup(exampleSentence) {
     const highlightMatches = [...exampleSentence.matchAll(/\[([^\]]+)\]/g)];
     const highlightWords = new Set();
@@ -1219,6 +1228,104 @@ function buildExampleMarkup(exampleSentence) {
     return {
         html: htmlSegments.join(''),
         cleanSentence
+    };
+}
+
+/**
+ * Build phrase markup with bracket highlighting support
+ * Similar to buildExampleMarkup but for phrases
+ * Also automatically marks the vocabulary word if provided
+ * @param {string} phraseText - The phrase text with optional [brackets]
+ * @param {string} vocabularyWord - The main vocabulary word to mark (optional)
+ * @returns {Object} - { html: markup with spans, cleanPhrase: text without brackets }
+ */
+function buildPhraseMarkup(phraseText, vocabularyWord) {
+    // First, add brackets around vocabulary word if it appears unbracketed
+    let phraseWithBrackets = phraseText;
+    if (vocabularyWord) {
+        // Build a set of words to highlight (including vocabulary word)
+        const wordsToHighlight = new Set();
+        // Normalize vocabulary word for comparison
+        wordsToHighlight.add(normalizeWordForHighlight(vocabularyWord));
+        
+        // Check if vocabulary word is already bracketed in the phrase
+        const bracketsRegex = /\[([^\]]+)\]/g;
+        let hasBracketed = false;
+        let match;
+        while ((match = bracketsRegex.exec(phraseText)) !== null) {
+            const bracketed = match[1];
+            if (normalizeWordForHighlight(bracketed) === normalizeWordForHighlight(vocabularyWord)) {
+                hasBracketed = true;
+                break;
+            }
+        }
+        
+        // If vocabulary word is not bracketed, find and bracket it
+        if (!hasBracketed && vocabularyWord) {
+            const vocabRegex = new RegExp(`\\b${escapeRegExp(vocabularyWord)}\\b`, 'gi');
+            phraseWithBrackets = phraseText.replace(vocabRegex, (match) => {
+                // Make sure it's not already in brackets by checking the bracket regex
+                const alreadyBracketed = /\[[^\]]*\b\w+\b[^\]]*\]/.test(phraseWithBrackets);
+                if (!alreadyBracketed) {
+                    return `[${match}]`;
+                }
+                return match;
+            });
+        }
+    }
+    
+    // Parse all bracketed words
+    const highlightMatches = [...phraseWithBrackets.matchAll(/\[([^\]]+)\]/g)];
+    const highlightWords = new Set();
+
+    highlightMatches.forEach(match => {
+        match[1]
+            .split(/\s+/)
+            .map(part => normalizeWordForHighlight(part))
+            .filter(Boolean)
+            .forEach(normalized => highlightWords.add(normalized));
+    });
+
+    const cleanPhrase = phraseWithBrackets.replace(/\[([^\]]+)\]/g, '$1');
+    const htmlSegments = [];
+    const wordRegex = /\S+/g;
+
+    let lastIndex = 0;
+    let wordIndex = 0;
+    let match;
+
+    while ((match = wordRegex.exec(cleanPhrase)) !== null) {
+        const start = match.index;
+        const end = start + match[0].length;
+
+        if (start > lastIndex) {
+            const spacer = cleanPhrase.slice(lastIndex, start);
+            htmlSegments.push(escapeHtml(spacer));
+        }
+
+        const displayWord = match[0];
+        const normalizedWord = normalizeWordForHighlight(displayWord);
+        const classes = ['phrase-word'];
+
+        if (highlightWords.has(normalizedWord)) {
+            classes.push('highlight-word');
+        }
+
+        htmlSegments.push(
+            `<span class="${classes.join(' ')}" data-word-index="${wordIndex}" data-start="${start}" data-end="${end}">${escapeHtml(displayWord)}</span>`
+        );
+
+        wordIndex += 1;
+        lastIndex = end;
+    }
+
+    if (lastIndex < cleanPhrase.length) {
+        htmlSegments.push(escapeHtml(cleanPhrase.slice(lastIndex)));
+    }
+
+    return {
+        html: htmlSegments.join(''),
+        cleanPhrase
     };
 }
 
@@ -1474,14 +1581,17 @@ function displayUnitWords(unit) {
                         // Handle both old string format and new object format
                         if (typeof phrase === 'object' && phrase.english) {
                             // New format: {english, chinese}
-                            const englishPhrase = escapeHtml(phrase.english);
+                            // Pass the vocabulary word to auto-mark it in the phrase
+                            const { html: phraseMarkup, cleanPhrase } = buildPhraseMarkup(phrase.english, word.english);
+                            const encodedPhrase = escapeHtml(cleanPhrase);
                             const chinesePhrase = phrase.chinese ? ` ${escapeHtml(phrase.chinese)}` : '';
-                            return `<li><strong>${englishPhrase}</strong>${chinesePhrase} <button class="phrase-audio-btn" data-phrase="${englishPhrase}" aria-label="Play phrase" title="播放搭配">
+                            return `<li><strong>${phraseMarkup}</strong>${chinesePhrase} <button class="phrase-audio-btn" data-phrase="${encodedPhrase}" aria-label="Play phrase" title="播放搭配">
                                 <i class="fas fa-volume-up"></i>
                             </button></li>`;
                         } else {
                             // Old format: string
-                            return `<li>${escapeHtml(phrase)}</li>`;
+                            const { html: phraseMarkup, cleanPhrase } = buildPhraseMarkup(phrase);
+                            return `<li>${phraseMarkup}</li>`;
                         }
                     }).join('')}
                 </ul>
