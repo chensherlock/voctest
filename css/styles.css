@@ -829,34 +829,47 @@ h2::after {
 }
 
 .flashcard-item-type {
-    margin-top: 12px;
-    padding: 8px;
-    background-color: rgba(52, 152, 219, 0.1);
-    border-left: 3px solid #3498db;
+    margin-top: 16px;
+    padding: 12px 14px;
+    background-color: #f0f4f8;
+    border-left: 4px solid #3498db;
     border-radius: 4px;
-    font-size: 12px;
-    color: #2c3e50;
+    font-size: 13px;
+    color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .item-type-label {
-    font-weight: 600;
-    color: #3498db;
+    font-weight: 700;
+    color: #2980b9;
     text-transform: uppercase;
-    font-size: 11px;
-    letter-spacing: 0.5px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    padding: 3px 8px;
+    border-radius: 3px;
+    background-color: rgba(52, 152, 219, 0.15);
 }
 
 .item-type-label.phrase {
-    color: #e67e22;
+    color: #c27803;
+    background-color: rgba(230, 126, 34, 0.15);
+    border-left: 3px solid #e67e22;
+    padding-left: 8px;
 }
 
 .item-type-label.related {
-    color: #9b59b6;
+    color: #7d3c62;
+    background-color: rgba(155, 89, 182, 0.15);
+    border-left: 3px solid #9b59b6;
+    padding-left: 8px;
 }
 
 .parent-word-label {
-    color: #555;
+    color: #333;
     font-style: italic;
+    font-weight: 500;
 }
 
 .chinese-line {
@@ -1144,34 +1157,47 @@ h2::after {
 }
 
 .quiz-item-type {
-    background-color: rgba(52, 152, 219, 0.1);
+    background-color: #f0f4f8;
     border-left: 4px solid #3498db;
-    padding: 10px 14px;
+    padding: 12px 14px;
     margin-bottom: 15px;
     border-radius: 4px;
     font-size: 13px;
-    color: #2c3e50;
+    color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .quiz-type-label {
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
-    font-size: 11px;
-    letter-spacing: 0.5px;
-    color: #3498db;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #2980b9;
+    padding: 3px 8px;
+    border-radius: 3px;
+    background-color: rgba(52, 152, 219, 0.15);
 }
 
 .quiz-type-label.phrase {
-    color: #e67e22;
+    color: #c27803;
+    background-color: rgba(230, 126, 34, 0.15);
+    border-left: 3px solid #e67e22;
+    padding-left: 8px;
 }
 
 .quiz-type-label.related {
-    color: #9b59b6;
+    color: #7d3c62;
+    background-color: rgba(155, 89, 182, 0.15);
+    border-left: 3px solid #9b59b6;
+    padding-left: 8px;
 }
 
 .quiz-parent-label {
-    color: #555;
+    color: #333;
     font-style: italic;
+    font-weight: 500;
 }
 
 .quiz-options {
