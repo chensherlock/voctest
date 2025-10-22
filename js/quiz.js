@@ -257,7 +257,7 @@ async function prepareQuizWords() {
                             type: 'phrase',
                             parentWord: word.english,
                             pronunciation: word.pronunciation,
-                            example: [`Example from: ${word.english}`],
+                            example: word.example ? (Array.isArray(word.example) ? word.example : [word.example]) : [`Example from: ${word.english}`],
                             unitId: unitId
                         };
                         words.push(phraseItem);
@@ -746,8 +746,10 @@ async function getRandomOptions(correctWord, optionCount = 4) {
     if (randomWords.length < neededOptions) {
         console.error(`Could not generate ${neededOptions} random options. Only got ${randomWords.length}. Total words available: ${otherWords.length}`);
         // Fill with duplicates as last resort
+        let i = 0;
         while (randomWords.length < neededOptions && randomWords.length > 0) {
-            randomWords.push(randomWords[randomWords.length % randomWords.length]);
+            randomWords.push(randomWords[i % randomWords.length]);
+            i++;
         }
     }
 

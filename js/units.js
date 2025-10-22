@@ -439,10 +439,6 @@ if ('speechSynthesis' in window) {
 }
 
 // Display status message
-function escapeRegExp(str) {
-    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
-
 function scheduleTranslatorWarmup() {
     if (!supportsTranslationApi || translatorPromise) {
         return;
@@ -1263,10 +1259,19 @@ function buildPhraseMarkup(phraseText, vocabularyWord) {
         // If vocabulary word is not bracketed, find and bracket it
         if (!hasBracketed && vocabularyWord) {
             const vocabRegex = new RegExp(`\\b${escapeRegExp(vocabularyWord)}\\b`, 'gi');
-            phraseWithBrackets = phraseText.replace(vocabRegex, (match) => {
-                // Make sure it's not already in brackets by checking the bracket regex
-                const alreadyBracketed = /\[[^\]]*\b\w+\b[^\]]*\]/.test(phraseWithBrackets);
-                if (!alreadyBracketed) {
+            phraseWithBrackets = phraseText.replace(vocabRegex, (match, offset) => {
+                // Check if this specific match position is already within brackets
+                const beforeMatch = phraseText.substring(0, offset);
+                const afterMatch = phraseText.substring(offset + match.length);
+
+                // Count open and close brackets before this match
+                const openBracketsBeforeMatch = (beforeMatch.match(/\[/g) || []).length;
+                const closeBracketsBeforeMatch = (beforeMatch.match(/\]/g) || []).length;
+
+                // If there's an unmatched open bracket before this match, it's inside brackets
+                const isInsideBrackets = openBracketsBeforeMatch > closeBracketsBeforeMatch;
+
+                if (!isInsideBrackets) {
                     return `[${match}]`;
                 }
                 return match;

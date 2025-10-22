@@ -193,9 +193,14 @@ const userProgress = {
     },
 
     // Get progress stats for a unit
-    getUnitProgress(unitId) {
+    async getUnitProgress(unitId) {
         const unit = getUnitById(unitId);
         if (!unit) return { total: 0, mastered: 0, percentage: 0 };
+
+        // Ensure unit words are loaded
+        if (!unit.words || unit.words.length === 0) {
+            await loadUnitWordsFromFile(unitId);
+        }
 
         const progress = JSON.parse(localStorage.getItem('vocabProgress')) || {};
         let masteredCount = 0;

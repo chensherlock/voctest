@@ -437,7 +437,7 @@ async function loadWords() {
                         type: 'phrase',
                         parentWord: word.english,
                         pronunciation: word.pronunciation,
-                        example: [`Example: ${word.example ? word.example[0] : ''}`]
+                        example: [`Example: ${word.example ? (Array.isArray(word.example) ? word.example[0] : word.example) : ''}`]
                     };
                     currentWords.push(phraseItem);
                 }
@@ -614,10 +614,10 @@ function updateCardDisplay() {
                     relatedItem.appendChild(englishSpan);
                     
                     if (related.pronunciation) {
-                        const pronouncationSpan = document.createElement('span');
-                        pronouncationSpan.className = 'related-pronunciation';
-                        pronouncationSpan.textContent = ' ' + related.pronunciation;
-                        relatedItem.appendChild(pronouncationSpan);
+                        const pronunciationSpan = document.createElement('span');
+                        pronunciationSpan.className = 'related-pronunciation';
+                        pronunciationSpan.textContent = ' ' + related.pronunciation;
+                        relatedItem.appendChild(pronunciationSpan);
                     }
                     
                     if (related.chinese && Array.isArray(related.chinese)) {
