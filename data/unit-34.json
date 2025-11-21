@@ -1,0 +1,99 @@
+{
+  "id": 34,
+  "title": "課本3 Unit 4",
+  "words": [
+    {
+      "english": "environment",
+      "chinese": [
+        "n. [C] 環境"
+      ],
+      "example": [
+        "We need to protect the [environment] for future generations."
+      ]
+    },
+    {
+      "english": "pollution",
+      "chinese": [
+        "n. [U] 污染"
+      ],
+      "example": [
+        "Air [pollution] is a serious problem in big cities."
+      ]
+    },
+    {
+      "english": "recycle",
+      "chinese": [
+        "vt. vi. 回收利用"
+      ],
+      "example": [
+        "We should [recycle] plastic bottles instead of throwing them away."
+      ]
+    },
+    {
+      "english": "reduce",
+      "chinese": [
+        "vt. 減少, 降低"
+      ],
+      "example": [
+        "We need to [reduce] our use of plastic bags."
+      ]
+    },
+    {
+      "english": "waste",
+      "chinese": [
+        "n. [U] 廢棄物, 浪費",
+        "vt. 浪費"
+      ],
+      "example": [
+        "Food [waste] is a big problem in many countries.",
+        "Don't [waste] water when you brush your teeth."
+      ]
+    },
+    {
+      "english": "protect",
+      "chinese": [
+        "vt. 保護"
+      ],
+      "example": [
+        "We must [protect] endangered animals."
+      ]
+    },
+    {
+      "english": "nature",
+      "chinese": [
+        "n. [U] 大自然, 自然界"
+      ],
+      "example": [
+        "Spending time in [nature] can reduce stress."
+      ]
+    },
+    {
+      "english": "climate",
+      "chinese": [
+        "n. [C][U] 氣候"
+      ],
+      "example": [
+        "[Climate] change is affecting weather patterns worldwide."
+      ]
+    },
+    {
+      "english": "energy",
+      "chinese": [
+        "n. [U] 能源, 精力"
+      ],
+      "example": [
+        "Solar [energy] is a clean source of power.",
+        "After a good night's sleep, I have more [energy]."
+      ]
+    },
+    {
+      "english": "sustainable",
+      "chinese": [
+        "adj. 可持續的"
+      ],
+      "example": [
+        "We need to find [sustainable] ways to use natural resources."
+      ]
+    }
+  ]
+}

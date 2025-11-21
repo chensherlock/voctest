@@ -1566,7 +1566,7 @@ function displayUnitWords(unit) {
         const pronunciationHTML = word.pronunciation ? `
             <div class="word-pronunciation">
                 <span class="pronunciation-label">發音：</span>
-                <span class="pronunciation-value">${escapeHtml(word.pronunciation)}</span>
+                <span class="pronunciation-value">${Array.isArray(word.pronunciation) ? word.pronunciation.map(p => escapeHtml(p)).join(' / ') : escapeHtml(word.pronunciation)}</span>
                 <button class="pronunciation-audio-btn" data-word="${escapeHtml(word.english)}" aria-label="Play pronunciation" title="播放發音">
                     <i class="fas fa-volume-up"></i>
                 </button>

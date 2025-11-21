@@ -76,6 +76,20 @@
       "default": false,
       "file": "unit-32.json",
       "video": "https://www.sanmin.com.tw/api/attachment/URL6/4711289874621"
+    },
+    {
+      "id": 33,
+      "title": "課本3 Unit 3",
+      "default": true,
+      "file": "unit-33.json",
+      "video": ""
+    },
+    {
+      "id": 34,
+      "title": "課本3 Unit 4",
+      "default": true,
+      "file": "unit-34.json",
+      "video": ""
     }
   ]
 }

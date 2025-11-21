@@ -1,0 +1,386 @@
+{
+  "id": 33,
+  "title": "課本3 Unit 3",
+  "words": [
+    {
+      "english": "failure",
+      "chinese": [
+        "n. [U][C] 失敗"
+      ],
+      "example": [
+        "Gary is depressed about his [failure] to win the road race."
+      ],
+      "pronunciation": "/'feljɚ/"
+    },
+    {
+      "english": "amusing",
+      "chinese": [
+        "adj. 有趣的，好玩的"
+      ],
+      "example": [
+        "This writer is famous for his [amusing] Facebook posts, and they always make the readers laugh."
+      ],
+      "pronunciation": "/ə'mjuzɪŋ/"
+    },
+    {
+      "english": "amuse",
+      "pronunciation": "/ə'mjuz/",
+      "chinese": [
+        "vt. 逗樂，逗笑"
+      ],
+      "example": [
+        "The baby's funny face [amused] everyone."
+      ]
+    },
+    {
+      "english": "gather",
+      "chinese": [
+        "vt. vi. 收集，聚集"
+      ],
+      "example": [
+        "Mia [gathered] her colored pencils and put them into her pencil case."
+      ],
+      "pronunciation": "/'gæðɚ/"
+    },
+    {
+      "english": "organization",
+      "chinese": [
+        "n. [C] 組織，機構"
+      ],
+      "example": [
+        "Mr. Huang donates money to an [organization] every month to help poor children."
+      ],
+      "pronunciation": "/ˌɔrgənaɪ'zeʃən/"
+    },
+    {
+        "english": "organize",
+        "pronunciation": "/'ɔrgəˌnaɪz/",
+        "chinese": [
+          "vt. 組織，籌備"
+        ],
+        "example": [
+          "Nick is [organizing] a party for Amber to celebrate hes birthday."
+        ]
+    },
+    {
+      "english": "research",
+      "chinese": [
+        "n. [U] 研究，調查",
+        "vt. 研究，調查"
+      ],
+      "example": [
+        "Anna is doing [research] on new ways to bake a cake.",
+        "The students were asked to [research] their family tree for their homework."
+      ],
+      "pronunciation": "/'risɝtʃ/ (n.) / /rɪ'sɝtʃ/ (v.)"
+    },
+    {
+      "english": "display",
+      "chinese": [
+        "vt. 展示",
+        "n. [C] 展覽，陳列"
+      ],
+      "example": [
+        "The young artist was excited to [display] her works at a famous arts festival.",
+        "When the little boy passed by the toy store, he was attracted to the window [display]."
+      ],
+      "pronunciation": "/dɪ'sple/"
+    },
+    {
+      "english": "insist",
+      "chinese": [
+        "vi. vt. 堅持"
+      ],
+      "example": [
+        "To become a better cook, Julie [insists] on practicing her knife skills every day."
+      ],
+      "pronunciation": "/ɪn'sɪst/"
+    },
+    {
+      "english": "goal",
+      "chinese": [
+        "n. [C] 目的，目標"
+      ],
+      "example": [
+        "After months of hard work, Daniel achieved his [goal] of getting one hundred thousand fans on YouTube."
+      ],
+      "pronunciation": "/gol/"
+    },
+    {
+      "english": "particularly",
+      "chinese": [
+        "adv. 特別，尤其"
+      ],
+      "example": [
+        "I didn't eat much for lunch, so I feel [particularly] hungry now."
+      ],
+      "pronunciation": "/pɚ'tɪkjələlɪ/"
+    },
+    {
+        "english": "particular",
+        "pronunciation": "/pɚ'tɪkjələ/",
+        "chinese": [
+          "adj. 特別的，特定的"
+        ],
+        "example": [
+          "Jack only drinks [particular] types of tea, such as green and black tea."
+        ]
+    },
+    {
+      "english": "frozen",
+      "chinese": [
+        "adj. 冷凍的"
+      ],
+      "example": [
+        "Rebecca puts the [frozen] meat in warm water, so she can cook it for lunch later."
+      ],
+      "pronunciation": "/'frozn/"
+    },
+    {
+        "english": "freeze",
+        "pronunciation": "/friz/",
+        "chinese": [
+          "vt. vi. 結冰，凝固"
+        ],
+        "example": [
+            "Ms. Wang [froze] the dumplings to make sure that they stayed fresh."
+        ]
+    },
+    {
+      "english": "mix",
+      "chinese": [
+        "n. [sing.] 混合 (物)",
+        "vt. vi. 混合"
+      ],
+      "example": [
+        "The color green is a [mix] of blue and yellow.",
+        "Nancy likes to make her own drinks. She often [mixes] green tea with milk."
+      ],
+      "pronunciation": "/mɪks/"
+    },
+    {
+      "english": "flavor",
+      "chinese": [
+        "n. [C] 味道"
+      ],
+      "example": [
+        "Gary loves the strong [flavor] of blue cheese."
+      ],
+      "pronunciation": "/'flevɚ/"
+    },
+    {
+      "english": "period",
+      "chinese": [
+        "n. [C] 一段時間，時期"
+      ],
+      "example": [
+        "Ariel is so busy that she hasn't visited her parents for a long [period] of time."
+      ],
+      "pronunciation": "/'pɪrɪəd/"
+    },
+    {
+      "english": "represent",
+      "chinese": [
+        "vt. 象徵，表示"
+      ],
+      "example": [
+        "The ding-dong sound from Mandy's smartphone [represents] an incoming LINE message."
+      ],
+      "pronunciation": "/ˌrɛprɪ'zɛnt/"
+    },
+    {
+        "english": "representation",
+        "pronunciation": "/ˌrɛprɪzɛn'teʃən/",
+        "chinese": [
+          "n. [C] 代表，象徵"
+        ],
+        "example": [
+          "The statue in the part serves as an important [representation] of unity."
+        ]
+    },
+    {
+        "english": "representative",
+        "pronunciation": "/ˌrɛprɪ'zɛntətɪv/",
+        "chinese": [
+          "n. [C] 代表"
+        ],
+        "example": [
+          "The company sent a [representative] to attend the meeting on saving electricity."
+        ]
+    },
+    {
+      "english": "enjoyable",
+      "chinese": [
+        "adj. 令人愉快的"
+      ],
+      "example": [
+        "We had an [enjoyable] picnic with delicious food and music."
+      ],
+      "pronunciation": "/ɪn'dʒɔɪəbl/"
+    },
+    {
+      "english": "willing",
+      "chinese": [
+        "adj. 願意的"
+      ],
+      "example": [
+        "Tom is [willing] to do anything to promote his new product."
+      ],
+      "pronunciation": "/'wɪlɪŋ/"
+    },
+    {
+        "english": "will",
+        "chinese": [
+            "n. [C][U] 意願，意志"
+        ],
+        "example": [
+            "Although Mike is losing energy in the game, he stil has a strong [will] to win."
+        ],
+        "pronunciation":  "/wɪl/"
+    },
+    {
+      "english": "embrace",
+      "chinese": [
+        "vt. 欣然接受，擁抱"
+      ],
+      "example": [
+        "My grandparents are glad to [embrace] new technology although it takes time to learn."
+      ],
+      "pronunciation": "/ɪm'bres/"
+    },
+    {
+      "english": "path",
+      "chinese": [
+        "n. [C] 道路，小徑"
+      ],
+      "example": [
+        "I walk down a [path] between the two houses to get to my school every day."
+      ],
+      "pronunciation": "/pæθ/"
+    },
+    {
+      "english": "game console",
+      "chinese": [
+        "n. [C] 遊戲機"
+      ],
+      "pronunciation": "/gem 'kɑn,sol/"
+    },
+    {
+      "english": "light bulb",
+      "chinese": [
+        "n. [C] 燈泡"
+      ],
+      "pronunciation": "/'laɪt bʌlb/"
+    },
+    {
+      "english": "Rubik's Cube",
+      "chinese": [
+        "n. [C] 魔術方塊"
+      ],
+      "pronunciation": "/'rubɪkz ,kjub/"
+    },
+    {
+      "english": "motivate",
+      "chinese": [
+        "vt. 激勵"
+      ],
+      "pronunciation": "/'motə,vet/"
+    },
+    {
+      "english": "Sweden",
+      "chinese": [
+        "n. 瑞典"
+      ],
+      "pronunciation": "/'swidn/"
+    },
+    {
+      "english": "Zagreb",
+      "chinese": [
+        "n. 札格雷布"
+      ],
+      "pronunciation": "/'zɑgrɛb/"
+    },
+    {
+      "english": "Croatia",
+      "chinese": [
+        "n. 克羅埃西亞"
+      ],
+      "pronunciation": "/kroʊ'eʃə/"
+    },
+    {
+      "english": "insufficient",
+      "chinese": [
+        "adj. 不足的"
+      ],
+      "pronunciation": "/ˌɪnsə'fɪʃənt/"
+    },
+    {
+      "english": "chip",
+      "chinese": [
+        "n. [C] 洋芋片"
+      ],
+      "pronunciation": "/tʃɪp/"
+    },
+    {
+      "english": "diarrhea",
+      "chinese": [
+        "n. [U] 腹瀉"
+      ],
+      "pronunciation": "/ˌdaɪə'riə/"
+    },
+    {
+      "english": "have...in common",
+      "chinese": [
+        "有……共通點"
+      ],
+      "example": [
+        "Judy and Ray [have] a lot [in common]. For example, they both love sushi and ramen."
+      ]
+    },
+    {
+      "english": "come up with",
+      "chinese": [
+        "提出 (想法)"
+      ],
+      "example": [
+        "We had a problem with our science project, but Alisa [came up with] a smart solution."
+      ]
+    },
+    {
+      "english": "get/be tired of",
+      "chinese": [
+        "厭倦"
+      ],
+      "example": [
+        "Tyler [was tired of] his room, so he decided to decorate it."
+      ]
+    },
+    {
+      "english": "due to",
+      "chinese": [
+        "由於，因為"
+      ],
+      "example": [
+        "The delay in the building project was [due to] the snowstorm."
+      ]
+    },
+    {
+      "english": "behind the times",
+      "chinese": [
+        "過時，落伍"
+      ],
+      "example": [
+        "Nowadays, an MP3 player is thought to be [behind the times]."
+      ]
+    },
+    {
+      "english": "go out of business",
+      "chinese": [
+        "破產，停業"
+      ],
+      "example": [
+        "The restaurant [went out of business] because fewer and fewer customers chose to eat there."
+      ]
+    }
+  ]
+}
