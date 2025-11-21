@@ -80,7 +80,7 @@
       "example": [
         "The typhoon was a great [disaster] in this area. Many people lost their homes because of it."
       ],
-      "pronunciation": "/dɪ'zæstɚ/",
+      "pronunciation": "/dɪ'zæstɚ/"
     },
     {
       "english": "survive",
@@ -130,7 +130,7 @@
         "adj. 與環境相關的"
       ],
       "example": [
-        "The study deals with some global [environmental] issues, such as climate change.",
+        "The study deals with some global [environmental] issues, such as climate change."
       ],
       "pronunciation": "/ɪn,vaɪrən'mɛntl/"
     },
@@ -153,6 +153,221 @@
         "The growing number of cars and scooters in the city is causing serious air [pollution]."
       ],
       "pronunciation": "/pə'luʃən/"
+    },
+    {
+      "english": "float",
+      "chinese": [
+        "vi. vt. 漂浮"
+      ],
+      "example": [
+        "My sister loves to [float] her toy rubber ducks on the water when she takes a bath."
+      ],
+      "pronunciation": "/flot/"
+    },
+    {
+      "english": "incident",
+      "chinese": [
+        "n. [C] 事件"
+      ],
+      "example": [
+        "Despite the bad weather, the boat arrived at the shore without [incident]."
+      ],
+      "pronunciation": "/'ɪnsədənt/"
+    },
+    {
+      "english": "urgent",
+      "chinese": [
+        "adj. 急迫的，緊急的"
+      ],
+      "example": [
+        "Ryan is in [urgent] need of his medicine, or he may become too weak to stand."
+      ],
+      "pronunciation": "/'ɝdʒənt/"
+    },
+    {
+      "english": "urge",
+      "chinese": [
+        "vt. 催促，力勸"
+      ],
+      "example": [
+        "Ben [urged] me to get in the taxi quickly because we were going to be late for work."
+      ],
+      "pronunciation": "/ɝdʒ/"
+    },
+    {
+      "english": "reduce",
+      "chinese": [
+        "vt. 減少，降低"
+      ],
+      "example": [
+        "This laptop is on sale. The price has been [reduced] from twenty thousand to ten thousand dollars."
+      ],
+      "pronunciation": "/rɪ'djus/"
+    },
+    {
+      "english": "reduction",
+      "chinese": [
+        "n. [C][U] 減少，降低"
+      ],
+      "example": [
+        "The company announced significant [reductions] in staff due to budget cuts."
+      ],
+      "pronunciation": "/rɪ'dʌkʃən/"
+    },
+    {
+      "english": "effort",
+      "chinese": [
+        "n. [C][U] 努力，盡力"
+      ],
+      "example": [
+        "The baby is making an [effort] to climb the stairs by himself."
+      ],
+      "pronunciation": "/'ɛfɚt/"
+    },
+    {
+      "english": "crisis 複數：crises",
+      "chinese": [
+        "n. [C][U] 危機"
+      ],
+      "example": [
+        "Mandy and Brian's relationship is in [crisis]. They fight more and more often."
+      ],
+      "pronunciation": "/'kraɪsɪs/"
+    },
+    {
+      "english": "meanwhile",
+      "chinese": [
+        "adv. 同時"
+      ],
+      "example": [
+        "Julie has already left work for the day. [Meanwhile], her boss is still sending emails for her to check."
+      ],
+      "pronunciation": "/'minˌhwaɪl/"
+    },
+    {
+      "english": "ban",
+      "chinese": [
+        "vt. 禁止"
+      ],
+      "example": [
+        "Smoking is [banned] in this restaurant, so customers need to go outside to smoke."
+      ],
+      "pronunciation": "/bæn/"
+    },
+    {
+      "english": "currently",
+      "chinese": [
+        "adv. 目前，現在"
+      ],
+      "example": [
+        "Tickets to that show are [currently] available, so let's get some soon!"
+      ],
+      "pronunciation": "/'kʌrəntlɪ/"
+    },
+    {
+      "english": "current",
+      "chinese": [
+        "adj. 現在的，當前的"
+      ],
+      "example": [
+        "The [current] trend in fashion favors bold colors and expressive designs."
+      ],
+      "pronunciation": "/'kʌrənt/"
+    },
+    {
+      "english": "wonder",
+      "chinese": [
+        "vt. vi. 想知道"
+      ],
+      "example": [
+        "I was [wondering] who put this love letter in my desk drawer."
+      ],
+      "pronunciation": "/'wʌndɚ/"
+    },
+    {
+      "english": "stick",
+      "chinese": [
+        "n. [C] 棍棒"
+      ],
+      "pronunciation": "/stɪk/"
+    },
+    {
+      "english": "hooray",
+      "chinese": [
+        "interj. 萬歲"
+      ],
+      "pronunciation": "/hʊ're/"
+    },
+    {
+      "english": "coral reef",
+      "chinese": [
+        "n. [C] 珊瑚礁"
+      ],
+      "pronunciation": "/'kɔrəl rif/"
+    },
+    {
+      "english": "poke",
+      "chinese": [
+        "vt. 戳"
+      ],
+      "pronunciation": "/pok/"
+    },
+    {
+      "english": "angel",
+      "chinese": [
+        "n. [C] 天使"
+      ],
+      "pronunciation": "/'endʒəl/"
+    },
+    {
+      "english": "nostril",
+      "chinese": [
+        "n. [C] 鼻孔"
+      ],
+      "pronunciation": "/'nɑstrɪl/"
+    },
+    {
+      "english": "marathon",
+      "chinese": [
+        "n. [C] 馬拉松"
+      ],
+      "pronunciation": "/'mærəˌθɑn/"
+    },
+    {
+      "english": "by accident",
+      "chinese": [
+        "意外地，偶然地"
+      ],
+      "example": [
+        "When Mary realized that she stepped on Jack's foot [by accident], she immediately apologized to him."
+      ]
+    },
+    {
+      "english": "throw up",
+      "chinese": [
+        "吐，嘔吐"
+      ],
+      "example": [
+        "Leo drank too much, so he is now [throwing up] in the restroom."
+      ]
+    },
+    {
+      "english": "break down",
+      "chinese": [
+        "分解"
+      ],
+      "example": [
+        "The doctor said that there was too much gas in my stomach because the food wasn't [broken down] well enough."
+      ]
+    },
+    {
+      "english": "cut down on",
+      "chinese": [
+        "減少"
+      ],
+      "example": [
+        "Kate decided to [cut down on] sugary drinks to stay healthy."
+      ]
     }
   ]
 }
