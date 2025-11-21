@@ -3,97 +3,156 @@
   "title": "課本3 Unit 4",
   "words": [
     {
-      "english": "environment",
+      "english": "breathe",
       "chinese": [
-        "n. [C] 環境"
+        "vi. vt. 呼吸"
       ],
       "example": [
-        "We need to protect the [environment] for future generations."
-      ]
+        "When Cole feels angry, he often [breathes] deeply to calm himself down."
+      ],
+      "pronunciation": "/brið/"
+    },
+    {
+      "english": "breath",
+      "chinese": [
+        "n. [C] 一口氣"
+      ],
+      "example": [
+        "When Tim's new smartphone fell from his hands, he took a deep [breath]."
+      ],
+      "pronunciation": "/brɛθ/"
+    },
+    {
+      "english": "swallow",
+      "chinese": [
+        "vt. vi. 吞"
+      ],
+      "example": [
+        "Rita was so hungry that she [swallowed] three wheel cakes within five minutes."
+      ],
+      "pronunciation": "/'swɑlo/"
+    },
+    {
+      "english": "painful",
+      "chinese": [
+        "adj. 疼痛的，痛苦的"
+      ],
+      "example": [
+        "Thanks to the nurse, the injury to Mike's finger soon became less [painful]."
+      ],
+      "pronunciation": "/'penfəl/"
+    },
+    {
+      "english": "pain",
+      "chinese": [
+        "n. [C][U] 疼痛，痛苦"
+      ],
+      "example": [
+        "When I stepped on a nail, I felt a sharp [pain] in my foot."
+      ],
+      "pronunciation": "/pen/"
+    },
+    {
+      "english": "annoying",
+      "chinese": [
+        "adj. 惱人的"
+      ],
+      "example": [
+        "It is [annoying] that people talk during movies."
+      ],
+      "pronunciation": "/ə'nɔɪɪŋ/"
+    },
+    {
+      "english": "annoy",
+      "chinese": [
+        "vt. 惹惱，使生氣"
+      ],
+      "example": [
+        "A mosquito really [annoyed] me last night. I could not sleep well because of it!"
+      ],
+      "pronunciation": "/ə'nɔɪ/"
+    },
+    {
+      "english": "disaster",
+      "chinese": [
+        "n. [C][U] 災難，災害"
+      ],
+      "example": [
+        "The typhoon was a great [disaster] in this area. Many people lost their homes because of it."
+      ],
+      "pronunciation": "/dɪ'zæstɚ/",
+    },
+    {
+      "english": "survive",
+      "chinese": [
+        "vi. vt. 活下來，從……中生還"
+      ],
+      "example": [
+        "My character in the mobile game [survived] the attack although it was almost beaten."
+      ],
+      "pronunciation": "/sɚ'vaɪv/"
+    },
+    {
+      "english": "survival",
+      "chinese": [
+        "n. [U] 存活，生還"
+      ],
+      "example": [
+        "People in poor countries have to fight for [survival] every day."
+      ],
+      "pronunciation": "/sɚ'vaɪvl/"
+    },
+    {
+      "english": "creature",
+      "chinese": [
+        "n. [C] 生物"
+      ],
+      "example": [
+        "Cockroaches are one of the [creatures] that I dislike the most because they make me feel sick."
+      ],
+      "pronunciation": "/'kritʃɚ/"
+    },
+    {
+      "english": "environment",
+      "chinese": [
+        "n. [sing.] (the ~) 自然環境",
+        "n. [C][U] 環境，周遭"
+      ],
+      "example": [
+        "To protect the [environment], we can choose to use reusable chopsticks instead of single-use ones.",
+        "Wesley placed a shower chair in the bathroom to make it a safer [environment] for his grandma."
+      ],
+      "pronunciation": "/ɪn'vaɪrənmənt/"
+    },
+    {
+      "english": "environmental",
+      "chinese": [
+        "adj. 與環境相關的"
+      ],
+      "example": [
+        "The study deals with some global [environmental] issues, such as climate change.",
+      ],
+      "pronunciation": "/ɪn,vaɪrən'mɛntl/"
+    },
+    {
+      "english": "pollute",
+      "chinese": [
+        "vt. 汙染"
+      ],
+      "example": [
+        "Don't throw your trash into the river! You will [pollute] the water."
+      ],
+      "pronunciation": "/pə'lut/"
     },
     {
       "english": "pollution",
       "chinese": [
-        "n. [U] 污染"
+        "n. [U] 汙染"
       ],
       "example": [
-        "Air [pollution] is a serious problem in big cities."
-      ]
-    },
-    {
-      "english": "recycle",
-      "chinese": [
-        "vt. vi. 回收利用"
+        "The growing number of cars and scooters in the city is causing serious air [pollution]."
       ],
-      "example": [
-        "We should [recycle] plastic bottles instead of throwing them away."
-      ]
-    },
-    {
-      "english": "reduce",
-      "chinese": [
-        "vt. 減少, 降低"
-      ],
-      "example": [
-        "We need to [reduce] our use of plastic bags."
-      ]
-    },
-    {
-      "english": "waste",
-      "chinese": [
-        "n. [U] 廢棄物, 浪費",
-        "vt. 浪費"
-      ],
-      "example": [
-        "Food [waste] is a big problem in many countries.",
-        "Don't [waste] water when you brush your teeth."
-      ]
-    },
-    {
-      "english": "protect",
-      "chinese": [
-        "vt. 保護"
-      ],
-      "example": [
-        "We must [protect] endangered animals."
-      ]
-    },
-    {
-      "english": "nature",
-      "chinese": [
-        "n. [U] 大自然, 自然界"
-      ],
-      "example": [
-        "Spending time in [nature] can reduce stress."
-      ]
-    },
-    {
-      "english": "climate",
-      "chinese": [
-        "n. [C][U] 氣候"
-      ],
-      "example": [
-        "[Climate] change is affecting weather patterns worldwide."
-      ]
-    },
-    {
-      "english": "energy",
-      "chinese": [
-        "n. [U] 能源, 精力"
-      ],
-      "example": [
-        "Solar [energy] is a clean source of power.",
-        "After a good night's sleep, I have more [energy]."
-      ]
-    },
-    {
-      "english": "sustainable",
-      "chinese": [
-        "adj. 可持續的"
-      ],
-      "example": [
-        "We need to find [sustainable] ways to use natural resources."
-      ]
+      "pronunciation": "/pə'luʃən/"
     }
   ]
 }
