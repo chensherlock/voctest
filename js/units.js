@@ -1662,6 +1662,9 @@ function displayUnitWords(unit) {
                             <i class="fas fa-volume-up"></i>
                         </button>
                         ${exampleGeneratorButtonHTML}
+                        <button class="play-word-examples-btn" data-word="${escapeHtml(word.english)}" aria-label="Play word and examples" title="播放字彙和例句">
+                            <i class="fas fa-play"></i>
+                        </button>
                         ${videoButton}
                     </div>
                     <div class="chinese">${chineseHTML}</div>
@@ -1731,6 +1734,15 @@ function displayUnitWords(unit) {
             }
         }
 
+        // Add event listener for play word and examples button
+        const playWordExamplesBtn = wordItem.querySelector('.play-word-examples-btn');
+        if (playWordExamplesBtn) {
+            playWordExamplesBtn.addEventListener('click', async (e) => {
+                e.stopPropagation();
+                await playWordAndExamples(word.english, wordItem);
+            });
+        }
+
         // Add event listeners for example audio buttons
         const exampleAudioBtns = wordItem.querySelectorAll('.example-audio-btn');
         exampleAudioBtns.forEach(btn => {
@@ -1764,7 +1776,68 @@ function displayUnitWords(unit) {
             });
         }
 
+        // Add keyboard navigation to each word item
+        wordItem.addEventListener('keydown', (e) => {
+            if (e.key !== 'ArrowUp' && e.key !== 'ArrowDown') return;
+            
+            e.preventDefault();
+            
+            const wordItems = Array.from(wordList.querySelectorAll('.word-item'));
+            const currentIndex = wordItems.indexOf(wordItem);
+            let nextIndex = currentIndex;
+            
+            if (e.key === 'ArrowDown' && currentIndex < wordItems.length - 1) {
+                nextIndex = currentIndex + 1;
+            } else if (e.key === 'ArrowUp' && currentIndex > 0) {
+                nextIndex = currentIndex - 1;
+            }
+            
+            // Focus the first focusable element in the next/previous word item
+            const nextWordItem = wordItems[nextIndex];
+            const focusableElement = nextWordItem.querySelector('button, [tabindex], .word-item');
+            if (focusableElement) {
+                focusableElement.focus();
+            }
+        });
+
         wordList.appendChild(wordItem);
+    });
+
+    // Add keyboard navigation for word items
+    wordList.addEventListener('keydown', (e) => {
+        if (e.key !== 'ArrowUp' && e.key !== 'ArrowDown') return;
+        
+        e.preventDefault();
+        
+        const wordItems = Array.from(wordList.querySelectorAll('.word-item'));
+        const currentFocusedItem = document.activeElement.closest('.word-item');
+        
+        if (!currentFocusedItem || !wordItems.includes(currentFocusedItem)) {
+            // Focus first item if no item is currently focused
+            if (wordItems.length > 0) {
+                const firstFocusableElement = wordItems[0].querySelector('button, [tabindex]');
+                if (firstFocusableElement) {
+                    firstFocusableElement.focus();
+                }
+            }
+            return;
+        }
+        
+        const currentIndex = wordItems.indexOf(currentFocusedItem);
+        let nextIndex = currentIndex;
+        
+        if (e.key === 'ArrowDown' && currentIndex < wordItems.length - 1) {
+            nextIndex = currentIndex + 1;
+        } else if (e.key === 'ArrowUp' && currentIndex > 0) {
+            nextIndex = currentIndex - 1;
+        }
+        
+        // Focus the first focusable element in the next/previous word item
+        const nextWordItem = wordItems[nextIndex];
+        const focusableElement = nextWordItem.querySelector('button, [tabindex]');
+        if (focusableElement) {
+            focusableElement.focus();
+        }
     });
 
 }
@@ -2344,5 +2417,187 @@ function playExampleSentence(sentence, button) {
     } else {
         showAudioStatus('您的瀏覽器不支援語音合成');
         restoreButton();
+    }
+}
+
+/**
+ * Play the vocabulary word and then all example sentences sequentially
+ * @param {string} word - The vocabulary word to play
+ * @param {HTMLElement} wordItem - The word item element containing examples
+ */
+async function playWordAndExamples(word, wordItem) {
+    if (!word || !wordItem) return;
+
+    try {
+        // Cancel any active playback
+        if (activeExamplePlayback) {
+            const previousPlayback = activeExamplePlayback;
+            activeExamplePlayback = null;
+
+            if (typeof previousPlayback.clearWordHighlight === 'function') {
+                previousPlayback.clearWordHighlight();
+            }
+
+            if (typeof previousPlayback.restoreButton === 'function') {
+                previousPlayback.restoreButton();
+            }
+
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+            }
+        }
+
+        // Add playing state to word item
+        wordItem.classList.add('playing');
+
+        // First, play the vocabulary word
+        await new Promise((resolve) => {
+            showAudioStatus('播放字彙中...');
+            
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.lang = 'en-US';
+                utterance.rate = 1.0 * audioService.getPronunciationSpeed();
+                
+                const preferredVoice = audioService.getPreferredVoice();
+                if (preferredVoice) {
+                    utterance.voice = preferredVoice;
+                }
+                
+                utterance.onend = () => {
+                    resolve();
+                };
+                
+                utterance.onerror = () => {
+                    resolve();
+                };
+                
+                window.speechSynthesis.speak(utterance);
+            } else {
+                resolve();
+            }
+        });
+
+        // Then, play each example sentence
+        const exampleButtons = wordItem.querySelectorAll('.example-audio-btn');
+        if (exampleButtons.length === 0) {
+            showAudioStatus('此字彙沒有例句');
+            wordItem.classList.remove('playing');
+            return;
+        }
+
+        for (let btnIndex = 0; btnIndex < exampleButtons.length; btnIndex++) {
+            const btn = exampleButtons[btnIndex];
+            const sentence = decodeHtmlEntities(btn.dataset.sentence || '');
+            if (!sentence) continue;
+
+            const exampleLine = btn.closest('.example-line');
+            const exampleText = exampleLine ? exampleLine.querySelector('.example-text') : null;
+            const wordSpans = exampleText ? Array.from(exampleText.querySelectorAll('.example-word')) : [];
+            const wordBoundaries = wordSpans.map(span => ({
+                start: Number(span.dataset.start),
+                end: Number(span.dataset.end),
+                span
+            }));
+            let currentWordSpan = null;
+
+            if (exampleLine) {
+                exampleLine.classList.add('playing');
+            }
+
+            const clearWordHighlight = () => {
+                if (currentWordSpan) {
+                    currentWordSpan.classList.remove('current-word');
+                    currentWordSpan = null;
+                }
+                wordSpans.forEach(span => span.classList.remove('current-word'));
+            };
+
+            const highlightWordAtChar = (charIndex) => {
+                if (!wordBoundaries.length || typeof charIndex !== 'number') {
+                    return;
+                }
+
+                let target = null;
+                for (let i = 0; i < wordBoundaries.length; i += 1) {
+                    const boundary = wordBoundaries[i];
+                    if (charIndex >= boundary.start && charIndex < boundary.end) {
+                        target = boundary;
+                        break;
+                    }
+                    if (charIndex >= boundary.end) {
+                        target = boundary;
+                    }
+                }
+
+                if (!target) {
+                    target = wordBoundaries[wordBoundaries.length - 1];
+                }
+
+                if (target && target.span !== currentWordSpan) {
+                    if (currentWordSpan) {
+                        currentWordSpan.classList.remove('current-word');
+                    }
+                    target.span.classList.add('current-word');
+                    currentWordSpan = target.span;
+                }
+            };
+
+            const cleanupLineHighlight = () => {
+                clearWordHighlight();
+                if (exampleLine) {
+                    exampleLine.classList.remove('playing');
+                }
+            };
+
+            await new Promise((resolve) => {
+                showAudioStatus(`播放例句 (${btnIndex + 1}/${exampleButtons.length})...`);
+                
+                if ('speechSynthesis' in window) {
+                    const utterance = new SpeechSynthesisUtterance(sentence);
+                    utterance.lang = 'en-US';
+                    utterance.rate = 0.9 * audioService.getPronunciationSpeed();
+                    
+                    const preferredVoice = audioService.getPreferredVoice();
+                    if (preferredVoice) {
+                        utterance.voice = preferredVoice;
+                    }
+
+                    utterance.onstart = () => {
+                        highlightWordAtChar(0);
+                    };
+
+                    utterance.onboundary = (event) => {
+                        if (typeof event.charIndex === 'number') {
+                            highlightWordAtChar(event.charIndex);
+                        }
+                    };
+                    
+                    utterance.onend = () => {
+                        cleanupLineHighlight();
+                        resolve();
+                    };
+                    
+                    utterance.onerror = () => {
+                        cleanupLineHighlight();
+                        resolve();
+                    };
+                    
+                    window.speechSynthesis.speak(utterance);
+                } else {
+                    resolve();
+                }
+            });
+
+            // Add a small delay between sentences
+            await new Promise(resolve => setTimeout(resolve, 500));
+        }
+
+        wordItem.classList.remove('playing');
+        showAudioStatus('播放完成');
+    } catch (err) {
+        console.error('Error playing word and examples:', err);
+        wordItem.classList.remove('playing');
+        showAudioStatus('播放出錯');
     }
 }

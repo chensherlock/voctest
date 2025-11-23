@@ -699,7 +699,7 @@ h2::after {
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 18px;
+    font-size: 24px;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.7);
     opacity: 0.8;
@@ -1524,8 +1524,8 @@ label.incorrect::after {
 }
 
 .word-header .audio-btn:hover {
-    color: var(--secondary-color);
-    background-color: rgba(52, 152, 219, 0.1);
+    color: var(--selection-color);
+    background-color: rgba(255, 123, 0, 0.1);
     transform: scale(1.15);
 }
 
@@ -1653,12 +1653,33 @@ label.incorrect::after {
 }
 
 .word-header .video-btn:hover {
-    color: #ee5a52;
-    background-color: rgba(255, 107, 107, 0.1);
+    color: var(--selection-color);
+    background-color: rgba(255, 123, 0, 0.1);
     transform: scale(1.15);
 }
 
 .word-header .video-btn:active {
+    transform: scale(0.95);
+}
+
+.word-header .play-word-examples-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-size: 16px;
+    padding: 4px 6px;
+    transition: var(--transition);
+    border-radius: 4px;
+}
+
+.word-header .play-word-examples-btn:hover {
+    color: var(--selection-color);
+    background-color: rgba(255, 123, 0, 0.1);
+    transform: scale(1.15);
+}
+
+.word-header .play-word-examples-btn:active {
     transform: scale(0.95);
 }
 
@@ -2021,7 +2042,7 @@ footer {
 
     /* Flashcard front hint on tablet */
     .flashcard-front-hint {
-        font-size: 16px;
+        font-size: 20px;
         top: 18px;
     }
 
@@ -2261,7 +2282,7 @@ footer {
 
     /* Flashcard front hint on mobile */
     .flashcard-front-hint {
-        font-size: 14px;
+        font-size: 18px;
         top: 15px;
     }
 
@@ -2616,7 +2637,7 @@ footer {
     }
 
     .flashcard-front-hint {
-        font-size: 12px;
+        font-size: 16px;
         top: 10px;
     }
 
@@ -3130,7 +3151,7 @@ footer {
 }
 
 .flashcard-back .audio-btn:hover {
-    background: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 123, 0, 0.3);
     transform: translateX(-50%) scale(1.1);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
@@ -3258,7 +3279,7 @@ footer {
 .word-item .example-rewrite-btn {
     background: none;
     border: none;
-    color: #9c27b0;
+    color: var(--secondary-color);
     cursor: pointer;
     font-size: 12px;
     padding: 2px 4px;
@@ -3271,8 +3292,8 @@ footer {
 }
 
 .word-item .example-rewrite-btn:hover {
-    color: #7b1fa2;
-    background-color: rgba(156, 39, 176, 0.12);
+    color: var(--selection-color);
+    background-color: rgba(255, 123, 0, 0.12);
     transform: scale(1.05);
 }
 
@@ -3286,7 +3307,7 @@ footer {
 }
 
 .word-item .example-line.playing .example-rewrite-btn {
-    color: #7b1fa2;
+    color: var(--selection-color);
 }
 
 .example-translation {
@@ -3401,8 +3422,8 @@ footer {
 }
 
 .word-item .example-audio-btn:hover {
-    color: var(--secondary-color);
-    background-color: rgba(52, 152, 219, 0.1);
+    color: var(--selection-color);
+    background-color: rgba(255, 123, 0, 0.1);
     transform: scale(1.1);
 }
 
@@ -3437,7 +3458,7 @@ footer {
 .phrase-audio-btn:hover,
 .related-audio-btn:hover {
     color: white;
-    background-color: #3498db;
+    background-color: var(--selection-color);
     transform: scale(1.1);
 }
 

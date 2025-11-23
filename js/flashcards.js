@@ -98,17 +98,21 @@ document.addEventListener('DOMContentLoaded', async () => {
     await loadWords();
 
     // Set up event listeners
-    flashcard.addEventListener('click', flipCard);
+    flashcard.addEventListener('click', (e) => {
+        // Check if the click is on the audio button or its children
+        if (e.target.closest('.audio-btn')) {
+            e.stopPropagation(); // Prevent the card from flipping
+            playCurrentAudio();
+        } else {
+            flipCard(e);
+        }
+    });
     prevCard.addEventListener('click', showPreviousCard);
     nextCard.addEventListener('click', showNextCard);
     shuffleCards.addEventListener('click', shuffleCurrentWords);
     startOver.addEventListener('click', resetFlashcards);
     cardDirection.addEventListener('change', handleDirectionChange);
     startFlashcardsBtn.addEventListener('click', handleStartFlashcards);
-    playAudioBtn.addEventListener('click', (e) => {
-        e.stopPropagation(); // Prevent the card from flipping
-        playCurrentAudio();
-    });
 
     // Create audio provider selector if it doesn't exist
     createAudioProviderSelector();
