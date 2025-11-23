@@ -1303,20 +1303,34 @@ h2::after {
 }
 
 /* Enhanced correct/incorrect styling for quiz */
-label.correct {
-    background-color: rgba(76, 175, 80, 0.15) !important;
+.quiz-options label.correct,
+.quiz-question .quiz-options label.correct {
+    background-color: rgba(76, 175, 80, 0.2) !important;
     border-color: var(--correct-color) !important;
-    color: var(--correct-color);
-    font-weight: 600;
+    color: var(--correct-color) !important;
+    font-weight: 700 !important;
     position: relative;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.3) !important;
 }
 
-label.incorrect {
-    background-color: rgba(244, 67, 54, 0.15) !important;
+.quiz-options label.correct *,
+.quiz-question .quiz-options label.correct * {
+    color: var(--correct-color) !important;
+}
+
+.quiz-options label.incorrect,
+.quiz-question .quiz-options label.incorrect {
+    background-color: rgba(244, 67, 54, 0.2) !important;
     border-color: var(--incorrect-color) !important;
-    color: var(--incorrect-color);
-    font-weight: 600;
+    color: var(--incorrect-color) !important;
+    font-weight: 700 !important;
     position: relative;
+    box-shadow: 0 0 8px rgba(244, 67, 54, 0.3) !important;
+}
+
+.quiz-options label.incorrect *,
+.quiz-question .quiz-options label.incorrect * {
+    color: var(--incorrect-color) !important;
 }
 
 label.correct::after {
@@ -1447,6 +1461,18 @@ label.incorrect::after {
 .summary-item .question-word {
     font-weight: 500;
     margin-right: 10px;
+}
+
+.summary-item .fill-blank-question {
+    background-color: rgba(0, 0, 0, 0.03);
+    padding: 10px 12px;
+    border-left: 3px solid var(--primary-color);
+    margin: 8px 0 8px 28px;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--dark-color);
+    font-style: italic;
 }
 
 .summary-item.correct .question-answer {

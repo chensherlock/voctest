@@ -8,6 +8,7 @@ const quizType = document.getElementById('quizType');
 const questionCount = document.getElementById('questionCount');
 const startQuiz = document.getElementById('startQuiz');
 const submitAnswer = document.getElementById('submitAnswer');
+const prevQuestion = document.getElementById('prevQuestion');
 const nextQuestion = document.getElementById('nextQuestion');
 const currentQuestion = document.getElementById('currentQuestion');
 const totalQuestions = document.getElementById('totalQuestions');
@@ -30,6 +31,7 @@ let selectedUnitIds = []; // Array of selected unit IDs
 let quizTypeValue = 'multiple-choice';
 let quizQuestionCount = 10;
 let allUnitWords = []; // Store all words from the selected units for range selection
+let autoAdvanceQuestions = true; // Auto-advance to next question after answering
 
 // Helper function to escape HTML special characters
 function escapeHtml(text) {
@@ -41,6 +43,30 @@ function escapeHtml(text) {
         "'": '&#039;'
     };
     return text.replace(/[&<>"']/g, m => map[m]);
+}
+
+// Cookie helper functions
+function setCookie(name, value, days = 365) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    const expires = `expires=${date.toUTCString()}`;
+    document.cookie = `${name}=${encodeURIComponent(JSON.stringify(value))};${expires};path=/`;
+}
+
+function getCookie(name) {
+    const nameEQ = `${name}=`;
+    const cookies = document.cookie.split(';');
+    for (let cookie of cookies) {
+        cookie = cookie.trim();
+        if (cookie.indexOf(nameEQ) === 0) {
+            try {
+                return JSON.parse(decodeURIComponent(cookie.substring(nameEQ.length)));
+            } catch (e) {
+                return null;
+            }
+        }
+    }
+    return null;
 }
 
 // Helper function to check if a word has valid examples for fill-in-blank
@@ -75,10 +101,35 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Set up event listeners
     startQuiz.addEventListener('click', handleStartQuiz);
     submitAnswer.addEventListener('click', handleSubmitAnswer);
-    //nextQuestion.addEventListener('click', handleNextQuestion);
+    prevQuestion.addEventListener('click', handlePrevQuestion);
+    nextQuestion.addEventListener('click', handleNextQuestion);
     retakeQuiz.addEventListener('click', handleRetakeQuiz);
     newQuiz.addEventListener('click', handleNewQuiz);
     reviewMissed.addEventListener('click', handleReviewMissed);
+
+    // Add listeners for auto-advance checkbox
+    const quizType = document.getElementById('quizType');
+    const autoAdvanceGroup = document.getElementById('autoAdvanceGroup');
+    const autoAdvanceCheckbox = document.getElementById('autoAdvanceQuestions');
+
+    // Initialize checkbox visibility based on current quiz type
+    if (quizType.value === 'fill-in-blank') {
+        autoAdvanceGroup.style.display = 'block';
+    }
+
+    // Show/hide auto-advance checkbox based on quiz type
+    quizType.addEventListener('change', () => {
+        if (quizType.value === 'fill-in-blank') {
+            autoAdvanceGroup.style.display = 'block';
+        } else {
+            autoAdvanceGroup.style.display = 'none';
+        }
+    });
+
+    // Update auto-advance state when checkbox changes
+    autoAdvanceCheckbox.addEventListener('change', () => {
+        autoAdvanceQuestions = autoAdvanceCheckbox.checked;
+    });
 });
 
 // Populate the unit checkboxes
@@ -118,15 +169,18 @@ async function populateUnitSelect() {
     allCheckbox.addEventListener('change', handleAllUnitsCheckbox);
 }
 
-// Select default units on page load
+// Select default units on page load or restore from cookies
 function selectDefaultUnits() {
     const units = getAllUnits();
+    
+    // Try to load saved units from cookie
+    const savedUnitIds = getCookie('selectedUnitIds');
+    const unitIdsToSelect = savedUnitIds && savedUnitIds.length > 0 ? savedUnitIds : units.filter(u => u.default).map(u => u.id);
+    
     units.forEach(unit => {
-        if (unit.default) {
-            const checkbox = document.querySelector(`input[value="${unit.id}"]`);
-            if (checkbox) {
-                checkbox.checked = true;
-            }
+        const checkbox = document.querySelector(`input[value="${unit.id}"]`);
+        if (checkbox) {
+            checkbox.checked = unitIdsToSelect.includes(unit.id);
         }
     });
     handleUnitCheckboxChange();
@@ -153,6 +207,9 @@ async function handleUnitCheckboxChange() {
     selectedUnitIds = Array.from(unitCheckboxes)
         .filter(cb => cb.checked)
         .map(cb => parseInt(cb.value));
+
+    // Save selected units to cookie
+    setCookie('selectedUnitIds', selectedUnitIds);
 
     // Update "all units" checkbox state
     const allChecked = Array.from(unitCheckboxes).every(cb => cb.checked);
@@ -306,6 +363,9 @@ async function prepareQuizWords() {
 
 // Display the current quiz question
 async function displayCurrentQuestion() {
+    console.log('=== displayCurrentQuestion called ===');
+    console.log('Current index:', currentQuizIndex);
+    
     if (currentQuizIndex < currentQuizWords.length) {
         const word = currentQuizWords[currentQuizIndex];
 
@@ -313,9 +373,11 @@ async function displayCurrentQuestion() {
         currentQuestion.textContent = (currentQuizIndex + 1).toString();
         quizProgress.style.width = `${((currentQuizIndex + 1) / currentQuizWords.length) * 100}%`;
 
-        // Clear previous question
+        // Clear previous question and data attributes
         quizContainer.innerHTML = '';
         quizContainer.classList.remove('fill-in-blank-mode');
+        delete quizContainer.dataset.currentOptions;
+        delete quizContainer.dataset.correctAnswer;
 
         // Create question based on quiz type
         switch (quizTypeValue) {
@@ -335,12 +397,26 @@ async function displayCurrentQuestion() {
                 await createFillInBlankQuestion(word);
                 break;
         }
-          // Hide submit button for multiple choice, matching, and pronunciation questions
-        // Only show for spelling questions until user presses Enter
+          // Show/hide submit button based on quiz type and auto-advance setting
         if (quizTypeValue === 'spelling') {
             submitAnswer.style.display = 'block';
+            prevQuestion.style.display = 'none';
+            nextQuestion.style.display = 'none';
+        } else if (quizTypeValue === 'fill-in-blank') {
+            if (autoAdvanceQuestions) {
+                // Auto-advance enabled: hide all buttons
+                submitAnswer.style.display = 'none';
+                prevQuestion.style.display = 'none';
+                nextQuestion.style.display = 'none';
+            } else {
+                // Auto-advance disabled: show submit and navigation buttons
+                submitAnswer.style.display = 'inline-block';
+                updateNavigationButtons();
+            }
         } else {
             submitAnswer.style.display = 'none';
+            prevQuestion.style.display = 'none';
+            nextQuestion.style.display = 'none';
         }
         
         submitAnswer.disabled = false;
@@ -676,23 +752,40 @@ async function createFillInBlankQuestion(word) {
     // Pick a random example with blank
     const selectedExample = examplesWithBlanks[Math.floor(Math.random() * examplesWithBlanks.length)];
 
+    // Extract the correct answer from brackets
+    const correctAnswerMatch = selectedExample.match(/\[([^\]]+)\]/);
+    const correctAnswer = correctAnswerMatch ? correctAnswerMatch[1] : word.english;
+
     // Replace [word] with _____ for display
     const displayExample = selectedExample.replace(/\[([^\]]+)\]/g, '_____');
 
     // Get options (1 correct + 3 random = 4 total)
     const options = await getRandomOptions(word, 4);
 
-    console.log('Fill-in-blank options generated:', options.length, options);
+    // Replace the base form in options with the correct form from the bracket
+    // This ensures "combined" appears in options, not "combine"
+    const optionsDisplay = options.map(option => {
+        if (option.english === word.english) {
+            // Replace the base word with the correct form
+            return { ...option, english: correctAnswer };
+        }
+        return option;
+    });
 
-    // Store options in a data attribute for later validation
-    quizContainer.dataset.currentOptions = JSON.stringify(options);
+    console.log('Fill-in-blank options generated:', optionsDisplay.length, optionsDisplay);
+    console.log('Correct answer for this question:', correctAnswer);
+
+    // Store options and correct answer in data attributes for later validation
+    // Store just the english values for easier comparison
+    quizContainer.dataset.currentOptions = JSON.stringify(optionsDisplay.map(o => o.english));
+    quizContainer.dataset.correctAnswer = correctAnswer;
 
     const questionElement = document.createElement('div');
     questionElement.className = 'quiz-question fill-in-blank';
     questionElement.innerHTML = `
         <div class="fill-blank-sentence">${displayExample}</div>
         <div class="quiz-options">
-            ${options.map((option, index) => `
+            ${optionsDisplay.map((option, index) => `
                 <label>
                     <input type="radio" name="answer" value="${index}" class="auto-submit-option">
                     ${option.english}
@@ -703,11 +796,13 @@ async function createFillInBlankQuestion(word) {
 
     quizContainer.appendChild(questionElement);
 
-    // Add event listeners to auto-submit when an option is selected
-    const radioButtons = document.querySelectorAll('.auto-submit-option');
-    radioButtons.forEach(radio => {
-        radio.addEventListener('change', handleSubmitAnswer);
-    });
+    // Add event listeners to auto-submit when an option is selected (only if auto-advance is enabled)
+    if (autoAdvanceQuestions) {
+        const radioButtons = document.querySelectorAll('.auto-submit-option');
+        radioButtons.forEach(radio => {
+            radio.addEventListener('change', handleSubmitAnswer);
+        });
+    }
 }
 
 // Get random options for multiple choice questions
@@ -761,6 +856,10 @@ async function getRandomOptions(correctWord, optionCount = 4) {
 
 // Handle answer submission
 function handleSubmitAnswer() {
+    console.log('=== handleSubmitAnswer called ===');
+    console.log('Quiz type:', quizTypeValue);
+    console.log('Auto-advance enabled:', autoAdvanceQuestions);
+    
     const word = currentQuizWords[currentQuizIndex];
     let isCorrect = false;
     let userAnswer = '';
@@ -786,21 +885,54 @@ function handleSubmitAnswer() {
                 const currentOptions = JSON.parse(quizContainer.dataset.currentOptions);
 
                 // Check if the selected option is correct
-                if (quizTypeValue === 'pronunciation') {
-                    isCorrect = currentOptions[optionIndex].english === word.english;
+                if (quizTypeValue === 'fill-in-blank') {
+                    // For fill-in-blank, compare against the extracted correct answer
+                    const correctAnswer = quizContainer.dataset.correctAnswer;
+                    isCorrect = currentOptions[optionIndex] === correctAnswer;
+                } else if (quizTypeValue === 'pronunciation') {
+                    isCorrect = currentOptions[optionIndex] === word.english;
                 } else {
-                    isCorrect = currentOptions[optionIndex].english === word.english;
+                    isCorrect = currentOptions[optionIndex] === word.english;
                 }
 
                 // Highlight correct and incorrect answers
+                let storedOptions;
+                try {
+                    storedOptions = JSON.parse(quizContainer.dataset.currentOptions);
+                } catch (e) {
+                    console.error('Failed to parse stored options:', e);
+                    storedOptions = [];
+                }
+                
+                console.log('storedOptions:', storedOptions);
+                console.log('Quiz type:', quizTypeValue);
+                console.log('quizContainer.dataset.correctAnswer:', quizContainer.dataset.correctAnswer);
+                
                 options.forEach((option, index) => {
                     const label = answerLabels[index];
-                    const optionWord = currentOptions[index];
+                    const optionEnglish = storedOptions[index];
 
-                    if (optionWord.english === word.english) {
+                    // Determine correct answer based on quiz type
+                    let correctAnswerToCheck = word.english;
+                    if (quizTypeValue === 'fill-in-blank') {
+                        correctAnswerToCheck = quizContainer.dataset.correctAnswer;
+                    }
+                    
+                    console.log(`Option ${index}: "${optionEnglish}" (type: ${typeof optionEnglish}) vs correct "${correctAnswerToCheck}" (type: ${typeof correctAnswerToCheck})`);
+                    
+                    // Ensure we're comparing strings
+                    const optionStr = String(optionEnglish || '').trim();
+                    const correctStr = String(correctAnswerToCheck || '').trim();
+                    
+                    console.log(`  After trim: "${optionStr}" vs "${correctStr}"`);
+                    console.log(`  Match: ${optionStr === correctStr}`);
+                    
+                    if (optionStr && optionStr === correctStr) {
                         label.classList.add('correct');
+                        console.log(`  ✓ Added correct class`);
                     } else if (index === optionIndex) {
                         label.classList.add('incorrect');
+                        console.log(`  ✗ Added incorrect class`);
                     }
 
                     option.disabled = true;
@@ -831,11 +963,24 @@ function handleSubmitAnswer() {
     }
     
     // Record the answer
-    selectedAnswers.push({
+    const answerRecord = {
         word: word,
         userAnswer: userAnswer,
         isCorrect: isCorrect
-    });
+    };
+    
+    // For fill-in-blank, also store the question with the correct answer filled in
+    if (quizTypeValue === 'fill-in-blank') {
+        const fillBlankSentence = document.querySelector('.fill-blank-sentence');
+        const correctAnswer = quizContainer.dataset.correctAnswer;
+        if (fillBlankSentence && correctAnswer) {
+            // Replace underscores with the correct answer to show what should have been answered
+            const questionWithAnswer = fillBlankSentence.textContent.trim().replace(/_{5,}/g, `「${correctAnswer}」`);
+            answerRecord.question = questionWithAnswer;
+        }
+    }
+    
+    selectedAnswers.push(answerRecord);
       // Update score
     if (isCorrect) {
         currentQuizScore++;
@@ -852,20 +997,56 @@ function handleSubmitAnswer() {
     // Disable submit button to prevent multiple submissions
     submitAnswer.disabled = true;
 
-    // Automatically advance to the next question after a delay
-    // Wait longer for incorrect answers (3 seconds) to allow review
-    const delay = isCorrect ? 1500 : 3000;
-    setTimeout(() => {
-        currentQuizIndex++;
-        displayCurrentQuestion();
-        submitAnswer.disabled = false;
-    }, delay);
+    // Automatically advance to the next question after a delay (only if auto-advance is enabled)
+    if (autoAdvanceQuestions && quizTypeValue === 'fill-in-blank') {
+        // Wait longer for incorrect answers (3 seconds) to allow review
+        const delay = isCorrect ? 1500 : 3000;
+        setTimeout(() => {
+            currentQuizIndex++;
+            displayCurrentQuestion();
+            submitAnswer.disabled = false;
+            updateNavigationButtons();
+        }, delay);
+    } else {
+        // If not auto-advancing, wait a moment to show colors, then show navigation buttons
+        if (quizTypeValue === 'fill-in-blank' && !autoAdvanceQuestions) {
+            // Wait to show colors before revealing navigation
+            const delay = isCorrect ? 800 : 1500;
+            setTimeout(() => {
+                submitAnswer.style.display = 'none';
+                submitAnswer.disabled = false;
+                updateNavigationButtons();
+            }, delay);
+        } else {
+            submitAnswer.disabled = false;
+        }
+    }
 }
 
-// Move to the next question
+// Update navigation button visibility and state
+function updateNavigationButtons() {
+    const isFirstQuestion = currentQuizIndex === 0;
+    const isLastQuestion = currentQuizIndex === currentQuizWords.length - 1;
+    
+    // Show/hide based on question position
+    prevQuestion.style.display = isFirstQuestion ? 'none' : 'inline-block';
+    nextQuestion.style.display = isLastQuestion ? 'none' : 'inline-block';
+}
+
+// Move to the previous question
+function handlePrevQuestion() {
+    if (currentQuizIndex > 0) {
+        currentQuizIndex--;
+        displayCurrentQuestion();
+        updateNavigationButtons();
+    }
+}
 function handleNextQuestion() {
-    currentQuizIndex++;
-    displayCurrentQuestion();
+    if (currentQuizIndex < currentQuizWords.length - 1) {
+        currentQuizIndex++;
+        displayCurrentQuestion();
+        updateNavigationButtons();
+    }
 }
 
 // Show quiz results
@@ -895,9 +1076,19 @@ function showQuizResults() {
         // Format Chinese translations (supports both string and array)
         const chineseDisplay = formatChineseDisplay(answer.word);
 
-        quizSummary.innerHTML += `
+        let summaryContent = `
             <div class="summary-item ${answer.isCorrect ? 'correct' : 'incorrect'}">
                 <span class="question-number">${index + 1}.</span>
+        `;
+        
+        // For fill-in-blank, show the question
+        if (answer.question) {
+            summaryContent += `
+                <div class="fill-blank-question">${answer.question}</div>
+            `;
+        }
+        
+        summaryContent += `
                 <span class="question-word">${answer.word.english}</span>
                 <span class="question-answer">${answer.isCorrect ?
                     `<i class="fas fa-check"></i> ${answer.userAnswer}` :
@@ -905,6 +1096,8 @@ function showQuizResults() {
                 </span>
             </div>
         `;
+        
+        quizSummary.innerHTML += summaryContent;
     });
     
     // Show results section
