@@ -1,3 +1,4 @@
+// Quiz JS Version 4 - All quiz types auto-advance
 // DOM elements
 const quizSetup = document.getElementById('quizSetup');
 const quizQuestions = document.getElementById('quizQuestions');
@@ -31,7 +32,6 @@ let selectedUnitIds = []; // Array of selected unit IDs
 let quizTypeValue = 'multiple-choice';
 let quizQuestionCount = 10;
 let allUnitWords = []; // Store all words from the selected units for range selection
-let autoAdvanceQuestions = true; // Auto-advance to next question after answering
 
 // Helper function to escape HTML special characters
 function escapeHtml(text) {
@@ -106,30 +106,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     retakeQuiz.addEventListener('click', handleRetakeQuiz);
     newQuiz.addEventListener('click', handleNewQuiz);
     reviewMissed.addEventListener('click', handleReviewMissed);
-
-    // Add listeners for auto-advance checkbox
-    const quizType = document.getElementById('quizType');
-    const autoAdvanceGroup = document.getElementById('autoAdvanceGroup');
-    const autoAdvanceCheckbox = document.getElementById('autoAdvanceQuestions');
-
-    // Initialize checkbox visibility based on current quiz type
-    if (quizType.value === 'fill-in-blank') {
-        autoAdvanceGroup.style.display = 'block';
-    }
-
-    // Show/hide auto-advance checkbox based on quiz type
-    quizType.addEventListener('change', () => {
-        if (quizType.value === 'fill-in-blank') {
-            autoAdvanceGroup.style.display = 'block';
-        } else {
-            autoAdvanceGroup.style.display = 'none';
-        }
-    });
-
-    // Update auto-advance state when checkbox changes
-    autoAdvanceCheckbox.addEventListener('change', () => {
-        autoAdvanceQuestions = autoAdvanceCheckbox.checked;
-    });
 });
 
 // Populate the unit checkboxes
@@ -397,27 +373,15 @@ async function displayCurrentQuestion() {
                 await createFillInBlankQuestion(word);
                 break;
         }
-          // Show/hide submit button based on quiz type and auto-advance setting
+          // Show/hide submit button based on quiz type
         if (quizTypeValue === 'spelling') {
             submitAnswer.style.display = 'block';
-            prevQuestion.style.display = 'none';
-            nextQuestion.style.display = 'none';
-        } else if (quizTypeValue === 'fill-in-blank') {
-            if (autoAdvanceQuestions) {
-                // Auto-advance enabled: hide all buttons
-                submitAnswer.style.display = 'none';
-                prevQuestion.style.display = 'none';
-                nextQuestion.style.display = 'none';
-            } else {
-                // Auto-advance disabled: show submit and navigation buttons
-                submitAnswer.style.display = 'inline-block';
-                updateNavigationButtons();
-            }
         } else {
+            // All other types auto-advance, hide all buttons
             submitAnswer.style.display = 'none';
-            prevQuestion.style.display = 'none';
-            nextQuestion.style.display = 'none';
         }
+        prevQuestion.style.display = 'none';
+        nextQuestion.style.display = 'none';
         
         submitAnswer.disabled = false;
     } else {
@@ -777,7 +741,13 @@ async function createFillInBlankQuestion(word) {
 
     // Store options and correct answer in data attributes for later validation
     // Store just the english values for easier comparison
-    quizContainer.dataset.currentOptions = JSON.stringify(optionsDisplay.map(o => o.english));
+    // Ensure we extract the english property safely, handling both string and object cases
+    const optionStrings = optionsDisplay.map(o => {
+        if (typeof o === 'string') return o;
+        if (o && typeof o === 'object') return o.english || String(o);
+        return String(o);
+    });
+    quizContainer.dataset.currentOptions = JSON.stringify(optionStrings);
     quizContainer.dataset.correctAnswer = correctAnswer;
 
     const questionElement = document.createElement('div');
@@ -796,13 +766,11 @@ async function createFillInBlankQuestion(word) {
 
     quizContainer.appendChild(questionElement);
 
-    // Add event listeners to auto-submit when an option is selected (only if auto-advance is enabled)
-    if (autoAdvanceQuestions) {
-        const radioButtons = document.querySelectorAll('.auto-submit-option');
-        radioButtons.forEach(radio => {
-            radio.addEventListener('change', handleSubmitAnswer);
-        });
-    }
+    // Add event listeners to auto-submit when an option is selected
+    const radioButtons = document.querySelectorAll('.auto-submit-option');
+    radioButtons.forEach(radio => {
+        radio.addEventListener('change', handleSubmitAnswer);
+    });
 }
 
 // Get random options for multiple choice questions
@@ -858,7 +826,6 @@ async function getRandomOptions(correctWord, optionCount = 4) {
 function handleSubmitAnswer() {
     console.log('=== handleSubmitAnswer called ===');
     console.log('Quiz type:', quizTypeValue);
-    console.log('Auto-advance enabled:', autoAdvanceQuestions);
     
     const word = currentQuizWords[currentQuizIndex];
     let isCorrect = false;
@@ -890,49 +857,62 @@ function handleSubmitAnswer() {
                     const correctAnswer = quizContainer.dataset.correctAnswer;
                     isCorrect = currentOptions[optionIndex] === correctAnswer;
                 } else if (quizTypeValue === 'pronunciation') {
-                    isCorrect = currentOptions[optionIndex] === word.english;
+                    // For pronunciation, options are objects with english property
+                    isCorrect = currentOptions[optionIndex]?.english === word.english;
+                } else if (quizTypeValue === 'matching' || quizTypeValue === 'multiple-choice') {
+                    // For matching/multiple-choice, options are objects with english property
+                    isCorrect = currentOptions[optionIndex]?.english === word.english;
                 } else {
                     isCorrect = currentOptions[optionIndex] === word.english;
                 }
 
                 // Highlight correct and incorrect answers
                 let storedOptions;
+                console.log('Raw dataset.currentOptions:', quizContainer.dataset.currentOptions);
                 try {
                     storedOptions = JSON.parse(quizContainer.dataset.currentOptions);
+                    console.log('Parsed storedOptions:', storedOptions);
+                    console.log('Type of first option:', typeof storedOptions[0]);
                 } catch (e) {
                     console.error('Failed to parse stored options:', e);
                     storedOptions = [];
                 }
                 
-                console.log('storedOptions:', storedOptions);
                 console.log('Quiz type:', quizTypeValue);
                 console.log('quizContainer.dataset.correctAnswer:', quizContainer.dataset.correctAnswer);
                 
                 options.forEach((option, index) => {
                     const label = answerLabels[index];
-                    const optionEnglish = storedOptions[index];
+                    const storedOption = storedOptions[index];
 
                     // Determine correct answer based on quiz type
-                    let correctAnswerToCheck = word.english;
+                    let isCorrectOption = false;
+                    
                     if (quizTypeValue === 'fill-in-blank') {
-                        correctAnswerToCheck = quizContainer.dataset.correctAnswer;
+                        // For fill-in-blank, storedOptions is an array of strings
+                        const correctAnswerToCheck = quizContainer.dataset.correctAnswer;
+                        const optionStr = String(storedOption || '').trim();
+                        const correctStr = String(correctAnswerToCheck || '').trim();
+                        isCorrectOption = optionStr === correctStr;
+                        console.log(`Fill-in-blank Option ${index}: "${optionStr}" vs correct "${correctStr}" = ${isCorrectOption}`);
+                    } else if (quizTypeValue === 'matching' || quizTypeValue === 'pronunciation' || quizTypeValue === 'multiple-choice') {
+                        // For matching/pronunciation/multiple-choice, storedOptions is an array of word objects
+                        // Compare the english property
+                        const optionEnglish = storedOption?.english || String(storedOption);
+                        const correctEnglish = word.english;
+                        isCorrectOption = optionEnglish === correctEnglish;
+                        console.log(`${quizTypeValue} Option ${index}: "${optionEnglish}" vs correct "${correctEnglish}" = ${isCorrectOption}`);
+                    } else {
+                        // Default comparison
+                        isCorrectOption = storedOption === word.english;
                     }
                     
-                    console.log(`Option ${index}: "${optionEnglish}" (type: ${typeof optionEnglish}) vs correct "${correctAnswerToCheck}" (type: ${typeof correctAnswerToCheck})`);
-                    
-                    // Ensure we're comparing strings
-                    const optionStr = String(optionEnglish || '').trim();
-                    const correctStr = String(correctAnswerToCheck || '').trim();
-                    
-                    console.log(`  After trim: "${optionStr}" vs "${correctStr}"`);
-                    console.log(`  Match: ${optionStr === correctStr}`);
-                    
-                    if (optionStr && optionStr === correctStr) {
+                    if (isCorrectOption) {
                         label.classList.add('correct');
-                        console.log(`  ✓ Added correct class`);
+                        console.log(`  ✓ Added correct class to option ${index}`);
                     } else if (index === optionIndex) {
                         label.classList.add('incorrect');
-                        console.log(`  ✗ Added incorrect class`);
+                        console.log(`  ✗ Added incorrect class to option ${index}`);
                     }
 
                     option.disabled = true;
@@ -997,30 +977,15 @@ function handleSubmitAnswer() {
     // Disable submit button to prevent multiple submissions
     submitAnswer.disabled = true;
 
-    // Automatically advance to the next question after a delay (only if auto-advance is enabled)
-    if (autoAdvanceQuestions && quizTypeValue === 'fill-in-blank') {
-        // Wait longer for incorrect answers (3 seconds) to allow review
-        const delay = isCorrect ? 1500 : 3000;
-        setTimeout(() => {
-            currentQuizIndex++;
-            displayCurrentQuestion();
-            submitAnswer.disabled = false;
-            updateNavigationButtons();
-        }, delay);
-    } else {
-        // If not auto-advancing, wait a moment to show colors, then show navigation buttons
-        if (quizTypeValue === 'fill-in-blank' && !autoAdvanceQuestions) {
-            // Wait to show colors before revealing navigation
-            const delay = isCorrect ? 800 : 1500;
-            setTimeout(() => {
-                submitAnswer.style.display = 'none';
-                submitAnswer.disabled = false;
-                updateNavigationButtons();
-            }, delay);
-        } else {
-            submitAnswer.disabled = false;
-        }
-    }
+    // Automatically advance to the next question after a delay (all quiz types)
+    const delay = isCorrect ? 500 : 2000;
+    console.log(`Auto-advancing in ${delay}ms (correct: ${isCorrect})`);
+    setTimeout(() => {
+        console.log('Auto-advancing to next question...');
+        currentQuizIndex++;
+        displayCurrentQuestion();
+        submitAnswer.disabled = false;
+    }, delay);
 }
 
 // Update navigation button visibility and state
