@@ -82,6 +82,30 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Populate unit checkboxes
     await populateUnitSelect();
 
+    // Restore quiz type and question count from cookies
+    const savedQuizType = getCookie('quizType');
+    const savedQuestionCount = getCookie('questionCount');
+    
+    const quizTypeSelect = document.getElementById('quizType');
+    const questionCountInput = document.getElementById('questionCount');
+    
+    if (savedQuizType && quizTypeSelect) {
+        quizTypeSelect.value = savedQuizType;
+    }
+    if (savedQuestionCount && questionCountInput) {
+        questionCountInput.value = savedQuestionCount;
+    }
+    
+    // Save quiz type when changed
+    quizTypeSelect.addEventListener('change', () => {
+        setCookie('quizType', quizTypeSelect.value);
+    });
+    
+    // Save question count when changed
+    questionCountInput.addEventListener('change', () => {
+        setCookie('questionCount', questionCountInput.value);
+    });
+
     // Check if a unit was specified in the URL
     const urlParams = new URLSearchParams(window.location.search);
     const unitId = urlParams.get('unit');
