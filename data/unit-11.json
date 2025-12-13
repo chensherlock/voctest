@@ -521,18 +521,130 @@
     {
       "english": "plan",
       "chinese": [
-        "n. [C] 計畫 (= arrangement)"
+        "n. [C] 計畫 (= arrangement)",
+        "vt. vi. 計劃；打算 (= intend)"
       ],
       "example": [
         "Linda always books flight tickets in advance when making holiday [plans].",
-        "琳達在做假期計畫時總會先預訂機票。"
+        "琳達在做假期計畫時總會先預訂機票。",
+        "Rick plans to take a trip to the countryside this weekend.",
+        "瑞克打算這個週末到鄉間旅行。"
       ],
       "phrases": [
         {"english": "make/work out/outline a [plan]", "chinese": "訂定計畫"},
         {"english": "ahead of [plan]", "chinese": "比原計畫提前"},
-        {"english": "have/make [plans] for sth.", "chinese": "為了某事物訂定計畫"}
+        {"english": "have/make [plans] for sth.", "chinese": "為了某事物訂定計畫"},
+        {"english": "[plan] to do sth.", "chinese": "計劃做某事"},
+        {"english": "[plan] on (doing) sth.", "chinese": "計劃（做）某事"},
+        {"english": "[plan] ahead", "chinese": "事前做好計劃"}
       ],
       "pronunciation": "/plæn/"
+    },
+    {
+      "english": "price",
+      "chinese": [
+        "n. [C] 價錢；費用 (= cost, fare, fee)",
+        "n. [S] 代價 (= cost, expense)"
+      ],
+      "example": [
+        "I bought this dress at a lower [price] because the store was having a sale.",
+        "我用較低的價錢買到這件洋裝，因為這間店正在舉辦特賣。"
+      ],
+      "phrases": [
+        {"english": "at a low/high [price]", "chinese": "以高／低價錢"},
+        {"english": "full-[price] / half-[price]", "chinese": "全額／半價"},
+        {"english": "[price] tag", "chinese": "價格標籤"},
+        {"english": "market [price]", "chinese": "市價"},
+        {"english": "pay the [price] (for sth.)", "chinese": "（為某事物）付出代價"},
+        {"english": "at any [price]", "chinese": "不惜任何代價"}
+      ],
+      "related": [
+        {
+          "english": "priceless",
+          "pronunciation": "/ˈpraɪsləs/",
+          "chinese": [
+            "adj. 無價的"
+          ]
+        }
+      ],
+      "pronunciation": "/praɪs/"
+    },
+    {
+      "english": "reduce",
+      "chinese": [
+        "vt. vi. (使) 減少 (= decrease)"
+      ],
+      "example": [
+        "Double-checking your work is a good way to [reduce] typing mistakes.",
+        "重複檢查你做的東西是減少打字錯誤的一個好方法。"
+      ],
+      "phrases": [
+        {"english": "reduce sth. by + 數量", "chinese": "使某物減少某數量"},
+        {"english": "reduce sth. to the minimum", "chinese": "把某事物的數量降到最低"},
+        {"english": "reduce sth. in size/number", "chinese": "在大小／數量上減少某物"}
+      ],
+      "related": [
+        {
+          "english": "reduction",
+          "pronunciation": "/rɪˈdʌkʃən/",
+          "chinese": [
+            "n. [C] [U] 減少"
+          ]
+        }
+      ],
+      "pronunciation": "/rɪˈdjuːs/"
+    },
+    {
+      "english": "refuse",
+      "chinese": [
+        "vt. vi. 拒絕"
+      ],
+      "example": [
+        "The boy [refused] to share his toys with other kids.",
+        "那個男孩拒絕跟其他小孩分享玩具。"
+      ],
+      "pronunciation": "/rɪˈfjuːz/"
+    },
+    {
+      "english": "repeat",
+      "chinese": [
+        "vt. 重複"
+      ],
+      "example": [
+        "The teacher [repeated] what she had said because the students didn’t understand her.",
+        "老師把她的話重複一遍，因為學生們沒聽懂。"
+      ],
+      "phrases": [
+        {"english": "repeat sth. after sb.", "chinese": "重複某人的某段話"},
+        {"english": "repeat oneself", "chinese": "重複講同樣的話"},
+        {"english": "history [repeats] itself", "chinese": "歷史重演"}
+      ],
+      "related": [
+        {
+          "english": "repetition",
+          "pronunciation": "/ˌrepɪˈtɪʃən/",
+          "chinese": [
+            "n. [C] [U] 重複；反覆"
+          ]
+        }
+      ],
+      "pronunciation": "/rɪˈpiːt/"
+    },
+    {
+      "english": "rich",
+      "chinese": [
+        "adj. 富裕的 (= wealthy, well off)",
+        "adj. 豐富的 (= plentiful)"
+      ],
+      "example": [
+        "Joe is very [rich] and can afford to buy expensive things.",
+        "喬很有錢，可以買得起昂貴的東西。"
+      ],
+      "phrases": [
+        {"english": "the [rich]", "chinese": "有錢人（表全體）"},
+        {"english": "be [rich] in sth.", "chinese": "富含某物"}
+      ],
+      "pronunciation": "/rɪtʃ/"
     }
   ]
 }
