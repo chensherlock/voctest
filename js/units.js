@@ -443,6 +443,41 @@ function escapeRegExp(str) {
     return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
+function buildTokenMarkupWithHighlights(displayToken, highlightWords, baseClass) {
+    if (!displayToken) return '';
+    if (!highlightWords || highlightWords.size === 0) return escapeHtml(displayToken);
+
+    const htmlSegments = [];
+    const wordPartRegex = /[A-Za-z0-9']+/g;
+    let lastIndex = 0;
+    let match;
+
+    while ((match = wordPartRegex.exec(displayToken)) !== null) {
+        const start = match.index;
+        const end = start + match[0].length;
+
+        if (start > lastIndex) {
+            htmlSegments.push(escapeHtml(displayToken.slice(lastIndex, start)));
+        }
+
+        const part = match[0];
+        const normalized = normalizeWordForHighlight(part);
+        if (normalized && highlightWords.has(normalized)) {
+            htmlSegments.push(`<span class="${baseClass} highlight-word">${escapeHtml(part)}</span>`);
+        } else {
+            htmlSegments.push(escapeHtml(part));
+        }
+
+        lastIndex = end;
+    }
+
+    if (lastIndex < displayToken.length) {
+        htmlSegments.push(escapeHtml(displayToken.slice(lastIndex)));
+    }
+
+    return htmlSegments.join('');
+}
+
 function scheduleTranslatorWarmup() {
     if (!supportsTranslationApi || translatorPromise) {
         return;
@@ -1214,7 +1249,7 @@ function buildExampleMarkup(exampleSentence) {
         }
 
         htmlSegments.push(
-            `<span class="${classes.join(' ')}" data-word-index="${wordIndex}" data-start="${start}" data-end="${end}">${escapeHtml(displayWord)}</span>`
+            `<span class="${classes.join(' ')}" data-word-index="${wordIndex}" data-start="${start}" data-end="${end}">${buildTokenMarkupWithHighlights(displayWord, highlightWords, 'example-word')}</span>`
         );
 
         wordIndex += 1;
@@ -1312,7 +1347,7 @@ function buildPhraseMarkup(phraseText, vocabularyWord) {
         }
 
         htmlSegments.push(
-            `<span class="${classes.join(' ')}" data-word-index="${wordIndex}" data-start="${start}" data-end="${end}">${escapeHtml(displayWord)}</span>`
+            `<span class="${classes.join(' ')}" data-word-index="${wordIndex}" data-start="${start}" data-end="${end}">${buildTokenMarkupWithHighlights(displayWord, highlightWords, 'phrase-word')}</span>`
         );
 
         wordIndex += 1;

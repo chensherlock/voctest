@@ -14,8 +14,8 @@
         "湯姆用抹布來吸掉桌面上的水。"
       ],
       "phrases": [
-        {"english": "absorb A into B", "chinese": "將A吸入B"},
-        {"english": "be absorbed in sth.", "chinese": "專注於某事物"}
+        {"english": "[absorb] A into B", "chinese": "將A吸入B"},
+        {"english": "be [absorbed] in sth.", "chinese": "專注於某事物"}
       ],
       "pronunciation": "/əbˈsɔrb/"
     },
@@ -645,6 +645,111 @@
         {"english": "be [rich] in sth.", "chinese": "富含某物"}
       ],
       "pronunciation": "/rɪtʃ/"
+    },
+    {
+      "english": "sometimes",
+      "chinese": [
+        "adv. 有時候 (= occasionally, (every) now and then, from time to time)"
+      ],
+      "example": [
+        "Cathy usually stays at home on weekends, but [sometimes] she goes to the movies.",
+        "凱西週末通常待在家裡，但她有時也會去看電影。"
+      ],
+      "pronunciation": "/ˈsʌmtaɪmz/"
+    },
+    {
+      "english": "standard",
+      "chinese": [
+        "n. [C] 標準；水準 (= norm)",
+        "n. [P] 行為標準",
+        "adj. 標準的；通常的 (= common, normal, regular, usual)"
+      ],
+      "example": [
+        "Kate is a hard-working student who sets herself high [standards].",
+        "凱特是一名用功的學生，她給自己設定很高的標準。",
+        "It’s a [standard] reply when the company receives questions like this.",
+        "當公司收到這類問題時，這是我們的標準答覆。"
+      ],
+      "phrases": [
+        {"english": "meet/achieve/conform to/comply with [standards]", "chinese": "符合標準"},
+        {"english": "below/not up to [standards]", "chinese": "不合標準"},
+        {"english": "double [standard]", "chinese": "雙重標準"},
+        {"english": "moral [standards]", "chinese": "道德標準"},
+        {"english": "SOP (= Standard Operating Procedures)", "chinese": "標準作業程序"},
+        {"english": "as [standard]", "chinese": "如同標準"}
+      ],
+      "pronunciation": "/ˈstændərd/"
+    },
+    {
+      "english": "stationary",
+      "chinese": [
+        "adj. 靜止的；不動的 (= fixed, still)"
+      ],
+      "example": [
+        "There were so many cars on the road that the traffic was almost [stationary].",
+        "路上的車多到幾乎是靜止的。"
+      ],
+      "pronunciation": "/ˈsteɪʃənˌeri/"
+    },
+    {
+      "english": "twisted",
+      "chinese": [
+        "adj. 扭曲的；變形的；扭傷的"
+      ],
+      "example": [
+        "Larry’s [twisted] ankle caused him pain for days.",
+        "賴瑞扭傷的腳踝讓他痛了好幾天。"
+      ],
+      "related": [
+        {
+          "english": "twist",
+          "pronunciation": "/twɪst/",
+          "chinese": [
+            "vt. 旋轉；纏繞；扭傷；曲解",
+            "vi. 旋轉；纏繞",
+            "n. [C] 扭轉"
+          ]
+        }
+      ],
+      "pronunciation": "/ˈtwɪstɪd/"
+    },
+    {
+      "english": "work",
+      "chinese": [
+        "vi. 工作；運作 (= operate)；行得通 (= succeed)",
+        "n. [U] 工作 (= employment, job)",
+        "n. [C] [U] 作品 (= piece)"
+      ],
+      "example": [
+        "I can’t go to the movies during the day because I have to [work].",
+        "我白天不能去看電影，因為我必須工作。",
+        "Cathy started her [work] as an assistant two years ago.",
+        "凱西在兩年前開始她當助理的工作。"
+      ],
+      "phrases": [
+        {"english": "[work] as + job title", "chinese": "擔任某職位"},
+        {"english": "[work] for sb./sth.", "chinese": "為……工作"},
+        {"english": "[work] on sth.", "chinese": "進行或致力於某事物"},
+        {"english": "[work] sth. out", "chinese": "解決某事物；算出某事物"},
+        {"english": "[work] out", "chinese": "健身；行得通"},
+        {"english": "[work] like magic/a charm", "chinese": "很有效"},
+        {"english": "[work] wonders/miracles", "chinese": "很有效"},
+        {"english": "at [work]", "chinese": "在工作中；起作用"},
+        {"english": "[work] hours/environment/experience", "chinese": "工作時間／環境／經驗"},
+        {"english": "out of [work]", "chinese": "失業的"},
+        {"english": "[work] of art", "chinese": "藝術品"},
+        {"english": "All work and no play makes Jack a dull boy.", "chinese": "只工作不玩耍會使人變笨。"}
+      ],
+      "related": [
+        {
+          "english": "worker",
+          "pronunciation": "/ˈwɜːrkər/",
+          "chinese": [
+            "n. [C] 工人；勞工；員工"
+          ]
+        }
+      ],
+      "pronunciation": "/wɜːrk/"
     }
   ]
 }
