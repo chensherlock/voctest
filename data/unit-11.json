@@ -1,0 +1,538 @@
+{
+  "id": 11,
+  "title": "📚 高頻 Unit 11",
+  "default": true,
+  "words": [
+    {
+      "english": "absorb",
+      "chinese": [
+        "vt. 吸收 (= take in)",
+        "vt. 使全神貫注 (常用於被動語態)"
+      ],
+      "example": [
+        "Tom used a rag to [absorb] the water on the table.",
+        "湯姆用抹布來吸掉桌面上的水。"
+      ],
+      "phrases": [
+        {"english": "absorb A into B", "chinese": "將A吸入B"},
+        {"english": "be absorbed in sth.", "chinese": "專注於某事物"}
+      ],
+      "pronunciation": "/əbˈsɔrb/"
+    },
+    {
+      "english": "arise",
+      "chinese": [
+        "vi. 出現 (= appear, emerge)",
+        "vi. 發生 (= happen, occur, take place)"
+      ],
+      "example": [
+        "Peter can work on weekends if the need [arises].",
+        "如果有需要的話，彼得可以在週末工作。"
+      ],
+      "phrases": [
+        {"english": "[arise] from sth.", "chinese": "起因於某事物"},
+        {"english": "if the need [arises]", "chinese": "如果有需要的話"}
+      ],
+      "pronunciation": "/əˈraɪz/",
+      "tense": {
+        "present": "arise",
+        "past": "arose",
+        "participle": "arisen"
+      }
+    },
+    {
+      "english": "assembly",
+      "chinese": [
+        "n. [C] 集會 (= meeting, gathering)；議會",
+        "n. [U] 組裝；裝配"
+      ],
+      "example": [
+        "All students are expected to attend the school [assembly] in the morning.",
+        "所有學生都要參加學校早上的集會。"
+      ],
+      "phrases": [
+        {"english": "assembly line", "chinese": "裝配線；生產線"}
+      ],
+      "related": [
+        {
+          "english": "assemble",
+          "pronunciation": "/əˈsɛmbl/",
+          "chinese": [
+            "vt. vi. 集會；聚集；組裝",
+            "vi. 集合"
+          ]
+        }
+      ],
+      "pronunciation": "/əˈsɛmbli/"
+    },
+    {
+      "english": "birth",
+      "chinese": [
+        "n. [C] [U] 出生"
+      ],
+      "example": [
+        "Sally gave [birth] to a pair of twins at the hospital yesterday.",
+        "莎莉昨天在醫院生下一對雙胞胎。"
+      ],
+      "phrases": [
+        {"english": "give birth to sb.", "chinese": "生下某人"},
+        {"english": "date of birth", "chinese": "出生日期"},
+        {"english": "birth rate", "chinese": "出生率"},
+        {"english": "birth father/mother", "chinese": "生父/母"}
+      ],
+      "pronunciation": "/bɜrθ/"
+    },
+    {
+      "english": "blame",
+      "chinese": [
+        "vt. 責怪；使歸咎於",
+        "n. [U] 責難；責任 (= responsibility)"
+      ],
+      "example": [
+        "Jeff always [blames] his own problems on other people.",
+        "傑夫總是將自己的問題歸咎於他人。",
+        "John put the [blame] for his lack of confidence on his strict teacher.",
+        "約翰將他缺乏自信的原因歸咎於那位嚴格的老師。"
+      ],
+      "phrases": [
+        {"english": "blame A for B", "chinese": "因為B而責怪A"},
+        {"english": "blame A on B", "chinese": "把A歸咎於B"},
+        {"english": "sb. is to blame (for sth.)", "chinese": "某人(因某事)受責難"},
+        {"english": "blame for sth.", "chinese": "對某事物的過失責任"},
+        {"english": "get the blame", "chinese": "被責怪"},
+        {"english": "take the blame", "chinese": "承擔過失責任"},
+        {"english": "put/lay the blame on sb.", "chinese": "將過失責任歸咎於某人"}
+      ],
+      "pronunciation": "/blem/"
+    },
+    {
+      "english": "capable",
+      "chinese": [
+        "adj. 能夠…的 (= able)；有能力的"
+      ],
+      "example": [
+        "Not everybody is [capable] of giving a speech before a large crowd.",
+        "並不是每個人都能夠在一大群人面前發表演說。"
+      ],
+      "phrases": [
+        {"english": "be capable of (doing) sth.", "chinese": "能夠做某事"}
+      ],
+      "related": [
+        {
+          "english": "capability",
+          "pronunciation": "/ˌkepəˈbɪləti/",
+          "chinese": [
+            "n. [C] [U] 能力"
+          ]
+        }
+      ],
+      "pronunciation": "/ˈkepəbl/"
+    },
+    {
+      "english": "charming",
+      "chinese": [
+        "adj. 有魅力的 (= appealing, attractive)"
+      ],
+      "example": [
+        "Many girls consider Timothy [charming] because he always acts like a gentleman.",
+        "許多女孩子認為提摩西很有魅力，因為他總是很有紳士風度。"
+      ],
+      "related": [
+        {
+          "english": "charm",
+          "pronunciation": "/tʃɑrm/",
+          "chinese": [
+            "n. [U] 魅力",
+            "n. [C] 護身符",
+            "vt. 使陶醉；迷住"
+          ]
+        }
+      ],
+      "pronunciation": "/ˈtʃɑrmɪŋ/"
+    },
+    {
+      "english": "colorful",
+      "chinese": [
+        "adj. 色彩鮮豔的 (= vivid)；五顏六色的；多采多姿的"
+      ],
+      "example": [
+        "Iris bought a [colorful] carpet to decorate her living room.",
+        "艾芮絲買了一張色彩鮮豔的地毯來佈置客廳。"
+      ],
+      "related": [
+        {
+          "english": "color",
+          "pronunciation": "/ˈkʌlɚ/",
+          "chinese": [
+            "n. [C] [U] 顏色",
+            "vt. 給…著色"
+          ]
+        }
+      ],
+      "pronunciation": "/ˈkʌlərfəl/"
+    },
+    {
+      "english": "diligent",
+      "chinese": [
+        "adj. 勤奮的 (= hard-working)"
+      ],
+      "example": [
+        "Tanya deserves to be promoted because she is a [diligent] and efficient employee.",
+        "唐雅被升職是應該的，因為她是一名勤奮又有效率的員工。"
+      ],
+      "related": [
+        {
+          "english": "diligence",
+          "pronunciation": "/ˈdɪlədʒəns/",
+          "chinese": [
+            "n. [U] 勤奮"
+          ]
+        }
+      ],
+      "pronunciation": "/ˈdɪlədʒənt/"
+    },
+    {
+      "english": "domestic",
+      "chinese": [
+        "adj. 家庭的；國內的"
+      ],
+      "example": [
+        "Nina finds imported fruits too expensive, so she only buys [domestic] ones.",
+        "妮娜發覺進口水果太貴了，所以她只買國產水果。"
+      ],
+      "phrases": [
+        {"english": "domestic dog/cat", "chinese": "家狗/貓"},
+        {"english": "domestic appliance/chores", "chinese": "家庭電器/雜務"},
+        {"english": "domestic violence", "chinese": "家暴"},
+        {"english": "domestic affairs/demands/flight/market", "chinese": "國內事務/需求/航班/市場"},
+        {"english": "gross domestic product (GDP)", "chinese": "國內生產毛額"}
+      ],
+      "pronunciation": "/dəˈmɛstɪk/"
+    },
+    {
+      "english": "explore",
+      "chinese": [
+        "vt. vi. 探索；探察"
+      ],
+      "example": [
+        "The little girl likes to [explore] and learn about the world around her.",
+        "那個小女孩喜歡探索並學習週遭世界的一切。",
+        "The [explorer] likes to go to places few people have ever been.",
+        "那名探險家喜歡前往鮮少有人去過的地方。"
+      ],
+      "related": [
+        {
+          "english": "explorer",
+          "pronunciation": "/ɪkˈsplɔrɚ/",
+          "chinese": [
+            "n. [C] 探險家"
+          ]
+        },
+        {
+          "english": "exploration",
+          "pronunciation": "/ˌɛkspləˈreʃən/",
+          "chinese": [
+            "n. [C] [U] 探索；探察；探討"
+          ]
+        }
+      ],
+      "pronunciation": "/ɪkˈsplɔr/"
+    },
+    {
+      "english": "founder",
+      "chinese": [
+        "n. [C] 創辦人；創始人"
+      ],
+      "example": [
+        "Bill Gates is famous for being the [founder] of Microsoft.",
+        "比爾蓋茲以微軟公司創辦人的身分聞名。",
+        "The Republic of China was [founded] in 1912.",
+        "中華民國是由其創辦人孫中山於1912年所建立的。"
+      ],
+      "related": [
+        {
+          "english": "found",
+          "pronunciation": "/faʊnd/",
+          "chinese": [
+            "vt. 創辦, 創立 (= establish, set up)"
+          ]
+        },
+        {
+          "english": "foundation",
+          "pronunciation": "/faʊnˈdeʃən/",
+          "chinese": [
+            "n. [C] 基礎；基金會",
+            "n. [U] 建立；創辦"
+          ]
+        }
+      ],
+      "pronunciation": "/ˈfaʊndɚ/",
+      "phrases": [
+        {"english": "be [founded] on/upon sth.", "chinese": "以某事物為根據或基礎"}
+      ]
+    },
+    {
+      "english": "glorious",
+      "chinese": [
+        "adj. 輝煌的；光榮的；美麗的 (= beautiful)；壯麗的 (= magnificent)"
+      ],
+      "example": [
+        "Jason is always bragging about his [glorious] past to his coworkers.",
+        "傑森總愛向他的同事們吹噓他過往的光榮事蹟。"
+      ],
+      "related": [
+        {
+          "english": "glory",
+          "pronunciation": "/ˈɡlɔri/",
+          "chinese": [
+            "n. [C] [U] 讚頌；光榮"
+          ]
+        }
+      ],
+      "pronunciation": "/ˈɡlɔrɪəs/"
+    },
+    {
+      "english": "greedy",
+      "chinese": [
+        "adj. 貪婪的"
+      ],
+      "example": [
+        "The [greedy] businessman is never satisfied with his profits.",
+        "這名貪婪的商人永遠不滿足於其獲利。"
+      ],
+      "phrases": [
+        {"english": "be greedy for sth.", "chinese": "貪圖某事物"}
+      ],
+      "related": [
+        {
+          "english": "greed",
+          "pronunciation": "/ɡrid/",
+          "chinese": [
+            "n. [U] 貪婪"
+          ]
+        }
+      ],
+      "pronunciation": "/ˈɡridɪ/"
+    },
+    {
+      "english": "high",
+      "chinese": [
+        "adj. 高的",
+        "adv. 高高地"
+      ],
+      "example": [
+        "Stacy got a [high] score on the test by studying hard.",
+        "史黛西靠著用功讀書得以在那個考試拿到高分。",
+        "The volleyball player jumped [high] to hit the ball over the net.",
+        "那名排球員跳得很高，把球打過球網。"
+      ],
+      "phrases": [
+        {"english": "It’s high time that + S + V-ed", "chinese": "該是…時候了"}
+      ],
+      "related": [
+        {
+          "english": "highly",
+          "pronunciation": "/ˈhaɪlɪ/",
+          "chinese": [
+            "adv. 高度地；極為"
+          ]
+        }
+      ],
+      "pronunciation": "/haɪ/"
+    },
+    {
+      "english": "height",
+      "pronunciation": "/haɪt/",
+      "chinese": [
+        "n. [C] [U] 高度；身高"
+      ],
+      "example": [
+        "My brother is of average [height] of a 15-year-old.",
+        "以十五歲來說，我弟弟的身高算是中等。"
+      ],
+      "phrases": [
+        {
+            "english": "... feet/meter in [height] / at [height] of ... feet / meter", 
+            "chinese": "... 英尺/公尺高"
+        }
+      ],      
+      "related": [
+      {
+        "english": "heighten",
+        "pronunciation": "/ˈhaɪtn/",
+        "chinese": [
+          "vt. vi. (使)增強"
+        ]
+        }
+      ]
+    },
+    {
+      "english": "illustrate",
+      "chinese": [
+        "vt. (用例子)闡明 (= explain)；加插圖於"
+      ],
+      "example": [
+        "These photographs [illustrate] how the environment has changed over the years.",
+        "這些照片闡明了環境在過去幾年來的改變。",
+        "This children's book is full of colorful [illustrations].",
+        "這本兒童書充滿彩色插圖。"
+      ],
+      "phrases": [
+        {"english": "[illustrate] a point", "chinese": "闡述論點"},
+        {"english": "give/provide an [illustration]", "chinese": "提出實例"},
+        {"english": "by way of [illustration]", "chinese": "以茲說明"}
+      ],
+      "related": [
+        {
+          "english": "illustration",
+          "pronunciation": "/ˌɪləˈstreʃən/",
+          "chinese": [
+            "n. [C] 圖解；插圖；實例 (= example, instance)"
+          ]
+        }
+      ],
+      "pronunciation": "/ˈɪləstret/"
+    },
+    {
+      "english": "infect",
+      "chinese": [
+        "vt. 感染"
+      ],
+      "example": [
+        "Thousands of people were [infected] with the flu last year.",
+        "去年有數千人感染了流行性感冒。",
+        "If you have an eye [infection], you should apply some drops right away.",
+        "如果你眼睛受到感染，你應該馬上點眼藥水。"
+      ],
+      "phrases": [
+        {"english": "be [infected] with sth.", "chinese": "感染上某疾病"}
+      ],
+      "related": [
+        {
+          "english": "infection",
+          "pronunciation": "/ɪnˈfɛkʃən/",
+          "chinese": [
+            "n. [C] [U] 感染"
+          ]
+        },
+        {
+          "english": "infectious",
+          "pronunciation": "/ɪnˈfɛkʃəs/",
+          "chinese": [
+            "adj. 傳染性的；有感染力的"
+          ]
+        }
+      ],
+      "pronunciation": "/ɪnˈfɛkt/"
+    },
+    {
+      "english": "inside",
+      "chinese": [
+        "prep. 在…之內 (= within)",
+        "adv. 向內；在裡面",
+        "adj. 內部的",
+        "n. [C] 裡面；內部 (常用單數形)"
+      ],
+      "example": [
+        "When it is cold outside, Tracy likes to stay [inside] her house.",
+        "當外面寒冷時，崔西喜歡待在屋子裡。",
+        "Kevin asked his guests waiting at the door to step [inside].",
+        "凱文請在門口的客人往裡面走。",
+        "Allen used [inside] information to make investments, but was caught and sent to prison for it.",
+        "艾倫利用內線消息來做投資，但他後來被抓到並因此被關進監獄。",
+        "The house looks old, but it is actually quite nice on the [inside].",
+        "這棟房子看起來很老舊，但實際上裡面環境不錯。"
+      ],
+      "phrases": [
+        {"english": "[inside] (of) sth.", "chinese": "在某物之內"},
+        {"english": "[inside] out", "chinese": "正反顛倒"},
+        {"english": "The [inside] story", "chinese": "內幕"},
+        {"english": "[inside] information", "chinese": "內線消息"},
+        {"english": "on the [inside]", "chinese": "在內部"},
+        {"english": "know sb./sth. [inside] out", "chinese": "非常了解…"}
+      ],
+      "pronunciation": "/ɪnˈsaɪd/"
+    },
+    {
+      "english": "invest",
+      "chinese": [
+        "vt. vi. 投資"
+      ],
+      "example": [
+        "Mike [invests] a quarter of his salary in stocks every month.",
+        "麥可將每個月薪水的四分之一投資在股票上。"
+      ],
+      "phrases": [
+        {"english": "invest in sth.", "chinese": "在某事物上投資"},
+        {"english": "invest (A) in B", "chinese": "(把A) 投資在B上"}
+      ],
+      "related": [
+        {
+          "english": "investment",
+          "pronunciation": "/ɪnˈvɛstmənt/",
+          "chinese": [
+            "n. [C] [U] 投資"
+          ]
+        }
+      ],
+      "pronunciation": "/ɪnˈvɛst/"
+    },
+    {
+      "english": "journey",
+      "chinese": [
+        "n. [C] (尤指搭乘交通工具的)旅行 (= trip)"
+      ],
+      "example": [
+        "Fred visited many major cities during his [journey] across Europe.",
+        "佛烈德在歐洲旅遊期間造訪了許多大城市。"
+      ],
+      "phrases": [
+        {"english": "make/go on a journey", "chinese": "去旅行"},
+        {"english": "start/set out on/set off on a journey", "chinese": "開始一趟旅程"}
+      ],
+      "pronunciation": "/ˈdʒɜrnɪ/"
+    },
+    {
+      "english": "layer",
+      "chinese": [
+        "n. [C] 一層"
+      ],
+      "example": [
+        "Mary put a [layer] of butter on the bread when she made a sandwich.",
+        "瑪麗做三明治時，在麵包上塗了一層奶油。"
+      ],
+      "phrases": [
+        {"english": "a layer of sth.", "chinese": "一層某物"},
+        {"english": "ozone/bottom/outer/top layer", "chinese": "臭氧/底/外/頂層"}
+      ],
+      "pronunciation": "/ˈleɚ/"
+    },
+    {
+      "english": "masterwork",
+      "chinese": [
+        "n. [C] 傑作 (= masterpiece)"
+      ],
+      "example": [
+        "The Mona Lisa is widely considered one of Leonardo da Vinci's [masterworks].",
+        "《蒙娜麗莎》普遍被認為是李奧納多達文西的其中一幅傑作。"
+      ],
+      "pronunciation": "/ˈmæstəwɝk/"
+    },
+    {
+      "english": "plan",
+      "chinese": [
+        "n. [C] 計畫 (= arrangement)"
+      ],
+      "example": [
+        "Linda always books flight tickets in advance when making holiday [plans].",
+        "琳達在做假期計畫時總會先預訂機票。"
+      ],
+      "phrases": [
+        {"english": "make/work out/outline a [plan]", "chinese": "訂定計畫"},
+        {"english": "ahead of [plan]", "chinese": "比原計畫提前"},
+        {"english": "have/make [plans] for sth.", "chinese": "為了某事物訂定計畫"}
+      ],
+      "pronunciation": "/plæn/"
+    }
+  ]
+}
