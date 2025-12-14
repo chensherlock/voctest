@@ -80,10 +80,10 @@
         "一開始露西否認犯錯，但後來她承認了。"
       ],
       "phrases": [
-        {"english": "[admit] that + S + V", "chinese": ""},
-        {"english": "[admit] (to) sth.", "chinese": ""},
-        {"english": "[admit] (to) doing sth.", "chinese": ""},
-        {"english": "[admit] sb. to sth./swh.", "chinese": ""}
+        {"english": "[admit] that + S + V", "chinese": "承認……"},
+        {"english": "[admit] (to) sth.", "chinese": "承認某事"},
+        {"english": "[admit] (to) doing sth.", "chinese": "承認做過某事"},
+        {"english": "[admit] sb. to sth./swh.", "chinese": "允許某人進入某處／加入某處"}
       ],
       "related": [
         {
@@ -129,7 +129,7 @@
         "夫妻間溝通感受以避免誤解很重要。"
       ],
       "phrases": [
-        {"english": "[communicate] with sb.", "chinese": "將某事物傳達給某人"},
+        {"english": "[communicate] with sb.", "chinese": "與某人溝通"},
         {"english": "[communicate] sth. to sb.", "chinese": "將某事物傳達給某人"},
         {"english": "communications system / network / satellite", "chinese": "通訊系統/網路/衛星"}
       ],
@@ -265,10 +265,10 @@
       ],
       "example": [
         "The child is very [generous] and always shares his toys with other children.",
-        ""
+        "這個孩子非常慷慨，總是和其他孩子分享他的玩具。"
       ],
       "phrases": [
-        {"english": "be [generous] to sb.", "chinese": ""},
+        {"english": "be [generous] to sb.", "chinese": "對某人慷慨／大方"},
         {"english": "be [generous] with sth.", "chinese": "不吝惜某物"}
       ],
       "related": [
@@ -341,7 +341,7 @@
       ],
       "example": [
         "I can’t eat any food that [includes] nuts, as they always make me sick.",
-        "這個常見的手勢在法國其實是一種侮辱。"
+        "我不能吃任何含有堅果的食物，因為它們總是讓我不舒服。"
       ],
       "phrases": [
         {"english": "[include] A in / on B", "chinese": "把 A 包含在 B 中"}
@@ -398,7 +398,7 @@
       ],
       "example": [
         "You should follow your professor’s [instructions].",
-        ""
+        "你應該遵照教授的指示。"
       ],
       "related": [
         {
@@ -431,7 +431,7 @@
         {"english": "be an [insult] to sb.", "chinese": "對某人是個侮辱"},
         {"english": "add insult to injury", "chinese": "雪上加霜"},
         {"english": "[insult] sb. by (doing) sth.", "chinese": "籍由(做)某事來侮辱某人"},
-        {"english": "[insult] one's intellience", "chinese": "侮辱某人的智慧"}
+        {"english": "[insult] one's intelligence", "chinese": "侮辱某人的智慧"}
       ]
     },
     {
@@ -535,7 +535,17 @@
       "english": "owe",
       "pronunciation": "/oʊ/",
       "chinese": [
-        "vt. 欠（債）；把⋯歸功於"
+        "vt. 欠（債）(= be in debt to)；把⋯歸功於 (= credit)；把⋯歸因於"
+      ],
+      "example": [
+        "Kevin [owes] his success at school to his wonderful teachers.",
+        "凱文將他的學業成功歸功於他優秀的老師們。"
+      ],
+      "phrases": [
+        {"english": "[owe] sb. sth. / [owe] sth. to sb.", "chinese": "欠某人某事物"},
+        {"english": "[owe] sb. an apology/explanation", "chinese": "欠某人一個道歉/交代"},
+        {"english": "[owe] A to B", "chinese": "將 A 歸功於 B"},
+        {"english": "[owing] to sth.", "chinese": "因為某事物"}
       ]
     },
     {
@@ -543,11 +553,26 @@
       "pronunciation": "/peɪn/",
       "chinese": [
         "n. [C] [U] 疼痛 (= ache)",
-        "n. [U] 痛苦 (= grief, sadness)"
+        "n. [U]（情緒上的）痛苦 (= grief, sadness)"
+      ],
+      "example": [
+        "My sensitive teeth cause me [pain] every time I eat or drink something cold.",
+        "每次吃或喝冰的東西時，我的敏感性牙齒就會很痛。"
+      ],
+      "phrases": [
+        {"english": "[pain] in sth.", "chinese": "某部位的疼痛"},
+        {"english": "ease/relieve [pain]", "chinese": "減輕疼痛"},
+        {"english": "cause (sb.) [pain]", "chinese": "造成（某人的）疼痛"},
+        {"english": "in [pain]", "chinese": "疼痛地；痛苦中"},
+        {"english": "sharp [pain]", "chinese": "一陣突然又劇烈的疼痛"},
+        {"english": "[pain] in the neck", "chinese": "令人討厭又無法避免的人事物"},
+        {"english": "take/go to great [pains] to do sth.", "chinese": "不辭辛勞地做某事"},
+        {"english": "No pain, no gain.", "chinese": "不勞無獲。"}
       ],
       "related": [
         {
           "english": "painful",
+          "pronunciation": "/ˈpeɪnfəl/",
           "chinese": [
             "adj. 疼痛的；痛苦的"
           ]
@@ -559,6 +584,10 @@
       "pronunciation": "/pəˈdestriən/",
       "chinese": [
         "n. [C] 行人"
+      ],
+      "example": [
+        "[Pedestrians] should keep to the sidewalks for their own safety.",
+        "為了安全起見，行人應走在人行道上。"
       ]
     },
     {
@@ -568,9 +597,20 @@
         "n. [C] 反應 (= response)",
         "n. [P] 反應能力"
       ],
+      "example": [
+        "The woman’s [reaction] to her husband’s sudden death was quite calm.",
+        "這名女子對她丈夫突然死亡的消息反應相當冷靜。"
+      ],
+      "phrases": [
+        {"english": "[reaction] to sth.", "chinese": "對於某事物的反應"},
+        {"english": "chain/chemical/nuclear [reaction]", "chinese": "連鎖/化學/核子 反應"},
+        {"english": "natural/immediate/normal [reaction]", "chinese": "自然/立即/正常 反應"},
+        {"english": "cause a [reaction]", "chinese": "引起反應"}
+      ],
       "related": [
         {
           "english": "react",
+          "pronunciation": "/riˈækt/",
           "chinese": [
             "vi. 反應"
           ]
@@ -579,16 +619,36 @@
     },
     {
       "english": "regular",
-      "pronunciation": "/ˈreɡjələr/",
+      "pronunciation": "/ˈrɛgjəlɚ/",
       "chinese": [
-        "adj. 定期的；習慣性的；一般的"
+        "adj. 定期的；習慣性的；一般的 (= average, ordinary)"
+      ],
+      "example": [
+        "The old man goes to the hospital for [regular] checkups.",
+        "那位老先生定期至醫院做健康檢查。"
+      ],
+      "phrases": [
+        {"english": "[regular] customer", "chinese": "常客"}
       ]
     },
     {
       "english": "rise",
+      "pronunciation": "/raɪz/",
       "chinese": [
-        "vi. 上升；增加",
-        "n. [C] 增加；增長"
+        "vi. 上升；增加 (= grow, increase)",
+        "n. [C] 增加；增長 (= increase, growth)"
+      ],
+      "example": [
+        "The housing prices in this area have [risen] sharply in recent years.",
+        "這個區域的房價近年來大幅上升了。",
+        "Over the years, the number of unemployed people in this country has been on the [rise].",
+        "這幾年來，該國的失業人口持續增加中。"
+      ],
+      "phrases": [
+        {"english": "price/rent/tax [rise]", "chinese": "物價/房租/稅金 上漲"},
+        {"english": "[rise] and fall", "chinese": "起落"},
+        {"english": "on the [rise]", "chinese": "上升中；增加中"},
+        {"english": "give [rise] to sth.", "chinese": "引起某事物"}
       ],
       "tense": {
         "present": "rise",
@@ -598,20 +658,50 @@
     },
     {
       "english": "search",
+      "pronunciation": "/sɝtʃ/",
       "chinese": [
         "n. [C] 搜尋；搜索",
-        "vt. vi. 搜尋；搜索"
+        "vt. vi. 搜尋；搜索 (= seek, look for)"
+      ],
+      "example": [
+        "Many people move to the city in [search] of better job opportunities.",
+        "許多人為了找到更好的工作機會而搬到都市。",
+        "Larry [searched] his room for his lost phone.",
+        "賴瑞為了找手機翻遍了整個房間。"
+      ],
+      "phrases": [
+        {"english": "[search] for sb./sth.", "chinese": "對於⋯的搜尋"},
+        {"english": "make/carry out a (thorough) [search]", "chinese": "進行（徹底的）搜索"},
+        {"english": "call off/abandon a [search]", "chinese": "放棄搜索"},
+        {"english": "in [search] of sth.", "chinese": "搜尋某事物"},
+        {"english": "body [search]", "chinese": "搜身"},
+        {"english": "[search] engine", "chinese": "搜尋引擎"},
+        {"english": "[search] and rescue", "chinese": "搜救"},
+        {"english": "[search] (A) for B", "chinese": "搜尋（A以找尋）B"},
+        {"english": "[search] through swh.", "chinese": "搜遍某處"},
+        {"english": "[search] (sb./sth.) out", "chinese": "找到（⋯）"},
+        {"english": "[search] high and low", "chinese": "到處搜尋"},
+        {"english": "[Search] me.", "chinese": "我哪知道。"}
       ]
     },
     {
       "english": "temptation",
-      "pronunciation": "/temptˈteɪʃən/",
+      "pronunciation": "/tɛmpˈteʃən/",
       "chinese": [
-        "n. [C] [U] 誘惑；引誘"
+        "n. [C] [U] 誘惑（物）；引誘"
+      ],
+      "example": [
+        "I have to resist the [temptation] to eat cheeseburgers because I am on a diet.",
+        "我必須抗拒吃起司漢堡的誘惑，因為我正在節食。"
+      ],
+      "phrases": [
+        {"english": "give in/yield to (the) [temptation] (to do sth.)", "chinese": "屈服於（做某事的）誘惑"},
+        {"english": "resist the [temptation] (to do sth.)", "chinese": "抗拒（做某事的）誘惑"}
       ],
       "related": [
         {
           "english": "tempt",
+          "pronunciation": "/tɛmpt/",
           "chinese": [
             "vt. 引誘；吸引"
           ]
@@ -623,6 +713,13 @@
       "pronunciation": "/ˈzɪpər/",
       "chinese": [
         "n. [C] 拉鍊 (= zip)"
+      ],
+      "example": [
+        "The [zipper] on my bag seems to be stuck; I can’t pull it.",
+        "我包包的拉鍊好像卡住了，我無法將它拉上。"
+      ],
+      "phrases": [
+        {"english": "pull up/down a zipper", "chinese": "拉 上／下 拉鍊"}
       ],
       "related": [
         {
