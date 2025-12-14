@@ -1,7 +1,6 @@
 {
   "id": 11,
   "title": "📚 高頻 Unit 11",
-  "default": true,
   "words": [
     {
       "english": "absorb",
@@ -189,7 +188,8 @@
           ]
         }
       ],
-      "pronunciation": "/ˈdɪlədʒənt/"
+      "pronunciation": "/ˈdɪlədʒənt/",
+      "video": "https://magazine.english4u.net/vocmemory/video/3469"
     },
     {
       "english": "domestic",
@@ -538,7 +538,8 @@
         {"english": "[plan] on (doing) sth.", "chinese": "計劃（做）某事"},
         {"english": "[plan] ahead", "chinese": "事前做好計劃"}
       ],
-      "pronunciation": "/plæn/"
+      "pronunciation": "/plæn/",
+      "video": "https://magazine.english4u.net/vocmemory/video/3688"
     },
     {
       "english": "price",
@@ -567,7 +568,8 @@
           ]
         }
       ],
-      "pronunciation": "/praɪs/"
+      "pronunciation": "/praɪs/",
+      "video": "https://magazine.english4u.net/vocmemory/video/3709"
     },
     {
       "english": "reduce",
@@ -603,7 +605,8 @@
         "The boy [refused] to share his toys with other kids.",
         "那個男孩拒絕跟其他小孩分享玩具。"
       ],
-      "pronunciation": "/rɪˈfjuːz/"
+      "pronunciation": "/rɪˈfjuːz/",
+      "video": "https://magazine.english4u.net/vocmemory/video/3740"
     },
     {
       "english": "repeat",
@@ -628,7 +631,8 @@
           ]
         }
       ],
-      "pronunciation": "/rɪˈpiːt/"
+      "pronunciation": "/rɪˈpiːt/",
+      "video": "https://magazine.english4u.net/vocmemory/video/3745"
     },
     {
       "english": "rich",
