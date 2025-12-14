@@ -1,0 +1,637 @@
+{
+  "id": 12,
+  "title": "📚 高頻 Unit 12",
+  "words": [
+    {
+      "english": "ability",
+      "pronunciation": "/əˈbɪləti/",
+      "chinese": [
+        "n. [C] [U] 能力 (= capacity, capability)"
+      ],
+      "example": [
+        "The runner has the [ability] to run long distances quickly.",
+        "這名跑者能用很快的速度跑完長距離。"
+      ],
+      "phrases": [
+        {"english": "have the [ability] to do sth.", "chinese": "有做某事的能力"}
+      ],
+      "related": [
+        {
+          "english": "able",
+          "pronunciation": "/ˈeɪbəl/",
+          "chinese": [
+            "adj. 能夠（做⋯）的"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "action",
+      "pronunciation": "/ˈækʃən/",
+      "chinese": [
+        "n. [C] [U] 行為 (= behavior)；行動；動作 (= movement)"
+      ],
+      "example": [
+        "The government has taken [action] to deal with the water pollution in this area.",
+        "政府已採取行動來解決此區域的水污染。"
+      ],
+      "phrases": [
+        {"english": "take [action] to do sth.", "chinese": "採取行動做某事"},
+        {"english": "in [action]", "chinese": "行動中；運轉中"},
+        {"english": "out of [action]", "chinese": "無法行動；無法運轉"},
+        {"english": "put sth. into [action]", "chinese": "將某事物付諸行動"},
+        {"english": "[Actions] speak louder than words.", "chinese": "行動勝於空談"}
+      ],
+      "related": [
+        {
+          "english": "act",
+          "pronunciation": "/ækt/",
+          "chinese": [
+            "vt. 扮演；表演",
+            "vi. 行動；表現；飾演",
+            "n. [C] 行為；行動"
+          ]
+        },
+        {
+          "english": "inactive",
+          "pronunciation": "/ɪnˈæktɪv/",
+          "chinese": [
+            "adj. 沒有活動的；不活躍的"
+          ]
+        },
+        {
+          "english": "active",
+          "pronunciation": "/ˈæktɪv/",
+          "chinese": [
+            "adj. 活躍的；積極的"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "admit",
+      "pronunciation": "/ədˈmɪt/",
+      "chinese": [
+        "vt. 承認 (= confess)；允許進入 (= let in)",
+        "vi. 承認"
+      ],
+      "example": [
+        "At first Lucy denied making the mistake, but later she [admitted] it was her.",
+        "一開始露西否認犯錯，但後來她承認了。"
+      ],
+      "phrases": [
+        {"english": "[admit] that + S + V", "chinese": ""},
+        {"english": "[admit] (to) sth.", "chinese": ""},
+        {"english": "[admit] (to) doing sth.", "chinese": ""},
+        {"english": "[admit] sb. to sth./swh.", "chinese": ""}
+      ],
+      "related": [
+        {
+          "english": "admission",
+          "pronunciation": "/ədˈmɪʃən/",
+          "chinese": [
+            "n. [U] 加入許可；入場費",
+            "n. [C] 承認"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "ancestor",
+      "pronunciation": "/ˈænsestər/",
+      "chinese": [
+        "n. [C] 祖先"
+      ],
+      "example": [
+        "My [ancestors] left southern China and settled in Taiwan over 100 years ago.",
+        "一百多年前，我的祖先從中國南方移居並定居臺灣。"
+      ]
+    },
+    {
+      "english": "cheap",
+      "pronunciation": "/tʃiːp/",
+      "chinese": [
+        "adj. 便宜的 (= economical)"
+      ],
+      "example": [
+        "I can’t afford an expensive car, so I will get a [cheap] one instead.",
+        "我負擔不起昂貴的車，所以會買一輛便宜的。"
+      ]
+    },
+    {
+      "english": "communicate",
+      "pronunciation": "/kəˈmjuːnɪkeɪt/",
+      "chinese": [
+        "vt. vi. 溝通；傳達 (= convey, express)"
+      ],
+      "example": [
+        "It’s important for couples to [communicate] what they’re feeling to avoid misunderstandings.",
+        "夫妻間溝通感受以避免誤解很重要。"
+      ],
+      "phrases": [
+        {"english": "[communicate] with sb.", "chinese": "將某事物傳達給某人"},
+        {"english": "[communicate] sth. to sb.", "chinese": "將某事物傳達給某人"},
+        {"english": "communications system / network / satellite", "chinese": "通訊系統/網路/衛星"}
+      ],
+      "related": [
+        {
+          "english": "communication",
+          "pronunciation": "/kəˌmjuːnɪˈkeɪʃən/",
+          "chinese": [
+            "n. [U] 溝通；傳達",
+            "n. [S] 通信（工具或設施）"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "conflict",
+      "chinese": [
+        "n. [C] [U] 衝突 (= clash, fight)；矛盾；爭執 (= disagreement)",
+        "vi. 互相衝突；牴觸 (= differ, disagree)"
+      ],
+      "example": [
+        "Parents should not take sides when there’s a [conflict] between their kids.",
+        "當孩子們起衝突時，父母不該選邊站。",
+        "The results of the study seem to [conflict] with existing theories.",
+        "研究結果似乎與現有理論相牴觸。"
+      ],
+      "phrases": [
+        {"english": "[conflict] between A and B", "chinese": "A 與 B 之間的衝突或矛盾"},
+        {"english": "be in [conflict] (with sb.)", "chinese": "(與某人)有衝突"},
+        {"english": "come into [conflict] (with sb.)", "chinese": "(與某人)起衝突"},
+        {"english": "[conflict] over sth.", "chinese": "因某事物而起的爭執"},
+        {"english": "[conflict] with sth.", "chinese": "與某事物有所牴觸"}
+      ]
+    },
+    {
+      "english": "deadline",
+      "pronunciation": "/ˈdedlaɪn/",
+      "chinese": [
+        "n. [C] 截止日期；期限"
+      ],
+      "example": [
+        "Lisa worked overtime in order to meet her [deadline].",
+        "麗莎為了趕上截止日期而加班。"
+      ],
+      "phrases": [
+        {"english": "[deadline] for sth.", "chinese": "某事物的截止日期"},
+        {"english": "meet / miss a [deadline]", "chinese": "趕上/錯過截止日期"},
+        {"english": "set / extend a [deadline]", "chinese": "訂定／延長截止日期"}
+      ]
+    },
+    {
+      "english": "density",
+      "pronunciation": "/ˈdensəti/",
+      "chinese": [
+        "n. [U] 密度；濃度；稠密"
+      ],
+      "example": [
+        "Taipei City is crowded because of its high population [density].",
+        "台北很擁擠, 因為人口密度很高。"
+      ],
+      "related": [
+        {
+          "english": "dense",
+          "pronunciation": "/dens/",
+          "chinese": [
+            "adj. 濃密的；密集的"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "emergency",
+      "pronunciation": "/ɪˈmɜːrdʒənsi/",
+      "chinese": [
+        "n. [C] [U] 緊急狀況；緊急事件 (= crisis)"
+      ],
+      "example": [
+        "Please prepare some medical kits in case of [emergency].",
+        "請準備一些醫藥箱以防緊急狀況發生。"
+      ],
+      "phrases": [
+        {"english": "in an [emergency] / in case of [emergency]", "chinese": "在緊急的時候"},
+        {"english": "[emergency] brake / landing / measure / exit", "chinese": "緊急煞車／降落／措施／出口"},
+        {"english": "[emergency] room (ER)", "chinese": "急診室"},
+        {"english": "state of [emergency]", "chinese": "緊急狀態"}
+      ]
+    },
+    {
+      "english": "eventually",
+      "pronunciation": "/ɪˈventʃuəli/",
+      "chinese": [
+        "adv. 最終；終於 (= finally, in the end, at last)"
+      ],
+      "example": [
+        "Though it took him years of hard work, Peter [eventually] obtained his medical degree.",
+        "雖然辛苦了很多年，彼得最後終於取得了他的醫學學位。"
+      ],
+      "related": [
+        {
+          "english": "eventual",
+          "pronunciation": "/ɪˈventʃuəl/",
+          "chinese": [
+            "adj. 最終的"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "finally",
+      "pronunciation": "/ˈfaɪnəli/",
+      "chinese": [
+        "adv. 最後；終於"
+      ],
+      "example": [
+        "After searching for a few days, the police [finally] found the thief.",
+        "搜索了幾天後，警方終於找到小偷了。"
+      ],
+      "related": [
+        {
+          "english": "final",
+          "pronunciation": "/ˈfaɪnəl/",
+          "chinese": [
+            "adj. 最後的"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "generous",
+      "pronunciation": "/ˈdʒenərəs/",
+      "chinese": [
+        "adj. 慷慨的；大方的 (= liberal)"
+      ],
+      "example": [
+        "The child is very [generous] and always shares his toys with other children.",
+        ""
+      ],
+      "phrases": [
+        {"english": "be [generous] to sb.", "chinese": ""},
+        {"english": "be [generous] with sth.", "chinese": "不吝惜某物"}
+      ],
+      "related": [
+        {
+          "english": "generosity",
+          "pronunciation": "/ˌdʒenəˈrɑːsəti/",
+          "chinese": [
+            "n. [U] 慷慨；大方"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "grammar",
+      "pronunciation": "/ˈɡræmər/",
+      "chinese": [
+        "n. [U] 文法"
+      ],
+      "example": [
+        "Understanding the [grammar] may be the most difficult part of learning a language.",
+        "理解文法可能是學習語言最困難的部分。"
+      ]
+    },
+    {
+      "english": "greeting",
+      "pronunciation": "/ˈɡriːtɪŋ/",
+      "chinese": [
+        "n. [C] [U] 問候；招呼",
+        "n. [C] 祝賀；祝詞（常用複數）"
+      ],
+      "example": [
+        "John and Jenny exchanged [greetings] before they started the meeting.",
+        "約翰和珍妮在開始會議前彼此問候。"
+      ],
+      "phrases": [
+        {"english": "exchange [greetings]", "chinese": "彼此問候"},
+        {"english": "birthday / Christmas [greetings]", "chinese": "生日／聖誕節 祝賀"},
+        {"english": "[greeting] card", "chinese": "賀卡"}
+      ],
+      "related": [
+        {
+          "english": "greet",
+          "pronunciation": "/ɡriːt/",
+          "chinese": [
+            "vt. 問候；打招呼"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "hill",
+      "pronunciation": "/hɪl/",
+      "chinese": [
+        "n. [C] 山丘"
+      ],
+      "example": [
+        "George stood at the top of the [hill], overlooking the city.",
+        "喬治站在山丘頂端俯瞰這座城市。"
+      ],
+      "phrases": [
+        {"english": "on a [hill]", "chinese": "在山丘上"},
+        {"english": "in the [hills]", "chinese": "在山丘中"}
+      ]
+    },
+    {
+      "english": "include",
+      "pronunciation": "/ɪnˈkluːd/",
+      "chinese": [
+        "vt. 包括 (= contain, involve)"
+      ],
+      "example": [
+        "I can’t eat any food that [includes] nuts, as they always make me sick.",
+        "這個常見的手勢在法國其實是一種侮辱。"
+      ],
+      "phrases": [
+        {"english": "[include] A in / on B", "chinese": "把 A 包含在 B 中"}
+      ],
+      "related": [
+        {
+          "english": "including",
+          "chinese": [
+            "prep. 包括"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "increase",
+      "chinese": [
+        "vt. vi. 增加；增長 (= add, raise, rise)",
+        "n. [C] [U] 增加 (= addition, growth, rise)"
+      ],
+      "example": [
+        "Many people think the fine for drunk driving should be [increased].",
+        "很多人認為酒駕的罰款金額應該要提高。"
+      ],
+      "phrases": [
+        {"english": "increase by + 數量", "chinese": "增加某數量"},
+        {"english": "increase with sth.", "chinese": "隨著某事物增加"},
+        {"english": "an increasing number of sth.", "chinese": "越來越多的某物"},
+        {"english": "increase in sth.", "chinese": "某事物的增加"},
+        {"english": "price / tax / wage increase", "chinese": "物價/稅金／薪資 上漲"},
+        {"english": "be on the increase", "chinese": "正在增加中"}
+      ]
+    },
+    {
+      "english": "individual",
+      "pronunciation": "/ˌɪndɪˈvɪdʒuəl/",
+      "chinese": [
+        "adj. 個人的；個別的；獨特的 (= unique)",
+        "n. [C] 個人"
+      ],
+      "example": [
+        "The hotel always tries to satisfy its VIP guests’ [individual] needs.",
+        "這間飯店總會竭盡所能來滿足其貴賓的個人需求。",
+        "Parents should treat their children as [individuals]. Everyone has their strengths and weaknesses, after all.",
+        "家長應該將孩子們視為獨立的個體; 畢竟每個人都有自己的優缺點。"
+      ]
+    },
+    {
+      "english": "instruction",
+      "pronunciation": "/ɪnˈstrʌkʃən/",
+      "chinese": [
+        "n. [C] 指令；指示 (= direction)",
+        "n. [U] 指導；教授",
+        "n. [P] 用法說明；操作指南"
+      ],
+      "example": [
+        "You should follow your professor’s [instructions].",
+        ""
+      ],
+      "related": [
+        {
+          "english": "instruct",
+          "pronunciation": "/ɪnˈstrʌkt/",
+          "chinese": [
+            "vt. 指示；命令；指導"
+          ]
+        }
+      ],
+      "phrases": [
+        {"english": "follow (sb.'s) [instructions]", "chinese": "依照(某人的)指令"},
+        {"english": "[instruction] on sth", "chinese": "針對某事物的指導"}
+      ]
+    },
+    {
+      "english": "insult",
+      "chinese": [
+        "n. [C] 侮辱 (= offense)",
+        "vt. 侮辱 (= offend)"
+      ],
+      "example": [
+        "This common hand gesture is actually an [insult] in France.",
+        "這個常見的手勢在法國其實是一種侮辱。",
+        "I can't stand anyone [insulting] my family.",
+        "我無法忍受任何人侮辱我的家人。"
+      ],
+      "phrases": [
+        {"english": "throw [insults] at sb.", "chinese": "侮辱某人"},
+        {"english": "be an [insult] to sb.", "chinese": "對某人是個侮辱"},
+        {"english": "add insult to injury", "chinese": "雪上加霜"},
+        {"english": "[insult] sb. by (doing) sth.", "chinese": "籍由(做)某事來侮辱某人"},
+        {"english": "[insult] one's intellience", "chinese": "侮辱某人的智慧"}
+      ]
+    },
+    {
+      "english": "invasion",
+      "pronunciation": "/ɪnˈveɪʒən/",
+      "chinese": [
+        "n. [C] [U] 侵略；侵犯",
+        "vt. 侵略；侵犯"
+      ],
+      "example": [
+        "The [invasion] of privacy is a serious crime in this country.",
+        "侵犯隱私在這個國家是嚴重的犯罪行為。",
+        "That fierce dog might attack if you [invade] its territory.",
+        "如果你侵犯牠的領域, 那隻兇惡的狗可能會攻擊你。"
+      ],
+      "phrases": [
+        {"english": "[invasion] of privacy", "chinese": "侵犯隱私"},
+        {"english": "carry out / launch an [invasion]", "chinese": "發動侵略"},
+        {"english": "[invade] sb.'s privacy", "chinese": "侵犯某人的隱私"}
+      ],
+      "related": [
+        {
+          "english": "invade",
+          "pronunciation": "/ɪnˈveɪd/",
+          "chinese": [
+            "vt. 侵略；侵犯"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "less",
+      "chinese": [
+        "det./adj. 較少的 (little 的比較級, 常修飾不可數名詞)",
+        "pron. 較少的人事物",
+        "adv. 較不"
+      ],
+      "phrases": [
+        {"english": "no less than", "chinese": "至少；多達"},
+        {"english": "more or less", "chinese": "或多或少；大約"}
+      ],
+      "example": [
+        "Alice is trying to spend [less] money each month so she can put her savings toward buying a house.",
+        "愛麗絲試著要每個月少花點錢，以存到足夠的錢來買房子。",
+        "After Jeff entered college, he spent [less] of this time with his family.",
+        "傑夫在進入大學後和家人相處的時間變少了。",
+        "Riding a bike is [less] difficut than riding a scooter.",
+        "騎腳踏車沒有騎機車來那麼難。"
+      ]
+    },
+    {
+      "english": "many",
+      "pronunciation": "/ˈmeni/",
+      "chinese": [
+        "det./adj. 許多的",
+        "pron. 許多的人事物"
+      ],
+      "example": [
+        "There are [many] cars on the streets in this busy city.",
+        "這個個忙碌的城市街道上有許多車輛。",
+        "[Many] of students in this class are under 20 years old.",
+        "這個班上的許多學生都是20歲以下。"
+      ],
+      "phrases": [
+        {"english": "a good / great many sth.", "chinese": "非常多的某物"},
+        {"english": "as [many] as ...", "chinese": "多逹..."}
+      ]
+    },
+    {
+      "english": "misinterpret",
+      "pronunciation": "/ˌmɪsɪnˈtɜːrprɪt/",
+      "chinese": [
+        "vt. 誤解；誤釋"
+      ],
+      "example": [
+        "The singer was upset that his words were [misinterpreted] by the press.",
+        "該名歌手對於媒體扭曲他的話感到生氣。"
+      ],
+      "related": [
+        {
+          "english": "interpret",
+          "chinese": [
+            "vt. 詮釋"
+          ]
+        },
+        {
+          "english": "interpretation",
+          "chinese": [
+            "n. [C][U] 詮釋"
+          ]
+        },
+        {
+          "english": "interpreter",
+          "chinese": [
+            "n. [C] 口譯員"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "owe",
+      "pronunciation": "/oʊ/",
+      "chinese": [
+        "vt. 欠（債）；把⋯歸功於"
+      ]
+    },
+    {
+      "english": "pain",
+      "pronunciation": "/peɪn/",
+      "chinese": [
+        "n. [C] [U] 疼痛 (= ache)",
+        "n. [U] 痛苦 (= grief, sadness)"
+      ],
+      "related": [
+        {
+          "english": "painful",
+          "chinese": [
+            "adj. 疼痛的；痛苦的"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "pedestrian",
+      "pronunciation": "/pəˈdestriən/",
+      "chinese": [
+        "n. [C] 行人"
+      ]
+    },
+    {
+      "english": "reaction",
+      "pronunciation": "/riˈækʃən/",
+      "chinese": [
+        "n. [C] 反應 (= response)",
+        "n. [P] 反應能力"
+      ],
+      "related": [
+        {
+          "english": "react",
+          "chinese": [
+            "vi. 反應"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "regular",
+      "pronunciation": "/ˈreɡjələr/",
+      "chinese": [
+        "adj. 定期的；習慣性的；一般的"
+      ]
+    },
+    {
+      "english": "rise",
+      "chinese": [
+        "vi. 上升；增加",
+        "n. [C] 增加；增長"
+      ],
+      "tense": {
+        "present": "rise",
+        "past": "rose",
+        "participle": "risen"
+      }
+    },
+    {
+      "english": "search",
+      "chinese": [
+        "n. [C] 搜尋；搜索",
+        "vt. vi. 搜尋；搜索"
+      ]
+    },
+    {
+      "english": "temptation",
+      "pronunciation": "/temptˈteɪʃən/",
+      "chinese": [
+        "n. [C] [U] 誘惑；引誘"
+      ],
+      "related": [
+        {
+          "english": "tempt",
+          "chinese": [
+            "vt. 引誘；吸引"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "zipper",
+      "pronunciation": "/ˈzɪpər/",
+      "chinese": [
+        "n. [C] 拉鍊 (= zip)"
+      ],
+      "related": [
+        {
+          "english": "zip",
+          "chinese": [
+            "vt. 拉上（拉鍊）；壓縮（電腦文件）"
+          ]
+        }
+      ]
+    }
+  ]
+}

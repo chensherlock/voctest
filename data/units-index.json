@@ -71,6 +71,13 @@
       "video": ""
     },
     {
+      "id": 12,
+      "title": "高頻 Unit 12",
+      "default": true,
+      "file": "unit-12.json",
+      "video": ""
+    },
+    {
       "id": 31,
       "title": "課本3 Unit 1",
       "default": false,
