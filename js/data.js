@@ -17,6 +17,7 @@ async function loadUnitsIndex() {
         vocabularyData.units = data.units.map(unit => ({
             id: unit.id,
             title: unit.title,
+            description: unit.description || '',
             default: unit.default,
             file: unit.file,
             video: unit.video || '',

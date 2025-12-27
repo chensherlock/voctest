@@ -108,6 +108,7 @@
     {
       "id": 35,
       "title": "課本3 Unit 5",
+      "description": "A Savior* for Lazy People",
       "default": true,
       "file": "unit-35.json",
       "video": "https://sites.google.com/view/grandeastenglishb2/技高英文-a版-第三冊/技a-第三冊-unit-5/a3u5單字"
@@ -115,6 +116,7 @@
     {
       "id": 36,
       "title": "課本3 Unit 6",
+      "description": "Spend a Night with Ocean Animals Around You",
       "default": true,
       "file": "unit-36.json",
       "video": "https://sites.google.com/view/grandeastenglishb2/技高英文-a版-第三冊/技a-第三冊-unit-6/a3u6單字"

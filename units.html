@@ -77,6 +77,12 @@
         .word-list.notes-visible .word-notes {
             display: block;
         }
+        .unit-description {
+            margin: 0.25rem 0 0;
+            font-size: 0.95rem;
+            color: #3a7fc6;
+            font-weight: 500;
+        }
     </style>
 </head>
 <body>
@@ -103,7 +109,8 @@
             
             <section id="unitDetail" style="display: none;">
                 <div id="unitHeader">
-                    <h2>單元 <span id="unitNumber"></span></h2>
+                    <h2 id="unitTitle"></h2>
+                    <p id="unitDescription" class="unit-description" style="display:none;"></p>
                     <div class="unit-controls">
                         <label>
                             <input type="checkbox" id="notesToggle">

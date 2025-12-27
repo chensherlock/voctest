@@ -2,7 +2,8 @@
 const unitsContainer = document.getElementById('unitsContainer');
 const unitDetail = document.getElementById('unitDetail');
 const unitsList = document.getElementById('unitsList');
-const unitNumber = document.getElementById('unitNumber');
+const unitTitle = document.getElementById('unitTitle');
+const unitDescription = document.getElementById('unitDescription');
 const wordList = document.getElementById('wordList');
 const backToUnits = document.getElementById('backToUnits');
 const practiceFlashcards = document.getElementById('practiceFlashcards');
@@ -94,6 +95,17 @@ function applyNotesVisibility() {
         wordList.classList.add('notes-visible');
     } else {
         wordList.classList.remove('notes-visible');
+    }
+}
+
+function updateUnitDescription(unit) {
+    if (!unitDescription) return;
+    if (unit && unit.description) {
+        unitDescription.textContent = unit.description;
+        unitDescription.style.display = 'block';
+    } else {
+        unitDescription.textContent = '';
+        unitDescription.style.display = 'none';
     }
 }
 
@@ -1543,7 +1555,10 @@ async function showUnitDetail(unitId) {
         await getWordsFromUnit(unitId);
 
         // Update UI with unit details
-        unitNumber.textContent = unit.id;
+        if (unitTitle) {
+            unitTitle.textContent = unit.title || `單元 ${unit.id}`;
+        }
+        updateUnitDescription(unit);
         updateWriterApiFlagButton();
         updateRewriterApiFlagButton();
         displayUnitWords(unit);
@@ -1987,6 +2002,7 @@ function showUnitsList() {
     unitsList.style.display = 'block';
     unitDetail.style.display = 'none';
     currentUnitId = null;
+    updateUnitDescription(null);
 }
 
 // Play audio for a word with cloud fallback
