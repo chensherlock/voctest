@@ -69,6 +69,16 @@
       ]
     },
     {
+      "english": "interaction",
+      "pronunciation": "/ˌɪntəˈrækʃən/",
+      "chinese": [
+        "n. [U][C] 互動，交流"
+      ],
+      "example": [
+        "During the concert, there was a lot of interaction between the singer and the fans."
+      ]
+    },
+    {
       "english": "regular",
       "pronunciation": "/ˈrɛɡjələr/",
       "chinese": [
@@ -107,11 +117,22 @@
       ],
       "example": [
         "The store decided to [discount] all winter clothing by 50% to clear out all the goods in the basement.",
-        "Because of Mary’s sincere apology, Kevin decided to [discount] her rude behavior and give her another chance.",
+        "Because of Mary’s sincere apology, Kevin decided to [discount] her rude behavior and give her another chance."
+      ],
+      "notes": [
+        "clear out 離開、滾開 / clear sth out 清理"
+      ]
+    },
+    {
+      "english": "discount",
+      "pronunciation": "/dɪsˈkaʊnt/",
+      "chinese": [
+        "n. [C] 打折"
+      ],
+      "example": [
         "Ella used the money she saved from the [discount] on plane tickets to pay for her hotel room."
       ],
       "notes": [
-        "clear out 離開、滾開 / clear sth out 清理",
         "discount = ignore = neglect",
         "at a discount 以折扣價",
         "big/special/limited-time discount 特別優惠 / 限時優惠",
@@ -123,14 +144,14 @@
       "english": "schedule",
       "pronunciation": "/ˈskɛdʒul/",
       "chinese": [
-        "n. [C] 行程表；時刻表 (a list of planned activities or times)"
+        "n. [C] 行程表；時刻表 (a list of planned activities or times)",
+        "vt. 安排，排定日程"
       ],
       "example": [
-        "I won't be able to meet you for lunch because I have a very busy [schedule] today."
+        "I won't be able to meet you for lunch because I have a very busy [schedule] today.",
+        "Samuel [scheduled] a meeting for Thursday morning with his group members to discuss project details."
       ],
       "notes": [
-        "vt. 安排，排定日程",
-        "Samuel scheduled a meeting for Thursday morning with his group members to discuss project details.",
         "be on schedule 準時、如期",
         "be ahead of (schedule) 比預定時間早 / behind schedule 落後預定時間",
         "be scheduled for (tomorrow afternoon) 時間安排",
@@ -167,19 +188,100 @@
       ]
     },
     {
+      "english": "souvenir",
+      "pronunciation": "/ˌsuːvəˈnɪr/",
+      "chinese": [
+        "n. [C] 紀念品 (something that can remind someone of a place or an event)"
+      ],
+      "example": [
+        "Tina bought a coffee mug as a [souvenir] of her trip to London."
+      ]
+    },
+    {
+      "english": "university",
+      "pronunciation": "/ˌjuːnɪˈvɜːrsəti/",
+      "syn": "college (a place where people study for a degree or do academic research)",
+      "chinese": [
+        "n. [C][U] 大學"
+      ],
+      "example": [
+        "It usually takes four years to finish [university] in Taiwan."
+      ],
+      "notes": [
+        "It takes + 時間 + to V",
+        "University 大學：指有5個以上的學院 (colleges) 組成；Colleges: 1~4個學院組成"
+      ]
+    },
+    {
+      "english": "retire",
+      "pronunciation": "/rɪˈtaɪər/",
+      "chinese": [
+        "vi. 退休 (to stop working, usually because you are older and have worked for many years)"
+      ],
+      "example": [
+        "Emma is planning to [retire] from her company this year because she is already sixty-five years old."
+      ],
+      "notes": [
+        "retire from + 因傷勢病退出比賽、退休"
+      ]
+    },
+    {
+      "english": "retired",
+      "pronunciation": "/rɪˈtaɪərd/",
+      "chinese": [
+        "adj. 退休的"
+      ],
+      "example": [
+        "Some baseball players become coaches after they are [retired]."
+      ],
+      "notes": [
+        "retire 和 retired 相關"
+      ]
+    },
+    {
+      "english": "retirement",
+      "pronunciation": "/rɪˈtaɪərmənt/",
+      "chinese": [
+        "n. [C][U] 退休生活"
+      ],
+      "example": [
+        "During her [retirement], Lorraine plans to take up gardening and finally finish writing a book."
+      ],
+      "notes": [
+        "take early retirement 提早退休"
+      ]
+    },
+    {
+      "english": "last",
+      "pronunciation": "/læst/",
+      "chinese": [
+        "vi. 持續 (to continue happening)"
+      ],
+      "example": [
+        "Remember to bring an umbrella when you go out. The heavy rain may [last] for several hours."
+      ],
+      "notes": [
+        "last for + 一段時間",
+        "持續（highlighted in orange）"
+      ]
+    },
+    {
       "english": "memory",
       "pronunciation": "/ˈmɛməri/",
       "chinese": [
-        "n. [C][U] 記憶力 (the ability to remember things)"
+        "n. [C] 回憶 (something someone remembers from the past)",
+        "n. [U] 記憶力 (the ability to remember things)"
       ],
       "example": [
-        "Mr. Fletcher has a good [memory] for names."
+        "The elementary school photo brought back lots of [memories] of Steven's childhood.",
+        "Mr. Fletcher has a good [memory] for names. He remembers the names of all his students."
       ],
       "notes": [
+        "bring back memories 回想起回憶",
         "be in memory of 紀念",
         "memorize (v) 記住",
         "memorable (adj) 難忘的",
-        "對...的記憶力"
+        "memory for 對...的記憶力"
       ]
     },
     {
@@ -189,10 +291,11 @@
         "adj. 難忘的 (hard to forget)"
       ],
       "example": [
-        "Traveling alone was an [unforgettable] experience for Cindy."
+        "Traveling alone was an [unforgettable] experience for Cindy. She learned a lot during her trip."
       ],
+      "syn": "memorable",
+      "ant": "forgettable",
       "notes": [
-        "SYN memorable, ANT forgettable",
         "forgettable (adj) 容易被忘記的"
       ]
     },
@@ -217,7 +320,7 @@
         "n. [C] 世代，一代 (all the people of a similar age)"
       ],
       "example": [
-        "Many families have lived in this small town for generations."
+        "Many families have lived in this small town for generations. They don't want to move away."
       ],
       "notes": [
         "from generation to generation 世代相傳",
@@ -225,17 +328,17 @@
         "generation gap 代溝",
         "好幾代"
       ]
-    }
-  ],
-  "recognition": [
+    },
     {
       "english": "seal",
+      "pronunciation": "/sil/",
       "chinese": [
         "海豹"
       ]
     },
     {
       "english": "marine",
+      "pronunciation": "/məˈrin/",
       "chinese": [
         "海洋的"
       ],
@@ -245,52 +348,56 @@
     },
     {
       "english": "aquarium",
+      "pronunciation": "/əˈkwɛriəm/",
       "chinese": [
         "水族館"
       ]
     },
     {
       "english": "behind-the-scenes",
+      "pronunciation": "/bɪˌhaɪnd ðə ˈsinz/",
       "chinese": [
         "幕後的"
       ]
     },
     {
       "english": "penguin",
+      "pronunciation": "/ˈpɛŋɡwɪn/",
       "chinese": [
         "企鵝"
       ]
     },
     {
       "english": "crab",
+      "pronunciation": "/kræb/",
       "chinese": [
         "螃蟹"
       ]
     },
     {
       "english": "starfish",
+      "pronunciation": "/ˈstɑrˌfɪʃ/",
       "chinese": [
         "海星"
       ]
     },
     {
       "english": "sea cucumber",
+      "pronunciation": "/si ˈkjuˌkʌmbər/",
       "chinese": [
         "海參"
       ],
       "notes": [
         "Handwritten: 小黃瓜"
       ]
-    }
-  ],
-  "phrases": [
+    },
     {
       "english": "hurry up",
       "chinese": [
         "趕快 (to ask someone to be quicker)"
       ],
       "example": [
-        "The guests are waiting for you. Hurry up and meet them downstairs."
+        "The guests are waiting for you. [Hurry up] and meet them downstairs."
       ]
     },
     {
@@ -299,7 +406,7 @@
         "過去曾經 (showing what was true in the past but is not true now)"
       ],
       "example": [
-        "Bill used to be my neighbor, but he moved away..."
+        "Bill [used to] be my neighbor, but he moved away after he got a new job."
       ],
       "notes": [
         "used to + V (過去)",
@@ -313,7 +420,7 @@
         "睡著 (sleeping)"
       ],
       "example": [
-        "Ivy was so tired that she fell asleep on the school bus."
+        "Ivy was so tired that she [fell asleep] on the school bus."
       ]
     },
     {
@@ -322,49 +429,12 @@
         "保護；照顧 (to protect or to care for)"
       ],
       "example": [
-        "Norton watched over his daughter as she played on the slide..."
+        "Norton [watched over] his daughter as she played on the slide..."
       ],
       "notes": [
         "slide (v) 滑動/滑行",
         "mud/rock slide 土石流/坍方 (泥濘)",
         "landslide 山崩"
-      ]
-    }
-  ],
-  "wordSmart": [
-    {
-      "topic": "Prefix \"a-\"",
-      "description": "Added to verbs or nouns to form adjectives.",
-      "entries": [
-        {
-          "word": "alive",
-          "meaning": "活著的"
-        },
-        {
-          "word": "apart",
-          "meaning": "分開的"
-        },
-        {
-          "word": "asleep",
-          "meaning": "睡著的"
-        },
-        {
-          "word": "aflame",
-          "meaning": "燃燒的"
-        }
-      ]
-    },
-    {
-      "topic": "Practice",
-      "entries": [
-        {
-          "word": "wake",
-          "meaning": "awake (醒著的)"
-        },
-        {
-          "word": "float",
-          "meaning": "afloat (漂浮的)"
-        }
       ]
     }
   ]

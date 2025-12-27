@@ -49,6 +49,7 @@
             border-radius: 0.35rem;
             font-style: italic;
             font-size: 0.85rem;
+            display: none;
         }
         .word-notes ul {
             margin: 0.35rem 0 0;
@@ -58,6 +59,23 @@
             margin-bottom: 0.25rem;
             line-height: 1.35;
             color: #2c2c2c;
+        }
+        .unit-controls {
+            margin-top: 0.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+        .unit-controls label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            cursor: pointer;
+            user-select: none;
+        }
+        .word-list.notes-visible .word-notes {
+            display: block;
         }
     </style>
 </head>
@@ -86,6 +104,12 @@
             <section id="unitDetail" style="display: none;">
                 <div id="unitHeader">
                     <h2>單元 <span id="unitNumber"></span></h2>
+                    <div class="unit-controls">
+                        <label>
+                            <input type="checkbox" id="notesToggle">
+                            筆記
+                        </label>
+                    </div>
                 </div>
                 
                 <div class="word-list" id="wordList">

@@ -7,6 +7,7 @@ const wordList = document.getElementById('wordList');
 const backToUnits = document.getElementById('backToUnits');
 const practiceFlashcards = document.getElementById('practiceFlashcards');
 const takeQuiz = document.getElementById('takeQuiz');
+const notesToggle = document.getElementById('notesToggle');
 
 // Current unit being viewed
 let currentUnitId = null;
@@ -61,6 +62,40 @@ const rewriterToneVariants = [
     }
 ];
 let lastRewriterToneKey = null;
+const NOTES_COOKIE_NAME = 'unitNotesVisible';
+let notesVisible = false;
+
+function setCookie(name, value, days = 365) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    const expires = `expires=${date.toUTCString()}`;
+    document.cookie = `${name}=${encodeURIComponent(JSON.stringify(value))};${expires};path=/`;
+}
+
+function getCookie(name) {
+    const nameEQ = `${name}=`;
+    const cookies = document.cookie.split(';');
+    for (let cookie of cookies) {
+        cookie = cookie.trim();
+        if (cookie.indexOf(nameEQ) === 0) {
+            try {
+                return JSON.parse(decodeURIComponent(cookie.substring(nameEQ.length)));
+            } catch (e) {
+                return null;
+            }
+        }
+    }
+    return null;
+}
+
+function applyNotesVisibility() {
+    if (!wordList) return;
+    if (notesVisible) {
+        wordList.classList.add('notes-visible');
+    } else {
+        wordList.classList.remove('notes-visible');
+    }
+}
 
 function pickRandomRewriterTone() {
     if (!rewriterToneVariants.length) {
@@ -356,6 +391,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     } else {
         displayAllUnits();
     }
+
+    notesVisible = Boolean(getCookie(NOTES_COOKIE_NAME));
+    if (notesToggle) {
+        notesToggle.checked = notesVisible;
+        notesToggle.addEventListener('change', () => {
+            notesVisible = notesToggle.checked;
+            setCookie(NOTES_COOKIE_NAME, notesVisible);
+            applyNotesVisibility();
+        });
+    }
+    applyNotesVisibility();
 
     // Set up event listeners
     if (backToUnits) {
