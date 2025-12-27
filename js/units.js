@@ -1364,6 +1364,61 @@ function buildPhraseMarkup(phraseText, vocabularyWord) {
     };
 }
 
+function buildSynLabelEntry(type, data) {
+    if (!data) {
+        return '';
+    }
+
+    const values = Array.isArray(data) ? data : [data];
+    const cleanedValues = values
+        .map(value => (typeof value === 'string' ? value.trim() : ''))
+        .filter(Boolean);
+
+    if (!cleanedValues.length) {
+        return '';
+    }
+
+    const labelClass = type === 'syn' ? 'syn-label' : 'ant-label';
+    const labelText = type === 'syn' ? 'SYN' : 'ANT';
+    const formattedValues = cleanedValues.map(value => escapeHtml(value)).join(' / ');
+
+    return `<div class="word-synonym-item"><span class="${labelClass}">${labelText}</span><span class="label-value">${formattedValues}</span></div>`;
+}
+
+function buildSynAntSection(word) {
+    const entries = [];
+    const synEntry = buildSynLabelEntry('syn', word.syn);
+    if (synEntry) {
+        entries.push(synEntry);
+    }
+    const antEntry = buildSynLabelEntry('ant', word.ant);
+    if (antEntry) {
+        entries.push(antEntry);
+    }
+    if (!entries.length) {
+        return '';
+    }
+    return `<div class="word-synonyms">${entries.join('')}</div>`;
+}
+
+function buildNotesSection(word) {
+    if (!word.notes) {
+        return '';
+    }
+
+    const notes = Array.isArray(word.notes) ? word.notes : [word.notes];
+    const cleanedNotes = notes
+        .map(note => (typeof note === 'string' ? note.trim() : ''))
+        .filter(Boolean);
+
+    if (!cleanedNotes.length) {
+        return '';
+    }
+
+    const noteItems = cleanedNotes.map(note => `<li>${escapeHtml(note)}</li>`).join('');
+    return `<div class="word-notes"><span class="notes-label">筆記</span><ul>${noteItems}</ul></div>`;
+}
+
 // Display all available units
 async function displayAllUnits() {
     unitsContainer.innerHTML = '';
@@ -1534,6 +1589,8 @@ function displayUnitWords(unit) {
         const chineseHTML = chineseTranslations.map(translation =>
             `<div class="chinese-line">${translation}</div>`
         ).join('');
+        const synonymsSectionHTML = buildSynAntSection(word);
+        const notesSectionHTML = buildNotesSection(word);
 
         // Check if word has example(s)
         const hasExample = word.example && (
@@ -1703,11 +1760,13 @@ function displayUnitWords(unit) {
                         ${videoButton}
                     </div>
                     <div class="chinese">${chineseHTML}</div>
+                    ${synonymsSectionHTML}
                     ${pronunciationHTML}
                     ${tenseHTML}
                     ${examplesWrapperHTML}
                     ${phrasesHTML}
                     ${relatedHTML}
+                    ${notesSectionHTML}
                 </div>
             </div>
             <div class="word-actions">

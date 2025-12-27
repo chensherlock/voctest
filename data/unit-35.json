@@ -1,0 +1,510 @@
+{
+  "id": 35,
+  "title": "課本3 Unit 5",
+  "words": [
+    {
+      "english": "contain",
+      "pronunciation": "/kənˈten/",
+      "chinese": [
+        "vt. 包含；容納 (to include or have something inside)"
+      ],
+      "example": [
+        "This website [contains] lots of information about the K-pop band."
+      ],
+      "notes": [
+        "= involve",
+        "container 容器",
+        "airtight container 密閉容器 (保鮮盒)"
+      ]
+    },
+    {
+      "english": "term",
+      "pronunciation": "/tɝm/",
+      "chinese": [
+        "n. [C] 字詞；用語 (a word or phrase)"
+      ],
+      "example": [
+        "It is better to use \"overweight\" instead of \"fat\" to describe a person. The former is a more polite [term]."
+      ],
+      "notes": [
+        "term = 學期 = semester",
+        "end of the term 學期末",
+        "in term of 就...而言；在...方面",
+        "The former... the latter... (前者... 後者...)",
+        "instead of = rather than 而不是"
+      ]
+    },
+    {
+      "english": "amount",
+      "pronunciation": "/əˈmaʊnt/",
+      "chinese": [
+        "n. [C] (數)量 (a quantity of something)"
+      ],
+      "example": [
+        "Phoebe added a small [amount] of salt to the steak before she ate it."
+      ],
+      "notes": [
+        "number of + 複數可數名詞",
+        "amount of + 不可數名詞"
+      ]
+    },
+    {
+      "english": "digest",
+      "pronunciation": "/daɪˈdʒɛst/",
+      "syn": "take in (哄騙)",
+      "chinese": [
+        "vt. 理解；消化 (to fully understand something)"
+      ],
+      "example": [
+        "Frank told me too many secrets at one time. It was hard to [digest] them all."
+      ],
+      "notes": [
+        "digest (n) 文摘、摘要",
+        "digestion (n) 消化能力",
+        "poor/good/strong digestion"
+      ]
+    },
+    {
+      "english": "variety",
+      "pronunciation": "/vəˈraɪəti/",
+      "chinese": [
+        "n. [sing.] 各式各樣 (different kinds of something)"
+      ],
+      "example": [
+        "Gary loves to eat at the buffet restaurant because he can enjoy a great [variety] of dishes there."
+      ],
+      "notes": [
+        "a variety / a diversity of N 各式各樣的 = varieties of N"
+      ]
+    },
+    {
+      "english": "vary",
+      "pronunciation": "/ˈvɛri/",
+      "chinese": [
+        "vi. (使)不同"
+      ],
+      "example": [
+        "The prices of beverages in the tea shop [vary] according to their flavors, sizes, and toppings."
+      ],
+      "notes": [
+        "according to = based on 根據",
+        "pizza topping 配料、澆汁"
+      ]
+    },
+    {
+      "english": "various",
+      "pronunciation": "/ˈvɛriəs/",
+      "chinese": [
+        "adj. 各式各樣的"
+      ],
+      "example": [
+        "Cathy can always think of [various] excuses for being late for our dates."
+      ]
+    },
+    {
+      "english": "film",
+      "pronunciation": "/fɪlm/",
+      "chinese": [
+        "n. [C] 電影 (moving pictures, shown at a theater or on television)"
+      ],
+      "syn":"movie",
+      "example": [
+        "Lucy is going to see the latest British [film] at a new theater."
+      ],
+      "notes": [
+        "film (vt.) 拍電影",
+        "see/watch a film 看電影",
+        "make/shoot a film",
+        "Culture Note: \"Around the World\" — 🇺🇸 movie, 🇬🇧 film"
+      ]
+    },
+    {
+      "english": "plot",
+      "pronunciation": "/plɑt/",
+      "chinese": [
+        "n. [C] 劇情，情節 (the events that form a story)"
+      ],
+      "example": [
+        "I love this novel because the development of its [plot] is very good."
+      ],
+      "notes": [
+        "plot to V 密謀做某事",
+        "hatch a plot to V 策劃陰謀"
+      ]
+    },
+    {
+      "english": "doubt",
+      "pronunciation": "/daʊt/",
+      "chinese": [
+        "n. [C][U] 疑問 (a feeling of not being sure)",
+        "vt. 懷疑"
+      ],
+      "example": [
+        "Jessie and I have a lot in common. There is no [doubt] that we will become good friends.",
+        "Philip began to [doubt] his ability to complete the task."
+      ],
+      "notes": [
+        "There is no doubt that S + V 毫無疑問",
+        "It is beyond doubt that S + V",
+        "be in doubt 不確定",
+        "doubt whether S + V 懷疑是否",
+        "doubt one's word 懷疑某人的話"
+      ]
+    },
+    {
+      "english": "complicated",
+      "pronunciation": "/ˈkɑmpləkeɪtɪd/",
+      "chinese": [
+        "adj. 複雜的 (hard to understand or deal with)"
+      ],
+      "example": [
+        "The plot of this [movie] was too [complicated], so I had to watch it again."
+      ],
+      "syn": "complex",
+      "notes": [
+        "complicate (v) 使疾病惡化",
+        "complication (n) 併發症、複雜化"
+      ]
+    },
+    {
+      "english": "complicate",
+      "pronunciation": "[ˈkɑmpləˌket]",
+      "chinese": [
+        "vt. 使複雜"
+      ],
+      "ant": "simplify",
+      "example": [
+        "William complicated the situation when he kept shouting, \"I don't want to listen!\""
+      ]
+    },  
+    {
+      "english": "policy",
+      "pronunciation": "/ˈpɑləsi/",
+      "chinese": [
+        "n. [C][U] 政策 (a set of plans by an organization)"
+      ],
+      "example": [
+        "The government has a new [policy] on the use of plastic bags in shops."
+      ],
+      "notes": [
+        "policy on N 針對...的政策",
+        "adopt a policy 採取政策"
+      ]
+    },
+    {
+      "english": "misunderstanding",
+      "pronunciation": "/ˌmɪsʌndərˈstændɪŋ/",
+      "chinese": [
+        "n. [C][U] 誤解 (a failure to understand correctly)"
+      ],
+      "example": [
+        "Sarah said she called me last night, but I didn't receive any calls. There must be some [misunderstanding]."
+      ]
+    },
+    {
+      "english": "understanding",
+      "pronunciation": "/ˌʌndɚˈstændɪŋ/",
+      "chinese": [
+        "n. [sing.][U] 理解；同情"
+      ],
+      "example": [
+        "Linda hoped to have an understanding of the situation before she could help us."
+      ]
+    },
+    {
+      "english": "creator",
+      "pronunciation": "/krɪˈeɪtər/",
+      "chinese": [
+        "n. [C] 創作者 (someone who made something)"
+      ],
+      "example": [
+        "This LINE [creator] has uploaded some funny stickers, and they have become very popular."
+      ],
+      "notes": [
+        "creative (adj) 有創意、獨創的",
+        "original creation (n) 創造"
+      ]
+    },
+    {
+      "english": "preference",
+      "pronunciation": "/ˈprɛfərəns/",
+      "chinese": [
+        "n. [C][U] 偏好 (a greater interest in something)"
+      ],
+      "example": [
+        "Charlotte has a [preference] for five-toe socks rather than normal ones."
+      ],
+      "notes": [
+        "have a preference for N/Ving 對...有偏好",
+        "prefer A (N/Ving) to B (N/Ving) 喜歡A勝過B",
+        "A be preference to B A比B更合適、更合拍"
+      ]
+    },
+    {
+      "english": "balanced",
+      "pronunciation": "/ˈbælənst/",
+      "chinese": [
+        "adj. 周全的 (considering everything equally)"
+      ],
+      "example": [
+        "The article presents a [balanced] view of the latest debates in society."
+      ],
+      "ant": "unbalanced",
+      "notes": [
+        "debate 討論、辯論",
+        "present (n) 禮物；the present 目前",
+        "present (v) 提交、呈現、主持電視節目",
+        "latest = newest 最新的",
+        "keep/maintain a balance between A and B 在A和B之間保持平衡",
+        "balance sth on sth 把某物平衡地放在另一物上",
+        "slip (v) 滑動、失足；(n) 小錯誤"
+      ]
+    },
+    {
+      "english": "balance",
+      "pronunciation": "/ˈbæləns/",
+      "chinese": [
+        "n. [sing.][U] 平衡；均衡"
+      ],
+      "ant": "imbalance",
+      "example": [
+        "This famous actor tries hard to keep a balance between family and work."
+      ]
+    },
+    {
+      "english": "balance",
+      "pronunciation": "/ˈbæləns/",
+      "chinese": [
+        "vt. (使)平衡"
+      ],
+      "example": [
+        "Warner tried to balance the painting on the shelf, but it kept slipping."
+      ]
+    },
+    {
+      "english": "risky",
+      "pronunciation": "/ˈrɪski/",
+      "chinese": [
+        "adj. 危險的，冒險的 (involving danger or failure)"
+      ],
+      "example": [
+        "It can be [risky] to buy shoes online since you cannot try them on."
+      ],
+      "syn": "dangerous",
+      "notes": [
+        "since = because = as = for",
+        "It is risky to V 做某事是危險的、冒險的"
+      ]
+    },
+    {
+      "english": "risk",
+      "pronunciation": "/rɪsk/",
+      "chinese": [
+        "n. [C][U] 危險，風險",
+        "vt. 承受風險"
+      ],
+      "example": [
+        "If Charlie keeps using his smartphone in the dark, there is a [risk] that he will go blind.",
+        "Emma [risks] being punished by the teacher if she continues to be late for school."
+      ],
+      "syn": "danger",
+      "notes": [
+        "There is a risk that S + V 有...風險",
+        "take the risk (of N/Ving) 冒...風險",
+        "risk + N/Ving 冒...的風險",
+        "risk N to V 冒...的風險去做某事"
+      ]
+    },
+    {
+      "english": "frequent",
+      "pronunciation": "/ˈfrikwənt/",
+      "chinese": [
+        "adj. 經常的，頻繁的 (doing something or happening often)"
+      ],
+      "example": [
+        "There are frequent buses between the two towns. They run every fifteen minutes."
+      ],
+      "ant": "infrequent",
+      "notes": [
+        "Derivative (Noun): frequency /ˈfrikwənsi/ n. [U][C] 頻率",
+        "Noun Example: The frequency of the singer's TV appearances increased as she became more famous.",
+        "frequent visitor 常客",
+        "frequent (v) 常去"
+      ]
+    },
+    {
+      "english": "frequency",
+      "pronunciation": "/ˈfrikwənsi/",
+      "chinese": [
+        "n. [U][C] 頻率"
+      ],
+      "example": [
+        "The frequency of the singer's TV appearances increased as she became more famous."
+      ],
+      "notes": [
+        "frequent visitor 常客",
+        "frequent (v) 常去"
+      ]
+    },   
+    {
+      "english": "savior",
+      "pronunciation": "/ˈseɪvjər/",
+      "chinese": [
+        "n. [C] 救星"
+      ],
+      "notes": [
+        "Around the World: 🇺🇸 savior / 🇬🇧 saviour"
+      ]
+    },
+    {
+      "english": "overview",
+      "pronunciation": "/ˈoʊvərˌvjuː/",
+      "chinese": [
+        "n. [C] 概要"
+      ]
+    },
+    {
+      "english": "newcomer",
+      "pronunciation": "/ˈnuːˌkʌmər/",
+      "chinese": [
+        "n. [C] 新手"
+      ]
+    },
+    {
+      "english": "shorten",
+      "pronunciation": "/ˈʃɔrtn/",
+      "chinese": [
+        "vt. (使)縮短，減少"
+      ]
+    },
+    {
+      "english": "inexperienced",
+      "pronunciation": "/ˌɪnɪkˈspɪriənst/",
+      "chinese": [
+        "adj. 經驗不足"
+      ],
+      "notes": [
+        "Handwritten Note: experienced (adj)"
+      ]
+    },
+    {
+      "english": "janitor",
+      "pronunciation": "/ˈdʒænɪtər/",
+      "chinese": [
+        "n. [C] (公寓、學校等的) 管理員"
+      ]
+    },
+    {
+      "english": "cross one's mind",
+      "chinese": [
+        "Definition: 想到"
+      ],
+      "example": [
+        "It never crossed my mind that I would work for NASA one day."
+      ],
+      "syn": "occur to sb",
+      "notes": [
+        "sb bring/call sth to mind 想起某事物",
+        "go over sth in one's mind 腦海中反復思考",
+        "get/put sth out of one's mind 把某事拋諸腦後"
+      ]
+    },
+    {
+      "english": "catch up on",
+      "chinese": [
+        "Definition: 得知，跟上 (消息)"
+      ],
+      "example": [
+        "Rick and I haven't seen each other for a long time, so we naturally have a lot to catch up on."
+      ],
+      "notes": [
+        "catch sb up on sth 讓某人了解最近某事",
+        "catch up on 補做 (工作)",
+        "catch up on some sleep 補眠"
+      ]
+    },
+    {
+      "english": "tell... apart",
+      "chinese": [
+        "Definition: 分辨，區分"
+      ],
+      "example": [
+        "Although the two pictures looked similar, Shelly could still tell them apart."
+      ],
+      "syn": "distinguish, differentiate",
+      "notes": [
+        "= tell A from B",
+        "tell sb off 責備某人",
+        "tell against sb 對某人不利",
+        "distinguish A and B"
+      ]
+    },
+    {
+      "english": "without (a) doubt",
+      "chinese": [
+        "Definition: 毫無疑問地"
+      ],
+      "example": [
+        "This hot pot is still boiling. Without a doubt, it is very hot right now."
+      ],
+      "syn": "beyond doubt",
+      "notes": [
+        "= undoubtedly",
+        "= certainly",
+        "= definitely"
+      ]
+    },
+    {
+      "english": "rely on",
+      "chinese": [
+        "Definition: 依賴，依靠"
+      ],
+      "example": [
+        "I rely on my friends to support me when I am depressed."
+      ],
+      "syn": "depend on",
+      "notes": [
+        "depressed = upset = downbeat = distressed 沮喪的",
+        "rely/depend/count on sb for sth",
+        "reliable = dependable (adj) 可靠的"
+      ]
+    },
+    {
+      "english": "keep in mind",
+      "chinese": [
+        "Definition: 記住"
+      ],
+      "example": [
+        "Thanks for your advice. I'll be sure to keep it in mind."
+      ],
+      "syn": "bear in mind",
+      "notes": [
+        "thank sb for sth"
+      ]
+    }
+  ],
+  "wordSmart": [
+    {
+      "topic": "mis-",
+      "description": "加在名詞或動詞前，表示「錯誤」或帶有否定的意思。",
+      "entries": [
+        {
+          "word": "mistrust",
+          "meaning": "不信任"
+        },
+        {
+          "word": "misunderstanding",
+          "meaning": "誤解"
+        },
+        {
+          "word": "misuse",
+          "meaning": "誤用"
+        },
+        {
+          "word": "misspell",
+          "meaning": "拼錯"
+        }
+      ]
+    }
+  ]
+}

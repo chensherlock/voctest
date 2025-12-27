@@ -6,6 +6,60 @@
     <title>單元 | 詞彙記憶</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .word-synonyms {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            margin: 0.35rem 0 0.5rem;
+        }
+        .word-synonym-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.9rem;
+        }
+        .syn-label,
+        .ant-label {
+            padding: 0.1rem 0.55rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #fff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+        .syn-label {
+            background: #d32f2f;
+        }
+        .ant-label {
+            background: #1976d2;
+        }
+        .label-value {
+            color: #111;
+        }
+        .word-notes {
+            margin: 0.75rem 0 0;
+            padding: 0.65rem;
+            background: #fffdd0;
+            border-radius: 0.35rem;
+            font-style: italic;
+            font-size: 0.85rem;
+        }
+        .word-notes ul {
+            margin: 0.35rem 0 0;
+            padding-left: 1rem;
+        }
+        .word-notes li {
+            margin-bottom: 0.25rem;
+            line-height: 1.35;
+            color: #2c2c2c;
+        }
+    </style>
 </head>
 <body>
     <header>
