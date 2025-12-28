@@ -266,6 +266,10 @@ h2::after {
     flex-shrink: 0;
 }
 
+.unit-card-header .btn-web {
+    flex-shrink: 0;
+}
+
 .unit-card-header h3 {
     flex: 1;
 }
@@ -316,6 +320,16 @@ h2::after {
 
 .btn-video:hover {
     background-color: #ee5a52;
+    color: white;
+}
+
+.btn-web {
+    background-color: #2d9cdb;
+    color: white;
+}
+
+.btn-web:hover {
+    background-color: #238ac3;
     color: white;
 }
 
@@ -1654,6 +1668,34 @@ label.incorrect::after {
 }
 
 .rewriter-api-flag-btn:active {
+    transform: translateY(0);
+}
+
+.unit-web-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid rgba(45, 156, 219, 0.35);
+    background-color: rgba(45, 156, 219, 0.12);
+    color: #2d9cdb;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.unit-web-btn i {
+    font-size: 0.95rem;
+}
+
+.unit-web-btn:hover {
+    background-color: rgba(45, 156, 219, 0.22);
+    color: #1b7fc7;
+    transform: translateY(-1px);
+}
+
+.unit-web-btn:active {
     transform: translateY(0);
 }
 

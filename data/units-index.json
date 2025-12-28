@@ -1,34 +1,10 @@
 {
   "units": [
     {
-      "id": 23,
-      "title": "課本2 Unit 3",
-      "default": false,
-      "file": "unit-23.json"
-    },
-    {
-      "id": 24,
-      "title": "課本2 Unit 4",
-      "default": false,
-      "file": "unit-24.json"
-    },
-    {
       "id": 3,
       "title": "高頻 Unit 5",
       "default": false,
       "file": "unit-3.json"
-    },
-    {
-      "id": 4,
-      "title": "課本 Unit 5",
-      "default": false,
-      "file": "unit-4.json"
-    },
-    {
-      "id": 5,
-      "title": "課本 Unit 6",
-      "default": false,
-      "file": "unit-5.json"
     },
     {
       "id": 6,
@@ -78,32 +54,64 @@
       "video": ""
     },
     {
+      "id": 23,
+      "title": "課本2 Unit 3",
+      "default": false,
+      "file": "unit-23.json",
+      "web": "https://www.junyiacademy.org/junyi-english/english-high/eng-senior10/e-meng-v-g10/e-meng-v-g10-b2/e-meng-v-g10-b2-3"
+    },
+    {
+      "id": 24,
+      "title": "課本2 Unit 4",
+      "default": false,
+      "file": "unit-24.json",
+      "web": "https://www.junyiacademy.org/junyi-english/english-high/eng-senior10/e-meng-v-g10/e-meng-v-g10-b2/e-meng-v-g10-b2-4"
+    },
+    {
+      "id": 25,
+      "title": "課本2 Unit 5",
+      "default": false,
+      "file": "unit-25.json",
+      "web": "https://www.junyiacademy.org/junyi-english/english-high/eng-senior10/e-meng-v-g10/e-meng-v-g10-b2/e-meng-v-g10-b2-5"
+    },
+    {
+      "id": 26,
+      "title": "課本 Unit 6",
+      "default": false,
+      "file": "unit-26.json",
+      "web": "https://www.junyiacademy.org/junyi-english/english-high/eng-senior10/e-meng-v-g10/e-meng-v-g10-b2/e-meng-v-g10-b2-6"
+    },
+    {
       "id": 31,
       "title": "課本3 Unit 1",
       "default": false,
       "file": "unit-31.json",
-      "video": "https://www.sanmin.com.tw/api/attachment/URL3/4711289874621"
+      "video": "https://www.sanmin.com.tw/api/attachment/URL3/4711289874621",
+      "web": "https://www.junyiacademy.org/junyi-english/english-high/eng-senior11/e-meng-v-g11/e-eng-v-g11-b3/e-meng-v-g11-b3-1"
     },
     {
       "id": 32,
       "title": "課本3 Unit 2",
       "default": false,
       "file": "unit-32.json",
-      "video": "https://www.sanmin.com.tw/api/attachment/URL6/4711289874621"
+      "video": "https://www.sanmin.com.tw/api/attachment/URL6/4711289874621",
+      "web": "https://www.junyiacademy.org/junyi-english/english-high/eng-senior11/e-meng-v-g11/e-eng-v-g11-b3/e-meng-v-g11-b3-2"
     },
     {
       "id": 33,
       "title": "課本3 Unit 3",
       "default": false,
       "file": "unit-33.json",
-      "video": "https://sites.google.com/view/grandeastenglishb2/%E6%8A%80%E9%AB%98%E8%8B%B1%E6%96%87-a%E7%89%88-%E7%AC%AC%E4%B8%89%E5%86%8A/%E6%8A%80a-%E7%AC%AC%E4%B8%89%E5%86%8A-unit-3/a3u3%E5%96%AE%E5%AD%97?authuser=1"
+      "video": "https://sites.google.com/view/grandeastenglishb2/%E6%8A%80%E9%AB%98%E8%8B%B1%E6%96%87-a%E7%89%88-%E7%AC%AC%E4%B8%89%E5%86%8A/%E6%8A%80a-%E7%AC%AC%E4%B8%89%E5%86%8A-unit-3/a3u3%E5%96%AE%E5%AD%97?authuser=1",
+      "web": "https://www.junyiacademy.org/junyi-english/english-high/eng-senior11/e-meng-v-g11/e-eng-v-g11-b3/e-meng-v-g11-b3-3"
     },
     {
       "id": 34,
       "title": "課本3 Unit 4",
       "default": false,
       "file": "unit-34.json",
-      "video": "https://sites.google.com/view/grandeastenglishb2/%E6%8A%80%E9%AB%98%E8%8B%B1%E6%96%87-a%E7%89%88-%E7%AC%AC%E4%B8%89%E5%86%8A/%E6%8A%80a-%E7%AC%AC%E4%B8%89%E5%86%8A-unit-4/a3u4%E5%96%AE%E5%AD%97?authuser=1"
+      "video": "https://sites.google.com/view/grandeastenglishb2/%E6%8A%80%E9%AB%98%E8%8B%B1%E6%96%87-a%E7%89%88-%E7%AC%AC%E4%B8%89%E5%86%8A/%E6%8A%80a-%E7%AC%AC%E4%B8%89%E5%86%8A-unit-4/a3u4%E5%96%AE%E5%AD%97?authuser=1",
+      "web": "https://www.junyiacademy.org/junyi-english/english-high/eng-senior11/e-meng-v-g11/e-eng-v-g11-b3/e-meng-v-g11-b3-4"
     },
     {
       "id": 35,
@@ -111,7 +119,8 @@
       "description": "A Savior* for Lazy People",
       "default": true,
       "file": "unit-35.json",
-      "video": "https://sites.google.com/view/grandeastenglishb2/技高英文-a版-第三冊/技a-第三冊-unit-5/a3u5單字"
+      "video": "https://sites.google.com/view/grandeastenglishb2/技高英文-a版-第三冊/技a-第三冊-unit-5/a3u5單字",
+      "web": "https://www.junyiacademy.org/junyi-english/english-high/eng-senior11/e-meng-v-g11/e-eng-v-g11-b3/e-meng-v-g11-b3-5"
     },
     {
       "id": 36,
@@ -119,7 +128,8 @@
       "description": "Spend a Night with Ocean Animals Around You",
       "default": true,
       "file": "unit-36.json",
-      "video": "https://sites.google.com/view/grandeastenglishb2/技高英文-a版-第三冊/技a-第三冊-unit-6/a3u6單字"
+      "video": "https://sites.google.com/view/grandeastenglishb2/技高英文-a版-第三冊/技a-第三冊-unit-6/a3u6單字",
+      "web": "https://www.junyiacademy.org/junyi-english/english-high/eng-senior11/e-meng-v-g11/e-eng-v-g11-b3/e-meng-v-g11-b3-6"
     }    
   ]
 }

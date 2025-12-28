@@ -403,6 +403,40 @@ function updateRewriterApiFlagButton() {
     flagButton.title = `${flagInfo.label} - 開啟瀏覽器實驗功能`;
 }
 
+function updateUnitWebButton(unit) {
+    const header = document.getElementById('unitHeader');
+    if (!header) return;
+    const unitHeading = header.querySelector('h2');
+    if (!unitHeading) return;
+
+    let webButton = unitHeading.querySelector('.unit-web-btn');
+    const webUrl = unit && unit.web ? unit.web.trim() : '';
+
+    if (!webUrl) {
+        if (webButton) {
+            webButton.remove();
+        }
+        return;
+    }
+
+    if (!webButton) {
+        webButton = document.createElement('button');
+        webButton.type = 'button';
+        webButton.className = 'unit-web-btn';
+        webButton.innerHTML = '<i class="fas fa-link"></i>';
+        unitHeading.appendChild(webButton);
+    }
+
+    webButton.dataset.webUrl = webUrl;
+    webButton.setAttribute('aria-label', '開啟單元網頁');
+    webButton.title = '開啟單元網頁';
+    webButton.onclick = (event) => {
+        event.stopPropagation();
+        event.preventDefault();
+        window.open(webUrl, '_blank', 'noopener');
+    };
+}
+
 // Initialize the page
 document.addEventListener('DOMContentLoaded', async () => {
     // Ensure units data is loaded first
@@ -1509,6 +1543,7 @@ async function displayAllUnits() {
         units.forEach(unit => {
             const hasWords = unit.words && unit.words.length > 0;
             const hasVideo = unit.video && unit.video.trim() !== '';
+            const hasWeb = unit.web && unit.web.trim() !== '';
 
             const unitCard = document.createElement('div');
             unitCard.className = `unit-card ${unit.default ? 'default-unit' : ''} ${!hasWords ? 'disabled' : ''}`;
@@ -1517,10 +1552,14 @@ async function displayAllUnits() {
             const videoButtonHTML = hasVideo ?
                 `<button class="btn-small btn-video" data-video-url="${unit.video}" title="觀看單元影片"><i class="fas fa-video"></i></button>`
                 : '';
+            const webButtonHTML = hasWeb ?
+                `<button class="btn-small btn-web" data-web-url="${unit.web}" aria-label="開啟單元網頁" title="開啟單元網頁"><i class="fas fa-link"></i></button>`
+                : '';
+            const unitButtonsHTML = `${videoButtonHTML}${webButtonHTML}`;
 
             unitCard.innerHTML = `
                 <div class="unit-card-header">
-                    <h3>${unit.title} <span class="word-count">(${unit.words.length} 個詞彙)</span> ${videoButtonHTML || ''}</h3>
+                    <h3>${unit.title} <span class="word-count">(${unit.words.length} 個詞彙)</span> ${unitButtonsHTML}</h3>
                 </div>
             `;
 
@@ -1529,7 +1568,7 @@ async function displayAllUnits() {
                 unitCard.style.cursor = 'pointer';
                 unitCard.addEventListener('click', (e) => {
                     // Don't navigate if clicking on video button
-                    if (e.target.closest('.btn-video')) {
+                    if (e.target.closest('.btn-video') || e.target.closest('.btn-web')) {
                         return;
                     }
                     e.preventDefault();
@@ -1548,6 +1587,15 @@ async function displayAllUnits() {
                     e.stopPropagation(); // Prevent triggering card click
                     const videoUrl = videoBtn.dataset.videoUrl;
                     window.open(videoUrl, '_blank');
+                });
+            }
+
+            if (hasWeb) {
+                const webBtn = unitCard.querySelector('.btn-web');
+                webBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const webUrl = webBtn.dataset.webUrl;
+                    window.open(webUrl, '_blank', 'noopener');
                 });
             }
 
@@ -1573,6 +1621,7 @@ async function showUnitDetail(unitId) {
             unitTitle.textContent = unit.title || `單元 ${unit.id}`;
         }
         updateUnitDescription(unit);
+        updateUnitWebButton(unit);
         updateWriterApiFlagButton();
         updateRewriterApiFlagButton();
         displayUnitWords(unit);
