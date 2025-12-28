@@ -1559,7 +1559,8 @@ async function displayAllUnits() {
 
             unitCard.innerHTML = `
                 <div class="unit-card-header">
-                    <h3>${unit.title} <span class="word-count">(${unit.words.length} 個詞彙)</span> ${unitButtonsHTML}</h3>
+                    <h3>${unit.title} <span class="word-count">(${unit.words.length} 個詞彙)</span></h3>
+                    <div class="unit-card-actions">${unitButtonsHTML}</div>
                 </div>
             `;
 
