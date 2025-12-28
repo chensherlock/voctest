@@ -7,6 +7,9 @@ const quizContainer = document.querySelector('.quiz-container');
 const unitCheckboxContainer = document.getElementById('unitCheckboxContainer');
 const quizType = document.getElementById('quizType');
 const questionCount = document.getElementById('questionCount');
+const quizVoiceSelectorContainer = document.getElementById('quizVoiceSelectorContainer');
+const quizVoiceSelect = document.getElementById('quizVoiceSelect');
+const quizRefreshVoicesBtn = document.getElementById('quizRefreshVoices');
 const startQuiz = document.getElementById('startQuiz');
 const submitAnswer = document.getElementById('submitAnswer');
 const prevQuestion = document.getElementById('prevQuestion');
@@ -86,24 +89,22 @@ document.addEventListener('DOMContentLoaded', async () => {
     const savedQuizType = getCookie('quizType');
     const savedQuestionCount = getCookie('questionCount');
     
-    const quizTypeSelect = document.getElementById('quizType');
-    const questionCountInput = document.getElementById('questionCount');
-    
-    if (savedQuizType && quizTypeSelect) {
-        quizTypeSelect.value = savedQuizType;
+    if (savedQuizType && quizType) {
+        quizType.value = savedQuizType;
     }
-    if (savedQuestionCount && questionCountInput) {
-        questionCountInput.value = savedQuestionCount;
+    if (savedQuestionCount && questionCount) {
+        questionCount.value = savedQuestionCount;
     }
-    
-    // Save quiz type when changed
-    quizTypeSelect.addEventListener('change', () => {
-        setCookie('quizType', quizTypeSelect.value);
+
+    // Save quiz type when changed and update voice controls
+    quizType.addEventListener('change', () => {
+        setCookie('quizType', quizType.value);
+        updateQuizVoiceSelectorVisibility();
     });
-    
+
     // Save question count when changed
-    questionCountInput.addEventListener('change', () => {
-        setCookie('questionCount', questionCountInput.value);
+    questionCount.addEventListener('change', () => {
+        setCookie('questionCount', questionCount.value);
     });
 
     // Check if a unit was specified in the URL
@@ -130,6 +131,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     retakeQuiz.addEventListener('click', handleRetakeQuiz);
     newQuiz.addEventListener('click', handleNewQuiz);
     reviewMissed.addEventListener('click', handleReviewMissed);
+
+    updateQuizVoiceSelectorVisibility();
+
+    if ('speechSynthesis' in window) {
+        audioService.loadVoices();
+        initializeQuizVoiceSelector();
+        window.speechSynthesis.onvoiceschanged = () => {
+            audioService.loadVoices();
+            initializeQuizVoiceSelector();
+        };
+    }
 });
 
 // Populate the unit checkboxes
@@ -184,6 +196,38 @@ function selectDefaultUnits() {
         }
     });
     handleUnitCheckboxChange();
+}
+
+// Show or hide the quiz voice selector when pronunciation mode is selected
+function updateQuizVoiceSelectorVisibility() {
+    if (!quizVoiceSelectorContainer || !quizType) return;
+    const shouldShow = quizType.value === 'pronunciation';
+    quizVoiceSelectorContainer.style.display = shouldShow ? 'block' : 'none';
+    if (shouldShow) {
+        audioService.setProvider(audioService.providers.SPEECH_SYNTHESIS);
+    }
+}
+
+// Populate the quiz voice selector and attach listeners to keep it in sync
+function initializeQuizVoiceSelector() {
+    if (!quizVoiceSelect) return;
+
+    audioService.populateVoiceSelector(quizVoiceSelect);
+
+    if (!quizVoiceSelect.dataset.quizListenerAttached) {
+        quizVoiceSelect.addEventListener('change', function () {
+            audioService.setPreferredVoice(this.value);
+        });
+        quizVoiceSelect.dataset.quizListenerAttached = 'true';
+    }
+
+    if (quizRefreshVoicesBtn && !quizRefreshVoicesBtn.dataset.quizListenerAttached) {
+        quizRefreshVoicesBtn.addEventListener('click', () => {
+            audioService.loadVoices();
+            audioService.populateVoiceSelector(quizVoiceSelect);
+        });
+        quizRefreshVoicesBtn.dataset.quizListenerAttached = 'true';
+    }
 }
 
 // Handle "all units" checkbox

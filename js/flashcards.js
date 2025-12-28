@@ -17,12 +17,43 @@ const startFlashcardsBtn = document.getElementById('startFlashcards');
 const flashcardBack = document.querySelector('.flashcard-back');
 
 // State variables
+const FLASHCARD_VOICE_COOKIE = 'flashcardPreferredVoice';
+
 let currentWords = [];
 let currentIndex = 0;
 let currentDirection = 'english-chinese'; // or 'chinese-english'
 let selectedUnitIds = []; // Array of selected unit IDs
 let audioLoading = false;
 let allUnitWords = []; // Store all words from the unit for range selection
+
+// Cookie helpers
+function setFlashcardCookie(name, value, days = 365) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    const expires = `expires=${date.toUTCString()}`;
+    document.cookie = `${name}=${encodeURIComponent(value)};${expires};path=/`;
+}
+
+function getFlashcardCookie(name) {
+    const nameEQ = `${name}=`;
+    const cookies = document.cookie.split(';');
+    for (let cookie of cookies) {
+        cookie = cookie.trim();
+        if (cookie.indexOf(nameEQ) === 0) {
+            return decodeURIComponent(cookie.substring(nameEQ.length));
+        }
+    }
+    return null;
+}
+
+function setFlashcardVoicePreference(value) {
+    if (!value) return;
+    setFlashcardCookie(FLASHCARD_VOICE_COOKIE, value);
+}
+
+function getFlashcardVoicePreference() {
+    return getFlashcardCookie(FLASHCARD_VOICE_COOKIE);
+}
 
 function fitTextToDivFast(container, textElement, translations) {
   // Get available space from the container (flashcard-back)
@@ -114,9 +145,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     cardDirection.addEventListener('change', handleDirectionChange);
     startFlashcardsBtn.addEventListener('click', handleStartFlashcards);
 
-    // Create audio provider selector if it doesn't exist
-    createAudioProviderSelector();
-
     // Create speed control selector
     createSpeedControlSelector();
 
@@ -129,74 +157,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Update progress bar width
     updateProgressBar();
 });
-
-// Create audio provider selector dropdown
-function createAudioProviderSelector() {
-    const settingsContainer = document.querySelector('.flashcard-settings');
-
-    if (!settingsContainer) return;
-
-    // Check if the selector already exists
-    if (document.getElementById('audioProviderSelect')) return;
-
-    const providerFormGroup = document.createElement('div');
-    providerFormGroup.className = 'form-group';
-
-    const providerLabel = document.createElement('label');
-    providerLabel.setAttribute('for', 'audioProviderSelect');
-    providerLabel.textContent = '音訊提供者：';
-
-    const providerSelect = document.createElement('select');
-    providerSelect.id = 'audioProviderSelect';
-
-    // Create options for available providers
-    const providers = [
-        { value: 'FreeDictionaryAPI', text: '英文詞典 API' },
-        { value: 'speechSynthesis', text: '瀏覽器語音合成' }
-    ];
-
-    // Add options for each provider
-    providers.forEach(provider => {
-        const option = document.createElement('option');
-        option.value = provider.value;
-        option.textContent = provider.text;
-        providerSelect.appendChild(option);
-    });
-
-    // Set default value - FreeDictionaryAPI
-    providerSelect.value = 'FreeDictionaryAPI';
-
-    // Add change event listener
-    providerSelect.addEventListener('change', () => {
-        // Update audio service provider
-        audioService.setProvider(providerSelect.value);
-
-        // If user selects speech synthesis, reload and update voice list
-        if (providerSelect.value === 'speechSynthesis') {
-            updateAudioStatus(`已更改為直接使用瀏覽器語音合成`);
-
-            // Reload voices and update the voice selector
-            audioService.loadVoices();
-            if (voiceSelect) {
-                audioService.populateVoiceSelector(voiceSelect);
-            }
-        } else {
-            updateAudioStatus(`已更改音訊提供者為 ${providerSelect.value}`);
-        }
-    });
-
-    // Append elements
-    providerFormGroup.appendChild(providerLabel);
-    providerFormGroup.appendChild(providerSelect);
-
-    // Insert before the start button
-    const startButton = document.getElementById('startFlashcards');
-    if (startButton) {
-        settingsContainer.insertBefore(providerFormGroup, startButton);
-    } else {
-        settingsContainer.appendChild(providerFormGroup);
-    }
-}
 
 // Create pronunciation speed control
 function createSpeedControlSelector() {
@@ -818,23 +778,70 @@ function toggleAudioLoading(isLoading) {
     }
 }
 
+function setVoiceSelectValue(uri) {
+    if (!voiceSelect || !uri) return false;
+    const option = Array.from(voiceSelect.options).find(opt => opt.value === uri);
+    if (option) {
+        voiceSelect.value = uri;
+        audioService.setPreferredVoice(uri);
+        return true;
+    }
+    return false;
+}
+
+function applyFlashcardVoiceSelection() {
+    if (!voiceSelect) return;
+
+    const savedVoice = getFlashcardVoicePreference();
+    if (savedVoice && setVoiceSelectValue(savedVoice)) {
+        return;
+    }
+
+    if (audioService.voices.length > 0) {
+        const englishVoice = audioService.voices.find(voice => /en/i.test(voice.lang));
+        if (englishVoice && setVoiceSelectValue(englishVoice.voiceURI)) {
+            setFlashcardVoicePreference(englishVoice.voiceURI);
+            return;
+        }
+    }
+
+    // Fall back to first selectable option if none matched
+    const firstCustom = Array.from(voiceSelect.options).find(opt => opt.value);
+    if (firstCustom) {
+        setVoiceSelectValue(firstCustom.value);
+        setFlashcardVoicePreference(firstCustom.value);
+    }
+}
+
 // Initialize voice selector for speech synthesis
 function initializeVoiceSelector() {
+    if (!voiceSelect) return;
+
+    audioService.loadVoices();
     // Use audio service to populate the selector
     audioService.populateVoiceSelector(voiceSelect);
+    applyFlashcardVoiceSelection();
 
     // Add event listener
-    voiceSelect.addEventListener('change', function() {
-        audioService.setPreferredVoice(this.value);
-        updateAudioStatus(`已更改語音合成聲音`);
-    });
+    if (!voiceSelect.dataset.flashcardVoiceListener) {
+        voiceSelect.addEventListener('change', function() {
+            audioService.setPreferredVoice(this.value);
+            setFlashcardVoicePreference(this.value);
+            updateAudioStatus(`已更改語音合成聲音`);
+        });
+        voiceSelect.dataset.flashcardVoiceListener = 'true';
+    }
 
     // Add refresh button event listener
-    refreshVoicesBtn.addEventListener('click', () => {
-        audioService.loadVoices();
-        audioService.populateVoiceSelector(voiceSelect);
-        updateAudioStatus('已更新可用語音列表');
-    });
+    if (refreshVoicesBtn && !refreshVoicesBtn.dataset.flashcardVoiceRefresh) {
+        refreshVoicesBtn.addEventListener('click', () => {
+            audioService.loadVoices();
+            audioService.populateVoiceSelector(voiceSelect);
+            applyFlashcardVoiceSelection();
+            updateAudioStatus('已更新可用語音列表');
+        });
+        refreshVoicesBtn.dataset.flashcardVoiceRefresh = 'true';
+    }
 }
 
 // Speech synthesis voices can load asynchronously
