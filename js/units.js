@@ -189,12 +189,23 @@ function getWriterCreator() {
     return null;
 }
 
+function isMobileDevice() {
+    if (typeof navigator === 'undefined') {
+        return false;
+    }
+    const mobilePattern = /Mobi|Android|iP(hone|ad|od)|IEMobile|Mobile|Opera Mini/i;
+    return mobilePattern.test(navigator.userAgent || '');
+}
+
 function getWriterApiFlagInfo() {
     if (typeof navigator === 'undefined') {
         return null;
     }
 
     const userAgent = navigator.userAgent || '';
+    if (isMobileDevice()) {
+        return null;
+    }
     const isEdge = /Edg\//.test(userAgent);
     const isChrome = !isEdge && /Chrome\//.test(userAgent);
 
@@ -223,6 +234,9 @@ function getRewriterApiFlagInfo() {
     }
 
     const userAgent = navigator.userAgent || '';
+    if (isMobileDevice()) {
+        return null;
+    }
     const isEdge = /Edg\//.test(userAgent);
     const isChrome = !isEdge && /Chrome\//.test(userAgent);
 
