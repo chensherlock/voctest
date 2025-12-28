@@ -316,6 +316,9 @@ h2::after {
 .btn-video {
     background-color: #ff6b6b;
     color: white;
+    padding: 4px 6px;
+    font-size: 0.85rem;
+    line-height: 1;
 }
 
 .btn-video:hover {
@@ -326,6 +329,9 @@ h2::after {
 .btn-web {
     background-color: #2d9cdb;
     color: white;
+    padding: 4px 6px;
+    font-size: 0.85rem;
+    line-height: 1;
 }
 
 .btn-web:hover {
@@ -1675,8 +1681,8 @@ label.incorrect::after {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
     border: 1px solid rgba(45, 156, 219, 0.35);
     background-color: rgba(45, 156, 219, 0.12);
@@ -1686,7 +1692,7 @@ label.incorrect::after {
 }
 
 .unit-web-btn i {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
 }
 
 .unit-web-btn:hover {
@@ -1714,8 +1720,8 @@ label.incorrect::after {
     border: none;
     color: #ff6b6b;
     cursor: pointer;
-    font-size: 16px;
-    padding: 4px 6px;
+    font-size: 0.95rem;
+    padding: 2px 4px;
     transition: var(--transition);
     border-radius: 4px;
 }
@@ -1723,7 +1729,7 @@ label.incorrect::after {
 .word-header .video-btn:hover {
     color: var(--selection-color);
     background-color: rgba(255, 123, 0, 0.1);
-    transform: scale(1.15);
+    transform: scale(1.05);
 }
 
 .word-header .video-btn:active {

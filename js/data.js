@@ -21,6 +21,7 @@ async function loadUnitsIndex() {
             default: unit.default,
             file: unit.file,
             video: unit.video || '',
+            web: unit.web || '',
             words: [] // Words will be loaded on demand
         }));
         return vocabularyData.units;
