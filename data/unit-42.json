@@ -1,0 +1,329 @@
+{
+  "id": 42,
+  "title": "課本4 Unit 2",
+  "words": [
+    {
+      "english": "content",
+      "pronunciation": "[kən`tɛnt]",
+      "chinese": [
+        "adj. 滿意的，滿足的 (happy, satisfied)"
+      ],
+      "example": [
+        "Jessie was [content] with her selfie and decided to post it online."
+      ]
+    },
+    {
+      "english": "nevertheless",
+      "pronunciation": "[ˌnɛvɚðə`lɛs]",
+      "chinese": [
+        "adv. 然而，儘管如此 (despite what has just been mentioned)"
+      ],
+      "syn": "however, nonetheless",
+      "example": [
+        "Gina had a bad headache this morning. [Nevertheless], she still went to work."
+      ]
+    },
+    {
+      "english": "concept",
+      "pronunciation": "[`kɑnsɛpt]",
+      "chinese": [
+        "n. [C] 概念，觀念 (an idea of something)"
+      ],
+      "example": [
+        "The child is too young to understand the [concept] of death."
+      ]
+    },
+    {
+      "english": "pronounce",
+      "pronunciation": "[prə`naʊns]",
+      "chinese": [
+        "vt. 發……的音，發音 (to make the sound of a word)"
+      ],
+      "example": [
+        "This one-year-old baby can only [pronounce] \"papa\" and \"mama\" now."
+      ]
+    },
+    {
+      "english": "pronunciation",
+      "pronunciation": "[prəˌnʌnsɪ`eʃən]",
+      "chinese": [
+        "n. [U][C] 發音"
+      ],
+      "example": [
+        "Do you know the correct [pronunciation] of the store's name \"IKEA\"?"
+      ]
+    },
+    {
+      "english": "atmosphere",
+      "pronunciation": "[`ætməsˌfɪr]",
+      "chinese": [
+        "n. [C][U] 氣氛，氛圍 (the feeling that a place gives someone)"
+      ],
+      "example": [
+        "This coffee shop has a friendly [atmosphere] because of its design and furniture."
+      ]
+    },
+    {
+      "english": "fascinated",
+      "pronunciation": "[`fæsṇˌetɪd]",
+      "chinese": [
+        "adj. 著迷的 (thinking something is very interesting)"
+      ],
+      "example": [
+        "The students are [fascinated] to see how the AI robot could answer questions."
+      ],
+      "notes": [
+        "fascination with/for sb/sth：對某人/某事感興趣",
+        "be fascinated to V (see/hear/learn)：對於看到/聽到/學習某事感到著迷"
+      ]
+    },
+    {
+      "english": "fascinate",
+      "pronunciation": "[`fæsṇˌet]",
+      "chinese": [
+        "vt. 使著迷"
+      ],
+      "example": [
+        "The idea of traveling around the world has always [fascinated] me."
+      ]
+    },
+    {
+      "english": "sigh",
+      "pronunciation": "[saɪ]",
+      "chinese": [
+        "vi.; vt. 嘆氣，嘆息 (to breathe out and make a long sound)",
+        "n. [C] 嘆氣，嘆息"
+      ],
+      "example": [
+        "When Daniel's dog messed up the room again, he [sighed] deeply and began to clean up.",
+        "Brian breathed a [sigh] of relief when he heard his parents were not injured in the car accident."
+      ],
+      "notes": [
+        "relief (n.)：放鬆、鬆口氣",
+        "give / let out a sigh：發出嘆息"
+      ]
+    },
+    {
+      "english": "roughly",
+      "pronunciation": "[`rʌflɪ]",
+      "chinese": [
+        "adv. 大約，約略地 (not exactly)"
+      ],
+      "syn": "about",
+      "example": [
+        "I'm [roughly] the same age as Ivy. She is only a few months younger than I am."
+      ],
+      "notes": [
+        "roughly speaking：大致上來說",
+        "roughly 亦有：粗魯地、粗暴地、粗糙地、崎嶇不平地"
+      ]
+    },
+    {
+      "english": "rough",
+      "pronunciation": "[rʌf]",
+      "chinese": [
+        "adj. 約略的；惡劣的、猛烈的、粗糙的、令人難受的、刺耳的"
+      ],
+      "example": [
+        "Judy and I haven't decided what to do tonight. We only have some [rough] ideas like shopping or watching movies."
+      ]
+    },
+    {
+      "english": "passive",
+      "pronunciation": "[`pæsɪv]",
+      "chinese": [
+        "adj. 被動的，消極的 (accepting something without trying to change)"
+      ],
+      "example": [
+        "Helen plays a [passive] role on the team. She doesn't join in the discussions at all."
+      ],
+      "notes": [
+        "play a role of...：扮演...角色",
+        "join + 組織、團隊、夥伴",
+        "join in + 活動 (如果很清楚受詞，直接說 join in)"
+      ]
+    },
+    {
+      "english": "encounter",
+      "pronunciation": "[ɪn`kaʊntɚ]",
+      "chinese": [
+        "vt. 遭遇，遇到 (to experience something unpleasant)"
+      ],
+      "syn": "confront",
+      "example": [
+        "Robin [encountered] a great number of difficulties when he was looking for his first job."
+      ]
+    },
+    {
+      "english": "frustration",
+      "chinese": [
+        "n. [C][U] 挫折，沮喪"
+      ],
+      "example": [
+        "Stacy felt a sense of [frustration] when she failed to get her dream job."
+      ],
+      "notes": [
+        "be/feel frustrated at/with + N/Ving：對...感到沮喪"
+      ]
+    },
+    {
+      "english": "frustrate",
+      "chinese": [
+        "vt. 使挫折，使沮喪"
+      ],
+      "example": [
+        "The negative comments [frustrated] him a lot."
+      ]
+    },
+    {
+      "english": "devote",
+      "chinese": [
+        "vt. 奉獻"
+      ],
+      "syn": "dedicate",
+      "example": [
+        "Mother Teresa [devoted] her whole life to helping poor people."
+      ],
+      "notes": [
+        "dedicate to N/Ving",
+        "devote self to sb/sth：貢獻給某人/某事",
+        "devotion (n.)：忠誠、摯愛、奉獻"
+      ]
+    },
+    {
+      "english": "devoted",
+      "chinese": [
+        "adj. 熱愛的，奉獻的"
+      ],
+      "example": [
+        "Gretchen is a [devoted] fan of Wes Anderson."
+      ]
+    },
+    {
+      "english": "remaining",
+      "chinese": [
+        "adj. 剩下的"
+      ],
+      "example": [
+        "Sam won three movie tickets. He kept one for himself and gave the [remaining] tickets to his friends."
+      ],
+      "notes": [
+        "sth remains to be done：待辦事宜/尚待完成"
+      ]
+    },
+    {
+      "english": "remain",
+      "chinese": [
+        "vi. 繼續存在；保持不變"
+      ],
+      "example": [
+        "Very few fish [remain] in the river now due to the serious water pollution."
+      ],
+      "notes": [
+        "remains (n.)：剩餘物、遺跡"
+      ]
+    },
+    {
+      "english": "stubborn",
+      "chinese": [
+        "adj. 固執的，倔強的"
+      ],
+      "example": [
+        "Lisa is so [stubborn] that she cannot accept what other people say."
+      ],
+      "notes": [
+        "as stubborn as a mule：倔強得像頭驢子（非常固執）",
+        "so + adj/adv + that + S + V：如此...以至於...",
+        "such + N + that + S + V"
+      ]
+    },
+
+    {
+      "english": "stuff",
+      "chinese": [
+        "n. [U] 事情；東西"
+      ],
+      "example": [
+        "Ryan believes in all the star sign stuff. He often talks about how it influences people's behavior, careers, love lives, and so on."
+      ],
+      "notes": [
+        "stuff (vt.)：填滿",
+        "stuff A with B：用 B 裝滿 A"
+      ]
+    },
+    {
+      "english": "Denmark",
+      "chinese": [
+        "n. 丹麥"
+      ],
+      "notes": [
+        "Danish pastry：丹麥麵包"
+      ]
+    },
+    {
+      "english": "Danish",
+      "chinese": [
+        "adj. 丹麥（人）的"
+      ]
+    },
+    {
+      "english": "spill",
+      "chinese": [
+        "vt. 潑灑，濺出"
+      ],
+      "notes": [
+        "spill the beans/tea：洩漏消息",
+        "cry over spilled milk：覆水難收"
+      ]
+    },
+    {
+      "english": "try out",
+      "chinese": [
+        "試驗，試用"
+      ],
+      "notes": [
+        "(v.) 選拔、適用",
+        "try sth out on sb：拿某人試試看（某物）"
+      ]
+    },
+    {
+      "english": "put...into practice",
+      "chinese": [
+        "將……付諸實行"
+      ]
+    },
+    {
+      "english": "let go of sth",
+      "chinese": [
+        "放下……"
+      ]
+    },
+    {
+      "english": "look forward to",
+      "chinese": [
+        "期待，盼望"
+      ],
+      "notes": [
+        "+ N/Ving"
+      ]
+    },
+    {
+      "english": "in other words",
+      "chinese": [
+        "換句話說，也就是說"
+      ],
+      "notes": [
+        "= to put it another way = that is to say = that is = namely"
+      ]
+    },
+    {
+      "english": "do one's best",
+      "chinese": [
+        "全力以赴，盡全力"
+      ],
+      "notes": [
+        "= make every effort to V"
+      ]
+    }
+  ]
+}

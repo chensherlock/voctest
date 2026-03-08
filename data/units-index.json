@@ -42,14 +42,14 @@
     {
       "id": 11,
       "title": "高頻 Unit 11",
-      "default": true,
+      "default": false,
       "file": "unit-11.json",
       "video": ""
     },
     {
       "id": 12,
       "title": "高頻 Unit 12",
-      "default": true,
+      "default": false,
       "file": "unit-12.json",
       "video": ""
     },
@@ -117,7 +117,7 @@
       "id": 35,
       "title": "課本3 Unit 5",
       "description": "A Savior* for Lazy People",
-      "default": true,
+      "default": false,
       "file": "unit-35.json",
       "video": "https://sites.google.com/view/grandeastenglishb2/技高英文-a版-第三冊/技a-第三冊-unit-5/a3u5單字",
       "web": "https://www.junyiacademy.org/junyi-english/english-high/eng-senior11/e-meng-v-g11/e-eng-v-g11-b3/e-meng-v-g11-b3-5"
@@ -126,10 +126,28 @@
       "id": 36,
       "title": "課本3 Unit 6",
       "description": "Spend a Night with Ocean Animals Around You",
-      "default": true,
+      "default": false,
       "file": "unit-36.json",
       "video": "https://sites.google.com/view/grandeastenglishb2/技高英文-a版-第三冊/技a-第三冊-unit-6/a3u6單字",
       "web": "https://www.junyiacademy.org/junyi-english/english-high/eng-senior11/e-meng-v-g11/e-eng-v-g11-b3/e-meng-v-g11-b3-6"
-    }    
+    },
+    {
+      "id": 41,
+      "title": "課本4 Unit 1",
+      "description": "Esports Gamer: A Dream Jobs?",
+      "default": true,
+      "file": "unit-41.json",
+      "video": "https://www.sanmin.com.tw/api/attachment/URL3/4711289873020",
+      "web": "https://www.junyiacademy.org/junyi-english/english-high/eng-senior11/e-meng-v-g11/e-eng-v-g11-b4/e-meng-v-g11-b4-1"
+    },
+    {
+      "id": 42,
+      "title": "課本4 Unit 2",
+      "description": "Don't Worry. Be Happy!",
+      "default": true,
+      "file": "unit-42.json",
+      "video": "https://www.sanmin.com.tw/api/attachment/URL7/4711289873020",
+      "web": "https://www.junyiacademy.org/junyi-english/english-high/eng-senior11/e-meng-v-g11/e-eng-v-g11-b4/e-meng-v-g11-b4-2"
+    }
   ]
 }

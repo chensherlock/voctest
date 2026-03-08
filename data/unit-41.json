@@ -1,0 +1,454 @@
+{
+  "id": 41,
+  "title": "課本4 Unit 1",
+  "words": [
+    {
+      "english": "individual",
+      "chinese": [
+        "adj. 個別的 (relating to a single person or a thing)",
+        "n. [C] 個人"
+      ],
+      "example": [
+        "The coach asked Mike to stay after class for some [individual] training.",
+        "Each [individual] in this company has the right to decide whether to go on the company trip or not."
+      ],
+      "notes": [
+        "whether... or not：是否"
+      ]
+    },
+    {
+      "english": "record",
+      "chinese": [
+        "vt.; vi. 錄影；錄音 (to make a copy of sounds or images)",
+        "vt. 記錄 (to keep or write down what has happened)",
+        "n. [C] 紀錄"
+      ],
+      "example": [
+        "Sandy [recorded] her favorite film, so she could watch it over and over again.",
+        "My father [recorded] in his diary that he met my mother on the first day of university.",
+        "Lisa is on a diet, so she keeps a [record] of what she eats every day."
+      ],
+      "notes": [
+        "over and over again = repeatedly 重複地",
+        "keep a record of sth：保有某事的紀錄",
+        "set a record：創紀錄",
+        "break the record：破紀錄",
+        "written record：紙本紀錄",
+        "world record：世界紀錄",
+        "official record：官方紀錄"
+      ]
+    },
+    {
+      "english": "rearrange",
+      "chinese": [
+        "vt. 重新安排；重新布置 (to change the order, position, or time of an event)"
+      ],
+      "example": [
+        "David had to [rearrange] his schedule after learning that the meeting had been moved to next Monday."
+      ],
+      "notes": [
+        "rearrangement (n.) 重新安排",
+        "be on schedule：如期、準時"
+      ]
+    },
+    {
+      "english": "arrange",
+      "chinese": [
+        "vt. 安排；布置"
+      ],
+      "example": [
+        "The students [arranged] the tables and chairs in rows after they finished using the classroom."
+      ],
+      "notes": [
+        "arrangement (n.) 安排"
+      ]
+    },
+    {
+      "english": "seize",
+      "chinese": [
+        "vt. 把握；抓住 (to make use of something quickly or hold someone)"
+      ],
+      "syn": "grab",
+      "example": [
+        "The two sisters [seized] the opportunity to sing onstage in front of the talent show judges."
+      ],
+      "notes": [
+        "seize the opportunity/moment：把握機會/時機",
+        "on/upon N：抓住（想法、機會、證據等）大做文章"
+      ]
+    },
+    {
+      "english": "intensive",
+      "chinese": [
+        "adj. 密集的 (involving a lot of efforts or activities in a short time)"
+      ],
+      "example": [
+        "Irene took a two-week [intensive] English course before she went backpacking in the US."
+      ],
+      "notes": [
+        "intensify (v.)：強化、增加",
+        "intensity (n.)：強度"
+      ]
+    },
+    {
+      "english": "typical",
+      "chinese": [
+        "adj. 典型的 (having the usual features or qualities of a particular group of things)"
+      ],
+      "syn": "representative",
+      "ant": "atypical",
+      "example": [
+        "Stinky tofu, fried chicken, and bubble tea are [typical] Taiwanese snacks."
+      ],
+      "notes": [
+        "a typical teenager：典型的青少年",
+        "be typical of...：不出所料的、一向如此的"
+      ]
+    },
+    {
+      "english": "routine",
+      "chinese": [
+        "n. [C][U] 例行公事 (things one regularly does)"
+      ],
+      "example": [
+        "Drinking a cup of coffee and reading the morning newspaper are two important parts of Julia's daily [routine]."
+      ],
+      "notes": [
+        "keep/stick to/follow a routine：養成生活作息"
+      ]
+    },
+    {
+      "english": "professional",
+      "chinese": [
+        "adj. 職業的、專業的 (relating to work that needs special training and skills)"
+      ],
+      "ant": "amateur (業餘的)",
+      "example": [
+        "It takes a lot of [professional] training to become a lawyer."
+      ],
+      "notes": [
+        "profession (n.)：（受專業訓練的）職業",
+        "professor (n.)：教授",
+        "IT 產業 (Information Technology)"
+      ]
+    },
+    {
+      "english": "electronic",
+      "chinese": [
+        "adj. 電子的 (relating to the use of electronic equipment, especially computers)"
+      ],
+      "example": [
+        "An [electronic] book is a type of digital book for people to read online."
+      ],
+      "notes": [
+        "electronics：電子元件/零件",
+        "electric：和電相關的",
+        "electric bill：電費帳單",
+        "electrical：電力學"
+      ]
+    },
+    {
+      "english": "advance",
+      "chinese": [
+        "vi.; vt. 進步，進展 (to develop or improve)",
+        "n. [C][U] 進步，進展"
+      ],
+      "example": [
+        "Over the past few years, the use of Augmented Reality (AR) in our daily lives has [advanced] greatly.",
+        "With [advances] in information technology, people can contact each other much more conveniently than before."
+      ],
+      "notes": [
+        "advanced (adj.)：進階的",
+        "in advance = beforehand：事先",
+        "IT 產業 (Information Technology)"
+      ]
+    },
+    {
+      "english": "sufficient",
+      "chinese": [
+        "adj. 足夠的 (as much as is needed)"
+      ],
+      "syn": "enough",
+      "ant": "insufficient",
+      "example": [
+        "The ingredients on the table are [sufficient] for making two cakes."
+      ],
+      "notes": [
+        "sufficiency：足夠",
+        "self-sufficiency：自給自足",
+        "more than sufficient：綽綽有餘"
+      ]
+    },
+    {
+      "english": "equipment",
+      "chinese": [
+        "n. [U] 設備；裝備 (the things needed for a particular activity or purpose)"
+      ],
+      "example": [
+        "Louis bought pieces of kitchen [equipment] after moving into his new apartment."
+      ],
+      "notes": [
+        "necessary/vital equipment：必要裝備",
+        "be equipped with：配備有..."
+      ]
+    },
+    {
+      "english": "equip",
+      "chinese": [
+        "vt. 配備，裝備 (equip—equipped—equipped)"
+      ],
+      "example": [
+        "The newly-opened hotel, which is [equipped] with a swimming pool and a movie theater, is popular with tourists."
+      ],
+      "notes": [
+        "be equipped with：配備有..."
+      ]
+    },
+    {
+      "english": "ideal",
+      "chinese": [
+        "adj. 理想的 (the best or most suitable)"
+      ],
+      "syn": "perfect",
+      "example": [
+        "This park is an [ideal] place for outdoor activities and picnics."
+      ]
+    },
+    {
+      "english": "broadcast",
+      "chinese": [
+        "vt.; vi. 播放，廣播 (broadcast—broadcast—broadcast) (to send out messages or programs on television or radio)",
+        "n. [C] (電視、廣播) 節目"
+      ],
+      "example": [
+        "A ball game will be [broadcast] live on television across the nation tonight.",
+        "My parents always watch the evening news [broadcast] after dinner every day."
+      ],
+      "notes": [
+        "live broadcast：現場直播",
+        "news broadcast：新聞廣播",
+        "broadcaster：廣播主持人"
+      ]
+    },
+    {
+      "english": "global",
+      "chinese": [
+        "adj. 全球的，全世界的 (involving or affecting the whole world)"
+      ],
+      "example": [
+        "Air pollution is a [global] environmental issue that everyone needs to work together to deal with."
+      ],
+      "notes": [
+        "globe：地球儀",
+        "globalization：全球化",
+        "global economy：全球經濟",
+        "global warming：全球暖化",
+        "global brand：全球知名的品牌或人"
+      ]
+    },
+    {
+      "english": "overseas",
+      "chinese": [
+        "adv. 海外地 (to or in a foreign country that is across the sea)"
+      ],
+      "example": [
+        "Emma works [overseas] and returns to her hometown twice a year."
+      ],
+      "notes": [
+        "overseas markets：海外市場"
+      ]
+    },
+    {
+      "english": "sacrifice",
+      "chinese": [
+        "vt. 犧牲 (to give up something valuable to get something more important)",
+        "n. [C][U] 犧牲"
+      ],
+      "example": [
+        "Michael [sacrificed] his sleeping time for an important meeting the next day.",
+        "Nick is willing to make any [sacrifice] to keep his child safe and happy."
+      ],
+      "notes": [
+        "sacrifice A for B：為了 B 犧牲 A",
+        "make a sacrifice：做出犧牲",
+        "at a great sacrifice/cost：做出巨大的犧牲"
+      ]
+    },
+    {
+      "english": "imagine",
+      "chinese": [
+        "vt. 想像 (to create an image of something in one's mind)"
+      ],
+      "example": [
+        "The girl dreams about traveling to space, and she often [imagines] herself walking on the moon."
+      ],
+      "notes": [
+        "imagine sb V-ing：想像某人做某事"
+      ]
+    },
+    {
+      "english": "imagination",
+      "pronunciation": "/ɪˌmædʒəˈneɪʃən/",
+      "chinese": [
+        "n. [C][U] 想像力"
+      ],
+      "example": [
+        "The teacher asked me to use my [imagination] to guess the meaning of this painting."
+      ],
+      "notes": [
+        "imaginary (adj.)：想像出來的、虛構的",
+        "imaginative (adj.)：想像力豐富的",
+        "imaginable (adj.)：想像得到的"
+      ]
+    },
+    {
+      "english": "esports",
+      "pronunciation": "[is`pɔrts]",
+      "chinese": [
+        "n. [U] 電子競技"
+      ]
+    },
+    {
+      "english": "tournament",
+      "pronunciation": "[`tɝnəmənt]",
+      "chinese": [
+        "n. [C] 錦標賽"
+      ],
+      "notes": [
+        "race: 跟速度有關的比賽",
+        "match: 兩人或兩隊的比賽"
+      ]
+    },
+    {
+      "english": "teamwork",
+      "pronunciation": "[`timwɝk]",
+      "chinese": [
+        "n. [U] 團隊合作"
+      ]
+    },
+    {
+      "english": "full-time",
+      "pronunciation": "[ˌfʊl`taɪm]",
+      "chinese": [
+        "adj. 全職的"
+      ]
+    },
+    {
+      "english": "Hearthstone",
+      "pronunciation": "[`hɑrθˌston]",
+      "chinese": [
+        "n. 《爐石戰記》"
+      ]
+    },
+    {
+      "english": "hearthstone",
+      "pronunciation": "[`hɑrθˌston]",
+      "chinese": [
+        "n. [C] 壁爐底石"
+      ]
+    },
+    {
+      "english": "Arena of Valor",
+      "pronunciation": "[ərinə ʌv vælɚ]",
+      "chinese": [
+        "n. 《傳說對決》"
+      ]
+    },
+    {
+      "english": "arena",
+      "pronunciation": "[ə`rinə]",
+      "chinese": [
+        "n. [C] 競技場"
+      ]
+    },
+    {
+      "english": "valor",
+      "pronunciation": "[`vælɚ]",
+      "chinese": [
+        "n. [U] 英勇"
+      ]
+    },
+    {
+      "english": "friendship",
+      "pronunciation": "[`frɛn(d)ʃɪp]",
+      "chinese": [
+        "n. [C][U] 友情"
+      ]
+    },
+    {
+      "english": "have no choice but to",
+      "chinese": [
+        "不得不 (to show one cannot avoid doing something)"
+      ],
+      "syn": "cannot but",
+      "example": [
+        "Because of the heavy rain, Tony [had no choice but to] cancel his plan to play soccer outside."
+      ],
+      "notes": [
+        "have no choice/option but to + V原",
+        "Because of = Due to = Owing to = On account of (因為...)"
+      ]
+    },
+    {
+      "english": "make it up to sb",
+      "chinese": [
+        "補償 (to do something good for someone who is treated wrongly)"
+      ],
+      "example": [
+        "Ashley was late for the party, so she brought a lot of food to [make it up to] her friends."
+      ],
+      "notes": [
+        "make up: 化妝、和好、彌補、捏造、組成",
+        "make up = cosmetics: 化妝品"
+      ]
+    },
+    {
+      "english": "stand for",
+      "chinese": [
+        "代表 (to represent what something means, especially as a shorter form)"
+      ],
+      "syn": "represent = refer to",
+      "example": [
+        "ASAP [stands for] \"as soon as possible,\" which means at the earliest possible time."
+      ]
+    },
+    {
+      "english": "key to",
+      "chinese": [
+        "實現……的關鍵 (the most important thing to help one achieve something)"
+      ],
+      "example": [
+        "Regular exercise is the [key to] health and happiness."
+      ]
+    },
+    {
+      "english": "make a living",
+      "chinese": [
+        "謀生 (to make enough money to live)"
+      ],
+      "syn": "earn a living",
+      "example": [
+        "The street artist [makes a living] by painting pictures for tourists."
+      ]
+    },
+    {
+      "english": "as a matter of fact",
+      "chinese": [
+        "其實，事實上 (used to add more details about what someone has just said)"
+      ],
+      "syn": "in fact",
+      "example": [
+        "I know our new classmate very well. [As a matter of fact], she is my neighbor."
+      ]
+    },
+    {
+      "english": "at least",
+      "chinese": [
+        "至少 (not less than)"
+      ],
+      "example": [
+        "It will take you [at least] an hour to see the doctor because there are many people waiting ahead of you."
+      ]
+    }
+  ]
+}
