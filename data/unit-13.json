@@ -46,15 +46,14 @@
         {"english": "make an [apology]", "chinese": "道歉"},
         {"english": "owe sb. an [apology]", "chinese": "欠某人一個道歉"},
         {"english": "accept sb.'s [apology]", "chinese": "接受某人的道歉"}
-      ],
-      "related": [
-        {
-          "english": "apologize",
-          "pronunciation": "/əˈpɑlədʒaɪz/",
-          "chinese": [
-            "vi. 道歉；認錯"
-          ]
-        }
+      ]
+    },
+    {
+      "english": "apologize",
+      "url": "http://magazine.english4u.net/vocmemory/video/3378",
+      "pronunciation": "/əˈpɑlədʒaɪz/",
+      "chinese": [
+        "vi. 道歉；認錯"
       ]
     },
     {
@@ -223,12 +222,14 @@
     },
     {
       "english": "enter",
+      "url": "http://magazine.english4u.net/vocmemory/video/3493",
       "pronunciation": "/ˈɛntɚ/",
       "chinese": [
         "vt. vi. 進入 (= come in, get in, go in)"
       ],
       "example": [
-        "Please take off your shoes before [entering] this room."
+        "Please take off your shoes before [entering] this room.",
+        "進入這個房間前請先脫鞋"
       ],
       "related": [
         {
@@ -246,7 +247,8 @@
         "vt. 娛樂 (= amuse)"
       ],
       "example": [
-        "The children sang and danced on stage to [entertain] their parents."
+        "The children sang and danced on stage to [entertain] their parents.",
+        "這些小孩在台上唱歌跳舞來娛樂他們的爸媽。"
       ],
       "related": [
         {
@@ -275,7 +277,8 @@
           "n. [C] 表演者；藝人 (= performer)"
         ],
         "example": [
-          "Alan started out as a street [entertainer] and went to become an actor."
+          "Alan started out as a street [entertainer] and went to become an actor.",
+          "艾倫從一名街頭藝人起家，後來成為一名演員。"
         ] 
     },
     {
@@ -284,16 +287,19 @@
           "adj. 令人愉快的；有趣的 (= amusing, enjoyable)"
         ],
         "example": [
-          "This storybook contains several [entertaining] stories that children may like."
+          "This storybook contains several [entertaining] stories that children may like.",
+          "這本故事書包含了數篇小孩可能會喜歡的有趣故事。"
         ] 
     },
     {
         "english": "entertainment",
+        "url": "http://magazine.english4u.net/vocmemory/video/3495",
         "chinese": [
           "n. [C][U] 娛樂；表演節目 (= performance, show)"
         ],
         "example": [
-          "There will be singers providing [entertainment] while guests enjoy their meals."
+          "There will be singers providing [entertainment] while guests enjoy their meals.",
+          "賓客享用餐點的同時將會有歌手提供餘興節目。"
         ] 
     },
     {
@@ -303,11 +309,13 @@
         "adj. (自然) 環境的"
       ],
       "example": [
-        "The high school's [Environmental] Protection Club helps collect trash in the parks."
+        "The high school's [Environmental] Protection Club helps collect trash in the parks.",
+        "這所高中的環境保護社團幫忙撿公園裡的垃圾。"
       ],
       "related": [
         {
           "english": "environment",
+          "url": "http://magazine.english4u.net/vocmemory/video/3495",
           "chinese": [
             "n. [C] (自然) 環境"
           ]
@@ -321,19 +329,19 @@
         "n. [U] 存在"
       ],
       "example": [
-        "While many people have doubts about the [existence] of ghosts, I believe in them."
+        "While many people have doubts about the [existence] of ghosts, I believe in them.",
+        "雖然很多人對鬼魂的存在存疑，但我仍相信它們是存在的。"
       ],
       "phrases": [
         {"english": "come into [existence]", "chinese": "開始存在"},
         {"english": "in [existence]", "chinese": "存在"}
-      ],
-      "related": [
-        {
-          "english": "exist",
-          "chinese": [
-            "vi. 存在；存活"
-          ]
-        }
+      ]
+    },
+    {
+      "english": "exist",
+      "url": "http://magazine.english4u.net/vocmemory/video/3503",
+      "chinese": [
+        "vi. 存在；存活"
       ]
     },
     {
@@ -343,7 +351,8 @@
         "n. [C][U] 穀物；穀粒 (= cereal, corn)；顆粒 (= bit, particle)；少量"
       ],
       "example": [
-        "There are always a few [grains] of rice left on the table after the child eats."
+        "There are always a few [grains] of rice left on the table after the child eats.",
+        "那小孩吃飯過後，桌上總是會留下一此飯粒。"
       ],
       "phrases": [
         {"english": "take sth. with a [grain] of salt", "chinese": "對某事物持保留態度"}
@@ -351,16 +360,22 @@
     },
     {
       "english": "indicate",
+      "url": "http://magazine.english4u.net/vocmemory/video/3588",
       "pronunciation": "/ˈɪndəˌket/",
       "chinese": [
         "vt. 顯示；表明 (= reveal, show, point out)"
       ],
       "example": [
-        "The wedding ring on the woman's finger [indicated] that she was married."
+        "The wedding ring on the woman's finger [indicated] that she was married.",
+        "那名女子手上的婚戒顯示她已婚。"
+      ],
+      "phrases": [
+        {"english": "[indicate] that + S + V", "chinese": "顯示..."}
       ],
       "related": [
         {
           "english": "indication",
+          "pronunciation": "/ˌɪndəˈkeʃən/",
           "chinese": [
             "n. [C][U] 指示；跡象"
           ]
@@ -374,7 +389,8 @@
         "adj. 自由開放的 (= open-minded)；自由主義的；慷慨的 (= generous)"
       ],
       "example": [
-        "We live in a [liberal] society where we can express our opinions freely."
+        "We live in a [liberal] society where we can express our opinions freely.",
+        "我們活在一個可以自由表達意見的開放社會。"
       ],
       "phrases": [
         {"english": "be [liberal] with sth.", "chinese": "對某物毫不吝嗇"}
@@ -382,6 +398,7 @@
       "related": [
         {
           "english": "liberty",
+          "pronunciation": "/ˈlɪbɚtɪ/",
           "chinese": [
             "n. [U] 自由"
           ]
@@ -397,7 +414,9 @@
       ],
       "example": [
         "A [mass] of mud was stuck to the bottom of my shoe.",
-        "[Mass] production is a way to lower the prices of goods."
+        "有一團泥土卡在我的鞋底。",
+        "[Mass] production is a way to lower the prices of goods.",
+        "大量製造是降低商品價格的方法。"
       ],
       "phrases": [
         {"english": "a [mass] of sth.", "chinese": "一團/一塊/大量的某物"},
@@ -410,7 +429,7 @@
       "english": "massive",
       "pronunciation": "/ˈmæsɪv/",
       "chinese": [
-        "adj. 巨大的; 大量的"
+        "adj. 巨大的；大量的"
       ]
     },
     {
@@ -420,7 +439,8 @@
         "adv. 溫和地 (= gently)；稍微 (= slightly)"
       ],
       "example": [
-        "When Betty talks to her children, she always speaks [mildly]."
+        "When Betty talks to her children, she always speaks [mildly].",
+        "貝蒂對孩子講話總是很溫和。"
       ],
       "phrases": [
         {"english": "to put it [mildly]", "chinese": "說得客氣些；保守地說"}
@@ -444,13 +464,18 @@
       ],
       "example": [
         "Nowadays, [more] and [more] people are suffering from stress.",
-        "I can see [more] of Alice now that she has moved into this neighborthood.",
-        "These bags are both beautiful, but I like the red one more."
+        "現今，越來越多人都受壓力所苦。",
+        "I can see [more] of Alice now that she has moved into this neighborhood.",
+        "既然愛麗絲搬到這附近，我就能更常看到她了。",
+        "These bags are both beautiful, but I like the red one [more].",
+        "這些包包都很美，但我比較喜歡紅色這個。"
       ],
       "phrases": [
         {"english": "much/far/a lot [more] (of) sth.", "chinese": "更多的某事物"},
         {"english": "no/little/nothing [more] than sth.", "chinese": "僅僅只是某事物"},
-        {"english": "what's [more]", "chinese": "而且；再者"}
+        {"english": "what's [more]", "chinese": "而且；再者"},
+        {"english": "no [more]", "chinese": "不再"},
+        {"english": "[more] or less", "chinese": "或多或少"}
       ]
     },
     {
@@ -458,40 +483,45 @@
       "pronunciation": "/prɛs/",
       "chinese": [
         "vt. vi. 按；壓 (= push)；擠 (= squeeze)",
-        "n. [C] 按；壓 (=push);擠 (= squeeze) (常用單數形); 出版社 (=publishier)",
-        "S. 報章雜誌 (=magazine, newspaper)"
+        "n. [C] 按；壓 (= push)；擠 (= squeeze)（常用單數形）；出版社 (= publisher)",
+        "n. [S] 報章雜誌 (= magazine, newspaper)"
       ],
       "example": [
         "To start the machine, you just need to [press] this button.",
-        "The movie star refused to talk about his personal life with the [press]."
+        "你只要按這個鈕就能啟動這台機器。",
+        "The movie star refused to talk about his personal life with the [press].",
+        "那名電影明星拒絕和媒體談論他的私生活。"
       ],
       "phrases": [
         {"english": "at the [press] of a button", "chinese": "只要輕輕一按"},
-        {"english": "the [press]", "chinese": "報章雜誌; 新聞界; 媒體記者"},
+        {"english": "the [press]", "chinese": "報章雜誌；新聞界；媒體記者"},
         {"english": "in the [press]", "chinese": "在報章雜誌上"},
         {"english": "[press] conference", "chinese": "記者會"}
-      ],
-      "related": [
-        {
-          "english": "pressure",
-          "chinese": [
-            "n. [C][U] 壓力"
-          ]
-        }
+      ]
+    },
+    {
+      "english": "pressure",
+      "url": "http://magazine.english4u.net/vocmemory/video/3708",
+      "pronunciation": "/ˈprɛʃɚ/",
+      "chinese": [
+        "n. [C][U] 壓力"
       ]
     },
     {
       "english": "principle",
+      "url": "http://magazine.english4u.net/vocmemory/video/3712",
       "pronunciation": "/ˈprɪnsəpl/",
       "chinese": [
         "n. [C] 原則；原理"
       ],
       "example": [
-        "It goes against my [principles] to cheat on an exam."
+        "It goes against my [principles] to cheat on an exam.",
+        "考試作弊有違我的原則。"
       ],
       "phrases": [
         {"english": "in [principle]", "chinese": "原則上"},
-        {"english": "stick to one's [principles]", "chinese": "堅守原則"}
+        {"english": "against sb.'s [principles]", "chinese": "違反某人的原則"},
+        {"english": "stick to/stand by one's [principles]", "chinese": "堅守自己的原則"}
       ]
     },
     {
@@ -501,17 +531,20 @@
         "adj. 繁榮的；成功的 (= successful)"
       ],
       "example": [
-        "Since several measures of economic reform were introduced, the country has became [prosperous]."
+        "Since several measures of economic reform were introduced, the country has become [prosperous].",
+        "自幾項經濟改革措施推動以來，該國便開始繁榮了。"
       ],
       "related": [
         {
           "english": "prosper",
+          "pronunciation": "/ˈprɑspɚ/",
           "chinese": [
             "vi. 繁榮；成功"
           ]
         },
         {
           "english": "prosperity",
+          "pronunciation": "/prɑsˈpɛrətɪ/",
           "chinese": [
             "n. [U] 繁榮；成功"
           ]
@@ -522,38 +555,59 @@
       "english": "reveal",
       "pronunciation": "/rɪˈvil/",
       "chinese": [
-        "vt. 揭露；洩漏 (= tell, show, uncover)"
+        "vt. 揭露 (= tell)；使顯露 (= show, uncover, display)"
       ],
       "example": [
-        "Sandy is waiting until we're all together before she [reveals] her big news."
+        "Sandy is waiting until we're all together before she [reveals] her big news.",
+        "珊迪要等我們大家都集合後才宣佈她的大消息。"
+      ],
+      "phrases": [
+        {"english": "[reveal] sth. to sb.", "chinese": "向某人揭露某事物"},
+        {"english": "[reveal] that + S + V", "chinese": "揭露..."}
       ]
     },
     {
       "english": "shining",
       "pronunciation": "/ˈʃaɪnɪŋ/",
       "chinese": [
-        "adj. 發亮的 (= bright)；傑出的 (= excellent)",
-        "vt. 照耀, 發光 (=beam, glow, sparkle); 表現出眾",
-        "n. [S] [U] 光彩, 光澤"
+        "adj. 發亮的 (= bright, glowing)；傑出的 (= excellent)"
       ],
       "example": [
         "The [shining] moon was the only source of light in the dark, silent night.",
-        "Mike prefers older American cars because he likes the [shine] of metal they used."
+        "皎潔的月亮是這漆黑又寧靜的夜晚中唯一的光源。"
       ],
       "phrases": [
-        {"english": "[shine] a/more/some light on sth", "chinese": "釐清某事"},
-        {"english": "[shine] out/through", "chinese": "(某特質) 顯現出來"},
-        {"english": "lose sth.'s [shine]", "chinese": "失去吸引力"},
-        {"english": "(come) rain or [shine]", "chinese": "風雨無阻"},
-        {"english": "take the [shine] off sth.", "chinese": "掃...的興致"},
-        {"english": "take a [shine] to sb.", "chinese": "對某人一見鍾情"}
+        {"english": "[shining] example", "chinese": "傑出的典範"}
       ],
       "related": [
         {
           "english": "shine",
+          "pronunciation": "/ʃaɪn/",
           "chinese": [
-            "vi. 照耀；發光",
+            "vt. 擦亮 (= polish)；照亮 (= flash)",
+            "vi. 照耀，發光 (= beam, glow, sparkle)；表現出眾",
             "n. [S][U] 光彩；光澤"
+          ],
+          "example": [
+            "In the morning, the sun [shone] brightly through the window and woke me up.",
+            "清晨時，耀眼的陽光灑落在窗戶上使我醒了過來。",
+            "Mike prefers older American cars because he likes the [shine] of the metal they used.",
+            "麥克偏好較早期的美國車款，因為他喜歡這些車款所使用的金屬光澤。"
+          ],
+          "tense": {
+            "present": "shine",
+            "past_vt": "shined",
+            "participle_vt": "shined",
+            "past_vi": "shone",
+            "participle_vi": "shone"
+          },
+          "phrases": [
+            {"english": "[shine] a/more/some light on sth.", "chinese": "釐清某事"},
+            {"english": "[shine] out/through", "chinese": "（某特質）顯現出來"},
+            {"english": "lose sth.'s [shine]", "chinese": "失去吸引力"},
+            {"english": "(come) rain or [shine]", "chinese": "風雨無阻"},
+            {"english": "take the [shine] off sth.", "chinese": "掃...的興致"},
+            {"english": "take a [shine] to sb.", "chinese": "對某人一見鍾情"}
           ]
         }
       ]
@@ -562,10 +616,11 @@
       "english": "shower",
       "pronunciation": "/ˈʃaʊɚ/",
       "chinese": [
-        "n. [C] 淋浴；淋浴間；陣雨"
+        "n. [C] 淋浴；淋浴器；淋浴間；陣雨；陣雪"
       ],
       "example": [
-        "Tom always takes a [shower] after exercising."
+        "Tom always takes a [shower] after exercising.",
+        "湯姆總是在運動後淋浴。"
       ],
       "phrases": [
         {"english": "take a [shower]", "chinese": "淋浴"},
@@ -578,35 +633,40 @@
       "english": "stock",
       "pronunciation": "/stɑk/",
       "chinese": [
-        "n. [C][U] 儲備 (物) (= supply)；庫存；股份；股票"
+        "n. [C][U] 儲備（物） (= supply)；庫存",
+        "n. [U] 股份；股票"
       ],
       "example": [
-        "Kevin earns a lot of money by investing in the [stock] market."
+        "Kevin earns a lot of money by investing in the [stock] market.",
+        "凱文藉著投資股票賺了很多錢。"
       ],
       "phrases": [
         {"english": "in/out of [stock]", "chinese": "有/無庫存"},
-        {"english": "[stock] market", "chinese": "股市"}
+        {"english": "[stock] market/price", "chinese": "股市/價"}
       ]
     },
     {
       "english": "submit",
       "pronunciation": "/səbˈmɪt/",
       "chinese": [
-        "vt. 提交；呈送 (= give, present, hand in)",
-        "vi. 屈服；服從 (= surrender)"
+        "vt. 提交，呈遞 (= give, present, hand in)；使服從，使屈服",
+        "vi. 服從，屈服 (= surrender)"
       ],
       "example": [
-        "The manager asked me to [submit] the proposal to him by 5 p.m."
+        "The manager asked me to [submit] the proposal to him by 5 p.m.",
+        "經理要求我在下午五點前把提案交給他。"
       ],
       "phrases": [
-        {"english": "[submit] A to B", "chinese": "將A提交給B, 使A服從B"},
-        {"english": "[submit] to sb./sth.", "chinese": "屈服..., 屈服於..."}
+        {"english": "[submit] A to B", "chinese": "把A交給B；使A服從B"},
+        {"english": "[submit] to sb./sth.", "chinese": "服從...；屈服於..."}
       ],
       "related": [
         {
           "english": "submission",
+          "pronunciation": "/səbˈmɪʃən/",
           "chinese": [
-            "n. [C][U] 提交；屈服"
+            "n. [C][U] 提交",
+            "n. [U] 屈服；服從"
           ]
         }
       ]
@@ -615,10 +675,17 @@
       "english": "sweat",
       "pronunciation": "/swɛt/",
       "chinese": [
-        "vi. 流汗",
+        "vt. 流汗",
         "n. [U] 汗水"
       ],
+      "example": [
+        "The hot weather is making me [sweat].",
+        "炎熱的天氣使我流汗。",
+        "Gordon wiped the [sweat] from his forehead with a towel.",
+        "戈登用毛巾擦去額頭上的汗水。"
+      ],
       "phrases": [
+        {"english": "no [sweat]", "chinese": "簡單的事；沒問題"},
         {"english": "in a cold [sweat]", "chinese": "冒冷汗"}
       ]
     },
@@ -626,23 +693,32 @@
       "english": "terminal",
       "pronunciation": "/ˈtɝmənl/",
       "chinese": [
-        "n. [C] 終點站；航站大廈",
-        "adj. 終點的；(疾病) 末期的"
+        "n. [C]（火車、公車等的）終點站，總站；航站大廈",
+        "adj. 終點的；（疾病）末期的"
+      ],
+      "example": [
+        "This [terminal] is mainly used for international flights.",
+        "這座航站大廈主要是國際航班所使用的。",
+        "Everyone has to get off the train at the [terminal] station.",
+        "所有人都要在火車終點站下車。"
       ],
       "phrases": [
-        {"english": "[terminal] cancer", "chinese": "癌症末期"}
+        {"english": "[terminal] station", "chinese": "終點站"},
+        {"english": "[terminal] cancer", "chinese": "末期癌症"}
       ],
       "related": [
         {
           "english": "terminate",
+          "pronunciation": "/ˈtɝməˌnet/",
           "chinese": [
-            "vt. vi. 使終止"
+            "vt. vi.（使）終結"
           ]
         },
         {
           "english": "termination",
+          "pronunciation": "/ˌtɝməˈneʃən/",
           "chinese": [
-            "n. [C][U] 終止"
+            "n. [C][U] 終結"
           ]
         }
       ]
@@ -653,36 +729,66 @@
       "chinese": [
         "n. [S][U] 差異 (= difference)；變動 (= change)"
       ],
+      "example": [
+        "There is a wide [variation] among countries in terms of average personal income.",
+        "各國之間的個人平均收入有很大的差異。"
+      ],
+      "phrases": [
+        {"english": "wide/considerable [variation] (in sth.)", "chinese": "在某方面有很大的變動"},
+        {"english": "[variation] between/among sb./sth.", "chinese": "...之間的差異"}
+      ],
       "related": [
         {
           "english": "vary",
+          "pronunciation": "/ˈvɛrɪ/",
           "chinese": [
-            "vt. vi. 使不同；改變"
-          ]
-        },
-        {
-          "english": "various",
-          "chinese": [
-            "adj. 各式各樣的 (= different)"
-          ]
-        },
-        {
-          "english": "variety",
-          "chinese": [
-            "n. [C] 種類 (= kind, sort)",
-            "n. [U] 多樣化、變化"
+            "vt. vi.（使）不同，（使）呈現差異"
           ]
         }
+      ]
+    },
+    {
+      "english": "various",
+      "pronunciation": "/ˈvɛrɪəs/",
+      "chinese": [
+        "adj. 各式各樣的 (= different)"
+      ],
+      "example": [
+        "We picked up [various] food items at the market to prepare for dinner.",
+        "我們在市場買了各式各樣的食物來準備做晚餐。"
+      ]
+    },
+    {
+      "english": "variety",
+      "pronunciation": "/vəˈraɪətɪ/",
+      "chinese": [
+        "n. [C] 種類 (= kind, sort)；[S] 各式各樣",
+        "n. [U] 多樣化，變化"
+      ],
+      "example": [
+        "The restaurant offers a [variety] of delicious dishes, ranging from steak to seafood.",
+        "這間餐廳提供不同種類的美食，從牛排到海鮮都有。"
+      ],
+      "phrases": [
+        {"english": "a (great/wide) [variety] of sth.", "chinese": "各式各樣的某事物"},
+        {"english": "offer/provide [variety]", "chinese": "提供多樣性"},
+        {"english": "add [variety] to sth.", "chinese": "為某事物增添多樣性"},
+        {"english": "[Variety] is the spice of life.", "chinese": "變化使生活更有情趣。"},
+        {"english": "[variety] show", "chinese": "綜藝節目"}
       ]
     },
     {
       "english": "weary",
       "pronunciation": "/ˈwɪri/",
       "chinese": [
-        "adj. 疲憊不堪的 (= exhausted, tired)；感到厭煩的 (= bored)"
+        "adj. 筋疲力盡的 (= exhausted, tired)；感到厭倦的 (= bored)"
+      ],
+      "example": [
+        "At the end of a long day, all the workers were [weary] and hoped to get some good rest.",
+        "忙了一整天後，所有員工都筋疲力盡，希望能好好休息。"
       ],
       "phrases": [
-        {"english": "be [weary] of sth.", "chinese": "對某事感到疲厭"}
+        {"english": "be [weary] of sth.", "chinese": "對某事物感到厭倦"}
       ]
     }
   ]
