@@ -56,9 +56,15 @@
     {
       "id": 13,
       "title": "高頻 Unit 13",
-      "default": false,
+      "default": true,
       "file": "unit-13.json"
     },
+    {
+      "id": 14,
+      "title": "高頻 Unit 14",
+      "default": true,
+      "file": "unit-14.json"
+    },    
     {
       "id": 23,
       "title": "課本2 Unit 3",

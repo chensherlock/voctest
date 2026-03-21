@@ -1873,7 +1873,7 @@ function displayUnitWords(unit) {
                 <span class="word-number">${wordNumber}.</span>
                 <div class="word-main">
                     <div class="word-header">
-                        <span class="english">${word.english}</span>
+                        <span class="english">${word.url ? `<a href="${escapeHtml(word.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(word.english)}</a>` : escapeHtml(word.english)}</span>
                         ${grammarBadgesHTML}
                         <button class="audio-btn" aria-label="Play pronunciation">
                             <i class="fas fa-volume-up"></i>
@@ -2357,8 +2357,9 @@ function playPhraseWithHighlight(phraseText, button, wordItem) {
     });
 
     // Create span elements for each word in the phrase
+    const originalPhraseHTML = phraseElement.innerHTML;
     let currentWordSpan = null;
-    phraseElement.innerHTML = words.map((word, index) => 
+    phraseElement.innerHTML = words.map((word, index) =>
         `<span class="phrase-word" data-index="${index}" data-start="${wordBoundaries[index].start}" data-end="${wordBoundaries[index].end}">${escapeHtml(word)}</span>`
     ).join(' ');
 
@@ -2410,7 +2411,7 @@ function playPhraseWithHighlight(phraseText, button, wordItem) {
     const cleanupHighlight = () => {
         clearWordHighlight();
         // Restore original text
-        phraseElement.innerHTML = escapeHtml(phraseText);
+        phraseElement.innerHTML = originalPhraseHTML;
         if (phraseListItem) {
             phraseListItem.classList.remove('playing');
         }
