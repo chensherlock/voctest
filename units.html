@@ -83,6 +83,32 @@
             color: #3a7fc6;
             font-weight: 500;
         }
+        .word-index {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+            padding: 0.6rem 0.75rem;
+            margin-bottom: 1rem;
+            background: #f5f7fa;
+            border-radius: 0.5rem;
+            border: 1px solid #e0e4ea;
+        }
+        .word-index-item {
+            font-size: 0.82rem;
+            color: #444;
+            text-decoration: none;
+            padding: 0.15rem 0.55rem;
+            border-radius: 999px;
+            background: #fff;
+            border: 1px solid #d0d5dd;
+            transition: background 0.15s, color 0.15s;
+            white-space: nowrap;
+        }
+        .word-index-item:hover {
+            background: var(--primary-color, #3a7fc6);
+            color: #fff;
+            border-color: transparent;
+        }
     </style>
 </head>
 <body>
@@ -119,6 +145,8 @@
                     </div>
                 </div>
                 
+                <div id="wordIndex" class="word-index"></div>
+
                 <div class="word-list" id="wordList">
                     <!-- Words will be dynamically loaded here -->
                 </div>

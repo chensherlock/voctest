@@ -1648,6 +1648,7 @@ function displayUnitWords(unit) {
         
         const wordItem = document.createElement('div');
         wordItem.className = `word-item ${masteredClass}`;
+        wordItem.id = `word-${word.english.replace(/[^a-zA-Z0-9]/g, '-')}`;
 
         // Get Chinese translations as array for multi-line display
         const chineseTranslations = getChineseTranslations(word);
@@ -2021,6 +2022,26 @@ function displayUnitWords(unit) {
 
         wordList.appendChild(wordItem);
     });
+
+    // Build word index
+    const wordIndex = document.getElementById('wordIndex');
+    if (wordIndex) {
+        wordIndex.innerHTML = unit.words.map(word => {
+            const id = `word-${word.english.replace(/[^a-zA-Z0-9]/g, '-')}`;
+            return `<a class="word-index-item" href="#${id}">${escapeHtml(word.english)}</a>`;
+        }).join('');
+        wordIndex.querySelectorAll('.word-index-item').forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                const target = document.getElementById(link.getAttribute('href').slice(1));
+                if (target) {
+                    const headerHeight = document.querySelector('header')?.offsetHeight || 0;
+                    const top = target.getBoundingClientRect().top + window.scrollY - headerHeight - 8;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                }
+            });
+        });
+    }
 
     // Add keyboard navigation for word items
     wordList.addEventListener('keydown', (e) => {
