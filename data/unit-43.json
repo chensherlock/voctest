@@ -1,0 +1,422 @@
+{
+  "id": 43,
+  "title": "課本4 Unit 3",
+  "words": [
+    {
+      "english": "suspiciously",
+      "chinese": [
+        "adv. 懷疑地 (in a way that shows disbelief)"
+      ],
+      "example": [
+        "Tom looked at Amy suspiciously because she was hiding something behind her back."
+      ],
+      "notes": [
+        "be suspicious of: 對...感到懷疑",
+        "make + O + OC (adj./n.): 使某人成為..."
+      ],
+      "related": [
+        {
+          "english": "suspicion",
+          "chinese": [
+            "n. 不信任；懷疑"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "suspicious",
+      "chinese": [
+        "adj. 懷疑的"
+      ],
+      "example": [
+        "Ms. Jordan tends to be suspicious of everyone, making it difficult for her to trust others."
+      ]
+    },
+    {
+      "english": "scientist",
+      "chinese": [
+        "n. [C] 科學家 (someone who works in science)"
+      ],
+      "example": [
+        "David is a social scientist who researches early childhood development."
+      ],
+      "notes": [
+        "a science fiction: 科幻小說"
+      ],
+      "related": [
+        {
+          "english": "science",
+          "chinese": [
+            "n. 科學"
+          ]
+        },
+        {
+          "english": "scientific",
+          "chinese": [
+            "adj. 科學的"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "claim",
+      "chinese": [
+        "vt. 聲稱；主張 (to say that something is true)"
+      ],
+      "example": [
+        "Andy claimed to have seen a UFO. However, no one believed him."
+      ],
+      "notes": [
+        "claim to have + past participle: 宣稱曾經..."
+      ]
+    },
+    {
+      "english": "replace",
+      "chinese": [
+        "vt. 取代；代替 (to be used instead of someone or something)"
+      ],
+      "example": [
+        "The coach replaced the injured player with another one during the game."
+      ],
+      "notes": [
+        "replace A with B: 用 B 取代 A",
+        "A be replaced: A 被取代",
+        "take the place of sb./sth. = replace sb./sth.: 取代某人／某物"
+      ],
+      "related": [
+        {
+          "english": "replacement",
+          "chinese": [
+            "n. 替換物"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "disease",
+      "chinese": [
+        "n. [C][U] 疾病 (an illness)"
+      ],
+      "example": [
+        "My cousin is suffering from heart disease and has to stay in the hospital."
+      ],
+      "notes": [
+        "suffer from / catch / get a disease: 患上某疾病",
+        "contagious / infectious disease: 有傳染性的疾病"
+      ]
+    },
+    {
+      "english": "cancer",
+      "chinese": [
+        "n. [U] 癌症 (a serious disease in which cells grow in an uncontrolled way)"
+      ],
+      "example": [
+        "After years of smoking, Dorian was told by the doctor that he had cancer."
+      ]
+    },
+    {
+      "english": "overweight",
+      "chinese": [
+        "adj. 過重的 (too heavy or fat)"
+      ],
+      "example": [
+        "After sitting all day and eating snacks every night, Peter became overweight."
+      ],
+      "notes": [
+        "How much do you weigh?: 你多重?"
+      ]
+    },
+    {
+      "english": "production",
+      "chinese": [
+        "n. [U] 生產；製作 (the process of making something)"
+      ],
+      "example": [
+        "The new model of this cellphone will be in production next year."
+      ],
+      "notes": [
+        "be in production / out of production: 量產中／停產",
+        "production 也可指電視或電影的製作上映"
+      ],
+      "related": [
+        {
+          "english": "produce",
+          "chinese": [
+            "v. 生產；製造"
+          ]
+        },
+        {
+          "english": "product",
+          "chinese": [
+            "n. 產品；成果"
+          ]
+        },
+        {
+          "english": "productive",
+          "chinese": [
+            "adj. 多產的；有成效的"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "climate",
+      "chinese": [
+        "n. [C][U] 氣候 (the typical weather conditions)"
+      ],
+      "example": [
+        "The desert climate is usually very hot and dry."
+      ],
+      "notes": [
+        "warm / cool / wet / humid / dry climate: 溫暖／涼爽／潮濕／溼熱／乾燥的氣候"
+      ]
+    },
+    {
+      "english": "brand",
+      "chinese": [
+        "n. [C] 品牌 (a type of product having a particular name)"
+      ],
+      "example": [
+        "I always buy a certain brand of milk because it tastes better than the others."
+      ]
+    },
+    {
+      "english": "advertise",
+      "chinese": [
+        "vt.; vi. 為......宣傳；打廣告 (to tell the public about a product)"
+      ],
+      "example": [
+        "Big companies may find a number of clever ways to advertise their products in TV shows."
+      ]
+    },
+    {
+      "english": "advertisement",
+      "chinese": [
+        "n. [C] 廣告"
+      ],
+      "example": [
+        "Mia put an advertisement for her shop online to attract more customers."
+      ]
+    },
+    {
+      "english": "consumer",
+      "chinese": [
+        "n. [C] 消費者 (someone who buys goods)"
+      ],
+      "syn": "customer",
+      "example": [
+        "Most consumers think that this new sports watch is very useful."
+      ],
+      "notes": [
+        "costume (n.): 特殊場合服裝"
+      ]
+    },
+    {
+      "english": "consume",
+      "chinese": [
+        "vt. 花費；消耗"
+      ],
+      "example": [
+        "An LED light bulb consumes less energy than a traditional one."
+      ],
+      "notes": [
+        "LED = light-emitting diode: 發光二極體",
+        "fit / unfit for human consumption: 適合／不適合人類食用"
+      ],
+      "related": [
+        {
+          "english": "consumption",
+          "chinese": [
+            "n. 食用；攝取；消耗；購買"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "convinced",
+      "chinese": [
+        "adj. 確信的 (feeling sure about something)"
+      ],
+      "example": [
+        "Julie is convinced of the existence of ghosts, so she's afraid of being alone in the dark by herself."
+      ],
+      "notes": [
+        "antonym: unconvinced",
+        "be convinced of: 對...深信不疑",
+        "convincing (adj.): 具說服力的；令人信服的",
+        "convincing victory / win: 一面倒的勝利"
+      ]
+    },
+    {
+      "english": "convince",
+      "chinese": [
+        "vt. 使確信；使相信 (to make someone believe something)"
+      ],
+      "example": [
+        "Mike is trying to convince the interviewers that he's the right person for the position."
+      ],
+      "notes": [
+        "convince sb. that + S + V: 說服某人某事",
+        "position: 位置；職位"
+      ]
+    },
+    {
+      "english": "favor",
+      "chinese": [
+        "n. [U] 贊同；支持 (support or approval)"
+      ],
+      "example": [
+        "The government's new policy of reducing plastic use has won favor with the citizens."
+      ],
+      "notes": [
+        "US: favor / UK: favour",
+        "favor A over B: 喜歡 A 勝過 B",
+        "be in one's favor: 對某人有利",
+        "do / ask sb. a favor: 幫／請求某人一個忙"
+      ]
+    },
+    {
+      "english": "switch",
+      "chinese": [
+        "vi.; vt. 改變；轉換"
+      ],
+      "syn": "change",
+      "example": [
+        "Eason switched our date from Tuesday to Friday because he was too busy."
+      ]
+    },
+    {
+      "english": "gradually",
+      "chinese": [
+        "adv. 逐漸地 (slowly)"
+      ],
+      "example": [
+        "In recent years, winters in Taiwan have been gradually getting warmer."
+      ],
+      "notes": [
+        "antonym: suddenly"
+      ]
+    },
+    {
+      "english": "gradual",
+      "chinese": [
+        "adj. 逐漸的"
+      ],
+      "example": [
+        "There will be a gradual change in the color of the meat as it cooks."
+      ],
+      "notes": [
+        "antonym: sudden"
+      ]
+    },
+    {
+      "english": "attempt",
+      "chinese": [
+        "n. [C] 企圖 (an act of taking steps to do something)",
+        "vt. 試圖；嘗試"
+      ],
+      "example": [
+        "The students made an attempt to clean the classroom quickly.",
+        "The cat attempted to catch the fish in the pond; unfortunately, it fell into the water by accident."
+      ],
+      "notes": [
+        "a vain attempt: 徒勞無功的嘗試",
+        "attempt at + N/V-ing: 對...的嘗試",
+        "attempt to + V: 試圖",
+        "intend to + V / plan to + V: 打算做某事",
+        "by accident = by chance = accidentally: 意外地"
+      ]
+    },
+    {
+      "english": "sustainable",
+      "chinese": [
+        "adj. 可持續的；對環境無害的 (not harmful to the environment)"
+      ],
+      "example": [
+        "This company uses paper and packaging that are 100% sustainable."
+      ],
+      "notes": [
+        "sustainable development: 永續發展",
+        "LOHAS: 樂活"
+      ],
+      "related": [
+        {
+          "english": "sustain",
+          "chinese": [
+            "v. 保持；維持；持續"
+          ]
+        },
+        {
+          "english": "sustainability",
+          "chinese": [
+            "n. 可持續性"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "methane",
+      "pronunciation": "[`mɛθen]",
+      "chinese": [
+        "n. [U] 甲烷"
+      ]
+    },
+    {
+      "english": "worsen",
+      "pronunciation": "[`wɝsn]",
+      "chinese": [
+        "vt.; vi. 使惡化；惡化"
+      ]
+    },
+    {
+      "english": "as well",
+      "chinese": [
+        "phr. 也；同樣地 (too)"
+      ],
+      "example": [
+        "Donna's father is a classical musician, and she hopes to become a concert pianist [as well]."
+      ],
+      "notes": [
+        "also / too",
+        "as well 和 too 通常放在句尾"
+      ]
+    },
+    {
+      "english": "take steps",
+      "chinese": [
+        "phr. 採取行動 (to take action)"
+      ],
+      "example": [
+        "The government is [taking steps] to prevent the disease from spreading."
+      ],
+      "notes": [
+        "prevent / keep / stop ... from V-ing: 預防／阻止..."
+      ]
+    },
+    {
+      "english": "in favor of",
+      "chinese": [
+        "phr. 支持；贊成 (supporting something)"
+      ],
+      "example": [
+        "Not every student in this school is [in favor of] the new rule."
+      ],
+      "notes": [
+        "be in favor of + N / V-ing"
+      ]
+    },
+    {
+      "english": "when it comes to",
+      "chinese": [
+        "phr. 提到；談到 (when talking about something)"
+      ],
+      "example": [
+        "[When it comes to] jumping rope, John is undoubtedly the best in his class."
+      ],
+      "notes": [
+        "when it comes to + N / V-ing, S + V",
+        "undoubtedly = absolutely = definitely: 無疑地"
+      ]
+    }
+  ]
+}

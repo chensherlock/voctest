@@ -1,0 +1,468 @@
+{
+  "id": 44,
+  "title": "課本4 Unit 4",
+  "words": [
+    {
+      "english": "satisfied",
+      "pronunciation": "[ˈsætɪsˌfaɪd]",
+      "chinese": [
+        "adj. 感到滿意的 (happy for what has happened as one wishes)"
+      ],
+      "example": [
+        "Andy is very satisfied with the hamburger he made."
+      ],
+      "notes": [
+        "antonym: dissatisfied"
+      ]
+    },
+    {
+      "english": "satisfy",
+      "pronunciation": "[ˈsætɪsˌfaɪ]",
+      "chinese": [
+        "vt. 使滿意；使滿足"
+      ],
+      "example": [
+        "My report did not satisfy the teacher, so I was asked to rewrite it."
+      ],
+      "notes": [
+        "satisfy-satisfied-satisfied"
+      ]
+    },
+    {
+      "english": "satisfaction",
+      "pronunciation": "[ˌsætɪsˈfækʃən]",
+      "chinese": [
+        "n. [C][U] 滿意；滿足"
+      ],
+      "example": [
+        "Vera got great satisfaction from teaching young children how to dance."
+      ],
+      "notes": [
+        "antonym: dissatisfaction"
+      ]
+    },
+    {
+      "english": "criticize",
+      "pronunciation": "[ˈkrɪtəˌsaɪz]",
+      "chinese": [
+        "vt.; vi. 批評 (to say someone or something is bad or wrong)"
+      ],
+      "example": [
+        "The restaurant was strongly criticized for its terrible food."
+      ],
+      "notes": [
+        "antonym: praise"
+      ]
+    },
+    {
+      "english": "criticism",
+      "pronunciation": "[ˈkrɪtəˌsɪzəm]",
+      "chinese": [
+        "n. [U][C] 批評"
+      ],
+      "example": [
+        "The man accepted the criticism of his poor performance at work."
+      ],
+      "notes": [
+        "antonym: praise"
+      ]
+    },
+    {
+      "english": "tragedy",
+      "pronunciation": "[ˈtrædʒədɪ]",
+      "chinese": [
+        "n. [C][U] 悲劇；災難 (a very sad event, especially one involving suffering or death)"
+      ],
+      "example": [
+        "While the ship was sailing across the ocean, a tragedy occurred. All of the sailors died in an accident."
+      ]
+    },
+    {
+      "english": "tragic",
+      "pronunciation": "[ˈtrædʒɪk]",
+      "chinese": [
+        "adj. 悲慘的"
+      ],
+      "example": [
+        "Upon learning the tragic news of Nathan's death, his parents were too shocked to accept the truth."
+      ]
+    },
+    {
+      "english": "upset",
+      "pronunciation": "[ʌpˈsɛt]",
+      "chinese": [
+        "vt. 使生氣；使心煩 (to make someone angry, worried, or unhappy)",
+        "adj. 生氣的；心煩的"
+      ],
+      "example": [
+        "It upset Mark that his girlfriend was late for their date again.",
+        "Teresa was very upset that her brother entered her room without knocking on the door first."
+      ],
+      "notes": [
+        "upset-upset-upset"
+      ]
+    },
+    {
+      "english": "extremely",
+      "pronunciation": "[ɪkˈstrimlɪ]",
+      "chinese": [
+        "adv. 非常；極度地 (very great in degree)"
+      ],
+      "example": [
+        "Vincent van Gogh's paintings are extremely valuable because he is one of the most influential artists in history."
+      ]
+    },
+    {
+      "english": "embarrassed",
+      "pronunciation": "[ɪmˈbærəst]",
+      "chinese": [
+        "adj. 尷尬的 (ashamed or uncomfortable about what other people will think of you)"
+      ],
+      "example": [
+        "Amber felt embarrassed when she fell down the stairs in front of the crowd."
+      ]
+    },
+    {
+      "english": "embarrass",
+      "pronunciation": "[ɪmˈbærəs]",
+      "chinese": [
+        "vt. 使尷尬"
+      ],
+      "example": [
+        "It embarrassed Bob to hear his friends sing Happy Birthday to him in public."
+      ]
+    },
+    {
+      "english": "delete",
+      "pronunciation": "[dɪˈlit]",
+      "chinese": [
+        "vt. 刪除 (to remove the written words or information stored in a computer)"
+      ],
+      "example": [
+        "Lawrence was shocked after he deleted the important files by accident."
+      ]
+    },
+    {
+      "english": "community",
+      "pronunciation": "[kəˈmjunətɪ]",
+      "chinese": [
+        "n. [C] 社群；社區 (a group of people who share the same things or live in the same area)"
+      ],
+      "example": [
+        "The whole community came together to help the family after their house caught fire."
+      ]
+    },
+    {
+      "english": "cruel",
+      "pronunciation": "[ˈkruəl]",
+      "chinese": [
+        "adj. 殘忍的 (causing pain or suffering to others without feeling sorry)"
+      ],
+      "example": [
+        "It was cruel to leave the dog outside in the cold."
+      ]
+    },
+    {
+      "english": "offend",
+      "pronunciation": "[əˈfɛnd]",
+      "chinese": [
+        "vt. 得罪；冒犯 (to make someone unhappy or angry)"
+      ],
+      "example": [
+        "The businessman was offended by the reporter's questions and left in anger."
+      ]
+    },
+    {
+      "english": "offense",
+      "pronunciation": "[əˈfɛns]",
+      "chinese": [
+        "n. [U] 冒犯"
+      ],
+      "example": [
+        "Please do not be angry about what I just said. I meant no offense."
+      ],
+      "notes": [
+        "US: offense / UK: offence"
+      ]
+    },
+    {
+      "english": "offensive",
+      "pronunciation": "[əˈfɛnsɪv]",
+      "chinese": [
+        "adj. 冒犯的"
+      ],
+      "example": [
+        "Richard made an offensive joke about the blind musician in the park and upset many people."
+      ],
+      "notes": [
+        "antonym: inoffensive"
+      ]
+    },
+    {
+      "english": "rumor",
+      "pronunciation": "[ˈrumɚ]",
+      "chinese": [
+        "n. [C][U] 謠言 (information spread from person to person that may or may not be true)"
+      ],
+      "example": [
+        "The rumor about the breakup of that celebrity couple spread quickly, but it turned out to be fake news."
+      ],
+      "notes": [
+        "hear a rumor that + S + V: 聽說某人...",
+        "Rumor has it that + S + V: 據傳聞...",
+        "spread a rumor about: 散布關於...的謠言",
+        "US: rumor / UK: rumour"
+      ]
+    },
+    {
+      "english": "punishment",
+      "pronunciation": "[ˈpʌnɪʃmənt]",
+      "chinese": [
+        "n. [C][U] 懲罰 (an act of making someone suffer for doing something wrong)"
+      ],
+      "example": [
+        "Tim was not allowed to go out with friends for a month as a punishment for lying to his parents."
+      ],
+      "notes": [
+        "accept punishment: 接受懲罰"
+      ]
+    },
+    {
+      "english": "punish",
+      "pronunciation": "[ˈpʌnɪʃ]",
+      "chinese": [
+        "vt. 處罰"
+      ],
+      "example": [
+        "The teacher punished Sophia for cheating on the exam by giving her some extra homework."
+      ],
+      "notes": [
+        "punish sb. for + N/V-ing",
+        "punish sb. by V-ing"
+      ]
+    },
+    {
+      "english": "identity",
+      "pronunciation": "[aɪˈdɛntətɪ]",
+      "chinese": [
+        "n. [C][U] 身分 (who a person is)"
+      ],
+      "example": [
+        "The organization did not reveal the identity of the person who had donated a million dollars to the poor."
+      ],
+      "notes": [
+        "identity card: 身分證",
+        "identical (adj.): 完全相同的；極為相似的",
+        "identical twins: 同卵雙胞胎"
+      ]
+    },
+    {
+      "english": "target",
+      "pronunciation": "[ˈtɑrgɪt]",
+      "chinese": [
+        "n. [C] 目標對象 (someone or something that people aim at when attacking)",
+        "n. [C] 目標 (something that one is trying to get or achieve)"
+      ],
+      "example": [
+        "The thieves marked a red cross on the door of their target's house.",
+        "Dennis has set a target of buying his own car before he turns 30. That's why he works very hard."
+      ],
+      "syn": "goal"
+    },
+    {
+      "english": "victim",
+      "pronunciation": "[ˈvɪktɪm]",
+      "chinese": [
+        "n. [C] 受害者；犧牲者 (someone who has been hurt or killed)"
+      ],
+      "example": [
+        "Polar bears and penguins have become the victims of climate change. We need to come up with some solutions to save them."
+      ],
+      "notes": [
+        "fall victim to sth./sb.: 成為...的受害者",
+        "earthquake victim: 地震災民",
+        "murder victim: 謀殺案的受害者"
+      ]
+    },
+    {
+      "english": "engage",
+      "pronunciation": "[ɪnˈɡedʒ]",
+      "chinese": [
+        "vi. 交涉；交手 (to get involved with someone or begin fighting)",
+        "vi. 投入；從事 (to do or to get involved in an activity)"
+      ],
+      "example": [
+        "Isabel likes to engage with kids and wants to become a kindergarten teacher in the future.",
+        "Richard engages in several environmental activities in his free time."
+      ],
+      "notes": [
+        "engage with sb.: 與某人交涉／交手"
+      ]
+    },
+    {
+      "english": "demonstrate",
+      "pronunciation": "[ˈdɛmənˌstret]",
+      "chinese": [
+        "vt. 展現；顯示 (to clearly show something through proofs or examples)"
+      ],
+      "example": [
+        "Ken's gesture demonstrated his confusion about the right direction to the MRT."
+      ],
+      "notes": [
+        "demonstrate against + N: 示威反對..."
+      ]
+    },
+    {
+      "english": "affect",
+      "pronunciation": "[əˈfɛkt]",
+      "chinese": [
+        "vt. 影響 (to make a change in someone or something)"
+      ],
+      "example": [
+        "The typhoon affected the prices of vegetables greatly this year."
+      ]
+    },
+    {
+      "english": "mean",
+      "pronunciation": "[min]",
+      "chinese": [
+        "adj. 刻薄的"
+      ]
+    },
+    {
+      "english": "hairdresser",
+      "pronunciation": "[ˈhɛrˌdrɛsɚ]",
+      "chinese": [
+        "n. [C] 美髮師"
+      ]
+    },
+    {
+      "english": "toad",
+      "pronunciation": "[tod]",
+      "chinese": [
+        "n. [C] 蟾蜍"
+      ]
+    },
+    {
+      "english": "harsh",
+      "pronunciation": "[hɑrʃ]",
+      "chinese": [
+        "adj. 嚴厲的；刺耳的"
+      ]
+    },
+    {
+      "english": "cyberbullying",
+      "pronunciation": "[ˈsaɪbɚˌbʊlɪŋ]",
+      "chinese": [
+        "n. [U] 網路霸凌"
+      ]
+    },
+    {
+      "english": "troll",
+      "pronunciation": "[trol]",
+      "chinese": [
+        "n. [C] (在網路上) 故意留下激怒他人言論的人"
+      ]
+    },
+    {
+      "english": "spite",
+      "pronunciation": "[spaɪt]",
+      "chinese": [
+        "n. [U] 惡意"
+      ]
+    },
+    {
+      "english": "comedian",
+      "pronunciation": "[kəˈmidɪən]",
+      "chinese": [
+        "n. [C] 喜劇演員"
+      ]
+    },
+    {
+      "english": "comedy",
+      "pronunciation": "[ˈkɑmədɪ]",
+      "chinese": [
+        "n. [C] 喜劇"
+      ]
+    },
+    {
+      "english": "stocking",
+      "pronunciation": "[ˈstɑkɪŋ]",
+      "chinese": [
+        "n. [C] 長襪"
+      ]
+    },
+    {
+      "english": "netizen",
+      "pronunciation": "[ˈnɛtəzn]",
+      "chinese": [
+        "n. [C] 網路公民"
+      ]
+    },
+    {
+      "english": "EQ",
+      "pronunciation": "[ˌiˈkju]",
+      "chinese": [
+        "n. [C] 情商；情感商數"
+      ],
+      "notes": [
+        "EQ = emotional quotient"
+      ]
+    },
+    {
+      "english": "make fun of",
+      "chinese": [
+        "phr. 取笑；嘲弄 (to laugh at someone or something in an unkind way)"
+      ],
+      "example": [
+        "Some students [made fun of] Louis because his new glasses looked weird."
+      ],
+      "syn": "poke fun at"
+    },
+    {
+      "english": "fill sth with sth",
+      "chinese": [
+        "phr. 充滿 (to make something full)"
+      ],
+      "example": [
+        "At the wedding, the man said he would [fill] his wife's life [with] happiness for the rest of their lives."
+      ]
+    },
+    {
+      "english": "keep away",
+      "chinese": [
+        "phr. 遠離 (to avoid going near someone or something)"
+      ],
+      "example": [
+        "The firefighters asked the family to [keep away] from the burning house, or they might get hurt."
+      ]
+    },
+    {
+      "english": "turn to",
+      "chinese": [
+        "phr. 向……求助 (to get help or advice from someone or something)"
+      ],
+      "example": [
+        "The tourist did not know how to get to the museum, so he [turned to] the police for help."
+      ]
+    },
+    {
+      "english": "set an example",
+      "chinese": [
+        "phr. 樹立榜樣 (to behave in a way that other people should copy)"
+      ],
+      "example": [
+        "The boss always arrives at work on time in order to [set a] good [example] for the staff."
+      ]
+    },
+    {
+      "english": "come at",
+      "chinese": [
+        "phr. 攻擊；向……衝去 (to move toward someone in order to attack)"
+      ],
+      "example": [
+        "The woman ran away quickly as the man suddenly [came at] her with a knife."
+      ]
+    }
+  ]
+}

@@ -179,6 +179,24 @@
       "file": "unit-42.json",
       "video": "https://www.sanmin.com.tw/api/attachment/URL7/4711289873020",
       "web": "https://www.junyiacademy.org/junyi-english/english-high/eng-senior11/e-meng-v-g11/e-eng-v-g11-b4/e-meng-v-g11-b4-2"
+    },
+    {
+      "id": 43,
+      "description": "Meet the New Meat",
+      "title": "課本4 Unit 3",
+      "default": true,
+      "file": "unit-43.json",
+      "video": "https://sites.google.com/view/grandeastenglishb2/%E6%8A%80%E9%AB%98%E8%8B%B1%E6%96%87-a%E7%89%88-%E7%AC%AC%E5%9B%9B%E5%86%8A/%E6%8A%80a-%E7%AC%AC%E5%9B%9B%E5%86%8A-unit-3/a4u3%E5%96%AE%E5%AD%97",
+      "web": "https://www.junyiacademy.org/junyi-english/english-high/eng-senior11/e-meng-v-g11/e-eng-v-g11-b4/e-meng-v-g11-b4-3"
+    },
+    {
+      "id": 44,
+      "description": "Online Buddies or Online Bullies?",
+      "title": "課本4 Unit 4",
+      "default": true,
+      "file": "unit-44.json",
+      "video": "https://sites.google.com/view/grandeastenglishb2/%E6%8A%80%E9%AB%98%E8%8B%B1%E6%96%87-a%E7%89%88-%E7%AC%AC%E5%9B%9B%E5%86%8A/%E6%8A%80a-%E7%AC%AC%E5%9B%9B%E5%86%8A-unit-4/a4u4%E5%96%AE%E5%AD%97",
+      "web": "https://www.junyiacademy.org/junyi-english/english-high/eng-senior11/e-meng-v-g11/e-eng-v-g11-b4/e-meng-v-g11-b4-4"
     }
   ]
 }
