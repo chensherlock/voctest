@@ -1,0 +1,936 @@
+{
+  "id": 16,
+  "title": "📚 高頻 Unit 16",
+  "words": [
+    {
+      "english": "abuse",
+      "pronunciation": "/əˈbjus/ /əˈbjuz/",
+      "chinese": [
+        "n. 虐待 (= mistreatment)；濫用 (= misuse)",
+        "vt. 虐待 (= mistreat)；濫用 (= misuse)"
+      ],
+      "example": [
+        "The charity is devoted to helping victims of child [abuse].",
+        "這個慈善機構致力於幫助受到虐待的孩童受害者。",
+        "The man was severely punished for [abusing] animals.",
+        "那名男子因為虐待動物而受到重罰。"
+      ],
+      "phrases": [
+        {
+          "english": "child/sexual [abuse]",
+          "chinese": "虐待兒童／性虐待"
+        },
+        {
+          "english": "alcohol/drug [abuse]",
+          "chinese": "酒精／藥物濫用"
+        }
+      ]
+    },
+    {
+      "english": "anyone",
+      "pronunciation": "/ˈɛnɪˌwʌn/",
+      "chinese": [
+        "pron. 任何人 (= anybody)"
+      ],
+      "example": [
+        "I haven't told [anyone] that I am going to quit my job.",
+        "我還沒跟任何人說我將要離職了。"
+      ],
+      "phrases": [
+        {
+          "english": "[anyone] else",
+          "chinese": "其他人"
+        }
+      ]
+    },
+    {
+      "english": "associate",
+      "pronunciation": "/əˈsoʃɪˌet/ /əˈsoʃɪɪt/",
+      "chinese": [
+        "vt. 將…（與…）聯想在一起 (= relate)",
+        "vi. 與…結識",
+        "n. (商業) 夥伴"
+      ],
+      "example": [
+        "People often [associate] Paris with high fashion.",
+        "人們常把巴黎和高級時尚聯想在一起。",
+        "I'm having lunch with several business [associates] today.",
+        "我今天中午要和幾位商業夥伴吃中餐。"
+      ],
+      "phrases": [
+        {
+          "english": "[associate] A with B",
+          "chinese": "將A與B聯想在一起"
+        },
+        {
+          "english": "[associate] with sb.",
+          "chinese": "與某人結識"
+        },
+        {
+          "english": "business [associate]",
+          "chinese": "商業夥伴"
+        }
+      ],
+      "related": [
+        {
+          "english": "association",
+          "pronunciation": "/əˌsoʃɪˈeʃən/",
+          "chinese": [
+            "n. [C][U] 關聯",
+            "n. [C] 協會"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "belt",
+      "pronunciation": "/bɛlt/",
+      "chinese": [
+        "n. 腰帶；輸送帶"
+      ],
+      "example": [
+        "My father fastened his seat [belt] before he started driving.",
+        "爸爸在開車前將安全帶繫好。"
+      ],
+      "phrases": [
+        {
+          "english": "seat/safety [belt]",
+          "chinese": "安全帶"
+        },
+        {
+          "english": "leather [belt]",
+          "chinese": "皮帶"
+        },
+        {
+          "english": "put on/fasten a [belt]",
+          "chinese": "繫上腰帶"
+        }
+      ]
+    },
+    {
+      "english": "broad",
+      "pronunciation": "/brɔd/",
+      "chinese": [
+        "adj. 寬廣的 (= vast, wide)；廣泛的 (= extensive)"
+      ],
+      "example": [
+        "This book about Japan covers a [broad] range of topics, such as must-see sights and local cuisines.",
+        "這本關於日本的書涵蓋的主題很廣，例如必去的景點和當地美食。"
+      ]
+    },
+    {
+      "english": "broaden",
+      "pronunciation": "/ˈbrɔdn/",
+      "chinese": [
+        "vt. vi. (使) 開闊 (= enlarge, expand, widen)"
+      ],
+      "example": [
+        "Participating in a variety of club activities will help students [broaden] their horizons.",
+        "參與各種社團活動能幫助學生增廣見聞。"
+      ],
+      "phrases": [
+        {
+          "english": "[broaden] one's mind",
+          "chinese": "使自己心胸開闊"
+        },
+        {
+          "english": "[broaden] one's horizons",
+          "chinese": "使某人增廣見聞"
+        }
+      ]
+    },
+    {
+      "english": "ceremony",
+      "pronunciation": "/ˈsɛrəˌmonɪ/",
+      "chinese": [
+        "n. [C] 典禮",
+        "n. [U] 儀式 (= ritual)"
+      ],
+      "example": [
+        "My parents will attend my graduation [ceremony] this Saturday.",
+        "我的父母這週六會來參加我的畢業典禮。"
+      ],
+      "phrases": [
+        {
+          "english": "attend/participate in a [ceremony]",
+          "chinese": "參加典禮"
+        },
+        {
+          "english": "have/hold/perform a [ceremony]",
+          "chinese": "舉辦典禮"
+        },
+        {
+          "english": "awards/closing/flag-raising/graduation/wedding/opening [ceremony]",
+          "chinese": "頒獎／閉幕／升旗／畢業／結婚／開幕典禮"
+        }
+      ]
+    },
+    {
+      "english": "change",
+      "pronunciation": "/tʃendʒ/",
+      "chinese": [
+        "vt. vi. 改變 (= alter)；更換",
+        "n. [C][U] 改變；更換",
+        "n. [U] (找回的) 零錢"
+      ],
+      "example": [
+        "Nothing can [change] Linda's decision about studying abroad; she has made up her mind.",
+        "沒有任何事能改變琳達出國留學的決定，她已經下定決心了。",
+        "Climate [change] is a serious problem that everyone should be concerned about.",
+        "氣候變遷是每個人都該關心的嚴重問題。"
+      ],
+      "phrases": [
+        {
+          "english": "[change] into sb./sth.",
+          "chinese": "變成..."
+        },
+        {
+          "english": "[change] A into B",
+          "chinese": "將A變成B"
+        },
+        {
+          "english": "[change] sb.'s mind",
+          "chinese": "改變心意"
+        },
+        {
+          "english": "[change] for the better/worse",
+          "chinese": "變得更好／更糟"
+        },
+        {
+          "english": "make a [change]/(some) [changes] (to sth.)",
+          "chinese": "改變某事物"
+        },
+        {
+          "english": "Keep the [change].",
+          "chinese": "不用找錢。"
+        }
+      ]
+    },
+    {
+      "english": "changeable",
+      "pronunciation": "/ˈtʃendʒəbəl/",
+      "chinese": [
+        "adj. 易變的，善變的"
+      ],
+      "example": [
+        "Many people find it hard to adapt to the [changeable] weather in this area.",
+        "許多人覺得這個地區多變的天氣很難適應。"
+      ]
+    },
+    {
+      "english": "cover",
+      "pronunciation": "/ˈkʌvɚ/",
+      "chinese": [
+        "vt. 覆蓋；涵蓋 (= contain, include, involve)",
+        "n. [C] 覆蓋物；封面",
+        "n. [U] 掩護",
+        "n. [P] 床單"
+      ],
+      "example": [
+        "Sarah [covered] her son with a blanket so that he wouldn't get cold.",
+        "莎拉幫她兒子蓋上毛毯，這樣他才不會著涼。",
+        "We tried to make the book's [cover] fit the story's tone.",
+        "我們試著讓這本書的封面符合故事的風格。"
+      ],
+      "phrases": [
+        {
+          "english": "[cover] A with B",
+          "chinese": "用B蓋住A"
+        },
+        {
+          "english": "be [covered] with/in sth.",
+          "chinese": "被某物覆蓋"
+        },
+        {
+          "english": "read sth. from [cover] to [cover]",
+          "chinese": "從頭到尾讀完某物"
+        },
+        {
+          "english": "run for/take [cover]",
+          "chinese": "找掩護"
+        }
+      ]
+    },
+    {
+      "english": "dark",
+      "pronunciation": "/dɑrk/",
+      "chinese": [
+        "adj. 暗色的；黑的 (= black)；黑暗的 (= dim)",
+        "n. [U] 黑暗；暗處 (= shade)"
+      ],
+      "example": [
+        "Look at the [dark] clouds! There must be a storm coming.",
+        "看那些烏雲！一定是暴風雨要來了。",
+        "Please turn on the light; I can't see in the [dark].",
+        "請開燈，在黑暗中我看不見東西。"
+      ],
+      "phrases": [
+        {
+          "english": "get/grow [dark]",
+          "chinese": "天色漸暗"
+        },
+        {
+          "english": "[dark] hair/skin",
+          "chinese": "黑頭髮／皮膚"
+        },
+        {
+          "english": "[dark] horse",
+          "chinese": "黑馬，指出人意料地獲勝的人"
+        },
+        {
+          "english": "in the [dark]",
+          "chinese": "在黑暗中"
+        }
+      ]
+    },
+    {
+      "english": "destroy",
+      "pronunciation": "/drˈstrɔɪ/",
+      "chinese": [
+        "vt. 破壞，摧毀 (= damage, ruin, spoil)"
+      ],
+      "example": [
+        "Kevin's negative comments have completely [destroyed] my confidence.",
+        "凱文的負面評論徹底地摧毀了我的信心。"
+      ],
+      "related": [
+        {
+          "english": "destructive",
+          "pronunciation": "/drˈstrʌktɪv/",
+          "chinese": [
+            "adj. 破壞性的"
+          ]
+        },
+        {
+          "english": "destruction",
+          "pronunciation": "/drˈstrʌkʃən/",
+          "chinese": [
+            "n. [U] 破壞，毀滅"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "diary",
+      "pronunciation": "/ˈdaɪərɪ/",
+      "chinese": [
+        "n. [C] 日記 (= journal)"
+      ],
+      "example": [
+        "I developed the habit of keeping a [diary] when I was a child.",
+        "我小時候就養成了寫日記的習慣。"
+      ],
+      "phrases": [
+        {
+          "english": "keep a [diary]",
+          "chinese": "寫日記"
+        }
+      ]
+    },
+    {
+      "english": "difficult",
+      "pronunciation": "/ˈdɪfəˌkʌlt/",
+      "chinese": [
+        "adj. 困難的 (= challenging, hard, tough)"
+      ],
+      "example": [
+        "My parents have always supported me through [difficult] situations.",
+        "我的父母總是在我經歷困境時支持我。"
+      ],
+      "phrases": [
+        {
+          "english": "It's [difficult] (for sb.) to do sth.",
+          "chinese": "做某事〔對某人而言〕是困難的"
+        }
+      ],
+      "related": [
+        {
+          "english": "difficulty",
+          "pronunciation": "/ˈdɪfəˌkʌltɪ/",
+          "chinese": [
+            "n. [C][U] 難題；困境"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "discuss",
+      "pronunciation": "/dɪˈskʌs/",
+      "chinese": [
+        "vt. 討論 (= talk about)"
+      ],
+      "example": [
+        "I always [discuss] my problems with Alice because she can give me good advice.",
+        "我總是跟愛麗絲討論我的問題，因為她能給我好的建議。"
+      ],
+      "phrases": [
+        {
+          "english": "[discuss] sth. with sb.",
+          "chinese": "與某人討論某事"
+        }
+      ],
+      "related": [
+        {
+          "english": "discussion",
+          "pronunciation": "/dɪˈskʌʃən/",
+          "chinese": [
+            "n. [C][U] 討論"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "distributor",
+      "pronunciation": "/dɪsˈtrɪbjutɚ/",
+      "chinese": [
+        "n. [C] 發行人；批發商；經銷商 (= dealer, trader)"
+      ],
+      "example": [
+        "Jeff is a [distributor] for a company that supplies anti-virus software to businesses.",
+        "傑夫是供應企業防毒軟體公司的經銷商。"
+      ],
+      "related": [
+        {
+          "english": "distribute",
+          "pronunciation": "/dɪsˈtrɪbjut/",
+          "chinese": [
+            "vt. 分配；分發"
+          ]
+        },
+        {
+          "english": "distribution",
+          "pronunciation": "/ˌdɪstrəˈbjuʃən/",
+          "chinese": [
+            "n. [C][U] 分配；分發；分佈"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "innocent",
+      "pronunciation": "/ˈɪnəsnt/",
+      "chinese": [
+        "adj. 天真的；無罪的，清白的"
+      ],
+      "example": [
+        "I truly believe that Judy is [innocent]; she couldn't have committed the crime.",
+        "我真的認為茱蒂是清白的，她不可能犯罪。"
+      ],
+      "phrases": [
+        {
+          "english": "be [innocent] of a crime/charge",
+          "chinese": "在某罪狀／控訴上是清白的"
+        }
+      ],
+      "related": [
+        {
+          "english": "innocence",
+          "pronunciation": "/ˈɪnəsns/",
+          "chinese": [
+            "n. [U] 天真；清白"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "inspire",
+      "pronunciation": "/ɪnˈspaɪr/",
+      "chinese": [
+        "vt. 鼓舞，激勵 (= encourage, motivate)；賦予靈感，激發；喚起 (= arouse)"
+      ],
+      "example": [
+        "The baseball player's story [inspired] Jimmy to become a successful athlete.",
+        "那名棒球選手的故事激勵吉米成為一名成功的運動員。"
+      ],
+      "phrases": [
+        {
+          "english": "be [inspired] by sth.",
+          "chinese": "受到某事物的激發"
+        },
+        {
+          "english": "[inspire] sb. to do sth.",
+          "chinese": "激勵某人做某事"
+        }
+      ],
+      "related": [
+        {
+          "english": "inspiring",
+          "pronunciation": "/ɪnˈspaɪrɪŋ/",
+          "chinese": [
+            "adj. 激勵人心的"
+          ]
+        },
+        {
+          "english": "inspiration",
+          "pronunciation": "/ˌɪnspəˈreʃən/",
+          "chinese": [
+            "n. [C][U] 靈感"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "kindness",
+      "pronunciation": "/ˈkaɪndnɪs/",
+      "chinese": [
+        "n. [C][U] 仁慈（的行為）；善意（的行為）"
+      ],
+      "example": [
+        "Nancy is known for her [kindness]; she always tries to help others as much as she can.",
+        "南茜的仁慈眾所皆知，她總是盡她所能地幫助別人。"
+      ],
+      "phrases": [
+        {
+          "english": "out of [kindness]",
+          "chinese": "出於善意"
+        }
+      ],
+      "related": [
+        {
+          "english": "kind",
+          "pronunciation": "/kaɪnd/",
+          "chinese": [
+            "adj. 仁慈的；親切的；體貼的"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "learn",
+      "pronunciation": "/lɝn/",
+      "chinese": [
+        "vt. vi. 學習；得知 (= discover, find out)"
+      ],
+      "example": [
+        "It's important to [learn] from your mistakes so that you won't repeat them.",
+        "從錯誤中學習很重要，這樣你才不會重蹈覆轍。"
+      ],
+      "phrases": [
+        {
+          "english": "[learn] (how) to do sth.",
+          "chinese": "學習〔如何〕做某事"
+        },
+        {
+          "english": "[learn] about/of sth.",
+          "chinese": "得知某事"
+        },
+        {
+          "english": "[learn] that + S + V",
+          "chinese": "得知..."
+        },
+        {
+          "english": "[learn] sth. by heart",
+          "chinese": "熟記某事"
+        },
+        {
+          "english": "[learn] one's lesson",
+          "chinese": "學到教訓"
+        }
+      ]
+    },
+    {
+      "english": "method",
+      "pronunciation": "/ˈmɛθəd/",
+      "chinese": [
+        "n. [C][U] 方法 (= means, way)"
+      ],
+      "example": [
+        "This cake was made by traditional [methods].",
+        "這個蛋糕是以傳統方法製成的。"
+      ],
+      "phrases": [
+        {
+          "english": "[method] of/for doing sth.",
+          "chinese": "做某事的方法"
+        },
+        {
+          "english": "teaching/scientific [method]",
+          "chinese": "教學／科學方法"
+        }
+      ]
+    },
+    {
+      "english": "monitor",
+      "pronunciation": "/ˈmɑnətɚ/",
+      "chinese": [
+        "n. [C] 顯示器 (= screen)",
+        "vt. 監聽；監控"
+      ],
+      "example": [
+        "Flat LCD [monitors] started replacing the regular TV-screen-type monitors years ago.",
+        "早在多年前，平面液晶螢幕就已開始取代映像管螢幕。",
+        "The police [monitored] the kidnappers' radio communications.",
+        "警方監聽綁匪的無線電通訊。"
+      ]
+    },
+    {
+      "english": "moody",
+      "pronunciation": "/ˈmudɪ/",
+      "chinese": [
+        "adj. 悶悶不樂的；喜怒無常的"
+      ],
+      "example": [
+        "Larry has been really [moody] lately; I think there must be something bothering him.",
+        "賴瑞最近很喜怒無常；我想一定有什麼事令他煩惱。"
+      ],
+      "related": [
+        {
+          "english": "mood",
+          "pronunciation": "/mud/",
+          "chinese": [
+            "n. [C][U] 心情，情緒"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "portion",
+      "pronunciation": "/ˈpɔrʃən/",
+      "chinese": [
+        "n. [C] 一部分 (= part, share)；（食物的）一份"
+      ],
+      "example": [
+        "Monica spends a large [portion] of her income on clothes.",
+        "莫妮卡把很大一部分的薪水都拿來買衣服。"
+      ],
+      "phrases": [
+        {
+          "english": "a (large/small) [portion] of sth.",
+          "chinese": "一大／小部分的某物"
+        }
+      ]
+    },
+    {
+      "english": "preserve",
+      "pronunciation": "/prɪˈzɝv/",
+      "chinese": [
+        "vt. 維護 (= protect)；保存 (= keep)；保養 (= maintain)",
+        "n. [C] (野生動物) 保護區 (= reserve, reservation)"
+      ],
+      "example": [
+        "The nine national parks in Taiwan help to [preserve] the country's valuable natural resources.",
+        "臺灣的九大國家公園有助於保存國家貴重的自然資源。",
+        "Deep in the mountains, there is a natural [preserve] that is home to the Formosan landlocked salmon.",
+        "山林深處有一處櫻花鉤吻鮭所棲息的自然保護區。"
+      ],
+      "related": [
+        {
+          "english": "preservation",
+          "pronunciation": "/ˌprɛzɚˈveʃən/",
+          "chinese": [
+            "n. [U] 維護；保存"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "rebuild",
+      "pronunciation": "/riˈbɪld/",
+      "chinese": [
+        "vt. 重建，改建 (= reconstruct)"
+      ],
+      "example": [
+        "The city was [rebuilt] after the earthquake destroyed many of its buildings.",
+        "這座城市在其許多建築遭地震摧毀後重建了。"
+      ],
+      "phrases": [
+        {
+          "english": "[rebuild] one's life",
+          "chinese": "重振生活"
+        }
+      ],
+      "related": [
+        {
+          "english": "build",
+          "pronunciation": "/bɪld/",
+          "chinese": [
+            "vt. vi. 建築；建造"
+          ],
+          "tense": {
+            "present": "build",
+            "past": "built",
+            "participle": "built"
+          }
+        }
+      ],
+      "tense": {
+        "present": "rebuild",
+        "past": "rebuilt",
+        "participle": "rebuilt"
+      }
+    },
+    {
+      "english": "reliably",
+      "pronunciation": "/rɪˈlaɪəblɪ/",
+      "chinese": [
+        "adv. 可靠地，可信賴地"
+      ],
+      "example": [
+        "This old car no longer runs [reliably], so I think it's time to get a new one.",
+        "這輛老車已不再可靠了，所以我想該是換輛新車的時候了。"
+      ],
+      "related": [
+        {
+          "english": "reliable",
+          "pronunciation": "/rɪˈlaɪəbl/",
+          "chinese": [
+            "adj. 可靠的，可信賴的"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "remain",
+      "pronunciation": "/rɪˈmen/",
+      "chinese": [
+        "vi. 保持不變；依然是；留下"
+      ],
+      "example": [
+        "It is important to [remain] calm during an emergency.",
+        "在緊急狀況下保持冷靜是很重要的。"
+      ],
+      "phrases": [
+        {
+          "english": "[remain] silent/calm/single",
+          "chinese": "保持沉默／冷靜／單身"
+        }
+      ]
+    },
+    {
+      "english": "spread",
+      "pronunciation": "/sprɛd/",
+      "chinese": [
+        "vt. vi. (使) 展開；(使) 蔓延",
+        "n. [S] 散播，蔓延 (= expansion)"
+      ],
+      "example": [
+        "What Betty said wasn't true; she was just [spreading] a rumor.",
+        "貝蒂說的不是真的，她只是在散播謠言。",
+        "The school has taken action to prevent the [spread] of the flu.",
+        "校方已採取行動來預防流感擴散。"
+      ],
+      "phrases": [
+        {
+          "english": "[spread] (a) disease",
+          "chinese": "散播疾病"
+        },
+        {
+          "english": "[spread] a rumor",
+          "chinese": "散播謠言"
+        },
+        {
+          "english": "[spread] the word",
+          "chinese": "散播消息"
+        }
+      ],
+      "tense": {
+        "present": "spread",
+        "past": "spread",
+        "participle": "spread"
+      }
+    },
+    {
+      "english": "statue",
+      "pronunciation": "/ˈstætʃu/",
+      "chinese": [
+        "n. [C] 雕像，塑像"
+      ],
+      "example": [
+        "The [Statue] of Liberty was a gift to the United States from France.",
+        "自由女神像是法國送給美國的一份禮物。"
+      ],
+      "phrases": [
+        {
+          "english": "carve/put up a [statue]",
+          "chinese": "刻／豎立雕像"
+        },
+        {
+          "english": "stone/marble/bronze [statue]",
+          "chinese": "石／大理石／銅像"
+        },
+        {
+          "english": "the [Statue] of Liberty",
+          "chinese": "自由女神像"
+        }
+      ]
+    },
+    {
+      "english": "supervisor",
+      "pronunciation": "/ˈsupɚˌvaɪzɚ/",
+      "chinese": [
+        "n. [C] 監督者；主管"
+      ],
+      "example": [
+        "You must have your [supervisor]'s permission if you want to take a day off.",
+        "如果你要請假，就必須得到主管許可。"
+      ],
+      "related": [
+        {
+          "english": "supervise",
+          "pronunciation": "/ˈsupɚˌvaɪz/",
+          "chinese": [
+            "vt. vi. 監督；指導"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "swear",
+      "pronunciation": "/swɛr/",
+      "chinese": [
+        "vt. 發(誓)；宣(誓)",
+        "vi. 發誓；咒罵"
+      ],
+      "example": [
+        "I [swear] that I've never told anyone about your secret!",
+        "我發誓我從來沒有把你的秘密告訴任何人！"
+      ],
+      "phrases": [
+        {
+          "english": "[swear] to God",
+          "chinese": "對天發誓"
+        },
+        {
+          "english": "[swear] at sb.",
+          "chinese": "咒罵某人"
+        },
+        {
+          "english": "be [sworn] in",
+          "chinese": "在法庭上宣誓；宣誓就職"
+        }
+      ],
+      "tense": {
+        "present": "swear",
+        "past": "swore",
+        "participle": "sworn"
+      }
+    },
+    {
+      "english": "truth",
+      "pronunciation": "/truθ/",
+      "chinese": [
+        "n. [U] 事實，真相 (= fact)"
+      ],
+      "example": [
+        "Jeremy lied to us, but we eventually learned the [truth].",
+        "雖然傑洛米對我們說謊，但我們最終還是得知真相了。"
+      ],
+      "phrases": [
+        {
+          "english": "tell the [truth]",
+          "chinese": "說真相"
+        },
+        {
+          "english": "bend/reveal the [truth]",
+          "chinese": "扭曲／揭露事實"
+        },
+        {
+          "english": "to tell the [truth]",
+          "chinese": "老實說"
+        },
+        {
+          "english": "in [truth]",
+          "chinese": "事實上"
+        }
+      ],
+      "related": [
+        {
+          "english": "true",
+          "pronunciation": "/tru/",
+          "chinese": [
+            "adj. 真實的"
+          ]
+        },
+        {
+          "english": "truthful",
+          "pronunciation": "/ˈtruθfəl/",
+          "chinese": [
+            "adj. 真實的；誠實的"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "untruthfully",
+      "pronunciation": "/ʌnˈtruθfəlɪ/",
+      "chinese": [
+        "adv. 不真實地 (= falsely)；不誠實地 (= dishonestly)"
+      ],
+      "example": [
+        "The newspaper reported the incident [untruthfully]. It didn't say what really happened.",
+        "這份報紙沒有誠實報導這起事件，它沒有報導真實的事發經過。"
+      ]
+    },
+    {
+      "english": "usually",
+      "pronunciation": "/ˈjuʒuəlɪ/",
+      "chinese": [
+        "adv. 通常 (= normally)；經常地 (= often, regularly)"
+      ],
+      "example": [
+        "I [usually] get my coffee from the convenience store around the corner from my house.",
+        "我通常會在我家附近的那間便利商店買咖啡。"
+      ],
+      "related": [
+        {
+          "english": "usual",
+          "pronunciation": "/ˈjuʒuəl/",
+          "chinese": [
+            "adj. 一般的；通常的"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "weight",
+      "pronunciation": "/wet/",
+      "chinese": [
+        "n. [C][U] 重量",
+        "n. [C] 重物；砝碼"
+      ],
+      "example": [
+        "Keeping a balanced diet can help you lose [weight].",
+        "均衡飲食有助於減重。"
+      ],
+      "phrases": [
+        {
+          "english": "... pounds/kilograms in [weight]",
+          "chinese": "...磅／公斤重"
+        },
+        {
+          "english": "put on/gain [weight]",
+          "chinese": "增重"
+        },
+        {
+          "english": "lose [weight]",
+          "chinese": "減重"
+        },
+        {
+          "english": "lift [weights]",
+          "chinese": "舉重"
+        }
+      ],
+      "related": [
+        {
+          "english": "weigh",
+          "pronunciation": "/we/",
+          "chinese": [
+            "vt. 秤...的重量",
+            "vi. 有...重"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "youngster",
+      "pronunciation": "/ˈjʌŋstɚ/",
+      "chinese": [
+        "n. [C] 年輕人"
+      ],
+      "example": [
+        "Many [youngsters] find it hard to communicate with their parents.",
+        "許多年輕人覺得難以和父母溝通。"
+      ]
+    }
+  ]
+}

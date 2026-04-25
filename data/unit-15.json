@@ -1,0 +1,966 @@
+{
+  "id": 15,
+  "title": "📚 高頻 Unit 15",
+  "words": [
+    {
+      "english": "address",
+      "pronunciation": "/ə'drɛs/ /'ædrɛs/",
+      "chinese": [
+        "n. [C] 住址；演說 (= lecture, speech)"
+      ],
+      "example": [
+        "Kevin was late for the interview because he got the building's [address] wrong.",
+        "凱文面試遲到，因為他弄錯地址了。"
+      ],
+      "phrases": [
+        {
+          "english": "[address] book",
+          "chinese": "通訊錄"
+        }
+      ]
+    },
+    {
+      "english": "body",
+      "pronunciation": "/'bɑdɪ/",
+      "chinese": [
+        "n. [C] 身體；屍體；機身"
+      ],
+      "example": [
+        "The human [body] is composed of many different cells, organs, and systems.",
+        "人體是由多種不同細胞、器官及系統所組成的。"
+      ],
+      "phrases": [
+        {
+          "english": "[body] fat/weight/temperature",
+          "chinese": "體脂／重／溫"
+        },
+        {
+          "english": "keep [body] and soul together",
+          "chinese": "勉強餬口"
+        }
+      ]
+    },
+    {
+      "english": "climber",
+      "pronunciation": "/'klaɪmɚ/",
+      "chinese": [
+        "n. [C] 登山者；攀登者"
+      ],
+      "example": [
+        "Peter is an experienced mountain [climber] who has climbed all the major mountains in Taiwan.",
+        "彼得是個很有經驗的登山者，他爬過臺灣所有的主要山脈。"
+      ],
+      "related": [
+        {
+          "english": "climb",
+          "pronunciation": "/klaɪm/",
+          "chinese": [
+            "vt. vi. 攀登；爬"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "collect",
+      "pronunciation": "/kə'lɛkt/",
+      "chinese": [
+        "vt. 收藏；收集，使聚集 (= assemble, gather)",
+        "vi. 聚集 (= assemble, gather)"
+      ],
+      "example": [
+        "The children brought home the shells they had [collected] at the beach.",
+        "孩子們把他們在海邊收集到的貝殼帶回家。"
+      ],
+      "related": [
+        {
+          "english": "collection",
+          "pronunciation": "/kə'lɛkʃən/",
+          "chinese": [
+            "n. [C][U] 收集（品）"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "contact",
+      "pronunciation": "/'kɑntækt/",
+      "chinese": [
+        "n. [U] 聯繫 (= connection)；接觸 (= touch)",
+        "vt. 與…聯繫 (= approach, reach)"
+      ],
+      "example": [
+        "I don't know where my sister is now, since I lost [contact] with her years ago.",
+        "我不知道我妹妹現在人在哪，因為我多年前就和她失聯了。",
+        "I am busy right now, but I will [contact] you as soon as I am free.",
+        "我現在很忙，但我一有空就會和你聯繫。"
+      ],
+      "phrases": [
+        {
+          "english": "have/lose [contact] with sb.",
+          "chinese": "與某人有／失去聯繫"
+        },
+        {
+          "english": "be in (close/regular) [contact] with sb.",
+          "chinese": "和某人有（密切的／頻繁的）聯繫"
+        },
+        {
+          "english": "get/keep/stay in [contact] with sb.",
+          "chinese": "和某人保持聯繫"
+        },
+        {
+          "english": "make [contact] with sb.",
+          "chinese": "和某人取得聯繫"
+        },
+        {
+          "english": "come into [contact] with sb./sth.",
+          "chinese": "與…接觸"
+        },
+        {
+          "english": "physical/eye [contact]",
+          "chinese": "肢體／目光接觸"
+        },
+        {
+          "english": "[contact] lens",
+          "chinese": "隱形眼鏡"
+        }
+      ]
+    },
+    {
+      "english": "counter",
+      "pronunciation": "/'kaʊntɚ/",
+      "chinese": [
+        "n. [C] 櫃台"
+      ],
+      "example": [
+        "We have to pay for our groceries at the check-out [counter].",
+        "我們必須在結帳櫃台付我們買的食品雜貨的錢。"
+      ],
+      "phrases": [
+        {
+          "english": "check-in [counter]",
+          "chinese": "報到櫃台"
+        },
+        {
+          "english": "over the [counter]",
+          "chinese": "（藥品）無處方即可購買的"
+        }
+      ]
+    },
+    {
+      "english": "coward",
+      "pronunciation": "/'kaʊɚd/",
+      "chinese": [
+        "n. [C] 膽小鬼；懦夫"
+      ],
+      "example": [
+        "Steven was a [coward]; he didn't dare to admit that the mistake was his fault.",
+        "史蒂芬真是個懦夫，他不敢承認是他的錯。"
+      ]
+    },
+    {
+      "english": "deserve",
+      "pronunciation": "/dɪ'zɝv/",
+      "chinese": [
+        "vt. 值得；應得"
+      ],
+      "example": [
+        "Tom cheated on the test, so he [deserved] the punishment the teacher gave him.",
+        "湯姆考試作弊，所以他受到老師處罰是應該的。"
+      ],
+      "phrases": [
+        {
+          "english": "[deserve] to do sth.",
+          "chinese": "值得做某事"
+        },
+        {
+          "english": "[deserve] respect/support/praise",
+          "chinese": "值得尊敬／支持／讚美"
+        },
+        {
+          "english": "get what one [deserves]",
+          "chinese": "罪有應得"
+        },
+        {
+          "english": "You [deserve] it.",
+          "chinese": "你活該。／你實至名歸。"
+        }
+      ]
+    },
+    {
+      "english": "direct",
+      "pronunciation": "/də'rɛkt/",
+      "chinese": [
+        "adj. 直接的；直達的",
+        "vt. 領導 (= guide, lead, manage)；指示；指揮；執導"
+      ],
+      "example": [
+        "This is a [direct] train to Kaohsiung; there are no stops along the way.",
+        "這班火車直達高雄，途中不靠站。",
+        "The doctor [directed] her patient to take the medicine three times a day.",
+        "這位醫生指示她的病人每日服用此藥三次。"
+      ],
+      "phrases": [
+        {
+          "english": "[direct] contact/evidence",
+          "chinese": "直接接觸／證據"
+        }
+      ],
+      "related": [
+        {
+          "english": "direction",
+          "pronunciation": "/də'rɛkʃən/",
+          "chinese": [
+            "n. [C] 方向",
+            "n. [U] 指導",
+            "n. [P] 用法說明；指示"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "directly",
+      "pronunciation": "/də'rɛktlɪ/",
+      "chinese": [
+        "adv. 直接地 (= straight)"
+      ],
+      "example": [
+        "Jack didn't answer my question [directly]; instead, he gave me an unclear answer.",
+        "傑克沒有直接回答我的問題，反而給我一個模糊的答案。"
+      ]
+    },
+    {
+      "english": "indirectly",
+      "pronunciation": "/ˌɪndə'rɛktlɪ/",
+      "chinese": [
+        "adv. 間接地"
+      ],
+      "example": [
+        "The kid [indirectly] let the teacher know about the problems he had at school. He asked his classmate to pass on the word for him.",
+        "這孩子沒有直接讓老師知道他在學校遇到的問題。他請同學替他傳話。"
+      ]
+    },
+    {
+      "english": "director",
+      "pronunciation": "/də'rɛktɚ/",
+      "chinese": [
+        "n. [C] 導演；董事"
+      ],
+      "example": [
+        "My favorite film [director] is known for making artistic films.",
+        "我最喜歡的電影導演以製作藝術電影聞名。"
+      ]
+    },
+    {
+      "english": "distance",
+      "pronunciation": "/'dɪstəns/",
+      "chinese": [
+        "n. [C][U] 距離"
+      ],
+      "example": [
+        "I go to work on foot because it's a short [distance] between my home and the office.",
+        "我走路上班，因為我家和辦公室的距離很近。"
+      ],
+      "phrases": [
+        {
+          "english": "[distance] from sth./swh.",
+          "chinese": "從…的距離"
+        },
+        {
+          "english": "[distance] to sth./swh.",
+          "chinese": "到…的距離"
+        },
+        {
+          "english": "long-[distance]",
+          "chinese": "遠距離的"
+        },
+        {
+          "english": "at/from a [distance]",
+          "chinese": "從遠處"
+        },
+        {
+          "english": "in the [distance]",
+          "chinese": "在遠處"
+        },
+        {
+          "english": "keep sb. at a [distance]",
+          "chinese": "與某人保持距離"
+        },
+        {
+          "english": "within walking/driving [distance]",
+          "chinese": "在走路／開車可到達的距離內"
+        }
+      ],
+      "related": [
+        {
+          "english": "distant",
+          "pronunciation": "/'dɪstənt/",
+          "chinese": [
+            "adj. 遙遠的"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "excuse",
+      "pronunciation": "/ɪk'skjuz/ /ɪk'skjus/",
+      "chinese": [
+        "vt. 原諒 (= forgive)",
+        "n. [C] 理由，藉口 (= explanation, reason)"
+      ],
+      "example": [
+        "The teacher [excused] Lisa for being late for school because she was sick.",
+        "老師原諒麗莎上學遲到，因為她生病了。",
+        "The teacher doesn't want to listen to George's [excuse] for not handing in his homework on time.",
+        "老師不想聽喬治為他沒準時交作業所編的藉口。"
+      ],
+      "phrases": [
+        {
+          "english": "[excuse] sb. for (doing) sth.",
+          "chinese": "原諒某人（做了）某事"
+        },
+        {
+          "english": "[excuse] me",
+          "chinese": "不好意思"
+        },
+        {
+          "english": "[excuse] for (doing) sth.",
+          "chinese": "（做）某事的藉口"
+        },
+        {
+          "english": "make/give an [excuse]",
+          "chinese": "找藉口"
+        },
+        {
+          "english": "have an [excuse] to do sth.",
+          "chinese": "有做某事的理由"
+        },
+        {
+          "english": "there is no [excuse] for (doing) sth.",
+          "chinese": "沒有（做）某事的理由（表某人不該做某事）"
+        }
+      ]
+    },
+    {
+      "english": "explode",
+      "pronunciation": "/ɪk'splod/",
+      "chinese": [
+        "vt. 使爆炸 (= blow up)",
+        "vi. 爆炸 (= blow up)；迅速增加"
+      ],
+      "example": [
+        "The bomb team managed to deal with the bomb before it [exploded].",
+        "炸彈拆除小組在炸彈爆炸前就設法將它解決了。"
+      ]
+    },
+    {
+      "english": "explosion",
+      "pronunciation": "/ɪk'sploʒən/",
+      "chinese": [
+        "n. [C][U] 爆炸",
+        "n. [C] 激增 (= increase)"
+      ],
+      "example": [
+        "The fire was caused by an [explosion] in the factory.",
+        "這起火災是由工廠內的一起爆炸所引起的。"
+      ],
+      "phrases": [
+        {
+          "english": "population [explosion]",
+          "chinese": "人口激增"
+        }
+      ]
+    },
+    {
+      "english": "firstly",
+      "pronunciation": "/'fɝstlɪ/",
+      "chinese": [
+        "adv. 第一，首先 (= first, first of all)"
+      ],
+      "example": [
+        "Nick's parents can't trust him anymore. [Firstly], he lied to them. Secondly, he stole from them.",
+        "尼克的父母再也無法信任他了。首先，他對他們說謊；第二，他偷了他們的錢。"
+      ],
+      "related": [
+        {
+          "english": "first",
+          "pronunciation": "/fɝst/",
+          "chinese": [
+            "adj. 第一的，首先的",
+            "adv. 第一，首先",
+            "pron. 第一個人或事物"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "fitness",
+      "pronunciation": "/'fɪtnɪs/",
+      "chinese": [
+        "n. [U] 健康 (= health)；合適"
+      ],
+      "example": [
+        "Larry prefers to work out at the new [fitness] center because it has nicer equipment.",
+        "賴瑞比較喜歡在新的健身中心運動，因為那裡的器材比較好。"
+      ],
+      "phrases": [
+        {
+          "english": "[fitness] center",
+          "chinese": "健身中心"
+        }
+      ]
+    },
+    {
+      "english": "fit",
+      "pronunciation": "/fɪt/",
+      "chinese": [
+        "vt. vi. 合適；合身；（使）可裝入；（使）可融入",
+        "adj. 健康的；適合的"
+      ],
+      "tense": {
+        "present": "fit",
+        "past": "fit",
+        "participle": "fit"
+      }
+    },
+    {
+      "english": "hat",
+      "pronunciation": "/hæt/",
+      "chinese": [
+        "n. [C] （有帽緣的）帽子"
+      ],
+      "example": [
+        "I always wear a [hat] on hot summer days.",
+        "我總會在炎炎夏日時戴頂帽子。"
+      ],
+      "phrases": [
+        {
+          "english": "sun/straw/cowboy [hat]",
+          "chinese": "遮陽／草／牛仔帽"
+        }
+      ]
+    },
+    {
+      "english": "job",
+      "pronunciation": "/dʒɑb/",
+      "chinese": [
+        "n. [C] 工作 (= occupation, profession, work)",
+        "n. [S] 職責，責任 (= duty, task)"
+      ],
+      "example": [
+        "Lisa finally found a full-time [job] after looking for months.",
+        "求職好幾年後，麗莎終於找到一份全職工作了。"
+      ],
+      "phrases": [
+        {
+          "english": "apply for a [job]",
+          "chinese": "申請工作"
+        },
+        {
+          "english": "(do a) good/great [job]",
+          "chinese": "做得好"
+        },
+        {
+          "english": "quit/leave one's [job]",
+          "chinese": "離職"
+        },
+        {
+          "english": "lose one's [job]",
+          "chinese": "失業"
+        },
+        {
+          "english": "be out of a [job]",
+          "chinese": "失業的"
+        },
+        {
+          "english": "[job] opportunity/interview",
+          "chinese": "工作機會／面試"
+        },
+        {
+          "english": "part-time/full-time/permanent/temporary [job]",
+          "chinese": "兼職／全職／永久的／暫時的工作"
+        }
+      ]
+    },
+    {
+      "english": "marriage",
+      "pronunciation": "/'mærɪdʒ/",
+      "chinese": [
+        "n. [C][U] 婚姻"
+      ],
+      "example": [
+        "To celebrate Joe and Mary's [marriage], there will be a dinner party after the ceremony.",
+        "為了慶祝喬和瑪莉結婚，典禮後會有一場晚宴。"
+      ],
+      "related": [
+        {
+          "english": "marry",
+          "pronunciation": "/'mærɪ/",
+          "chinese": [
+            "vt. vi. 娶；嫁"
+          ]
+        },
+        {
+          "english": "married",
+          "pronunciation": "/'mærɪd/",
+          "chinese": [
+            "adj. 已婚的"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "miss",
+      "pronunciation": "/mɪs/",
+      "chinese": [
+        "vt. 錯過；未擊中；想念"
+      ],
+      "example": [
+        "I [missed] my train this morning because I woke up late.",
+        "我因為太晚起床而錯過今天早上的火車。"
+      ],
+      "phrases": [
+        {
+          "english": "[miss] the point",
+          "chinese": "搞錯重點"
+        },
+        {
+          "english": "[miss] a(n) chance/opportunity to do sth.",
+          "chinese": "錯失做某事的機會"
+        },
+        {
+          "english": "[miss] out on sth.",
+          "chinese": "錯失某事物"
+        },
+        {
+          "english": "[miss] doing sth.",
+          "chinese": "想念做某事"
+        }
+      ]
+    },
+    {
+      "english": "missing",
+      "pronunciation": "/'mɪsɪŋ/",
+      "chinese": [
+        "adj. 不見了的"
+      ],
+      "phrases": [
+        {
+          "english": "[miss] the point",
+          "chinese": "搞錯重點"
+        },
+        {
+          "english": "[miss] a(n) chance/opportunity to do sth.",
+          "chinese": "錯失做某事的機會"
+        },
+        {
+          "english": "[miss] out on sth.",
+          "chinese": "錯失某事物"
+        },
+        {
+          "english": "[miss] doing sth.",
+          "chinese": "想念做某事"
+        }
+      ]
+    },
+    {
+      "english": "muscle",
+      "pronunciation": "/'mʌsl/",
+      "chinese": [
+        "n. [C][U] 肌肉"
+      ],
+      "example": [
+        "If you want to have bigger [muscles], you need to eat more protein and work out more often.",
+        "如果你想要更強壯的肌肉，你必須多吃蛋白質並更常健身。"
+      ],
+      "phrases": [
+        {
+          "english": "pull/injure a [muscle]",
+          "chinese": "拉傷肌肉"
+        },
+        {
+          "english": "build up [muscles]",
+          "chinese": "鍛鍊出肌肉"
+        }
+      ],
+      "related": [
+        {
+          "english": "muscular",
+          "pronunciation": "/'mʌskjəlɚ/",
+          "chinese": [
+            "adj. 健壯的"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "neighborhood",
+      "pronunciation": "/'nebɚˌhʊd/",
+      "chinese": [
+        "n. [C] 附近地區；街坊"
+      ],
+      "example": [
+        "I like to walk my dog in this [neighborhood] because it's quiet and not too crowded.",
+        "我喜歡在這附近遛狗，因為這裡很安靜，人也不多。"
+      ],
+      "related": [
+        {
+          "english": "neighbor",
+          "pronunciation": "/'nebɚ/",
+          "chinese": [
+            "n. [C] 鄰居"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "nightmare",
+      "pronunciation": "/'naɪtˌmɛr/",
+      "chinese": [
+        "n. [C] 惡夢，夢魘；如惡夢般的事物"
+      ],
+      "example": [
+        "That horror movie gave me [nightmares], so I didn't sleep well last night.",
+        "那部恐怖片害我做惡夢，所以我昨晚沒睡好。"
+      ]
+    },
+    {
+      "english": "performance",
+      "pronunciation": "/pɚ'fɔrməns/",
+      "chinese": [
+        "n. [C] 表演，演出 (= presentation, show)",
+        "n. [C][U] 表現"
+      ],
+      "example": [
+        "At the end of the [performance], the audience stood up and clapped for the singer.",
+        "在表演的尾聲，觀眾起立為這名歌手鼓掌。"
+      ],
+      "phrases": [
+        {
+          "english": "give a [performance]",
+          "chinese": "演出"
+        },
+        {
+          "english": "academic [performance]",
+          "chinese": "學術表現"
+        },
+        {
+          "english": "live [performance]",
+          "chinese": "現場演出"
+        }
+      ],
+      "related": [
+        {
+          "english": "perform",
+          "pronunciation": "/pɚ'fɔrm/",
+          "chinese": [
+            "vt. 表演；執行",
+            "vi. 表演；表現"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "rationally",
+      "pronunciation": "/'ræʃənəlɪ/",
+      "chinese": [
+        "adv. 理智地 (= reasonably)"
+      ],
+      "example": [
+        "It can be hard to react to other people's insults [rationally].",
+        "要理智地面對別人的羞辱是很困難的。"
+      ],
+      "related": [
+        {
+          "english": "rational",
+          "pronunciation": "/'ræʃənəl/",
+          "chinese": [
+            "adj. 理智的"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "resident",
+      "pronunciation": "/'rɛzədənt/",
+      "chinese": [
+        "n. [C] 居民，住戶"
+      ],
+      "example": [
+        "The [residents] of this apartment building have a meeting every month to discuss problems that need to be resolved.",
+        "這棟公寓大樓的住戶每月開一次會來討論待解決的問題。"
+      ],
+      "phrases": [
+        {
+          "english": "local [resident]",
+          "chinese": "當地居民"
+        }
+      ],
+      "related": [
+        {
+          "english": "residence",
+          "pronunciation": "/'rɛzədəns/",
+          "chinese": [
+            "n. [C] 住所",
+            "n. [U] 居住"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "respective",
+      "pronunciation": "/rɪ'spɛktɪv/",
+      "chinese": [
+        "adj. 各別的"
+      ],
+      "example": [
+        "When the bell rang, all the students in the playground went back to their [respective] classrooms.",
+        "鐘響時，操場上的所有學生都回到他們各自的教室。"
+      ],
+      "related": [
+        {
+          "english": "respectively",
+          "pronunciation": "/rɪ'spɛktɪvlɪ/",
+          "chinese": [
+            "adv. 各別地"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "respond",
+      "pronunciation": "/rɪ'spɑnd/",
+      "chinese": [
+        "vt. 回答，回應 (= answer, reply)",
+        "vi. 回答，回應；作出反應 (= react)"
+      ],
+      "example": [
+        "Please [respond] to the invitation as soon as possible so we know how many people are coming.",
+        "請盡快回覆邀請，這樣我們才知道有多少人要來。"
+      ],
+      "phrases": [
+        {
+          "english": "[respond] to sb./sth.",
+          "chinese": "回覆…"
+        },
+        {
+          "english": "[respond] that + S + V",
+          "chinese": "回答…"
+        },
+        {
+          "english": "[respond] to sth.",
+          "chinese": "對…做出回應，對…有反應"
+        }
+      ],
+      "related": [
+        {
+          "english": "response",
+          "pronunciation": "/rɪ'spɑns/",
+          "chinese": [
+            "n. [C][U] 回答；反應"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "salad",
+      "pronunciation": "/'sæləd/",
+      "chinese": [
+        "n. [C][U] 沙拉"
+      ],
+      "example": [
+        "I always order a [salad] to eat with my steak.",
+        "我總是點一份沙拉來搭配我的牛排。"
+      ],
+      "phrases": [
+        {
+          "english": "[salad] dressing",
+          "chinese": "沙拉醬"
+        }
+      ]
+    },
+    {
+      "english": "secret",
+      "pronunciation": "/'sikrɪt/",
+      "chinese": [
+        "n. [C] 秘密；奧秘 (= mystery)；秘訣 (= key)",
+        "adj. 秘密的 (= hidden, underground)"
+      ],
+      "example": [
+        "I can't believe Linda told everyone my [secret]!",
+        "我不敢相信琳達把我的秘密告訴了每個人！",
+        "We tried to keep the surprise party [secret] until Betty's birthday.",
+        "我們試著要將這場驚喜派對保密到貝蒂生日的那一天。"
+      ],
+      "phrases": [
+        {
+          "english": "in [secret]",
+          "chinese": "秘密地"
+        },
+        {
+          "english": "keep a [secret]",
+          "chinese": "保密"
+        },
+        {
+          "english": "keep sth. a [secret] (from sb.)",
+          "chinese": "保密某事（不讓某人知道）"
+        },
+        {
+          "english": "it's no [secret] that + S + V",
+          "chinese": "…是眾所周知的"
+        },
+        {
+          "english": "open/top [secret]",
+          "chinese": "公開的秘密／一級機密"
+        },
+        {
+          "english": "Your [secret] is safe with me.",
+          "chinese": "我會守口如瓶的。"
+        },
+        {
+          "english": "keep sth. [secret]",
+          "chinese": "保密某事物"
+        },
+        {
+          "english": "[secret] talks/agent/weapon",
+          "chinese": "秘密會談／探員／武器"
+        }
+      ]
+    },
+    {
+      "english": "sufficient",
+      "pronunciation": "/sə'fɪʃənt/",
+      "chinese": [
+        "adj. 足夠的，充足的 (= adequate, enough)"
+      ],
+      "example": [
+        "The recipe is [sufficient] for four people, so don't worry.",
+        "這份食譜的份量夠四個人吃，所以不用擔心。"
+      ]
+    },
+    {
+      "english": "track",
+      "pronunciation": "/træk/",
+      "chinese": [
+        "n. [C] 軌道；小徑 (= path, trail)；跑道；蹤跡（常用複數形） (= trace)",
+        "vt. 跟蹤，追蹤 (= follow, trace)"
+      ],
+      "example": [
+        "There is a [track] we can follow all the way to the top of the mountain.",
+        "我們可以沿著這條小徑一路走到山頂。",
+        "The private detective is good at [tracking] people.",
+        "這名私家偵探很擅長跟蹤。"
+      ],
+      "phrases": [
+        {
+          "english": "keep [track] of sb./sth.",
+          "chinese": "追蹤…；了解…的動態或情況"
+        },
+        {
+          "english": "lose [track] of sb./sth.",
+          "chinese": "與…失去聯繫；失去…的蹤跡"
+        },
+        {
+          "english": "cover one's [tracks]",
+          "chinese": "隱匿行蹤"
+        },
+        {
+          "english": "on the right/wrong [track]",
+          "chinese": "在正確／錯誤的方向上"
+        },
+        {
+          "english": "railroad/train [track](s)",
+          "chinese": "火車鐵軌"
+        },
+        {
+          "english": "[track] sb./sth. down",
+          "chinese": "追蹤到…；追查到…"
+        }
+      ]
+    },
+    {
+      "english": "tractor",
+      "pronunciation": "/'træktɚ/",
+      "chinese": [
+        "n. [C] 拖拉機"
+      ],
+      "example": [
+        "This farmer is using a [tractor] to pull the machine across the farm.",
+        "這名農夫正在用拖拉機把這台機器拉過農田。"
+      ]
+    },
+    {
+      "english": "unfortunate",
+      "pronunciation": "/ʌn'fɔrtʃənɪt/",
+      "chinese": [
+        "adj. 不幸的 (= unlucky)"
+      ],
+      "example": [
+        "It is [unfortunate] that Doris did not get into her ideal college.",
+        "很遺憾地，朵麗絲沒有進入她理想中的大學。"
+      ],
+      "phrases": [
+        {
+          "english": "It's [unfortunate] that + S + V",
+          "chinese": "…是不幸的"
+        }
+      ],
+      "related": [
+        {
+          "english": "fortunate",
+          "pronunciation": "/'fɔrtʃənɪt/",
+          "chinese": [
+            "adj. 幸運的"
+          ]
+        }
+      ]
+    },
+    {
+      "english": "fortune",
+      "pronunciation": "/'fɔrtʃən/",
+      "chinese": [
+        "n. [C] 財富 (= wealth)",
+        "n. [C][U] 命運 (= fate, destiny)"
+      ],
+      "example": [
+        "Sid received a large [fortune] when his father died.",
+        "席德的父親去世時，他得到了一大筆財富。"
+      ],
+      "phrases": [
+        {
+          "english": "make a [fortune]",
+          "chinese": "致富；發財"
+        }
+      ]
+    },
+    {
+      "english": "vacant",
+      "pronunciation": "/'vekənt/",
+      "chinese": [
+        "adj. 空的 (= empty)；未被佔用的 (= available)；（工作職位）空缺的；茫然的 (= blank)"
+      ],
+      "example": [
+        "I'm looking for a new place to live, so I spent the day touring [vacant] apartments.",
+        "我正在找新的住處，所以花了一天的時間參觀尚未出租的公寓。"
+      ],
+      "phrases": [
+        {
+          "english": "[vacant] seat/table",
+          "chinese": "空位／空桌"
+        },
+        {
+          "english": "[vacant] expression/look",
+          "chinese": "茫然的表情"
+        }
+      ],
+      "related": [
+        {
+          "english": "vacancy",
+          "pronunciation": "/'vekənsɪ/",
+          "chinese": [
+            "n. [C] 空處；空位；（職位）空缺"
+          ]
+        }
+      ]
+    }
+  ]
+}

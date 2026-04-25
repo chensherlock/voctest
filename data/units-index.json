@@ -59,17 +59,29 @@
     {
       "id": 13,
       "title": "高頻 Unit 13",
-      "default": true,
+      "default": false,
       "file": "unit-13.json",
       "video": "https://youtu.be/3dDv1NOp29E"
     },
     {
       "id": 14,
       "title": "高頻 Unit 14",
-      "default": true,
+      "default": false,
       "file": "unit-14.json",
       "video": "https://youtu.be/pYJ9fiYv9lw"
-    },    
+    },
+    {
+      "id": 15,
+      "title": "高頻 Unit 15",
+      "default": true,
+      "file": "unit-15.json"
+    },
+    {
+      "id": 16,
+      "title": "高頻 Unit 16",
+      "default": true,
+      "file": "unit-16.json"
+    },
     {
       "id": 23,
       "title": "課本2 Unit 3",
@@ -152,7 +164,7 @@
       "id": 41,
       "title": "課本4 Unit 1",
       "description": "Esports Gamer: A Dream Jobs?",
-      "default": true,
+      "default": false,
       "file": "unit-41.json",
       "video": "https://www.sanmin.com.tw/api/attachment/URL3/4711289873020",
       "web": "https://www.junyiacademy.org/junyi-english/english-high/eng-senior11/e-meng-v-g11/e-eng-v-g11-b4/e-meng-v-g11-b4-1"
@@ -161,7 +173,7 @@
       "id": 42,
       "title": "課本4 Unit 2",
       "description": "Don't Worry. Be Happy!",
-      "default": true,
+      "default": false,
       "file": "unit-42.json",
       "video": "https://www.sanmin.com.tw/api/attachment/URL7/4711289873020",
       "web": "https://www.junyiacademy.org/junyi-english/english-high/eng-senior11/e-meng-v-g11/e-eng-v-g11-b4/e-meng-v-g11-b4-2"
