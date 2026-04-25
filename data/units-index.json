@@ -74,13 +74,15 @@
       "id": 15,
       "title": "高頻 Unit 15",
       "default": true,
-      "file": "unit-15.json"
+      "file": "unit-15.json",
+      "video": "https://www.youtube.com/watch?v=Hn91RPGrPqI"
     },
     {
       "id": 16,
       "title": "高頻 Unit 16",
       "default": true,
-      "file": "unit-16.json"
+      "file": "unit-16.json",
+      "video": "https://www.youtube.com/watch?v=LZELgfhQSOE"
     },
     {
       "id": 23,

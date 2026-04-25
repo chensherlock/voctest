@@ -62,6 +62,7 @@
     },
     {
       "english": "collect",
+      "url": "http://magazine.english4u.net/vocmemory/video/3426",
       "pronunciation": "/kə'lɛkt/",
       "chinese": [
         "vt. 收藏；收集，使聚集 (= assemble, gather)",
@@ -188,6 +189,7 @@
     },
     {
       "english": "direct",
+      "url": "https://magazine.english4u.net/vocmemory/video/3470",
       "pronunciation": "/də'rɛkt/",
       "chinese": [
         "adj. 直接的；直達的",
@@ -252,6 +254,7 @@
     },
     {
       "english": "distance",
+      "url": "http://magazine.english4u.net/vocmemory/video/3476",
       "pronunciation": "/'dɪstəns/",
       "chinese": [
         "n. [C][U] 距離"
@@ -490,22 +493,21 @@
       "example": [
         "To celebrate Joe and Mary's [marriage], there will be a dinner party after the ceremony.",
         "為了慶祝喬和瑪莉結婚，典禮後會有一場晚宴。"
-      ],
-      "related": [
-        {
-          "english": "marry",
-          "pronunciation": "/'mærɪ/",
-          "chinese": [
-            "vt. vi. 娶；嫁"
-          ]
-        },
-        {
-          "english": "married",
-          "pronunciation": "/'mærɪd/",
-          "chinese": [
-            "adj. 已婚的"
-          ]
-        }
+      ]
+    },
+    {
+      "english": "marry",
+      "url": "http://magazine.english4u.net/vocmemory/video/3625",
+      "pronunciation": "/'mærɪ/",
+      "chinese": [
+        "vt. vi. 娶；嫁"
+      ]
+    },
+    {
+      "english": "married",
+      "pronunciation": "/'mærɪd/",
+      "chinese": [
+        "adj. 已婚的"
       ]
     },
     {
