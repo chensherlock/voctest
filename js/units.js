@@ -523,7 +523,9 @@ function createVoiceSelectorUI() {
 
     const voiceSelectorContainer = audioService.createVoiceSelector({
         onChange: (voiceURI) => {
-            const selectedVoice = audioService.voices.find(v => v.voiceURI === voiceURI) || null;
+            const selectedVoice = voiceURI
+                ? (audioService.voices.find(v => v.voiceURI === voiceURI) || null)
+                : audioService.getPreferredVoice();
             const voiceName = selectedVoice?.name || '預設';
             const nativeBoundaryLabel = audioService.supportsNativeBoundaryForVoice(selectedVoice)
                 ? '支援原生逐字高亮'

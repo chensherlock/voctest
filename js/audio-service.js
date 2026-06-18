@@ -120,8 +120,22 @@ const audioService = {
      * @returns {SpeechSynthesisVoice|null}
      */
     getPreferredVoice() {
-        if (!this.preferredVoiceURI) return null;
-        return this.voices.find(voice => voice.voiceURI === this.preferredVoiceURI);
+        if (!this.preferredVoiceURI) {
+            return this.getAutoPreferredVoice();
+        }
+
+        const storedVoice = this.voices.find(voice => voice.voiceURI === this.preferredVoiceURI);
+        return storedVoice || this.getAutoPreferredVoice();
+    },
+
+    /**
+     * Whether a voice should be treated as English for default selection.
+     * @param {SpeechSynthesisVoice|null} voice
+     * @returns {boolean}
+     */
+    isEnglishVoice(voice) {
+        const language = voice?.lang || '';
+        return /^en(?:[-_]|$)/i.test(language);
     },
 
     /**
@@ -158,6 +172,47 @@ const audioService = {
         const availableVoices = Array.isArray(this.voices) && this.voices.length
             ? this.voices
             : window.speechSynthesis.getVoices();
+
+        return availableVoices.find(voice => voice.default) || availableVoices[0] || null;
+    },
+
+    /**
+     * Automatically choose the most suitable default voice.
+     * Priority:
+     * 1. English voice with native word-boundary support
+     * 2. Any English voice
+     * 3. Any voice with native word-boundary support
+     * 4. Browser default voice
+     * @returns {SpeechSynthesisVoice|null}
+     */
+    getAutoPreferredVoice() {
+        if (!('speechSynthesis' in window)) {
+            return null;
+        }
+
+        const availableVoices = Array.isArray(this.voices) && this.voices.length
+            ? this.voices
+            : window.speechSynthesis.getVoices();
+
+        if (!availableVoices.length) {
+            return null;
+        }
+
+        const supportedEnglishVoice = availableVoices.find(voice =>
+            this.isEnglishVoice(voice) && this.supportsNativeBoundaryForVoice(voice));
+        if (supportedEnglishVoice) {
+            return supportedEnglishVoice;
+        }
+
+        const englishVoice = availableVoices.find(voice => this.isEnglishVoice(voice));
+        if (englishVoice) {
+            return englishVoice;
+        }
+
+        const supportedVoice = availableVoices.find(voice => this.supportsNativeBoundaryForVoice(voice));
+        if (supportedVoice) {
+            return supportedVoice;
+        }
 
         return availableVoices.find(voice => voice.default) || availableVoices[0] || null;
     },
@@ -465,7 +520,7 @@ const audioService = {
 
         const hint = document.createElement('div');
         hint.className = 'voice-support-hint';
-        hint.textContent = '✓ 原生逐字：支援瀏覽器原生 onboundary 逐字高亮';
+        hint.textContent = '預設會優先選英文；若有 ✓ 原生逐字 的英文聲音，會優先使用。';
 
         container.appendChild(label);
         container.appendChild(select);
@@ -487,7 +542,7 @@ const audioService = {
         // Add default option
         const defaultOption = document.createElement('option');
         defaultOption.value = '';
-        defaultOption.textContent = '預設語音（自動）';
+        defaultOption.textContent = '預設語音（自動，英文優先）';
         selectElement.appendChild(defaultOption);
 
         const supportedVoices = this.voices.filter(voice => this.supportsNativeBoundaryForVoice(voice));
@@ -541,9 +596,8 @@ const audioService = {
         }
 
         // Set selected value from stored preference
-        if (this.preferredVoiceURI) {
-            selectElement.value = this.preferredVoiceURI;
-        }
+        const selectedVoice = this.getPreferredVoice();
+        selectElement.value = this.preferredVoiceURI || selectedVoice?.voiceURI || '';
     },
 
     /**

@@ -92,6 +92,13 @@
       "video": "https://www.youtube.com/watch?v=cffpPE0dtoU"
     },
     {
+      "id": 18,
+      "title": "高頻 Unit 18",
+      "default": true,
+      "file": "unit-18.json",
+      "video": "https://www.youtube.com/watch?v=OKdiBMFFWKE"
+    },
+    {
       "id": 23,
       "title": "課本2 Unit 3",
       "default": false,
