@@ -19,3 +19,9 @@ Commits follow short, imperative subjects (~50 chars) that describe the behavior
 
 ## Data & Asset Hygiene
 Keep audio URLs and example sentences synchronized between `data.js` and any YAML/CSV source of record. When adding media, store files beneath `data/images/` and reference them with relative paths. Run a quick spell-check pass on English terms to prevent quiz regressions.
+
+When creating or extending a vocabulary unit JSON such as `data/unit-18.json`, follow the established schema exactly: top-level `id`, `title`, and `words`; each word should use `english`, `pronunciation`, and a `chinese` array, with optional `example`, `phrases`, `tense`, and `notes`. Keep example sentences as alternating English and Traditional Chinese strings, and bracket the target word in English examples and phrase patterns so the UI can highlight it correctly.
+
+For high-frequency units, prefer standalone top-level entries for derivative forms when they have their own part of speech, example sentence, or phrase set. This worked well for Unit 18 with entries such as `competition`, `construction`, `difference`, `manager`, `softly`, `transportation`, `résumé`, and `resume`. Use `related` only for lightweight family words that do not need full standalone content.
+
+When adding a brand-new unit, also register it in `data/units-index.json`. When appending new vocabulary batches to an existing unit, preserve the current ordering and append in place instead of reshuffling older entries. After every unit-data edit, run a quick JSON parse check, for example with `node -e "JSON.parse(require('fs').readFileSync('data/unit-18.json','utf8'))"`, to catch punctuation or quoting mistakes immediately.
