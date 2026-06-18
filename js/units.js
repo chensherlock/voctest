@@ -523,8 +523,12 @@ function createVoiceSelectorUI() {
 
     const voiceSelectorContainer = audioService.createVoiceSelector({
         onChange: (voiceURI) => {
-            const voiceName = audioService.voices.find(v => v.voiceURI === voiceURI)?.name || '預設';
-            showAudioStatus(`已更改語音：${voiceName}`);
+            const selectedVoice = audioService.voices.find(v => v.voiceURI === voiceURI) || null;
+            const voiceName = selectedVoice?.name || '預設';
+            const nativeBoundaryLabel = audioService.supportsNativeBoundaryForVoice(selectedVoice)
+                ? '支援原生逐字高亮'
+                : '使用整句高亮';
+            showAudioStatus(`已更改語音：${voiceName}（${nativeBoundaryLabel}）`);
         }
     });
 
@@ -569,7 +573,7 @@ function buildTokenMarkupWithHighlights(displayToken, highlightWords, baseClass)
         const part = match[0];
         const normalized = normalizeWordForHighlight(part);
         if (normalized && highlightWords.has(normalized)) {
-            htmlSegments.push(`<span class="${baseClass} highlight-word">${escapeHtml(part)}</span>`);
+            htmlSegments.push(`<span class="highlight-word">${escapeHtml(part)}</span>`);
         } else {
             htmlSegments.push(escapeHtml(part));
         }
@@ -2398,6 +2402,9 @@ function playPhraseWithHighlight(phraseText, button, wordItem) {
         return;
     }
 
+    const preferredVoice = audioService.getEffectiveVoice();
+    const usesBoundaryHighlight = audioService.supportsNativeBoundaryForVoice(preferredVoice);
+
     // Parse phrase text into words and create word boundaries
     const words = phraseText.split(/\s+/);
     let charIndex = 0;
@@ -2411,11 +2418,15 @@ function playPhraseWithHighlight(phraseText, button, wordItem) {
     // Create span elements for each word in the phrase
     const originalPhraseHTML = phraseElement.innerHTML;
     let currentWordSpan = null;
-    phraseElement.innerHTML = words.map((word, index) =>
-        `<span class="phrase-word" data-index="${index}" data-start="${wordBoundaries[index].start}" data-end="${wordBoundaries[index].end}">${escapeHtml(word)}</span>`
-    ).join(' ');
+    if (usesBoundaryHighlight) {
+        phraseElement.innerHTML = words.map((word, index) =>
+            `<span class="phrase-word" data-index="${index}" data-start="${wordBoundaries[index].start}" data-end="${wordBoundaries[index].end}">${escapeHtml(word)}</span>`
+        ).join(' ');
+    }
 
-    const wordSpans = Array.from(phraseElement.querySelectorAll('.phrase-word'));
+    const wordSpans = usesBoundaryHighlight
+        ? Array.from(phraseElement.querySelectorAll('.phrase-word[data-start][data-end]'))
+        : [];
 
     const clearWordHighlight = () => {
         if (currentWordSpan) {
@@ -2423,6 +2434,7 @@ function playPhraseWithHighlight(phraseText, button, wordItem) {
             currentWordSpan = null;
         }
         wordSpans.forEach(span => span.classList.remove('current-word'));
+        phraseElement.classList.remove('whole-phrase-highlight');
     };
 
     const highlightWordAtChar = (charIndex) => {
@@ -2462,13 +2474,23 @@ function playPhraseWithHighlight(phraseText, button, wordItem) {
 
     const cleanupHighlight = () => {
         clearWordHighlight();
-        // Restore original text
-        phraseElement.innerHTML = originalPhraseHTML;
+        if (usesBoundaryHighlight) {
+            phraseElement.innerHTML = originalPhraseHTML;
+        }
         if (phraseListItem) {
             phraseListItem.classList.remove('playing');
         }
         if (wordItem) {
             wordItem.classList.remove('playing');
+        }
+    };
+
+    const startPlaybackHighlight = () => {
+        clearWordHighlight();
+        if (usesBoundaryHighlight) {
+            highlightWordAtChar(0);
+        } else {
+            phraseElement.classList.add('whole-phrase-highlight');
         }
     };
 
@@ -2498,12 +2520,20 @@ function playPhraseWithHighlight(phraseText, button, wordItem) {
         const utterance = new SpeechSynthesisUtterance(phraseText);
         utterance.lang = 'en-US';
         utterance.rate = 0.9 * (audioService?.pronunciationSpeed || 1.0);
+        if (preferredVoice) {
+            utterance.voice = preferredVoice;
+        }
 
-        utterance.onboundary = (event) => {
-            if (typeof event.charIndex === 'number') {
-                highlightWordAtChar(event.charIndex);
-            }
+        utterance.onstart = () => {
+            startPlaybackHighlight();
         };
+        if (usesBoundaryHighlight) {
+            utterance.onboundary = (event) => {
+                if (typeof event.charIndex === 'number') {
+                    highlightWordAtChar(event.charIndex);
+                }
+            };
+        }
 
         utterance.onend = () => {
             restoreButton();
@@ -2560,13 +2590,15 @@ function playExampleSentence(sentence, button) {
     const wordItem = button.closest('.word-item');
     const exampleLine = button.closest('.example-line');
     const exampleText = exampleLine ? exampleLine.querySelector('.example-text') : null;
-    const wordSpans = exampleText ? Array.from(exampleText.querySelectorAll('.example-word')) : [];
+    const wordSpans = exampleText ? Array.from(exampleText.querySelectorAll('.example-word[data-start][data-end]')) : [];
     const wordBoundaries = wordSpans.map(span => ({
         start: Number(span.dataset.start),
         end: Number(span.dataset.end),
         span
     }));
     let currentWordSpan = null;
+    const preferredVoice = audioService.getEffectiveVoice();
+    const usesBoundaryHighlight = audioService.supportsNativeBoundaryForVoice(preferredVoice);
 
     if (wordItem) {
         wordItem.classList.add('playing');
@@ -2582,6 +2614,9 @@ function playExampleSentence(sentence, button) {
             currentWordSpan = null;
         }
         wordSpans.forEach(span => span.classList.remove('current-word'));
+        if (exampleLine) {
+            exampleLine.classList.remove('whole-line-highlight');
+        }
     };
 
     const highlightWordAtChar = (charIndex) => {
@@ -2624,6 +2659,15 @@ function playExampleSentence(sentence, button) {
         }
     };
 
+    const startPlaybackHighlight = () => {
+        clearWordHighlight();
+        if (usesBoundaryHighlight) {
+            highlightWordAtChar(0);
+        } else if (exampleLine) {
+            exampleLine.classList.add('whole-line-highlight');
+        }
+    };
+
     const playbackContext = {
         button,
         originalIcon,
@@ -2659,20 +2703,21 @@ function playExampleSentence(sentence, button) {
         utterance.rate = 0.9 * audioService.getPronunciationSpeed();
 
         // Use preferred voice if available
-        const preferredVoice = audioService.getPreferredVoice();
         if (preferredVoice) {
             utterance.voice = preferredVoice;
         }
 
         utterance.onstart = () => {
-            highlightWordAtChar(0);
+            startPlaybackHighlight();
         };
 
-        utterance.onboundary = (event) => {
-            if (typeof event.charIndex === 'number') {
-                highlightWordAtChar(event.charIndex);
-            }
-        };
+        if (usesBoundaryHighlight) {
+            utterance.onboundary = (event) => {
+                if (typeof event.charIndex === 'number') {
+                    highlightWordAtChar(event.charIndex);
+                }
+            };
+        }
 
         utterance.onend = () => {
             restoreButton();
@@ -2766,13 +2811,15 @@ async function playWordAndExamples(word, wordItem) {
 
             const exampleLine = btn.closest('.example-line');
             const exampleText = exampleLine ? exampleLine.querySelector('.example-text') : null;
-            const wordSpans = exampleText ? Array.from(exampleText.querySelectorAll('.example-word')) : [];
+            const wordSpans = exampleText ? Array.from(exampleText.querySelectorAll('.example-word[data-start][data-end]')) : [];
             const wordBoundaries = wordSpans.map(span => ({
                 start: Number(span.dataset.start),
                 end: Number(span.dataset.end),
                 span
             }));
             let currentWordSpan = null;
+            const preferredVoice = audioService.getEffectiveVoice();
+            const usesBoundaryHighlight = audioService.supportsNativeBoundaryForVoice(preferredVoice);
 
             if (exampleLine) {
                 exampleLine.classList.add('playing');
@@ -2784,6 +2831,9 @@ async function playWordAndExamples(word, wordItem) {
                     currentWordSpan = null;
                 }
                 wordSpans.forEach(span => span.classList.remove('current-word'));
+                if (exampleLine) {
+                    exampleLine.classList.remove('whole-line-highlight');
+                }
             };
 
             const highlightWordAtChar = (charIndex) => {
@@ -2822,6 +2872,14 @@ async function playWordAndExamples(word, wordItem) {
                     exampleLine.classList.remove('playing');
                 }
             };
+            const startPlaybackHighlight = () => {
+                clearWordHighlight();
+                if (usesBoundaryHighlight) {
+                    highlightWordAtChar(0);
+                } else if (exampleLine) {
+                    exampleLine.classList.add('whole-line-highlight');
+                }
+            };
 
             await new Promise((resolve) => {
                 showAudioStatus(`播放例句 (${btnIndex + 1}/${exampleButtons.length})...`);
@@ -2831,20 +2889,21 @@ async function playWordAndExamples(word, wordItem) {
                     utterance.lang = 'en-US';
                     utterance.rate = 0.9 * audioService.getPronunciationSpeed();
                     
-                    const preferredVoice = audioService.getPreferredVoice();
                     if (preferredVoice) {
                         utterance.voice = preferredVoice;
                     }
 
                     utterance.onstart = () => {
-                        highlightWordAtChar(0);
+                        startPlaybackHighlight();
                     };
 
-                    utterance.onboundary = (event) => {
-                        if (typeof event.charIndex === 'number') {
-                            highlightWordAtChar(event.charIndex);
-                        }
-                    };
+                    if (usesBoundaryHighlight) {
+                        utterance.onboundary = (event) => {
+                            if (typeof event.charIndex === 'number') {
+                                highlightWordAtChar(event.charIndex);
+                            }
+                        };
+                    }
                     
                     utterance.onend = () => {
                         cleanupLineHighlight();

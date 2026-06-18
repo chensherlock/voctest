@@ -12,6 +12,8 @@ JavaScript modules use four-space indentation, ES6 modules, and descriptive func
 ## Testing Guidelines
 There is no automated suite yet; rely on feature-specific smoke checks. After changes in `flashcards.js` or `quiz.js`, walk through Unit selection, flashcard flips, quiz submissions, and audio playback. Confirm localStorage updates via browser devtools and verify multilingual strings render correctly. Capture console output to ensure no warnings surface.
 
+Speech-synthesis highlighting needs an explicit cross-browser and cross-voice check. Do not assume `SpeechSynthesisUtterance.onboundary` behaves the same across browsers or even across voices in the same browser. Windows built-in Microsoft voices support reliable word-by-word highlighting, while other voices may only highlight the first word or emit incomplete boundary events. Keep per-word highlighting only for known supported voices; fall back to whole-sentence highlighting for unsupported voices or platforms such as Android Chrome.
+
 ## Commit & Pull Request Guidelines
 Commits follow short, imperative subjects (~50 chars) that describe the behavioral change (e.g., "Add pronunciation speed control"). Group related UI and data updates together to keep history reviewable. PRs should summarize the user-facing impact, list test steps performed, and include before/after screenshots for layout tweaks. Link relevant vocabulary issues or Trello cards so future maintainers can trace the source request.
 

@@ -125,6 +125,72 @@ const audioService = {
     },
 
     /**
+     * Whether the current speech synthesis platform should be treated as Android.
+     * Android Chrome currently does not provide reliable native word boundaries.
+     * @returns {boolean}
+     */
+    isAndroidSpeechPlatform() {
+        if (typeof navigator === 'undefined') {
+            return false;
+        }
+        return /Android/i.test(navigator.userAgent || '');
+    },
+
+    /**
+     * Resolve the actual voice that will be used for speech synthesis.
+     * @param {SpeechSynthesisVoice|null} preferredVoice
+     * @returns {SpeechSynthesisVoice|null}
+     */
+    getEffectiveVoice(preferredVoice = null) {
+        if (preferredVoice) {
+            return preferredVoice;
+        }
+
+        const selectedVoice = this.getPreferredVoice();
+        if (selectedVoice) {
+            return selectedVoice;
+        }
+
+        if (!('speechSynthesis' in window)) {
+            return null;
+        }
+
+        const availableVoices = Array.isArray(this.voices) && this.voices.length
+            ? this.voices
+            : window.speechSynthesis.getVoices();
+
+        return availableVoices.find(voice => voice.default) || availableVoices[0] || null;
+    },
+
+    /**
+     * Whether a voice can be trusted to emit native word-boundary events.
+     * Current rule: Microsoft voices on non-Android platforms.
+     * @param {SpeechSynthesisVoice|null} voice
+     * @returns {boolean}
+     */
+    supportsNativeBoundaryForVoice(voice = null) {
+        if (this.isAndroidSpeechPlatform()) {
+            return false;
+        }
+
+        const effectiveVoice = this.getEffectiveVoice(voice);
+        const voiceFingerprint = `${effectiveVoice?.name || ''} ${effectiveVoice?.voiceURI || ''}`.trim();
+        return /microsoft/i.test(voiceFingerprint);
+    },
+
+    /**
+     * Build the label shown in the voice selector.
+     * @param {SpeechSynthesisVoice} voice
+     * @returns {string}
+     */
+    formatVoiceOptionLabel(voice) {
+        const supportPrefix = this.supportsNativeBoundaryForVoice(voice)
+            ? '✓ 原生逐字 '
+            : '';
+        return `${supportPrefix}${voice.name} (${voice.lang})`;
+    },
+
+    /**
      * Get audio for a word from the cloud service
      * @param {string} word - The English word to get audio for
      * @returns {Promise<string>} - Promise resolving to audio URL
@@ -397,8 +463,13 @@ const audioService = {
             if (onChange) onChange(select.value);
         });
 
+        const hint = document.createElement('div');
+        hint.className = 'voice-support-hint';
+        hint.textContent = '✓ 原生逐字：支援瀏覽器原生 onboundary 逐字高亮';
+
         container.appendChild(label);
         container.appendChild(select);
+        container.appendChild(hint);
 
         return container;
     },
@@ -416,22 +487,38 @@ const audioService = {
         // Add default option
         const defaultOption = document.createElement('option');
         defaultOption.value = '';
-        defaultOption.textContent = '預設語音';
+        defaultOption.textContent = '預設語音（自動）';
         selectElement.appendChild(defaultOption);
 
-        // Filter for English voices first, then add others
-        const englishVoices = this.voices.filter(voice => voice.lang.includes('en'));
-        const otherVoices = this.voices.filter(voice => !voice.lang.includes('en'));
+        const supportedVoices = this.voices.filter(voice => this.supportsNativeBoundaryForVoice(voice));
+        const englishVoices = this.voices.filter(voice =>
+            !this.supportsNativeBoundaryForVoice(voice) && voice.lang.includes('en'));
+        const otherVoices = this.voices.filter(voice =>
+            !this.supportsNativeBoundaryForVoice(voice) && !voice.lang.includes('en'));
+
+        if (supportedVoices.length > 0) {
+            const supportedGroup = document.createElement('optgroup');
+            supportedGroup.label = '支援原生逐字高亮';
+
+            supportedVoices.forEach(voice => {
+                const option = document.createElement('option');
+                option.value = voice.voiceURI;
+                option.textContent = this.formatVoiceOptionLabel(voice);
+                supportedGroup.appendChild(option);
+            });
+
+            selectElement.appendChild(supportedGroup);
+        }
 
         // Add English voices with a group
         if (englishVoices.length > 0) {
             const englishGroup = document.createElement('optgroup');
-            englishGroup.label = '英文語音';
+            englishGroup.label = supportedVoices.length > 0 ? '其他英文語音' : '英文語音';
 
             englishVoices.forEach(voice => {
                 const option = document.createElement('option');
                 option.value = voice.voiceURI;
-                option.textContent = `${voice.name} (${voice.lang})`;
+                option.textContent = this.formatVoiceOptionLabel(voice);
                 englishGroup.appendChild(option);
             });
 
@@ -446,7 +533,7 @@ const audioService = {
             otherVoices.forEach(voice => {
                 const option = document.createElement('option');
                 option.value = voice.voiceURI;
-                option.textContent = `${voice.name} (${voice.lang})`;
+                option.textContent = this.formatVoiceOptionLabel(voice);
                 otherGroup.appendChild(option);
             });
 

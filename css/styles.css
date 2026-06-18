@@ -3040,6 +3040,13 @@ footer {
     font-size: 15px;
 }
 
+.voice-support-hint {
+    margin-top: 6px;
+    font-size: 12px;
+    line-height: 1.4;
+    color: #6b7280;
+}
+
 .audio-provider-container select,
 #audioProviderSelect,
 #voiceSelect {
@@ -3475,6 +3482,19 @@ footer {
     background-color: var(--selection-color);
 }
 
+.word-item .example-line.playing.whole-line-highlight .example-text {
+    color: #ffffff;
+    background-color: var(--selection-color);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.word-item .example-line.playing.whole-line-highlight .example-word,
+.word-item .example-line.playing.whole-line-highlight .highlight-word {
+    color: inherit;
+    background-color: transparent;
+}
+
 .word-item .example-line.playing .example-audio-btn {
     color: var(--selection-color);
 }
@@ -3510,6 +3530,19 @@ footer {
     padding: 2px 4px;
     border-radius: 2px;
     font-weight: 700;
+}
+
+.word-item .phrases-list li.playing strong.whole-phrase-highlight {
+    color: #ffffff;
+    background-color: var(--selection-color);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.word-item .phrases-list li.playing strong.whole-phrase-highlight .phrase-word,
+.word-item .phrases-list li.playing strong.whole-phrase-highlight .highlight-word {
+    color: inherit;
+    background-color: transparent;
 }
 
 .word-item .phrases-list li.playing .phrase-audio-btn {
