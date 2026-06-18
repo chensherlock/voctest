@@ -1525,6 +1525,35 @@ function buildNotesSection(word) {
     return `<div class="word-notes"><span class="notes-label">筆記</span><ul>${noteItems}</ul></div>`;
 }
 
+function normalizeTense(tense) {
+    if (!tense) {
+        return null;
+    }
+
+    if (typeof tense === 'object') {
+        const normalized = {
+            present: typeof tense.present === 'string' ? tense.present.trim() : '',
+            past: typeof tense.past === 'string' ? tense.past.trim() : '',
+            participle: typeof tense.participle === 'string' ? tense.participle.trim() : ''
+        };
+
+        return normalized.present || normalized.past || normalized.participle ? normalized : null;
+    }
+
+    if (typeof tense === 'string') {
+        const parts = tense.split('-').map(part => part.trim()).filter(Boolean);
+        if (parts.length === 3) {
+            return {
+                present: parts[0],
+                past: parts[1],
+                participle: parts[2]
+            };
+        }
+    }
+
+    return null;
+}
+
 // Display all available units
 async function displayAllUnits() {
     unitsContainer.innerHTML = '';
@@ -1830,11 +1859,12 @@ function displayUnitWords(unit) {
                             
                             // Add tense information if available
                             let tenseText = '';
-                            if (related.tense && typeof related.tense === 'object') {
+                            const relatedTense = normalizeTense(related.tense);
+                            if (relatedTense) {
                                 const tenseParts = [];
-                                if (related.tense.present) tenseParts.push(`現在式: ${escapeHtml(related.tense.present)}`);
-                                if (related.tense.past) tenseParts.push(`過去式: ${escapeHtml(related.tense.past)}`);
-                                if (related.tense.participle) tenseParts.push(`過去分詞: ${escapeHtml(related.tense.participle)}`);
+                                if (relatedTense.present) tenseParts.push(`現在式: ${escapeHtml(relatedTense.present)}`);
+                                if (relatedTense.past) tenseParts.push(`過去式: ${escapeHtml(relatedTense.past)}`);
+                                if (relatedTense.participle) tenseParts.push(`過去分詞: ${escapeHtml(relatedTense.participle)}`);
                                 if (tenseParts.length > 0) {
                                     tenseText = ` <span class="related-tense">(${tenseParts.join(', ')})</span>`;
                                 }
@@ -1859,13 +1889,14 @@ function displayUnitWords(unit) {
             </div>` : '';
 
         // Format tense information if available (for verbs)
-        const tenseHTML = word.tense && typeof word.tense === 'object' ? `
+        const normalizedTense = normalizeTense(word.tense);
+        const tenseHTML = normalizedTense ? `
             <div class="word-tense">
                 <span class="tense-label">時態：</span>
                 <div class="tense-list">
-                    ${word.tense.present ? `<span class="tense-item"><span class="tense-name">現在式</span> ${escapeHtml(word.tense.present)}</span>` : ''}
-                    ${word.tense.past ? `<span class="tense-item"><span class="tense-name">過去式</span> ${escapeHtml(word.tense.past)}</span>` : ''}
-                    ${word.tense.participle ? `<span class="tense-item"><span class="tense-name">過去分詞</span> ${escapeHtml(word.tense.participle)}</span>` : ''}
+                    ${normalizedTense.present ? `<span class="tense-item"><span class="tense-name">現在式</span> ${escapeHtml(normalizedTense.present)}</span>` : ''}
+                    ${normalizedTense.past ? `<span class="tense-item"><span class="tense-name">過去式</span> ${escapeHtml(normalizedTense.past)}</span>` : ''}
+                    ${normalizedTense.participle ? `<span class="tense-item"><span class="tense-name">過去分詞</span> ${escapeHtml(normalizedTense.participle)}</span>` : ''}
                 </div>
             </div>` : '';
 
