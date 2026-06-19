@@ -4,7 +4,9 @@
       "Bash(node -e:*)",
       "Bash(git mv:*)",
       "WebFetch(domain:chrome.dev)",
-      "WebFetch(domain:developer.chrome.com)"
+      "WebFetch(domain:developer.chrome.com)",
+      "Bash(grep -l \"url\\\\|web\" /d/code-voctest/data/*.json)",
+      "WebFetch(domain:magazine.english4u.net)"
     ],
     "deny": [],
     "ask": []

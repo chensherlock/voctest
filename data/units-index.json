@@ -217,14 +217,18 @@
       "description": "Take the Bills Away",
       "title": "課本4 Unit 5",
       "default": true,
-      "file": "unit-45.json"
+      "file": "unit-45.json",
+      "video": "https://sites.google.com/view/grandeastenglishb2/%E6%8A%80%E9%AB%98%E8%8B%B1%E6%96%87-a%E7%89%88-%E7%AC%AC%E5%9B%9B%E5%86%8A/%E6%8A%80a-%E7%AC%AC%E5%9B%9B%E5%86%8A-unit-5/a4u5%E5%96%AE%E5%AD%97",
+      "web": "https://www.junyiacademy.org/topics/e-meng-v-g11-b4-5"
     },
     {
       "id": 46,
       "description": "Taitung to France, France to Taitung",
       "title": "課本4 Unit 6",
       "default": true ,
-      "file": "unit-46.json"
+      "file": "unit-46.json",
+      "video": "https://sites.google.com/view/grandeastenglishb2/%E6%8A%80%E9%AB%98%E8%8B%B1%E6%96%87-a%E7%89%88-%E7%AC%AC%E5%9B%9B%E5%86%8A/%E6%8A%80a-%E7%AC%AC%E5%9B%9B%E5%86%8A-unit-6/a4u6%E5%96%AE%E5%AD%97",
+      "web": "https://www.junyiacademy.org/topics/e-meng-v-g11-b4-6"
     }
   ]
 }
