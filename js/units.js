@@ -64,7 +64,7 @@ const rewriterToneVariants = [
 ];
 let lastRewriterToneKey = null;
 const NOTES_COOKIE_NAME = 'unitNotesVisible';
-let notesVisible = false;
+let notesVisible = true;
 
 function setCookie(name, value, days = 365) {
     const date = new Date();
@@ -452,7 +452,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         displayAllUnits();
     }
 
-    notesVisible = Boolean(getCookie(NOTES_COOKIE_NAME));
+    const savedNotesVisibility = getCookie(NOTES_COOKIE_NAME);
+    notesVisible = savedNotesVisibility === null ? true : Boolean(savedNotesVisibility);
     if (notesToggle) {
         notesToggle.checked = notesVisible;
         notesToggle.addEventListener('change', () => {

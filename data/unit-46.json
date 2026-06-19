@@ -1,0 +1,684 @@
+{
+  "id": 46,
+  "title": "課本4 Unit 6",
+  "words": [
+    {
+      "english": "diligent",
+      "pronunciation": "['dɪlədʒənt]",
+      "chinese": [
+        "adj. 勤奮的 (working very hard)"
+      ],
+      "syn": "hard-working",
+      "example": [
+        "Michael is [diligent] in his studies, so he does very well at school.",
+        "麥可在學業上很勤奮，所以他在學校表現得很好。"
+      ],
+      "phrases": [
+        {
+          "english": "be [diligent] in/with N/V-ing",
+          "chinese": "在某方面很勤勉"
+        }
+      ]
+    },
+    {
+      "english": "diligence",
+      "pronunciation": "['dɪlədʒəns]",
+      "chinese": [
+        "n. [U] 勤奮"
+      ],
+      "example": [
+        "Emma shows great [diligence] in her work, and her boss often praises her for it.",
+        "艾瑪在工作上展現出極大的勤奮，而她的老闆也經常因此稱讚她。"
+      ],
+      "notes": [
+        "praise sb. for sth. = compliment sb. on sth.: 因某事讚美某人"
+      ]
+    },
+    {
+      "english": "international",
+      "pronunciation": "[,ɪntɚ'næʃənəl]",
+      "chinese": [
+        "adj. 國際的 (relating to more than one nation)"
+      ],
+      "example": [
+        "English is an [international] language. Many people in different countries use it.",
+        "英文是一種國際語言。許多不同國家的人都使用它。"
+      ],
+      "notes": [
+        "Word Smart: inter- = 在……之間；交互",
+        "section -> intersection: 十字路口",
+        "face -> interface: 界面；接口",
+        "play -> interplay: 交互作用",
+        "relate -> interrelate: 相互關聯"
+      ]
+    },
+    {
+      "english": "relatively",
+      "pronunciation": "['rɛlətɪvlɪ]",
+      "chinese": [
+        "adv. 相對地 (in comparison with something similar)"
+      ],
+      "example": [
+        "Dustin always shops on Amazon because of its [relatively] low prices.",
+        "達斯汀總是在亞馬遜購物，因為它的價格相對較低。"
+      ],
+      "notes": [
+        "relative (adj.): 相對的；比較的",
+        "relative (n.): 親戚；親屬"
+      ]
+    },
+    {
+      "english": "remote",
+      "pronunciation": "[rɪ'mot]",
+      "chinese": [
+        "adj. 偏遠的 (far away from other cities)"
+      ],
+      "example": [
+        "The [remote] village is famous for its unique buildings and traditional costumes.",
+        "那座偏遠的村莊以其獨特的建築和傳統服飾聞名。"
+      ],
+      "notes": [
+        "remote chance: 微小的機會",
+        "remote possibility: 微小的可能"
+      ]
+    },
+    {
+      "english": "pursue",
+      "pronunciation": "[pɚ'su]",
+      "chinese": [
+        "vt. 追求 (to try to achieve something)"
+      ],
+      "example": [
+        "Chris [pursues] his goal of becoming an engineer by studying online in addition to his college courses.",
+        "克里斯除了上大學課程外，還透過線上學習來追求成為工程師的目標。"
+      ],
+      "phrases": [
+        {
+          "english": "[pursue] a goal/an aim/an objective",
+          "chinese": "追求目標"
+        },
+        {
+          "english": "[pursue] a career",
+          "chinese": "從事某領域或行業的工作"
+        }
+      ]
+    },
+    {
+      "english": "pursuit",
+      "pronunciation": "[pɚ'sut]",
+      "chinese": [
+        "n. [U] 追求"
+      ],
+      "example": [
+        "Tracy came to the big city in [pursuit] of her dreams.",
+        "崔西為了追尋夢想而來到大城市。"
+      ],
+      "phrases": [
+        {
+          "english": "in [pursuit] of N",
+          "chinese": "追尋……"
+        }
+      ]
+    },
+    {
+      "english": "carving",
+      "pronunciation": "['karvɪŋ]",
+      "chinese": [
+        "n. [U] 雕刻技藝 (the skill of cutting a shape in a material)"
+      ],
+      "example": [
+        "The wood [carving] artist is going to display his work at this museum next month.",
+        "那位木雕藝術家下個月要在這間博物館展示他的作品。"
+      ],
+      "notes": [
+        "display = exhibit: 展示"
+      ]
+    },
+    {
+      "english": "carve",
+      "pronunciation": "[karv]",
+      "chinese": [
+        "vt.; vi. 雕刻"
+      ],
+      "example": [
+        "The ancient people [carved] their homes directly into the mountain to stay cool during the summer and warm during the winter.",
+        "古代人直接把住家刻在山中，好讓夏天保持涼爽、冬天保持溫暖。"
+      ],
+      "phrases": [
+        {
+          "english": "[carve] A into/in/on B",
+          "chinese": "把 A 刻在 B 上"
+        },
+        {
+          "english": "[carve] A out of B",
+          "chinese": "用 B 雕刻出 A"
+        }
+      ]
+    },
+    {
+      "english": "championship",
+      "pronunciation": "['tʃæmpɪən,ʃɪp]",
+      "chinese": [
+        "n. [C] 錦標賽 (a competition to decide the best player or team)"
+      ],
+      "example": [
+        "Taiwan's baseball team beat all the other teams and won the international [championship].",
+        "台灣的棒球隊打敗了其他所有球隊，贏得了國際錦標賽冠軍。"
+      ],
+      "phrases": [
+        {
+          "english": "win/take the [championship]",
+          "chinese": "贏得冠軍頭銜"
+        }
+      ]
+    },
+    {
+      "english": "champion",
+      "pronunciation": "['tʃæmpɪən]",
+      "chinese": [
+        "n. [C] 冠軍，優勝者"
+      ],
+      "example": [
+        "The two-time World Half Marathon [champion] is expected to win again this year.",
+        "這位曾兩度獲得世界半程馬拉松冠軍的選手，今年也被看好再次奪冠。"
+      ],
+      "phrases": [
+        {
+          "english": "become/be crowned [champion]",
+          "chinese": "成為冠軍／奪冠"
+        },
+        {
+          "english": "World [champion]",
+          "chinese": "世界冠軍"
+        },
+        {
+          "english": "national [champion]",
+          "chinese": "國家冠軍"
+        }
+      ]
+    },
+    {
+      "english": "volunteer",
+      "pronunciation": "[,vɑlən'tɪr]",
+      "chinese": [
+        "vi.; vt. 自願 (to do something without being forced or paid)",
+        "n. [C] 志願者，志工"
+      ],
+      "example": [
+        "Sue [volunteered] to take out the garbage when no one else wanted to do it.",
+        "當其他人都不想倒垃圾時，蘇自願去做。",
+        "The library needs more [volunteers] to help arrange the books.",
+        "圖書館需要更多志工來幫忙整理書籍。"
+      ],
+      "phrases": [
+        {
+          "english": "[volunteer] to V / for N",
+          "chinese": "自願做某事"
+        },
+        {
+          "english": "[volunteer] N",
+          "chinese": "主動說出……"
+        },
+        {
+          "english": "[volunteer] army",
+          "chinese": "志願軍"
+        }
+      ]
+    },
+    {
+      "english": "principal",
+      "pronunciation": "['prɪnsəp!]",
+      "chinese": [
+        "n. [C] 校長 (someone who is in charge of a school)"
+      ],
+      "example": [
+        "Our [principal], Ms. Lin, has led our school to be the best high school in town.",
+        "我們的校長林女士帶領學校成為鎮上最好的高中。"
+      ],
+      "notes": [
+        "principal (adj.): 主要的；重要的",
+        "US: principal / UK: headteacher"
+      ]
+    },
+    {
+      "english": "possibility",
+      "pronunciation": "[,pɑsə'bɪlətɪ]",
+      "chinese": [
+        "n. [C][U] 可能性，潛力 (the chance to happen or be successful)"
+      ],
+      "example": [
+        "Leo is too stubborn. There's no [possibility] of changing his mind.",
+        "里歐太固執了，根本沒有改變他想法的可能性。"
+      ],
+      "phrases": [
+        {
+          "english": "sth. remains a [possibility]",
+          "chinese": "某事仍有可能"
+        },
+        {
+          "english": "raise a [possibility]",
+          "chinese": "提出某種可能性"
+        },
+        {
+          "english": "consider the [possibility] of N/V-ing",
+          "chinese": "考慮……的可能性"
+        },
+        {
+          "english": "rule out/exclude a [possibility]",
+          "chinese": "排除某種可能性"
+        },
+        {
+          "english": "there is no [possibility] of N/V-ing",
+          "chinese": "沒有……的可能性"
+        }
+      ]
+    },
+    {
+      "english": "establish",
+      "pronunciation": "[ə'stæblɪʃ]",
+      "chinese": [
+        "vt. 建立 (to start a relationship)",
+        "vt. 設立，創辦 (to start an organization)"
+      ],
+      "example": [
+        "The two companies [established] a business relationship with each other many years ago.",
+        "那兩家公司在很多年前就建立了商業合作關係。",
+        "This food company was [established] in 1992 but went out of business last month because of COVID-19.",
+        "這家食品公司成立於 1992 年，但因為新冠疫情而在上個月倒閉了。"
+      ],
+      "phrases": [
+        {
+          "english": "[establish] a business relationship with sb.",
+          "chinese": "和某人建立商業關係"
+        }
+      ],
+      "notes": [
+        "establishment: 機構；企業",
+        "established: 著名的；公認的"
+      ]
+    },
+    {
+      "english": "fulfill",
+      "pronunciation": "[fʊl'fɪl]",
+      "chinese": [
+        "vt. 實現，達成 (to achieve something)"
+      ],
+      "example": [
+        "Tony finally [fulfilled] his dream of becoming a Broadway performer after years of effort.",
+        "經過多年的努力，東尼終於實現了成為百老匯表演者的夢想。"
+      ],
+      "phrases": [
+        {
+          "english": "[fulfill] a dream/hope/goal",
+          "chinese": "實現夢想／希望／目標"
+        }
+      ],
+      "notes": [
+        "fulfillment: 履行；實現"
+      ]
+    },
+    {
+      "english": "outstanding",
+      "pronunciation": "[,aʊt'stændɪŋ]",
+      "chinese": [
+        "adj. 出色的，傑出的 (extremely good)"
+      ],
+      "syn": "excellent",
+      "example": [
+        "The singer's [outstanding] skill caught the public's attention.",
+        "那位歌手出色的技巧吸引了大眾的注意。"
+      ],
+      "notes": [
+        "distinguished: 傑出的",
+        "stand out: 傑出；顯著"
+      ]
+    },
+    {
+      "english": "arouse",
+      "pronunciation": "[ə'raʊz]",
+      "chinese": [
+        "vt. 激起，引起 (to cause someone to have a certain feeling)"
+      ],
+      "example": [
+        "The sound from outside [aroused] Joanne's curiosity, so she went to the window to see what had happened.",
+        "外面的聲音引起了喬安的好奇心，所以她走到窗邊看看發生了什麼事。"
+      ],
+      "notes": [
+        "rise: 上升",
+        "arise: 發生；出現",
+        "raise: 募款；撫養"
+      ]
+    },
+    {
+      "english": "passion",
+      "pronunciation": "['pæʃən]",
+      "chinese": [
+        "n. [U][C] 熱情 (a strong feeling about something)"
+      ],
+      "example": [
+        "Charlie loves animals, and he often talks with great [passion] about them.",
+        "查理喜歡動物，而且他經常滿懷熱情地談論牠們。"
+      ],
+      "phrases": [
+        {
+          "english": "with [passion] for N",
+          "chinese": "對……充滿熱情"
+        }
+      ]
+    },
+    {
+      "english": "passionate",
+      "pronunciation": "['pæʃənɪt]",
+      "chinese": [
+        "adj. 熱情的，熱烈的"
+      ],
+      "example": [
+        "The student gave a [passionate] speech about the importance of study-life balance and concluded by asking the teachers to give them less homework.",
+        "那位學生發表了一場充滿熱情的演說，談論讀書與生活平衡的重要性，最後還請老師少給一點作業。"
+      ],
+      "phrases": [
+        {
+          "english": "be [passionate] about N/V-ing",
+          "chinese": "對某事充滿熱情"
+        },
+        {
+          "english": "[passionate] speech/belief/support",
+          "chinese": "熱情的演說／堅定的信念／熱情的支持"
+        }
+      ]
+    },
+    {
+      "english": "related",
+      "pronunciation": "[rɪ'letɪd]",
+      "chinese": [
+        "adj. 相關的，有關聯的 (connected in some way)"
+      ],
+      "example": [
+        "The doctor said that my poor sleep quality is closely [related] to my illness.",
+        "醫生說我的睡眠品質差和我的疾病有密切關係。"
+      ],
+      "phrases": [
+        {
+          "english": "be closely/strongly [related] to sth.",
+          "chinese": "與……有密切關係"
+        },
+        {
+          "english": "be [related] to sb.",
+          "chinese": "與某人有親戚關係"
+        }
+      ]
+    },
+    {
+      "english": "relate",
+      "pronunciation": "[rɪ'let]",
+      "chinese": [
+        "vt.; vi. 聯繫，有關聯"
+      ],
+      "example": [
+        "It is hard to [relate] Julie's dress to dancing because it's so heavy.",
+        "很難把茱莉的洋裝和跳舞聯想在一起，因為它太重了。"
+      ],
+      "phrases": [
+        {
+          "english": "[relate] A to B",
+          "chinese": "把 A 與 B 聯繫起來"
+        },
+        {
+          "english": "[relate] to sb./sth.",
+          "chinese": "理解……；對……有共鳴"
+        }
+      ],
+      "notes": [
+        "RELATE: 關係",
+        "relationship: 人們彼此的關係"
+      ]
+    },
+    {
+      "english": "France",
+      "pronunciation": "[fræns]",
+      "chinese": [
+        "n. 法國"
+      ],
+      "notes": [
+        "It is Greek to me: 太難了，我不會"
+      ]
+    },
+    {
+      "english": "French",
+      "pronunciation": "[frɛntʃ]",
+      "chinese": [
+        "adj. 法國的",
+        "n. 法國人"
+      ]
+    },
+    {
+      "english": "Michelin",
+      "pronunciation": "['mɪʃəlɪn]",
+      "chinese": [
+        "n. 米其林（指南）"
+      ]
+    },
+    {
+      "english": "station chef",
+      "pronunciation": "[ˈsteɪʃən ʃɛf]",
+      "chinese": [
+        "n. [C] 領班；內場廚師"
+      ]
+    },
+    {
+      "english": "enroll",
+      "pronunciation": "[ɪn'rol]",
+      "chinese": [
+        "vi. 入學，註冊"
+      ]
+    },
+    {
+      "english": "vocational",
+      "pronunciation": "[vo'keʃənəl]",
+      "chinese": [
+        "adj. 職業的"
+      ],
+      "notes": [
+        "career woman: 職業婦女",
+        "profession: 專業職業"
+      ]
+    },
+    {
+      "english": "European",
+      "pronunciation": "[,jʊrə'piən]",
+      "chinese": [
+        "adj. 歐洲的"
+      ]
+    },
+    {
+      "english": "military service",
+      "pronunciation": "[ˈmɪləˌtɛri ˈsɝvɪs]",
+      "chinese": [
+        "n. [U] 兵役"
+      ]
+    },
+    {
+      "english": "township",
+      "pronunciation": "['taʊnʃɪp]",
+      "chinese": [
+        "n. [C] 鄉"
+      ],
+      "notes": [
+        "county: 縣"
+      ]
+    },
+    {
+      "english": "sow",
+      "pronunciation": "[so]",
+      "chinese": [
+        "vt. 播種"
+      ]
+    },
+    {
+      "english": "agricultural",
+      "pronunciation": "[,æɡrɪ'kʌltʃərəl]",
+      "chinese": [
+        "adj. 農業的"
+      ],
+      "notes": [
+        "horticulture: 園藝"
+      ]
+    },
+    {
+      "english": "cuisine",
+      "pronunciation": "[kwɪ'zin]",
+      "chinese": [
+        "n. [U] 菜餚"
+      ]
+    },
+    {
+      "english": "head",
+      "pronunciation": "[hɛd]",
+      "chinese": [
+        "n. [C] 首長，領導者"
+      ],
+      "notes": [
+        "head (v.) for + 地方: 朝……行進"
+      ]
+    },
+    {
+      "english": "make up one's mind",
+      "chinese": [
+        "phr. 下定決心 (to decide something)"
+      ],
+      "example": [
+        "Judy finally [made up her mind] to study abroad after high school.",
+        "茱蒂終於下定決心要在高中畢業後出國留學。"
+      ],
+      "notes": [
+        "be determined to V: 下定決心做……",
+        "be resolved to V: 下定決心做……"
+      ]
+    },
+    {
+      "english": "aside from",
+      "chinese": [
+        "phr. 除……之外 (as well as)"
+      ],
+      "syn": "apart from",
+      "example": [
+        "[Aside from] owning an Italian restaurant, David also owns a big shopping mall.",
+        "除了擁有一間義大利餐廳之外，大衛還擁有一座大型購物商場。"
+      ],
+      "notes": [
+        "except (for) + N/V-ing: 除……之外"
+      ]
+    },
+    {
+      "english": "set up",
+      "chinese": [
+        "phr. 開設，創辦 (to start an organization)"
+      ],
+      "syn": "establish",
+      "example": [
+        "They [set up] a small tech company in 2020 to develop creative software solutions for local businesses.",
+        "他們在 2020 年成立了一間小型科技公司，為當地企業開發有創意的軟體解決方案。"
+      ],
+      "notes": [
+        "set sb. up: 設計陷害某人"
+      ]
+    },
+    {
+      "english": "above all",
+      "chinese": [
+        "phr. 尤其，最重要地 (the most important of all)"
+      ],
+      "example": [
+        "The house is big and beautiful. [Above all], it's close to my office.",
+        "那間房子又大又漂亮。最重要的是，它離我的辦公室很近。"
+      ],
+      "notes": [
+        "most of all: 尤其；最重要地",
+        "in particular: 尤其；特別"
+      ]
+    },
+    {
+      "english": "day in and day out",
+      "chinese": [
+        "phr. 每天，一天到晚 (every day)"
+      ],
+      "example": [
+        "It is boring for Tony to do the same job in the office [day in and day out].",
+        "東尼天天在辦公室做同樣的工作，實在很無聊。"
+      ],
+      "notes": [
+        "day by day: 一天天地（逐漸地）",
+        "day after day: 日復一日（重複動作）"
+      ]
+    },
+    {
+      "english": "in spite of",
+      "chinese": [
+        "phr. 儘管 (without being affected by something)"
+      ],
+      "syn": "despite",
+      "example": [
+        "[In spite of] the fact that Emily's not so rich, she still gives most of her money to the poor.",
+        "儘管艾蜜莉不是很有錢，她仍然把大部分的錢捐給窮人。"
+      ],
+      "notes": [
+        "although/though/even though + S + V: 雖然……但是……",
+        "in spite of / despite + N/V-ing, S + V: 儘管……，仍然……"
+      ]
+    },
+    {
+      "english": "interchange",
+      "chinese": [
+        "交換"
+      ],
+      "notes": [
+        "inter + change"
+      ]
+    },
+    {
+      "english": "interpersonal",
+      "chinese": [
+        "人與人之間"
+      ],
+      "notes": [
+        "inter + personal"
+      ]
+    },
+    {
+      "english": "interact",
+      "chinese": [
+        "互動"
+      ],
+      "notes": [
+        "inter + act"
+      ]
+    },
+    {
+      "english": "interlink",
+      "chinese": [
+        "相互連接"
+      ],
+      "notes": [
+        "inter + link"
+      ]
+    },
+    {
+      "english": "Internet",
+      "chinese": [
+        "網路"
+      ],
+      "notes": [
+        "inter + net"
+      ]
+    },
+    {
+      "english": "International",
+      "chinese": [
+        "國際的"
+      ],
+      "notes": [
+        "inter + national"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,652 @@
+{
+  "id": 45,
+  "title": "課本4 Unit 5",
+  "words": [
+    {
+      "english": "bill",
+      "pronunciation": "[bɪl]",
+      "chinese": [
+        "n. [C] 鈔票；帳單 (a piece of paper money; a written statement of money owed)"
+      ],
+      "example": [
+        "I really enjoyed the street performer's dance, so I put a one-hundred-dollar [bill] into his box.",
+        "我很喜歡那位街頭藝人的舞蹈，所以我放了一張一百美元的鈔票進他的箱子裡。"
+      ],
+      "phrases": [
+        {
+          "english": "utility/gas/tax [bill]",
+          "chinese": "水電費／瓦斯費／稅單"
+        },
+        {
+          "english": "break the [bill] into N",
+          "chinese": "將大額鈔票換成小鈔或硬幣"
+        },
+        {
+          "english": "split/share the [bill]",
+          "chinese": "各付各的"
+        },
+        {
+          "english": "pay a [bill] for N",
+          "chinese": "支付……的帳單"
+        }
+      ],
+      "notes": [
+        "US: bill / UK: note"
+      ]
+    },
+    {
+      "english": "option",
+      "pronunciation": "[ˈɑpʃən]",
+      "chinese": [
+        "n. [C] 選擇 (a choice)"
+      ],
+      "syn": "choice",
+      "example": [
+        "In this shop, customers have many [options] for smartphone cases.",
+        "在這家店裡，顧客有很多手機殼可供選擇。"
+      ],
+      "phrases": [
+        {
+          "english": "have no [option]/choice but to V",
+          "chinese": "不得不做……"
+        }
+      ],
+      "notes": [
+        "optional (adj.): 可選的"
+      ]
+    },
+    {
+      "english": "enable",
+      "pronunciation": "[ɪnˈebḷ]",
+      "chinese": [
+        "vt. 使能夠；使成為可能 (to make someone able to do something, or make something possible)"
+      ],
+      "syn": "allow",
+      "example": [
+        "The Internet [enables] people to connect with the world.",
+        "網際網路使人們能夠與世界連結。"
+      ],
+      "phrases": [
+        {
+          "english": "[enable] sb. to V",
+          "chinese": "使某人能夠做……"
+        }
+      ],
+      "notes": [
+        "be able to V: 能夠做……",
+        "have the ability to V: 有能力做……",
+        "Prefix note: en- + able -> enable",
+        "Related forms: enlarge (使變大), enjoy (享受), enrich (使富裕), endanger (使處於險境), encourage (鼓勵)"
+      ]
+    },
+    {
+      "english": "benefit",
+      "pronunciation": "[ˈbɛnəfɪt]",
+      "chinese": [
+        "n. [C][U] 好處，益處 (an advantage)",
+        "vi. 受益，得益"
+      ],
+      "syn": "advantage, profit",
+      "example": [
+        "Drinking enough water every day can be of great [benefit] to a person.",
+        "每天喝足夠的水對一個人會有很大的好處。"
+      ],
+      "phrases": [
+        {
+          "english": "be of great [benefit] to sb.",
+          "chinese": "對某人有很大的好處"
+        },
+        {
+          "english": "[benefit] from N/V-ing",
+          "chinese": "從……中受益"
+        }
+      ],
+      "notes": [
+        "beneficial (adj.): 有益的"
+      ]
+    },
+    {
+      "english": "reward",
+      "pronunciation": "[rɪˈwɔrd]",
+      "chinese": [
+        "n. [C][U] 報酬，獎勵 (something that one gets for good work)",
+        "vt. 獎勵，獎賞"
+      ],
+      "example": [
+        "Jenny treated Paul to a meal as a [reward] for his help in finding her lost dog.",
+        "珍妮請保羅吃了一頓飯，作為他幫忙找回走失小狗的獎勵。",
+        "Mr. Walter [rewarded] his kids for getting good grades with a trip to Janfusun Fancyworld.",
+        "華特先生因為孩子們成績優異，就用劍湖山世界之旅來獎勵他們。"
+      ],
+      "phrases": [
+        {
+          "english": "a [reward] for N/V-ing",
+          "chinese": "某事物的報酬／獎勵"
+        },
+        {
+          "english": "get/receive/gain a [reward]",
+          "chinese": "得到獎勵"
+        },
+        {
+          "english": "[reward] sb. with N",
+          "chinese": "用……獎勵某人"
+        },
+        {
+          "english": "[reward] sb. by V-ing",
+          "chinese": "以做……來獎勵某人"
+        }
+      ],
+      "notes": [
+        "treat sb. to N: 請某人吃／喝……"
+      ]
+    },
+    {
+      "english": "announce",
+      "pronunciation": "[əˈnaʊns]",
+      "chinese": [
+        "vt. 宣布 (to officially tell people something)"
+      ],
+      "example": [
+        "The famous tennis player suddenly [announced] her retirement.",
+        "那位知名網球選手突然宣布退休。"
+      ],
+      "phrases": [
+        {
+          "english": "[announce] that + S + V",
+          "chinese": "宣布……"
+        },
+        {
+          "english": "[announce] sth. to sb.",
+          "chinese": "向某人宣布某事"
+        }
+      ],
+      "notes": [
+        "retire from ... / bow out: 退休"
+      ]
+    },
+    {
+      "english": "announcement",
+      "pronunciation": "[əˈnaʊnsmənt]",
+      "chinese": [
+        "n. [C] 公告"
+      ],
+      "example": [
+        "Today, the actor made an official [announcement] about his marriage and future plans.",
+        "今天，那位演員正式發布了關於自己婚姻與未來計畫的公告。"
+      ],
+      "phrases": [
+        {
+          "english": "official/formal [announcement]",
+          "chinese": "官方／正式公告"
+        },
+        {
+          "english": "make/issue an [announcement] about N",
+          "chinese": "發布關於……的公告"
+        }
+      ]
+    },
+    {
+      "english": "likewise",
+      "pronunciation": "[ˈlaɪkˌwaɪz]",
+      "chinese": [
+        "adv. 同樣地 (in the same way)"
+      ],
+      "syn": "similarly",
+      "example": [
+        "Cathy put on her jacket when we left the restaurant, and I did [likewise].",
+        "當我們離開餐廳時，凱西穿上了外套，而我也同樣這麼做。"
+      ]
+    },
+    {
+      "english": "appealing",
+      "pronunciation": "[əˈpilɪŋ]",
+      "chinese": [
+        "adj. 吸引人的 (attractive and interesting)"
+      ],
+      "syn": "charming, attractive",
+      "ant": "unappealing",
+      "example": [
+        "The idea of working in a foreign country sounds very [appealing] to me.",
+        "去外國工作的想法對我來說很有吸引力。"
+      ],
+      "phrases": [
+        {
+          "english": "be [appealing] to sb.",
+          "chinese": "吸引某人"
+        }
+      ]
+    },
+    {
+      "english": "appeal",
+      "pronunciation": "[əˈpil]",
+      "chinese": [
+        "vi. 對……有吸引力；呼籲；懇求"
+      ],
+      "example": [
+        "This event [appealed] to Michael a lot, so he decided to take part in it.",
+        "這個活動非常吸引麥可，所以他決定參加。"
+      ],
+      "phrases": [
+        {
+          "english": "[appeal] to sb.",
+          "chinese": "對某人有吸引力"
+        },
+        {
+          "english": "[appeal] for N",
+          "chinese": "呼籲／懇求得到……"
+        }
+      ]
+    },
+    {
+      "english": "especially",
+      "pronunciation": "[əˈspɛʃəlɪ]",
+      "chinese": [
+        "adv. 尤其 (more than something)"
+      ],
+      "syn": "particularly",
+      "example": [
+        "It rains frequently in northern Taiwan, [especially] in Keelung.",
+        "臺灣北部經常下雨，尤其是基隆。"
+      ]
+    },
+    {
+      "english": "elderly",
+      "pronunciation": "[ˈɛldɚlɪ]",
+      "chinese": [
+        "adj. 年長的 (old)"
+      ],
+      "ant": "young",
+      "example": [
+        "This environment is not friendly to [elderly] people. There are too many stairs.",
+        "這個環境對年長者並不友善，因為樓梯太多了。"
+      ],
+      "phrases": [
+        {
+          "english": "the [elderly]",
+          "chinese": "老人；年長者"
+        }
+      ]
+    },
+    {
+      "english": "concerned",
+      "pronunciation": "[kənˈsɝnd]",
+      "chinese": [
+        "adj. 擔心的 (feeling worried)"
+      ],
+      "example": [
+        "The farmer is [concerned] about her crops because it has been raining heavily for days.",
+        "那位農夫很擔心她的作物，因為已經下了好幾天的大雨。"
+      ],
+      "phrases": [
+        {
+          "english": "be [concerned] about N/V-ing",
+          "chinese": "對某事感到擔憂"
+        }
+      ]
+    },
+    {
+      "english": "concern",
+      "pronunciation": "[kənˈsɝn]",
+      "chinese": [
+        "vt. 使擔心"
+      ],
+      "example": [
+        "It [concerns] me that my friend has not answered any of my calls for several days.",
+        "我的朋友好幾天都沒有接我的任何電話，這讓我很擔心。"
+      ],
+      "phrases": [
+        {
+          "english": "It [concerns] sb. that + S + V",
+          "chinese": "某事使某人擔心"
+        }
+      ]
+    },
+    {
+      "english": "signal",
+      "pronunciation": "[ˈsɪɡnəl]",
+      "chinese": [
+        "n. [C] 訊號，信號 (a series of waves which carry sounds or messages)",
+        "vt.; vi. 發信號，示意"
+      ],
+      "example": [
+        "Elisa couldn't send her message because the Wi-Fi [signal] was not stable.",
+        "艾莉莎無法傳送她的訊息，因為 Wi-Fi 訊號不穩定。",
+        "Joe waved his hands to [signal] the bus to stop.",
+        "喬揮動雙手示意公車停下來。"
+      ],
+      "phrases": [
+        {
+          "english": "busy [signal]",
+          "chinese": "電話忙線"
+        },
+        {
+          "english": "turn [signal]",
+          "chinese": "車輛方向燈"
+        },
+        {
+          "english": "radio [signal]",
+          "chinese": "無線電訊號"
+        }
+      ]
+    },
+    {
+      "english": "electricity",
+      "pronunciation": "[ɪˌlɛkˈtrɪsətɪ]",
+      "chinese": [
+        "n. [U] 電 (a form of energy)"
+      ],
+      "example": [
+        "This table lamp runs on [electricity].",
+        "這盞檯燈靠電力運作。"
+      ],
+      "phrases": [
+        {
+          "english": "generate/produce [electricity]",
+          "chinese": "發電"
+        }
+      ]
+    },
+    {
+      "english": "electric",
+      "pronunciation": "[ɪˈlɛktrɪk]",
+      "chinese": [
+        "adj. 電的，電動的"
+      ],
+      "example": [
+        "We lit some candles in the room because the [electric] power was cut off.",
+        "因為停電了，所以我們在房間裡點了一些蠟燭。"
+      ],
+      "phrases": [
+        {
+          "english": "[electric] power",
+          "chinese": "電力"
+        }
+      ],
+      "notes": [
+        "cut off electricity: 斷電",
+        "light-lit-lit: 點亮"
+      ]
+    },
+    {
+      "english": "connection",
+      "pronunciation": "[kəˈnɛkʃən]",
+      "chinese": [
+        "n. [C] 聯結；連線 (the state that things are joined together)"
+      ],
+      "example": [
+        "I lost my Internet [connection] as I walked into the basement.",
+        "當我走進地下室時，我的網路連線中斷了。"
+      ],
+      "phrases": [
+        {
+          "english": "Internet [connection]",
+          "chinese": "網路連線"
+        }
+      ]
+    },
+    {
+      "english": "connect",
+      "pronunciation": "[kəˈnɛkt]",
+      "chinese": [
+        "vt.; vi. 連接，聯結"
+      ],
+      "example": [
+        "[Connect] your earphones to my smartphone so that you can listen to the song.",
+        "把你的耳機連接到我的智慧型手機，這樣你就能聽那首歌。"
+      ],
+      "phrases": [
+        {
+          "english": "[connect] A to B",
+          "chinese": "把 A 連接到 B"
+        }
+      ]
+    },
+    {
+      "english": "opponent",
+      "pronunciation": "[əˈponənt]",
+      "chinese": [
+        "n. [C] 反對者；對手 (someone who is against something)"
+      ],
+      "example": [
+        "The [opponents] of the new tourism policy said that it would hurt their businesses.",
+        "新旅遊政策的反對者表示，這項政策會傷害他們的生意。"
+      ],
+      "phrases": [
+        {
+          "english": "political [opponent]",
+          "chinese": "政敵"
+        }
+      ],
+      "notes": [
+        "rival: 敵手"
+      ]
+    },
+    {
+      "english": "stable",
+      "pronunciation": "[ˈstebl]",
+      "chinese": [
+        "adj. 穩定的，平穩的 (not likely to change or move)",
+        "n. [C] 馬廄"
+      ],
+      "syn": "steady",
+      "ant": "unstable",
+      "example": [
+        "Ivy and Joe have been in a [stable] relationship for three years.",
+        "艾薇和喬一直維持著穩定的關係，已經三年了。"
+      ]
+    },
+    {
+      "english": "method",
+      "pronunciation": "[ˈmɛθəd]",
+      "chinese": [
+        "n. [C] 方式，方法 (a way of doing something)"
+      ],
+      "example": [
+        "Mike used a new [method] for quickly completing his work to save more time.",
+        "麥克用了新的方法快速完成工作，以節省更多時間。"
+      ]
+    },
+    {
+      "english": "burden",
+      "pronunciation": "[ˈbɝdn]",
+      "chinese": [
+        "n. [C] 負擔 (something that is difficult or causes inconvenience and stress)"
+      ],
+      "example": [
+        "The noise from the busy highway was a [burden] on the residents' peace and quiet.",
+        "繁忙公路傳來的噪音成了居民安寧生活的負擔。"
+      ],
+      "phrases": [
+        {
+          "english": "heavy [burden]",
+          "chinese": "沉重的負擔"
+        }
+      ]
+    },
+    {
+      "english": "debit card",
+      "pronunciation": "[ˈdɛbɪt kɑrd]",
+      "chinese": [
+        "n. [C] 簽帳金融卡"
+      ],
+      "notes": [
+        "debit: 借方",
+        "credit: 貸方"
+      ]
+    },
+    {
+      "english": "withdraw",
+      "pronunciation": "[wɪðˈdrɔ]",
+      "chinese": [
+        "vt. 提領"
+      ],
+      "notes": [
+        "deposit: 存款",
+        "transfer: 銀行匯款",
+        "balance: 餘額",
+        "interest: 利息"
+      ]
+    },
+    {
+      "english": "Europe",
+      "pronunciation": "[ˈjʊrəp]",
+      "chinese": [
+        "n. 歐洲"
+      ]
+    },
+    {
+      "english": "hack",
+      "pronunciation": "[hæk]",
+      "chinese": [
+        "vt. 駭入"
+      ]
+    },
+    {
+      "english": "hacker",
+      "pronunciation": "[ˈhækɚ]",
+      "chinese": [
+        "n. [C] 駭客"
+      ]
+    },
+    {
+      "english": "theft",
+      "pronunciation": "[θɛft]",
+      "chinese": [
+        "n. [U] 竊取，偷竊"
+      ]
+    },
+    {
+      "english": "for short",
+      "chinese": [
+        "phr. 簡稱 (in a shorter way)"
+      ],
+      "example": [
+        "My name is William, or you can call me Will [for short].",
+        "我叫威廉，你也可以簡稱我為威爾。"
+      ]
+    },
+    {
+      "english": "go in for",
+      "chinese": [
+        "phr. 喜愛 (to enjoy something)"
+      ],
+      "example": [
+        "Vicky doesn't really [go in for] the city life. She prefers living in the country.",
+        "薇琪其實不太喜歡都市生活。她比較喜歡住在鄉下。"
+      ],
+      "notes": [
+        "be into: 喜愛",
+        "be fond of: 喜愛",
+        "take delight in: 以……為樂"
+      ]
+    },
+    {
+      "english": "so far",
+      "chinese": [
+        "phr. 到目前為止 (until now)"
+      ],
+      "example": [
+        "The company, which was started six years ago, has created over thirty apps [so far].",
+        "那家公司六年前成立，到目前為止已經開發了三十多個應用程式。"
+      ],
+      "notes": [
+        "to date: 到目前為止",
+        "found: founded-founded / start: started-started"
+      ]
+    },
+    {
+      "english": "be used to",
+      "chinese": [
+        "phr. 習慣於 (to have done something very often)"
+      ],
+      "syn": "get used to",
+      "example": [
+        "I'm not [used to] wearing dresses. I usually wear pants or shorts.",
+        "我不習慣穿洋裝。我通常都穿長褲或短褲。"
+      ],
+      "notes": [
+        "used to V: 以前常常……，現在不做了",
+        "be used to V / for N: 被用來做……"
+      ]
+    },
+    {
+      "english": "last but not least",
+      "chinese": [
+        "phr. 最後但同樣重要的 (showing the last person or thing in a list is also important)"
+      ],
+      "example": [
+        "When you watch a movie, remember to stay quiet, focus on the plot, and [last but not least], put your phone on silent.",
+        "看電影時，記得保持安靜、專心看劇情，最後但同樣重要的是，把手機調成靜音。"
+      ]
+    },
+    {
+      "english": "out of order",
+      "chinese": [
+        "phr. 故障 (not working)"
+      ],
+      "example": [
+        "The elevator is [out of order] and can't be used until it's fixed next week.",
+        "那部電梯故障了，要等到下週修好後才能使用。"
+      ],
+      "notes": [
+        "out of stock: 缺貨",
+        "out of work: 失業",
+        "out of touch: 失去聯繫"
+      ]
+    },
+    {
+      "english": "enlarge",
+      "chinese": [
+        "vt. 使變大"
+      ],
+      "notes": [
+        "en + large"
+      ]
+    },
+    {
+      "english": "enjoy",
+      "chinese": [
+        "vt. 享受"
+      ],
+      "notes": [
+        "en + joy"
+      ]
+    },
+    {
+      "english": "enable",
+      "chinese": [
+        "vt. 使能夠"
+      ],
+      "notes": [
+        "en + able"
+      ]
+    },
+    {
+      "english": "enrich",
+      "chinese": [
+        "vt. 使富裕"
+      ],
+      "notes": [
+        "en + rich"
+      ]
+    },
+    {
+      "english": "endanger",
+      "chinese": [
+        "vt. 使處於險境"
+      ],
+      "notes": [
+        "en + danger"
+      ]
+    },
+    {
+      "english": "encourage",
+      "chinese": [
+        "vt. 鼓勵"
+      ],
+      "notes": [
+        "en + courage"
+      ]
+    }
+  ]
+}
