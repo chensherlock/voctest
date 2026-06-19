@@ -427,11 +427,14 @@ const audioService = {
                 resolve();
             });
 
-            audio.play().catch(err => {
-                console.error('Audio playback error, falling back to speech synthesis:', err);
-                this.speakWord(word, { onEnd, onError });
-                resolve();
-            });
+            const playPromise = audio.play();
+            if (playPromise && typeof playPromise.catch === 'function') {
+                playPromise.catch(err => {
+                    console.error('Audio playback error, falling back to speech synthesis:', err);
+                    this.speakWord(word, { onEnd, onError });
+                    resolve();
+                });
+            }
         });
     },
 
